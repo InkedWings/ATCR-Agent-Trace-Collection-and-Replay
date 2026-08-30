@@ -1,0 +1,20 @@
+{
+  "llm_executor": {
+    "factory": "agenttrace.replay.llm:create_openai_executor",
+    "config": {
+      "base_url": "https://inference-api.alcf.anl.gov/resource_server/minerva/api/v1",
+      "api_key_env": "ALCF_AI_TOKEN",
+      "ignore_eos": true,
+      "max_tokens_field": "max_tokens",
+      "trust_env": true
+    }
+  },
+  "tool_executor": {
+    "factory": "agenttrace.adapters.openclaw:create_tool_executor",
+    "config": {
+      "openclaw_bin_env": "OPENCLAW_BIN",
+      "plugin_state_dir": ".openclaw-state/gaia",
+      "startup_timeout": 30
+    }
+  }
+}

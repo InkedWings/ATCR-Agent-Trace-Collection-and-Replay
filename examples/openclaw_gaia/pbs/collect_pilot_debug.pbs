@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+#PBS -N oc-gaia-pilot
+#PBS -A lc-mpi
+#PBS -q debug
+#PBS -l select=1:system=polaris
+#PBS -l filesystems=home:eagle
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o /lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/pbs-logs/
+#PBS -r n
+
+set -euo pipefail
+umask 077
+
+repo_dir="/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework"
+script_dir="${repo_dir}/examples/openclaw_gaia/scripts"
+openclaw_bin="${repo_dir}/.tools/openclaw/bin/openclaw"
+pbs_short_id="${PBS_JOBID%%.*}"
+run_id="${GAIA_RUN_ID:-pbs-${pbs_short_id}}"
+
+cd "${repo_dir}"
+
+# Polaris compute nodes require the site proxy for external HTTPS services.
+export http_proxy="${http_proxy:-http://proxy.alcf.anl.gov:3128}"
+export https_proxy="${https_proxy:-http://proxy.alcf.anl.gov:3128}"
+export HTTP_PROXY="${HTTP_PROXY:-${http_proxy}}"
+export HTTPS_PROXY="${HTTPS_PROXY:-${https_proxy}}"
+# Compute nodes cannot directly reach inference-api.alcf.anl.gov. Do not
+# inherit the login-node `*.alcf.anl.gov` bypass: OpenClaw/Undici honors it and
+# would skip the required site proxy.
+export no_proxy="localhost,127.0.0.1"
+export NO_PROXY="${no_proxy}"
+
+export OPENBLAS_NUM_THREADS="${SIGMETRICS_NUM_THREADS:-1}"
+export OMP_NUM_THREADS="${SIGMETRICS_NUM_THREADS:-1}"
+export MKL_NUM_THREADS="${SIGMETRICS_NUM_THREADS:-1}"
+export PYTHONUNBUFFERED=1
+export PATH="${repo_dir}/.venv/bin:${repo_dir}/.tools/openclaw/bin:${PATH}"
+
+export OPENCLAW_BIN="${openclaw_bin}"
+export OPENCLAW_STATE_DIR="${repo_dir}/.openclaw-state/gaia"
+export OPENCLAW_CONFIG_PATH="${repo_dir}/examples/openclaw_gaia/config/openclaw.capture.json5"
+export OPENCLAW_WORKSPACE_DIR="${OPENCLAW_STATE_DIR}/config-validation-workspace"
+export LLM_CAPTURE_BASE_URL="http://127.0.0.1:1"
+export TRACE_ID="config-validation"
+
+mkdir -p "${repo_dir}/runs/pbs-logs" "${OPENCLAW_WORKSPACE_DIR}"
+
+# Fetch a fresh short-lived ALCF token without writing either credential to disk.
+# shellcheck disable=SC1091
+source "${script_dir}/load_credentials.sh"
+
+echo "job_id=${PBS_JOBID} host=$(hostname) run_id=${run_id}"
+"${script_dir}/auth_status.sh"
+"${script_dir}/preflight_services.sh" --skip-inference
+"${openclaw_bin}" config validate --json
+
+"${repo_dir}/.venv/bin/python" \
+  "${repo_dir}/examples/openclaw_gaia/collect_traces.py" \
+  --manifest "${repo_dir}/data/gaia/pilots/pilot12.jsonl" \
+  --gaia-dir "${repo_dir}/data/gaia" \
+  --run-root "${repo_dir}/runs/openclaw-gaia" \
+  --run-id "${run_id}" \
+  --start-index "${GAIA_START_INDEX:-0}" \
+  --max-tasks "${GAIA_MAX_TASKS:-12}" \
+  --task-timeout "${GAIA_TASK_TIMEOUT:-240}" \
+  --run-timeout "${GAIA_RUN_TIMEOUT:-3300}" \
+  --llm-upstream \
+  "https://inference-api.alcf.anl.gov/resource_server/minerva/api/v1"

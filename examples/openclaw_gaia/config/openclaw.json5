@@ -1,0 +1,103 @@
+{
+  agents: {
+    defaults: {
+      workspace: "${OPENCLAW_WORKSPACE_DIR}",
+      model: {
+        primary: "alcf-minerva/nemotron-3-ultra",
+      },
+      models: {
+        "alcf-minerva/nemotron-3-ultra": {
+          params: {
+            temperature: 0.2,
+            top_p: 0.95,
+            extra_body: {
+              chat_template_kwargs: {
+                enable_thinking: true,
+                force_nonempty_content: true,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  models: {
+    mode: "merge",
+    providers: {
+      "alcf-minerva": {
+        baseUrl: "https://inference-api.alcf.anl.gov/resource_server/minerva/api/v1",
+        apiKey: "${ALCF_AI_TOKEN}",
+        api: "openai-completions",
+        timeoutSeconds: 600,
+        request: {
+          proxy: {
+            mode: "env-proxy",
+          },
+        },
+        models: [
+          {
+            id: "nemotron-3-ultra",
+            name: "ALCF Minerva Nemotron 3 Ultra",
+            reasoning: true,
+            input: ["text"],
+            contextWindow: 262144,
+            maxTokens: 16384,
+            cost: {
+              input: 0,
+              output: 0,
+              cacheRead: 0,
+              cacheWrite: 0,
+            },
+            compat: {
+              supportsDeveloperRole: false,
+              supportsReasoningEffort: false,
+              supportsTemperature: true,
+              supportsUsageInStreaming: false,
+              supportsTools: true,
+              supportsStrictMode: false,
+              maxTokensField: "max_tokens",
+            },
+          },
+        ],
+      },
+    },
+  },
+  plugins: {
+    allow: ["brave"],
+    entries: {
+      brave: {
+        enabled: true,
+      },
+    },
+  },
+  tools: {
+    profile: "full",
+    allow: [
+      "read",
+      "write",
+      "edit",
+      "apply_patch",
+      "exec",
+      "process",
+      "web_search",
+      "web_fetch",
+    ],
+    codeMode: {
+      enabled: false,
+    },
+    web: {
+      search: {
+        enabled: true,
+        provider: "brave",
+        apiKey: "${BRAVE_API_KEY}",
+        maxResults: 10,
+        timeoutSeconds: 30,
+        cacheTtlMinutes: 15,
+      },
+      fetch: {
+        // Polaris compute nodes need the site proxy for public web pages too.
+        useTrustedEnvProxy: true,
+      },
+    },
+  },
+}
