@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "trace_id": "synthetic-openclaw-tools",
+  "source": {
+    "framework": "openclaw",
+    "workload": "smoke",
+    "version": "2026.7.1-2"
+  },
+  "context": {
+    "captured_workspace_root": "/captured/workspace",
+    "captured_tmp_root": "/tmp",
+    "workspace_seed": null
+  },
+  "artifacts": [],
+  "nodes": [
+    {
+      "id": "tool-001",
+      "type": "tool",
+      "depends_on": [],
+      "request": {
+        "protocol": "openclaw-tools-invoke",
+        "name": "write",
+        "arguments": {
+          "path": "/captured/workspace/state.txt",
+          "content": "before"
+        }
+      },
+      "recorded_result": {
+        "toolCallId": "synthetic-write",
+        "toolName": "write",
+        "content": [],
+        "details": {},
+        "isError": false
+      }
+    },
+    {
+      "id": "tool-002",
+      "type": "tool",
+      "depends_on": ["tool-001"],
+      "request": {
+        "protocol": "openclaw-tools-invoke",
+        "name": "edit",
+        "arguments": {
+          "path": "/captured/workspace/state.txt",
+          "edits": [
+            {
+              "oldText": "before",
+              "newText": "after"
+            }
+          ]
+        }
+      },
+      "recorded_result": {
+        "toolCallId": "synthetic-edit",
+        "toolName": "edit",
+        "content": [],
+        "details": {},
+        "isError": false
+      }
+    },
+    {
+      "id": "tool-003",
+      "type": "tool",
+      "depends_on": ["tool-002"],
+      "request": {
+        "protocol": "openclaw-tools-invoke",
+        "name": "exec",
+        "arguments": {
+          "command": "test \"$(cat /captured/workspace/state.txt)\" = after"
+        }
+      },
+      "recorded_result": {
+        "toolCallId": "synthetic-exec",
+        "toolName": "exec",
+        "content": [],
+        "details": {},
+        "isError": false
+      }
+    }
+  ]
+}

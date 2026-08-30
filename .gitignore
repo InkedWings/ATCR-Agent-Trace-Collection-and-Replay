@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+core.*
+.pytest_cache/
+.venv/
+.tools/
+dist/
+build/
+.coverage
+
+# Credentials and framework runtime state
+*.env
+.env.*
+!.env.example
+.openclaw-state/
+openclaw-state/
+
+# Generated or gated data
+runs/
+data/
+datasets/
+replay-runs/
+examples/openclaw_gaia/runs/
+examples/openclaw_gaia/data/
+examples/openclaw_gaia/.openclaw-state/
