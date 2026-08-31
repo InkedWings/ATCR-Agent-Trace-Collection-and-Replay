@@ -169,7 +169,14 @@ class CaptureProxy:
         self._server.server_close()
         self._thread.join()
 
-    def wait_idle(self, trace_id: str | None = None, timeout: float = 5.0) -> None:
+    def wait_idle(self, trace_id: str | None = None, timeout: float = 30.0) -> None:
+        """Wait for the upstream response to be fully recorded.
+
+        OpenClaw can exit immediately after consuming the final stream chunk,
+        while the proxy still needs a few seconds to parse usage and append the
+        capture record.  Five seconds was too short on Polaris under load and
+        caused complete calls to be reported as missing.
+        """
         deadline = time.monotonic() + timeout
         with self._active_condition:
             while (

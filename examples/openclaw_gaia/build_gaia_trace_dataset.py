@@ -182,7 +182,7 @@ def main() -> int:
             "trace_path": None,
             "workspace_seed_path": None,
             "source_run": observed[0].name if observed else None,
-            "agent_status": status.get("status"),
+            "agent_status": status.get("agent_status", status.get("status")),
         }
         if selected is None:
             row["missing_reason"] = status.get("replay_trace_error") or "trace absent"

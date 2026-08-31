@@ -374,6 +374,7 @@ def main() -> int:
 
             if args.dry_run:
                 status = "dry_run"
+                agent_status = "dry_run"
                 final_text = ""
                 elapsed_task = 0.0
                 trace_summary = None
@@ -403,7 +404,7 @@ def main() -> int:
                 stdout = ""
                 stderr = ""
                 payload: dict[str, Any] = {}
-                status = "failed"
+                agent_status = "failed"
                 try:
                     completed = subprocess.run(
                         command,
@@ -417,7 +418,7 @@ def main() -> int:
                     stdout = completed.stdout
                     stderr = completed.stderr
                 except subprocess.TimeoutExpired as error:
-                    status = "timeout"
+                    agent_status = "timeout"
                     stdout = error.stdout or ""
                     stderr = error.stderr or ""
                     if isinstance(stdout, bytes):
@@ -435,8 +436,10 @@ def main() -> int:
                     pass
                 final_text = extract_final_text(payload)
                 aborted = bool((payload.get("meta") or {}).get("aborted"))
-                if status != "timeout":
-                    status = "success" if return_code == 0 and not aborted else "failed"
+                if agent_status != "timeout":
+                    agent_status = (
+                        "success" if return_code == 0 and not aborted else "failed"
+                    )
 
                 raw_trace = task_dir / "trajectory.jsonl"
                 copied_trace = locate_and_copy_trace(
@@ -470,14 +473,19 @@ def main() -> int:
                     except (TimeoutError, ValueError) as error:
                         replay_trace = None
                         replay_trace_error = str(error)
-                if status == "success" and copied_trace is None:
+                if replay_trace is not None:
+                    status = "success"
+                elif copied_trace is None:
                     status = "trace_missing"
-                if status == "success" and capture_proxy and replay_trace is None:
+                elif capture_proxy:
                     status = "trace_incomplete"
+                else:
+                    status = "success"
                 atomic_write_json(
                     task_dir / "status.json",
                     {
                         "status": status,
+                        "agent_status": agent_status,
                         "return_code": return_code,
                         "elapsed_seconds": round(elapsed_task, 3),
                         "session_id": session_id,
@@ -495,6 +503,7 @@ def main() -> int:
                 "task_id": task["task_id"],
                 "level": task["level"],
                 "status": status,
+                "agent_status": agent_status,
                 "elapsed_seconds": round(elapsed_task, 3),
                 "final_text": final_text,
             }
@@ -518,6 +527,7 @@ def main() -> int:
                         "task_id": task["task_id"],
                         "level": task["level"],
                         "status": status,
+                        "agent_status": agent_status,
                         "elapsed_seconds": round(elapsed_task, 3),
                         "tool_calls": (trace_summary or {}).get("tool_calls"),
                     },
