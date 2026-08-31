@@ -105,6 +105,7 @@ class CaptureProxy:
                     target = urljoin(proxy.upstream, self.path.lstrip("/"))
                     response_body = bytearray()
                     content_type = ""
+                    transport_error: str | None = None
                     with httpx.Client(timeout=None, trust_env=True) as client:
                         with client.stream(
                             "POST", target, headers=headers, content=forwarded_body
@@ -115,14 +116,21 @@ class CaptureProxy:
                                 self.send_header("Content-Type", content_type)
                             self.end_headers()
                             connected = True
-                            for chunk in response.iter_bytes():
-                                response_body.extend(chunk)
-                                if connected:
-                                    try:
-                                        self.wfile.write(chunk)
-                                        self.wfile.flush()
-                                    except BrokenPipeError:
-                                        connected = False
+                            try:
+                                for chunk in response.iter_bytes():
+                                    response_body.extend(chunk)
+                                    if connected:
+                                        try:
+                                            self.wfile.write(chunk)
+                                            self.wfile.flush()
+                                        except BrokenPipeError:
+                                            connected = False
+                            except (httpx.TransportError, httpx.StreamError) as error:
+                                # Preserve metadata already received before an
+                                # upstream chunked stream terminates abruptly.
+                                # If usage never arrived, trace construction
+                                # still rejects the incomplete LLM call.
+                                transport_error = f"{type(error).__name__}: {error}"
 
                     response_id, output_tokens = _response_metadata(
                         bytes(response_body), content_type
@@ -139,6 +147,7 @@ class CaptureProxy:
                             "status": response.status_code,
                             "response_id": response_id,
                             "output_tokens": output_tokens,
+                            "transport_error": transport_error,
                         }
                         with proxy.output.open("a", encoding="utf-8") as handle:
                             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
