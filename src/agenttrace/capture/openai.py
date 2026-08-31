@@ -105,32 +105,38 @@ class CaptureProxy:
                     target = urljoin(proxy.upstream, self.path.lstrip("/"))
                     response_body = bytearray()
                     content_type = ""
+                    response_status: int | None = None
+                    response_started = False
                     transport_error: str | None = None
-                    with httpx.Client(timeout=None, trust_env=True) as client:
-                        with client.stream(
-                            "POST", target, headers=headers, content=forwarded_body
-                        ) as response:
-                            self.send_response(response.status_code)
-                            content_type = response.headers.get("content-type", "")
-                            if content_type:
-                                self.send_header("Content-Type", content_type)
-                            self.end_headers()
-                            connected = True
-                            try:
+                    try:
+                        with httpx.Client(timeout=None, trust_env=True) as client:
+                            with client.stream(
+                                "POST", target, headers=headers, content=forwarded_body
+                            ) as response:
+                                response_status = response.status_code
+                                response_started = True
+                                self.send_response(response.status_code)
+                                content_type = response.headers.get("content-type", "")
+                                if content_type:
+                                    self.send_header("Content-Type", content_type)
+                                self.end_headers()
+                                connected = True
                                 for chunk in response.iter_bytes():
                                     response_body.extend(chunk)
                                     if connected:
                                         try:
                                             self.wfile.write(chunk)
                                             self.wfile.flush()
-                                        except BrokenPipeError:
+                                        except (BrokenPipeError, ConnectionResetError):
                                             connected = False
-                            except (httpx.TransportError, httpx.StreamError) as error:
-                                # Preserve metadata already received before an
-                                # upstream chunked stream terminates abruptly.
-                                # If usage never arrived, trace construction
-                                # still rejects the incomplete LLM call.
-                                transport_error = f"{type(error).__name__}: {error}"
+                    except (httpx.TransportError, httpx.StreamError) as error:
+                        # Preserve metadata already received before an upstream
+                        # response or chunked stream terminates abruptly. If
+                        # usage never arrived, trace construction still rejects
+                        # the incomplete LLM call.
+                        transport_error = f"{type(error).__name__}: {error}"
+                        if not response_started:
+                            self.send_error(502, "upstream transport error")
 
                     response_id, output_tokens = _response_metadata(
                         bytes(response_body), content_type
@@ -144,7 +150,7 @@ class CaptureProxy:
                             "protocol": "openai-chat-completions",
                             "endpoint": self.path,
                             "request": payload,
-                            "status": response.status_code,
+                            "status": response_status,
                             "response_id": response_id,
                             "output_tokens": output_tokens,
                             "transport_error": transport_error,
