@@ -55,6 +55,7 @@ src/agenttrace/
 ├── replay/bindings.py        # workspace/tmp/resource remapping
 └── adapters/openclaw.py      # collection conversion + native tools
 examples/openclaw_gaia/       # complete Polaris collection/replay example
+docs/trace-format-comparison.md # STS, OTel/OpenInference, and AgentTrace
 tests/                        # unit and fake-service integration tests
 ```
 

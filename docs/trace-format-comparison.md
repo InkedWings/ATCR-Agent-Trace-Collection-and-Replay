@@ -1,20 +1,20 @@
-# Trace Format Comparison: Hugging Face STS, OpenTelemetry, and AgentTrace
+# Trace Representations for Agent Replay
 
-This document compares three trace representations using the same agent
-execution. They serve different purposes:
+This document compares Hugging Face Session Trace Simple Format (STS),
+OpenTelemetry with OpenInference, and AgentTrace using one agent execution.
+The comparison separates three questions that are easy to conflate:
 
-- Hugging Face Session Trace Simple Format (STS) is a session transcript for
-  storage, sharing, and visualization.
-- OpenTelemetry is a runtime observability model based on timed spans.
-- AgentTrace is an executable dependency graph for fixed-path performance
-  replay.
+1. What can the representation store?
+2. What did the collector actually observe?
+3. What execution semantics did an adapter add when converting the data?
 
-The comparison uses Hugging Face's generic STS format, not the native session
-formats that the Hugging Face Hub also recognizes for specific agents.
+A format does not discover dependencies. A collector observes framework events,
+and an adapter converts those events into a representation. An explicit edge is
+only as reliable as the framework event or declared policy that produced it.
 
-## One execution, three representations
+## Running example
 
-Assume an agent performs the following operation:
+Assume the application itself defines this logical execution:
 
 ```python
 async def run_agent():
@@ -28,8 +28,8 @@ async def run_agent():
     response_2 = await llm_call(request_2)
 ```
 
-The first LLM call produces two tool calls. The tools run concurrently, and
-the second LLM call starts only after both tools finish. Its execution DAG is:
+The program tells us, independently of any trace format, that the two tools
+have no dependency on each other and that the second LLM call waits for both:
 
 ```text
              +--> web_search("A") --+
@@ -39,18 +39,21 @@ LLM-1 -------+                       +--> LLM-2
              +--> web_fetch("B")  --+
 ```
 
-Equivalently:
+The logical replay dependencies are therefore:
 
 ```text
 web_search depends on LLM-1
 web_fetch  depends on LLM-1
-LLM-2      depends on both web_search and web_fetch
+LLM-2      depends on web_search and web_fetch
 ```
 
-## Hugging Face STS: message order
+This example starts with known application semantics. If a collector sees only
+messages and results, it cannot recover the use of `asyncio.gather` merely from
+their order in a file.
 
-Hugging Face STS stores one session header followed by message records in a
-JSONL file:
+## Hugging Face STS: a session representation
+
+Hugging Face STS is a JSONL session header followed by message records:
 
 ```jsonl
 {"type":"session","harness":"openclaw","id":"task-1"}
@@ -61,125 +64,124 @@ JSONL file:
 {"type":"message","message":{"role":"assistant","content":"final answer"}}
 ```
 
-This representation explicitly records:
+STS explicitly represents:
 
-- the conversational order;
-- the two tool requests made by the assistant;
-- the association between each tool call and result through `toolCallId`;
-- the assistant output text.
+- message order;
+- assistant tool requests;
+- tool-call/result pairing through `toolCalls[].id` and `toolCallId`;
+- message content;
+- optional per-message timestamps and model names.
 
-STS does not define an explicit dependency field. A converter can reasonably
-interpret two tool calls in one assistant message as one batch, but STS itself
-does not specify whether they must run concurrently or sequentially. It also
-does not express the join before the final assistant message as:
+STS does not define a dependency field or a replay scheduler contract. From the
+file alone, two calls in one assistant message could be interpreted as a batch,
+but STS does not state whether the harness executed that batch concurrently or
+sequentially.
+
+This does not prevent an adapter from converting STS into a logical DAG. For
+example, an adapter may declare that all tool calls in one assistant message
+are independent and generate the same sibling nodes as AgentTrace. That edge
+structure then comes from the adapter policy, not from additional information
+present in STS.
+
+STS also does not require the following replay-specific data:
+
+- the exact provider request payload;
+- a recorded generation-length target;
+- a native tool-executor protocol;
+- workspace restoration;
+- artifact and dynamic-path bindings.
+
+STS is therefore a useful session interchange and visualization format. It may
+also be an input to a replay converter, but it is not by itself a complete
+fixed-path replay bundle.
+
+## OpenTelemetry and OpenInference: operation telemetry
+
+OpenTelemetry represents operations as spans. A span can contain a parent,
+start and end timestamps, attributes, events, and links to other span
+contexts. Instrumentation decides which operations become spans and how their
+contexts are propagated.
+
+OpenInference adds AI-specific semantic conventions on top of OpenTelemetry,
+including LLM, agent, chain, and tool operation kinds and attributes for
+messages, model parameters, tool calls, results, and token counts. It does not
+choose an agent framework's span boundaries or define replay scheduling.
+
+### Span hierarchy depends on instrumentation
+
+One minimal instrumentation may keep only an agent-run span active around the
+whole execution:
 
 ```text
-LLM-2 depends_on [web_search, web_fetch]
-```
-
-STS is therefore a good session transcript, but it is not by itself a replay
-scheduler specification. Exact provider payloads, generation-length targets,
-workspace restoration, tool runtime protocols, and dynamic artifact bindings
-are also outside its required schema.
-
-## OpenTelemetry: operation nesting and time
-
-An instrumented version of the same execution might look conceptually like
-this:
-
-```python
-with tracer.start_as_current_span("invoke_agent openclaw"):
-    response_1 = await instrumented_llm_call(request_1)
-
-    search_result, fetch_result = await asyncio.gather(
-        instrumented_web_search("A"),
-        instrumented_web_fetch("B"),
-    )
-
-    response_2 = await instrumented_llm_call(request_2)
-```
-
-OpenTelemetry assigns a new span's parent from the active span context. The
-outer `invoke_agent` span remains active for the entire run. In contrast, the
-first inference span ends when the first model response has been fully
-received. When tool execution begins, the active enclosing span is once again
-`invoke_agent`, not the completed inference span. The same is true when the
-second inference begins.
-
-The resulting span hierarchy is therefore commonly:
-
-```text
-invoke_agent openclaw
+invoke_agent
 |-- LLM-1
 |-- web_search
 |-- web_fetch
 `-- LLM-2
 ```
 
-A simplified logical representation is:
+Another instrumentation may add turn or graph-node spans:
+
+```text
+invoke_agent
+|-- turn-1
+|   |-- LLM-1
+|   |-- web_search
+|   `-- web_fetch
+`-- turn-2
+    `-- LLM-2
+```
+
+Neither hierarchy is mandated by OpenTelemetry or OpenInference. A parent-child
+relationship describes the nesting or propagated causal context chosen by the
+instrumentation. It should not automatically be interpreted as "the parent
+must finish before the child can start" in a replay scheduler.
+
+### Links can carry non-tree relationships
+
+Each span has at most one parent, but OpenTelemetry supports links to multiple
+other spans. Instrumentation can therefore encode the running example as:
 
 ```json
 [
   {
-    "span_id": "agent",
-    "parent_span_id": null,
-    "name": "invoke_agent openclaw",
-    "start": 0,
-    "end": 400
-  },
-  {
     "span_id": "llm-1",
-    "parent_span_id": "agent",
-    "name": "chat nemotron",
-    "start": 0,
-    "end": 100
+    "name": "chat",
+    "links": []
   },
   {
     "span_id": "search",
-    "parent_span_id": "agent",
     "name": "execute_tool web_search",
-    "start": 110,
-    "end": 210
+    "links": [
+      {"span_id": "llm-1", "attributes": {"agenttrace.relation": "depends_on"}}
+    ]
   },
   {
     "span_id": "fetch",
-    "parent_span_id": "agent",
     "name": "execute_tool web_fetch",
-    "start": 110,
-    "end": 300
+    "links": [
+      {"span_id": "llm-1", "attributes": {"agenttrace.relation": "depends_on"}}
+    ]
   },
   {
     "span_id": "llm-2",
-    "parent_span_id": "agent",
-    "name": "chat nemotron",
-    "start": 310,
-    "end": 400
+    "name": "chat",
+    "links": [
+      {"span_id": "search", "attributes": {"agenttrace.relation": "depends_on"}},
+      {"span_id": "fetch", "attributes": {"agenttrace.relation": "depends_on"}}
+    ]
   }
 ]
 ```
 
-The example is intentionally a simplified view of the span data model rather
-than a complete OTLP export envelope.
+The custom link attribute is necessary because OpenTelemetry links imply an
+association or causal relationship but do not standardize a fixed-path replay
+meaning. With an agreed replay profile, the links can be converted directly to
+`depends_on`; no timestamp inference is needed for those declared edges.
 
-### Why the four operation spans are siblings
+### Timestamps describe an observed schedule
 
-A parent span means that an operation is part of an active enclosing
-operation. It does not mean that the parent is the immediate execution
-predecessor. Sibling spans may execute sequentially, concurrently, or in a
-mixture of both.
-
-Making the tool spans children of `LLM-1` would also distort the inference
-span boundary. `LLM-1` is intended to measure the model request through receipt
-of its response. Keeping it open while tools execute would mix model latency
-with tool latency.
-
-The join creates another problem for a pure parent tree: `LLM-2` depends on two
-tools, while a span has only one `parent_span_id`. OpenTelemetry span links can
-associate a span with multiple other spans, and custom attributes can carry an
-explicit dependency list, but the standard GenAI span model does not define
-those links as replay-scheduler dependencies.
-
-The timestamps reveal the observed schedule:
+Suppose operation spans contain these intervals:
 
 ```text
 LLM-1:      [0, 100]
@@ -188,15 +190,25 @@ web_fetch:           [110,       300]
 LLM-2:                              [310, 400]
 ```
 
-From this schedule, a system such as XPerf can infer that the tools overlapped
-and that `LLM-2` followed both. That is a graph reconstructed from timing and
-span hierarchy, not a dependency graph directly represented by
-`parent_span_id`.
+The overlap shows that `web_search` and `web_fetch` ran concurrently in this
+execution. It also shows that `LLM-2` started after both tools completed.
+Timestamps alone do not prove that `LLM-2` had a required data dependency on
+both tools. An unrelated operation or a single-worker executor can produce the
+same observed ordering without a logical dependency.
 
-## AgentTrace: explicit replay dependencies
+Timing analysis is useful when the goal is to reproduce the observed schedule,
+or as a fallback when framework causality is unavailable. It should not be
+presented as proof of a logical dependency.
 
-AgentTrace stores the execution relationship directly in `depends_on`. The
-same run is represented as a schema-v2 trace like this:
+For workload-DAG replay, the preferred dependency sources are explicit
+framework dispatch/await events, tool-call and result identifiers, graph edges,
+or replay-typed span links. Timestamps remain valuable performance data but do
+not have to determine the DAG.
+
+## AgentTrace: an executable replay representation
+
+AgentTrace stores a normalized replay graph. In the running example, its core
+shape is:
 
 ```json
 {
@@ -274,29 +286,6 @@ same run is represented as a schema-v2 trace like this:
         "payload": {
           "model": "nemotron-3-ultra",
           "messages": [
-            {"role": "user", "content": "Find information about A and fetch B."},
-            {
-              "role": "assistant",
-              "content": "",
-              "tool_calls": [
-                {
-                  "id": "call-1",
-                  "type": "function",
-                  "function": {
-                    "name": "web_search",
-                    "arguments": "{\"query\":\"A\"}"
-                  }
-                },
-                {
-                  "id": "call-2",
-                  "type": "function",
-                  "function": {
-                    "name": "web_fetch",
-                    "arguments": "{\"url\":\"B\"}"
-                  }
-                }
-              ]
-            },
             {"role": "tool", "tool_call_id": "call-1", "content": "search result"},
             {"role": "tool", "tool_call_id": "call-2", "content": "fetch result"}
           ]
@@ -308,46 +297,72 @@ same run is represented as a schema-v2 trace like this:
 }
 ```
 
-The scheduler semantics are unambiguous:
+The file gives the replay engine an unambiguous scheduling contract:
 
-- `search` and `fetch` become ready after `llm-1` and can run concurrently.
-- `llm-2` becomes ready only after both tools complete.
-- No timestamps are needed to reconstruct this dependency graph.
+- `search` and `fetch` become ready after `llm-1`;
+- both may run concurrently because neither depends on the other;
+- `llm-2` becomes ready after both complete.
 
-AgentTrace additionally records the actual LLM provider request, the recorded
-output-token target, the native tool request protocol, the initial workspace,
-and artifact metadata needed by fixed-path replay. LLM response text is not
-stored because newly generated text does not alter the recorded path.
+AgentTrace does not discover these edges. A collection adapter must supply
+them from framework semantics or a declared conversion policy.
 
-## Summary
+### Dependency provenance in the current OpenClaw adapter
 
-| Question | Hugging Face STS | OpenTelemetry | AgentTrace |
+The current OpenClaw adapter constructs turn-level dependencies as follows:
+
+1. Pair captured provider calls with assistant events using `responseId`, with
+   sequence order as a fallback.
+2. Pair tool calls and results using `toolCallId`.
+3. Make every tool call in an assistant turn depend on that turn's LLM call.
+4. Make the next LLM call depend on all tools from the preceding turn.
+5. Treat multiple tools in one assistant turn as independent siblings.
+
+The first four rules recover the agent's turn structure. The fifth rule is the
+declared replay policy implemented by the adapter; it is not evidence that the
+original OpenClaw runtime executed those tools concurrently. If tools have a
+required ordering through shared state, artifacts, or framework control flow,
+the adapter must add the corresponding edge.
+
+AgentTrace additionally requires replay data that STS and generic
+OpenTelemetry/OpenInference instrumentation do not require, including the
+actual provider request payload, the recorded output-token target, the native
+tool protocol, workspace restoration, and artifact bindings. Those fields are
+the reason to keep AgentTrace as a compact replay format or internal replay IR.
+
+## Correct comparison
+
+| Question | Hugging Face STS | OpenTelemetry + OpenInference | AgentTrace |
 |---|---|---|---|
-| Primary abstraction | Ordered messages | Timed spans | Executable DAG nodes |
-| Tool/result pairing | `toolCalls[].id` and `toolCallId` | Optional GenAI attributes | Tool request and recorded result |
-| Concurrency | Not explicitly specified | Observed through overlapping time intervals | Explicit sibling dependencies |
-| Multi-parent join | Not explicitly specified | Not represented by one parent ID | Explicit dependency list |
-| Exact provider request | Not required | Optional/custom instrumentation | Required for LLM nodes |
-| Workspace and artifacts | Not defined | Not defined for replay | Part of replay context |
-| Main use | Session viewing and sharing | Runtime observability | Fixed-path performance replay |
+| Primary abstraction | Ordered session messages | Instrumented operation spans | Executable replay nodes |
+| Who chooses captured structure? | Harness | Instrumentation | Collection adapter |
+| Tool/result pairing | `toolCalls[].id` and `toolCallId` | GenAI/OpenInference attributes when instrumented | Required tool request and recorded result |
+| Explicit logical dependency | No standard field | Possible with links, but replay meaning is not standardized | Required `depends_on` field |
+| Observed concurrency | Not generally available; message timestamps are optional points | Span intervals show observed overlap | Not represented by the current schema |
+| Multi-input join | Can be derived by an adapter policy | Can be associated through multiple links | Explicit dependency list |
+| Exact provider request | Not required | Instrumentation-dependent | Required for LLM nodes |
+| Workspace and artifact replay | Not defined | Not defined by generic tracing conventions | Part of the replay bundle |
+| Main use | Session interchange and viewing | Runtime observability and semantic telemetry | Fixed-path workload-DAG replay |
 
-In short:
+The most accurate summary is:
 
 ```text
-Hugging Face STS records what appeared in the session.
-OpenTelemetry records where operations ran and how long they took.
-AgentTrace records what must complete before each replay operation can run.
+STS represents what appeared in a session.
+OpenTelemetry/OpenInference represents instrumented operations, timing, and
+declared associations.
+AgentTrace materializes adapter-supplied dependencies and replay state as an
+executable workload graph.
 ```
 
-The formats can be complementary. AgentTrace can remain the authoritative
-replay representation, an HF exporter can provide a human-oriented session
-view, and replay execution can emit OpenTelemetry spans for performance
-analysis.
+The representations can be complementary. STS can provide a session view;
+OpenTelemetry/OpenInference can be a collection, interchange, or replay-output
+layer; and AgentTrace can remain the compact replay IR. Converters between
+them must document which relationships were observed and which were introduced
+by policy.
 
 ## References
 
 - [Hugging Face Session Traces Format](https://huggingface.co/docs/hub/session-traces-format)
 - [OpenTelemetry trace and span concepts](https://opentelemetry.io/docs/concepts/signals/traces/)
-- [OpenTelemetry GenAI agent spans](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-agent-spans.md)
-- [OpenTelemetry GenAI inference and tool spans](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md)
+- [OpenTelemetry Trace API](https://opentelemetry.io/docs/specs/otel/trace/api/)
+- [OpenInference specification](https://arize-ai.github.io/openinference/spec/)
 - [AgentTrace schema implementation](../src/agenttrace/schema.py)
