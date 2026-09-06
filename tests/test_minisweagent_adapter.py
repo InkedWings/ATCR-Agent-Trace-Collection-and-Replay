@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import json
 
-from agenttrace.adapters.minisweagent import build_minisweagent_trace
+from agenttrace.adapters.minisweagent import (
+    MiniSWEAgentToolExecutor,
+    build_minisweagent_trace,
+)
 
 
 def test_minisweagent_call_pairing_and_sequential_tools(tmp_path):
@@ -109,3 +112,14 @@ def test_minisweagent_call_pairing_and_sequential_tools(tmp_path):
     assert trace["context"]["container_image"].endswith(
         "sweb.eval.x86_64.owner_1776_repo-1:latest"
     )
+
+
+def test_minisweagent_rewrites_replay_paths_to_container_paths():
+    executor = MiniSWEAgentToolExecutor({})
+    executor.replay_workspace = "/replay/workspace"
+    executor.replay_tmp = "/replay/tmp"
+    executor.container_cwd = "/testbed"
+
+    arguments = {"command": "cat /replay/tmp/input > /replay/workspace/output"}
+    rewritten = executor._rewrite_arguments(arguments)
+    assert rewritten == {"command": "cat /tmp/input > /testbed/output"}

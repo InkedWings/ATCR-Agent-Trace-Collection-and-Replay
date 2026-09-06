@@ -41,7 +41,10 @@ def test_fake_openai_stream_enforces_target_and_discards_text(tmp_path, minimal_
         trace_path = tmp_path / "trace.json"
         trace_path.write_text(json.dumps(minimal_trace), encoding="utf-8")
         executor = OpenAICompatibleExecutor(
-            f"http://127.0.0.1:{server.server_port}", ignore_eos=True, trust_env=False
+            f"http://127.0.0.1:{server.server_port}",
+            ignore_eos=True,
+            model_override="replay-model",
+            trust_env=False,
         )
         report = asyncio.run(
             replay_trace(
@@ -54,6 +57,7 @@ def test_fake_openai_stream_enforces_target_and_discards_text(tmp_path, minimal_
         thread.join()
 
     assert received[0]["max_tokens"] == 4
+    assert received[0]["model"] == "replay-model"
     assert received[0]["ignore_eos"] is True
     assert received[0]["stream_options"]["include_usage"] is True
     assert report["nodes"][0]["actual_output_tokens"] == 4

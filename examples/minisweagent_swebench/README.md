@@ -101,3 +101,49 @@ agenttrace replay path/to/trace.json \
 Container construction is setup work and is excluded from replay makespan.
 Bash commands execute through one persistent mini-SWE-agent
 `SingularityEnvironment` sandbox.
+
+## Real replay with local Qwen3-32B
+
+The complete two-node workflow is documented in
+[`docs/minisweagent-real-replay.md`](../../docs/minisweagent-real-replay.md).
+
+On the tool node, one command validates the endpoint, prepares isolated
+Apptainer state, replays the full trace, and saves its log and report:
+
+```bash
+./examples/minisweagent_swebench/scripts/replay_qwen3_32b.sh \
+  path/to/trace.json http://<gpu-node>:8000/v1
+```
+
+### Start and check vLLM
+
+On a dedicated Polaris compute node, start the local backend in the foreground:
+
+```bash
+./examples/minisweagent_swebench/scripts/vllm_qwen3_32b.sh serve
+```
+
+The script reuses
+`/lus/eagle/projects/lc-mpi/ZhijingYe/Agentic/containers/vllm-openai-v0.19.1.sif`
+and serves `Qwen/Qwen3-32B`. Hugging Face and vLLM caches live under
+`/lus/eagle/projects/lc-mpi/ZhijingYe/Models`. It initially uses all four GPUs
+with tensor parallelism, a 32K context limit, and one active sequence. Output is
+shown in the terminal and saved under `runs/vllm/`. Because the server remains
+in the foreground, `Ctrl-C` stops it.
+
+From another shell on the server node, validate the OpenAI-compatible endpoint:
+
+```bash
+./examples/minisweagent_swebench/scripts/vllm_qwen3_32b.sh smoke
+```
+
+From a different allocated node, point the smoke command at the server hostname:
+
+```bash
+VLLM_BASE_URL=http://x3005c0s1b1n0:8000/v1 \
+./examples/minisweagent_swebench/scripts/vllm_qwen3_32b.sh smoke
+```
+
+The smoke request discards generated text and verifies streaming completion-token
+usage. The serve parameters can be changed with the `VLLM_*` environment
+variables defined near the top of the script.

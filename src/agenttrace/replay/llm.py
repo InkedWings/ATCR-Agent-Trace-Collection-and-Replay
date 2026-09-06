@@ -20,12 +20,14 @@ class OpenAICompatibleExecutor:
         api_key_env: str | None = None,
         ignore_eos: bool = False,
         max_tokens_field: str = "max_tokens",
+        model_override: str | None = None,
         trust_env: bool = True,
     ) -> None:
         self.base_url = base_url.rstrip("/")
         self.api_key_env = api_key_env
         self.ignore_eos = ignore_eos
         self.max_tokens_field = max_tokens_field
+        self.model_override = model_override
         self.trust_env = trust_env
         self.client: httpx.AsyncClient | None = None
 
@@ -43,6 +45,8 @@ class OpenAICompatibleExecutor:
             raise RuntimeError("LLM executor is not set up")
         target = node["output_tokens"]
         payload = copy.deepcopy(node["request"]["payload"])
+        if self.model_override:
+            payload["model"] = self.model_override
         payload[self.max_tokens_field] = target
         if self.ignore_eos:
             payload["ignore_eos"] = True
@@ -89,5 +93,6 @@ def create_openai_executor(config: dict[str, Any]) -> OpenAICompatibleExecutor:
         api_key_env=config.get("api_key_env"),
         ignore_eos=bool(config.get("ignore_eos", False)),
         max_tokens_field=str(config.get("max_tokens_field", "max_tokens")),
+        model_override=config.get("model_override"),
         trust_env=bool(config.get("trust_env", True)),
     )

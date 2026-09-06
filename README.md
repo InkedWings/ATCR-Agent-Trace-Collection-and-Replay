@@ -55,6 +55,7 @@ src/agenttrace/
 examples/openclaw_gaia/       # complete Polaris collection/replay example
 examples/minisweagent_swebench/ # SWE-bench Lite dev collection/replay example
 docs/trace-format-comparison.md # STS, OTel/OpenInference, and AgentTrace
+docs/minisweagent-real-replay.md # tested two-node Polaris replay workflow
 tests/                        # unit and fake-service integration tests
 ```
 

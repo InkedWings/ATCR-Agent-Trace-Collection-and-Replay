@@ -276,6 +276,7 @@ class MiniSWEAgentToolExecutor:
         self.executable = config.get("executable")
         self.environment: Any = None
         self.replay_workspace = ""
+        self.replay_tmp = ""
         self.container_cwd = "/testbed"
 
     async def setup(self, trace: dict[str, Any], workspace: Path) -> None:
@@ -283,11 +284,19 @@ class MiniSWEAgentToolExecutor:
 
         context = trace["context"]
         self.replay_workspace = str(workspace)
+        self.replay_tmp = str(workspace.parent / "tmp")
         self.container_cwd = context.get("container_cwd", "/testbed")
         options: dict[str, Any] = {
             "image": context["container_image"],
             "cwd": self.container_cwd,
             "timeout": self.timeout,
+            "exec_args": [
+                "--contain",
+                "--cleanenv",
+                "--fakeroot",
+                "--bind",
+                f"{self.replay_tmp}:/tmp",
+            ],
             "forward_env": [
                 "HTTP_PROXY",
                 "HTTPS_PROXY",
@@ -307,6 +316,12 @@ class MiniSWEAgentToolExecutor:
             options["executable"] = self.executable
         self.environment = await asyncio.to_thread(SingularityEnvironment, **options)
 
+    def _rewrite_arguments(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        rewritten = _replace_string(
+            copy.deepcopy(arguments), self.replay_workspace, self.container_cwd
+        )
+        return _replace_string(rewritten, self.replay_tmp, "/tmp")
+
     async def execute(self, node: dict[str, Any]) -> ToolExecutionResult:
         if self.environment is None:
             raise RuntimeError("mini-SWE-agent tool executor is not set up")
@@ -316,11 +331,7 @@ class MiniSWEAgentToolExecutor:
             or request["name"] != "bash"
         ):
             raise ValueError("unsupported mini-SWE-agent tool request")
-        arguments = _replace_string(
-            copy.deepcopy(request["arguments"]),
-            self.replay_workspace,
-            self.container_cwd,
-        )
+        arguments = self._rewrite_arguments(request["arguments"])
         try:
             result = await asyncio.to_thread(
                 self.environment.execute, arguments
