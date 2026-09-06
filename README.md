@@ -15,13 +15,10 @@ Replay is deliberately fixed-path:
   native runtime; their new outputs never alter the recorded DAG.
 - Sibling tool calls run concurrently and dependent nodes join on all parents.
 
-The first implementation includes OpenAI-compatible LLM capture/replay and the
-OpenClaw `/tools/invoke` adapter. OpenClaw's web tools are directly visible on
-that endpoint. For coding tools, the executor creates a replay-only plugin that
-aliases the public OpenClaw SDK implementations of `read`, `write`, `edit`, and
-`bash` onto the same endpoint (`exec` maps to `bash`); AgentTrace contains no
-duplicate tool implementation. Multi-trace load generation, mini-SWE-agent,
-ChemGraph, retries, and distributed execution are intentionally outside v0.1.
+The current implementation includes OpenAI-compatible LLM capture/replay,
+OpenClaw `/tools/invoke`, and mini-SWE-agent's native `SingularityEnvironment` for
+coding-agent shell calls. Multi-trace load generation, ChemGraph, retries, and
+distributed execution are intentionally outside the current scope.
 
 ## Install and test
 
@@ -53,8 +50,10 @@ src/agenttrace/
 ├── replay/engine.py          # single-trace DAG scheduler
 ├── replay/llm.py             # OpenAI-compatible LLM executor
 ├── replay/bindings.py        # workspace/tmp/resource remapping
-└── adapters/openclaw.py      # collection conversion + native tools
+├── adapters/openclaw.py      # OpenClaw conversion + native tools
+└── adapters/minisweagent.py  # mini-SWE conversion + native shell tools
 examples/openclaw_gaia/       # complete Polaris collection/replay example
+examples/minisweagent_swebench/ # SWE-bench Lite dev collection/replay example
 docs/trace-format-comparison.md # STS, OTel/OpenInference, and AgentTrace
 tests/                        # unit and fake-service integration tests
 ```
@@ -166,4 +165,5 @@ Add four framework-specific pieces without changing the schema or replay core:
 4. a replay profile pointing at the executor factory.
 
 The extension protocols live in `agenttrace.interfaces`. See
-`examples/openclaw_gaia/` for a complete implementation.
+`examples/openclaw_gaia/` and `examples/minisweagent_swebench/` for complete
+implementations with different native tool runtimes.
