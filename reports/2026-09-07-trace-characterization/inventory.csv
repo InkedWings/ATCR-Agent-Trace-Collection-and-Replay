@@ -1,0 +1,3 @@
+workload,traces,replay_eligible,llm_calls,tool_calls,median_llm_calls,median_tool_calls,output_recorded_total_tokens
+openclaw,24,11,309,288,9.0,8.5,103340
+minisweagent,22,10,1907,1906,70.5,70.5,372000

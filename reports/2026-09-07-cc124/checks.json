@@ -1,0 +1,188 @@
+[
+  {
+    "point": "openclaw-cc1",
+    "tasks": 11,
+    "nodes": 145,
+    "llm_calls": 78,
+    "client_and_backend_total_tokens": 33461,
+    "backend_window_tokens": 21429,
+    "samples": {
+      "replay": {
+        "count": 599,
+        "max_gap_s": 1.0038549900054932,
+        "start_gap_s": 0.24703311920166016,
+        "end_gap_s": 0.08027958869934082
+      },
+      "inference": {
+        "count": 598,
+        "max_gap_s": 1.0264911651611328,
+        "start_gap_s": 0.5170881748199463,
+        "end_gap_s": 0.9183452129364014
+      }
+    },
+    "tool_flags_all": {
+      "False->False": 60,
+      "True->True": 7
+    },
+    "tool_flags_window": {
+      "False->False": 45,
+      "True->True": 6
+    }
+  },
+  {
+    "point": "openclaw-cc2",
+    "tasks": 17,
+    "nodes": 227,
+    "llm_calls": 122,
+    "client_and_backend_total_tokens": 60339,
+    "backend_window_tokens": 50501,
+    "samples": {
+      "replay": {
+        "count": 599,
+        "max_gap_s": 1.0267338752746582,
+        "start_gap_s": 0.2501339912414551,
+        "end_gap_s": 0.06351566314697266
+      },
+      "inference": {
+        "count": 598,
+        "max_gap_s": 1.0068986415863037,
+        "start_gap_s": 0.5674529075622559,
+        "end_gap_s": 0.9128034114837646
+      }
+    },
+    "tool_flags_all": {
+      "False->False": 93,
+      "True->True": 12
+    },
+    "tool_flags_window": {
+      "False->False": 73,
+      "True->True": 8
+    }
+  },
+  {
+    "point": "openclaw-cc4",
+    "tasks": 38,
+    "nodes": 514,
+    "llm_calls": 276,
+    "client_and_backend_total_tokens": 120156,
+    "backend_window_tokens": 92171,
+    "samples": {
+      "replay": {
+        "count": 599,
+        "max_gap_s": 1.0078458786010742,
+        "start_gap_s": 0.24943232536315918,
+        "end_gap_s": 0.0995333194732666
+      },
+      "inference": {
+        "count": 599,
+        "max_gap_s": 1.1083226203918457,
+        "start_gap_s": 0.33548450469970703,
+        "end_gap_s": 0.01971602439880371
+      }
+    },
+    "tool_flags_all": {
+      "False->False": 215,
+      "True->True": 23
+    },
+    "tool_flags_window": {
+      "True->True": 17,
+      "False->False": 156
+    }
+  },
+  {
+    "point": "minisweagent-cc1",
+    "tasks": 3,
+    "nodes": 310,
+    "llm_calls": 155,
+    "client_and_backend_total_tokens": 29876,
+    "backend_window_tokens": 22179,
+    "samples": {
+      "replay": {
+        "count": 598,
+        "max_gap_s": 1.045680046081543,
+        "start_gap_s": 0.25958847999572754,
+        "end_gap_s": 0.987929105758667
+      },
+      "inference": {
+        "count": 598,
+        "max_gap_s": 1.0209925174713135,
+        "start_gap_s": 0.8381402492523193,
+        "end_gap_s": 0.6475417613983154
+      }
+    },
+    "tool_flags_all": {
+      "False->False": 132,
+      "True->True": 21,
+      "True->False": 2
+    },
+    "tool_flags_window": {
+      "False->False": 93,
+      "True->True": 19,
+      "True->False": 2
+    }
+  },
+  {
+    "point": "minisweagent-cc2",
+    "tasks": 7,
+    "nodes": 662,
+    "llm_calls": 331,
+    "client_and_backend_total_tokens": 55141,
+    "backend_window_tokens": 39790,
+    "samples": {
+      "replay": {
+        "count": 598,
+        "max_gap_s": 1.4608128070831299,
+        "start_gap_s": 0.27328968048095703,
+        "end_gap_s": 0.601325511932373
+      },
+      "inference": {
+        "count": 599,
+        "max_gap_s": 1.0032806396484375,
+        "start_gap_s": 0.3686661720275879,
+        "end_gap_s": 0.13472414016723633
+      }
+    },
+    "tool_flags_all": {
+      "False->False": 295,
+      "True->True": 34,
+      "True->False": 2
+    },
+    "tool_flags_window": {
+      "False->False": 219,
+      "True->True": 29,
+      "True->False": 2
+    }
+  },
+  {
+    "point": "minisweagent-cc4",
+    "tasks": 13,
+    "nodes": 1244,
+    "llm_calls": 622,
+    "client_and_backend_total_tokens": 112294,
+    "backend_window_tokens": 76966,
+    "samples": {
+      "replay": {
+        "count": 598,
+        "max_gap_s": 1.3012123107910156,
+        "start_gap_s": 0.24959254264831543,
+        "end_gap_s": 0.8188502788543701
+      },
+      "inference": {
+        "count": 598,
+        "max_gap_s": 1.0035746097564697,
+        "start_gap_s": 0.603309154510498,
+        "end_gap_s": 0.8844730854034424
+      }
+    },
+    "tool_flags_all": {
+      "False->False": 549,
+      "True->True": 71,
+      "True->False": 2
+    },
+    "tool_flags_window": {
+      "False->False": 384,
+      "True->True": 48,
+      "True->False": 2
+    }
+  }
+]

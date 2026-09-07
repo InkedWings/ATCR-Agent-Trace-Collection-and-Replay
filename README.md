@@ -17,7 +17,13 @@ Replay is deliberately fixed-path:
 
 The current implementation includes OpenAI-compatible LLM capture/replay,
 OpenClaw `/tools/invoke`, and mini-SWE-agent's native `SingularityEnvironment` for
-coding-agent shell calls. Multi-trace load generation, ChemGraph, retries, and
+coding-agent shell calls. Bounded multi-trace replay and hardware/latency sampling
+are documented in [Concurrent replay](docs/concurrent-replay.md).
+Continuous-load windows and the two-node Polaris experiment are documented in
+[Single-backend scaling](docs/single-backend-scaling.md).
+Measured scaling results and trace characterization are indexed in
+[Analysis reports](reports/README.md).
+Arrival-rate load generation, ChemGraph, retries, and
 distributed execution are intentionally outside the current scope.
 
 ## Install and test
@@ -56,6 +62,8 @@ examples/openclaw_gaia/       # complete Polaris collection/replay example
 examples/minisweagent_swebench/ # SWE-bench Lite dev collection/replay example
 docs/trace-format-comparison.md # STS, OTel/OpenInference, and AgentTrace
 docs/minisweagent-real-replay.md # tested two-node Polaris replay workflow
+docs/concurrent-replay.md       # bounded concurrency and performance metrics
+reports/                       # analysis scripts, summary tables, and figures
 tests/                        # unit and fake-service integration tests
 ```
 

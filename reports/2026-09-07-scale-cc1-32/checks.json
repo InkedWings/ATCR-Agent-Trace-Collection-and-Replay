@@ -1,0 +1,182 @@
+[
+  {
+    "point": "openclaw-cc1",
+    "tasks": 11,
+    "nodes": 145,
+    "llm_calls": 78,
+    "output_tokens": 33461,
+    "window_llm_calls": 59,
+    "window_tool_calls": 51,
+    "tool_error_flags_all": {
+      "False->False": 60,
+      "True->True": 7
+    },
+    "tool_error_flags_window": {
+      "False->False": 45,
+      "True->True": 6
+    }
+  },
+  {
+    "point": "openclaw-cc2",
+    "tasks": 17,
+    "nodes": 227,
+    "llm_calls": 122,
+    "output_tokens": 60339,
+    "window_llm_calls": 93,
+    "window_tool_calls": 81,
+    "tool_error_flags_all": {
+      "False->False": 93,
+      "True->True": 12
+    },
+    "tool_error_flags_window": {
+      "False->False": 73,
+      "True->True": 8
+    }
+  },
+  {
+    "point": "openclaw-cc4",
+    "tasks": 38,
+    "nodes": 514,
+    "llm_calls": 276,
+    "output_tokens": 120156,
+    "window_llm_calls": 202,
+    "window_tool_calls": 173,
+    "tool_error_flags_all": {
+      "False->False": 215,
+      "True->True": 23
+    },
+    "tool_error_flags_window": {
+      "True->True": 17,
+      "False->False": 156
+    }
+  },
+  {
+    "point": "openclaw-cc8",
+    "tasks": 74,
+    "nodes": 978,
+    "llm_calls": 526,
+    "output_tokens": 225841,
+    "window_llm_calls": 389,
+    "window_tool_calls": 337,
+    "tool_error_flags_all": {
+      "False->False": 403,
+      "True->True": 49
+    },
+    "tool_error_flags_window": {
+      "False->False": 303,
+      "True->True": 34
+    }
+  },
+  {
+    "point": "openclaw-cc32",
+    "tasks": 191,
+    "nodes": 2523,
+    "llm_calls": 1357,
+    "output_tokens": 575077,
+    "window_llm_calls": 958,
+    "window_tool_calls": 824,
+    "tool_error_flags_all": {
+      "False->False": 1045,
+      "True->True": 121
+    },
+    "tool_error_flags_window": {
+      "False->False": 737,
+      "True->True": 87
+    }
+  },
+  {
+    "point": "minisweagent-cc1",
+    "tasks": 3,
+    "nodes": 310,
+    "llm_calls": 155,
+    "output_tokens": 29876,
+    "window_llm_calls": 114,
+    "window_tool_calls": 114,
+    "tool_error_flags_all": {
+      "False->False": 132,
+      "True->True": 21,
+      "True->False": 2
+    },
+    "tool_error_flags_window": {
+      "False->False": 93,
+      "True->True": 19,
+      "True->False": 2
+    }
+  },
+  {
+    "point": "minisweagent-cc2",
+    "tasks": 7,
+    "nodes": 662,
+    "llm_calls": 331,
+    "output_tokens": 55141,
+    "window_llm_calls": 250,
+    "window_tool_calls": 250,
+    "tool_error_flags_all": {
+      "False->False": 295,
+      "True->True": 34,
+      "True->False": 2
+    },
+    "tool_error_flags_window": {
+      "False->False": 219,
+      "True->True": 29,
+      "True->False": 2
+    }
+  },
+  {
+    "point": "minisweagent-cc4",
+    "tasks": 13,
+    "nodes": 1244,
+    "llm_calls": 622,
+    "output_tokens": 112294,
+    "window_llm_calls": 434,
+    "window_tool_calls": 434,
+    "tool_error_flags_all": {
+      "False->False": 549,
+      "True->True": 71,
+      "True->False": 2
+    },
+    "tool_error_flags_window": {
+      "False->False": 384,
+      "True->True": 48,
+      "True->False": 2
+    }
+  },
+  {
+    "point": "minisweagent-cc8",
+    "tasks": 24,
+    "nodes": 2234,
+    "llm_calls": 1117,
+    "output_tokens": 195950,
+    "window_llm_calls": 740,
+    "window_tool_calls": 743,
+    "tool_error_flags_all": {
+      "False->False": 997,
+      "True->True": 114,
+      "True->False": 6
+    },
+    "tool_error_flags_window": {
+      "False->False": 659,
+      "True->True": 80,
+      "True->False": 4
+    }
+  },
+  {
+    "point": "minisweagent-cc32",
+    "tasks": 69,
+    "nodes": 6678,
+    "llm_calls": 3339,
+    "output_tokens": 585021,
+    "window_llm_calls": 1875,
+    "window_tool_calls": 1875,
+    "tool_error_flags_all": {
+      "False->False": 2978,
+      "True->True": 347,
+      "True->False": 14
+    },
+    "tool_error_flags_window": {
+      "False->False": 1683,
+      "True->True": 184,
+      "True->False": 8
+    }
+  }
+]
