@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import fcntl
 import hashlib
 import json
 import os
@@ -432,6 +433,40 @@ def _free_port() -> int:
         return int(sock.getsockname()[1])
 
 
+def _reserve_gateway_port(directory: Path | None = None) -> tuple[int, Any]:
+    # A task-private TMPDIR cannot coordinate separate replay processes.
+    directory = directory or Path(f"/tmp/agenttrace-gateway-ports-{os.getuid()}")
+    directory.mkdir(mode=0o700, parents=True, exist_ok=True)
+    while True:
+        port = _free_port()
+        lease = (directory / str(port)).open("a")
+        try:
+            fcntl.flock(lease, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return port, lease
+        except BlockingIOError:
+            lease.close()
+
+
+def _stage_brave_plugins(source_state: Path, replay_state: Path) -> list[str]:
+    """Seed managed npm payloads so Gateway startup discovers an installed plugin.
+
+    A load-path alone does not populate OpenClaw's installed-plugin index.
+    Copy only the plugin projects, never shared sessions, credentials or state DBs.
+    Preserve SDK peer symlinks instead of copying the entire OpenClaw runtime.
+    """
+    paths = []
+    for package in sorted(source_state.glob(
+        "npm/projects/openclaw-brave-plugin-*/node_modules/@openclaw/brave-plugin"
+    )):
+        if not package.is_dir():
+            continue
+        project = package.parents[2]
+        destination = replay_state / "npm" / "projects" / project.name
+        shutil.copytree(project, destination, symlinks=True)
+        paths.append(str(destination / package.relative_to(project)))
+    return paths
+
+
 class OpenClawToolExecutor:
     """Execute recorded tools through one long-lived native OpenClaw Gateway."""
 
@@ -458,6 +493,7 @@ class OpenClawToolExecutor:
         self._stdout: Any = None
         self._stderr: Any = None
         self._use_coding_bridge = False
+        self._port_lease: Any = None
 
     async def setup(self, trace: dict[str, Any], workspace: Path) -> None:
         self.session_key = f"agenttrace-{trace['trace_id']}"
@@ -478,15 +514,7 @@ class OpenClawToolExecutor:
             )
             plugin_paths: list[str] = []
             if needs_brave and self.plugin_state_dir:
-                plugin_paths = [
-                    str(path)
-                    for path in sorted(
-                        self.plugin_state_dir.glob(
-                            "npm/projects/openclaw-brave-plugin-*/node_modules/@openclaw/brave-plugin"
-                        )
-                    )
-                    if path.is_dir()
-                ]
+                plugin_paths = _stage_brave_plugins(self.plugin_state_dir, state_dir)
             if needs_brave and not plugin_paths:
                 raise RuntimeError(
                     "web_search replay requires the installed Brave plugin; "
@@ -511,7 +539,10 @@ class OpenClawToolExecutor:
                     {"web_search", "web_fetch", *CODING_TOOL_BRIDGE.values()}
                 ),
                 "exec": {"host": "gateway", "mode": "full"},
-                "web": {"fetch": {"useTrustedEnvProxy": True}},
+                "web": {
+                    "fetch": {"useTrustedEnvProxy": True},
+                    "search": {"enabled": needs_brave},
+                },
             }
             if needs_brave:
                 tools_config["web"]["search"] = {
@@ -579,7 +610,7 @@ class OpenClawToolExecutor:
                 + "\n",
                 encoding="utf-8",
             )
-            port = _free_port()
+            port, self._port_lease = _reserve_gateway_port()
             self.gateway_url = f"http://127.0.0.1:{port}"
             env = os.environ.copy()
             env.update(
@@ -624,11 +655,20 @@ class OpenClawToolExecutor:
                         f"OpenClaw Gateway exited during setup with {self.process.returncode}"
                     )
                 try:
-                    response = await self.client.get(f"{self.gateway_url}/health")
-                    if response.is_success:
+                    response = await self.client.get(f"{self.gateway_url}/health", timeout=2)
+                except httpx.TransportError:
+                    response = None
+                if response is not None and response.is_success:
+                    # /health is public. Verify this task's bearer token on
+                    # the protected route, without executing any tool: an
+                    # empty request is rejected *after* authentication.
+                    probe = await self.client.post(f"{self.gateway_url}/tools/invoke", json={}, timeout=10)
+                    if (probe.status_code == 400 and probe.json().get("error") == {
+                        "type": "invalid_request", "message": "tools.invoke requires name"
+                    }):
                         break
-                except httpx.HTTPError:
-                    pass
+                    probe.raise_for_status()
+                    raise RuntimeError("OpenClaw Gateway failed authenticated readiness probe")
                 if asyncio.get_running_loop().time() >= deadline:
                     raise TimeoutError("OpenClaw Gateway did not become ready")
                 await asyncio.sleep(0.1)
@@ -653,8 +693,21 @@ class OpenClawToolExecutor:
                 "idempotencyKey": node["recorded_result"]["toolCallId"],
             },
         )
+        try:
+            payload = response.json()
+        except ValueError:
+            response.raise_for_status()
+            raise
+        error = payload.get("error")
+        # /tools/invoke wraps native tool exceptions in HTTP 400/403/500.
+        # These are completed tool calls, not replay transport failures.
+        if payload.get("ok") is False and isinstance(error, dict) and error.get("type") == "tool_error":
+            return ToolExecutionResult(result={
+                "content": [],
+                "details": {"status": "error", "tool": request["name"], "error": error.get("message")},
+                "isError": True,
+            })
         response.raise_for_status()
-        payload = response.json()
         if not payload.get("ok"):
             raise RuntimeError(f"OpenClaw tool invocation failed: {payload.get('error')}")
         result = payload.get("result")
@@ -675,6 +728,9 @@ class OpenClawToolExecutor:
                 self.process.kill()
                 await self.process.wait()
         self.process = None
+        if self._port_lease is not None:
+            self._port_lease.close()
+            self._port_lease = None
         for handle in (self._stdout, self._stderr):
             if handle is not None:
                 handle.close()

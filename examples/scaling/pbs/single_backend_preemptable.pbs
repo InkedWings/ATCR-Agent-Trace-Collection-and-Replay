@@ -1,0 +1,53 @@
+#!/bin/bash -l
+#PBS -N at-scale
+#PBS -A lc-mpi
+#PBS -q preemptable
+#PBS -l select=2:system=polaris
+#PBS -l place=scatter
+#PBS -l walltime=02:00:00
+#PBS -l filesystems=home:eagle
+#PBS -j oe
+#PBS -o /lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/pbs-logs/
+#PBS -r n
+
+set -euo pipefail
+umask 077
+
+: "${PBS_JOBID:?This script must run inside PBS}"
+: "${PBS_NODEFILE:?PBS node list is required}"
+: "${SCALE_CC:?Submit with qsub -v SCALE_CC=8 (or 16 or 32)}"
+[[ "${SCALE_CC}" =~ ^[1-9][0-9]*$ ]] || { echo "Invalid SCALE_CC" >&2; exit 2; }
+
+repo_dir="${AGENTTRACE_REPO:-/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework}"
+cd "${repo_dir}"
+run_name="${PBS_QUEUE:-preemptable}-cc${SCALE_CC}-${PBS_JOBID%%.*}"
+output="${repo_dir}/runs/scaling/${run_name}"
+mkdir -p "${repo_dir}/runs/scaling"
+echo "Live log: ${output}.log"
+echo "Results: ${output}/experiment"
+# Write directly to Eagle: the log is visible before PBS stages its stdout.
+set -o noclobber
+exec >"${output}.log" 2>&1
+
+mapfile -t nodes < <(awk '{ sub(/\..*/, ""); if (!seen[$0]++) print }' "${PBS_NODEFILE}")
+replay_node="$(hostname -s)"
+[[ "${#nodes[@]}" == 2 ]] || { echo "Expected exactly two allocated nodes"; exit 2; }
+if [[ "${nodes[0]}" == "${replay_node}" ]]; then
+  export INFERENCE_NODE="${nodes[1]}"
+elif [[ "${nodes[1]}" == "${replay_node}" ]]; then
+  export INFERENCE_NODE="${nodes[0]}"
+else
+  echo "Batch host is not in PBS_NODEFILE"; exit 2
+fi
+
+export SCALE_SCRATCH="/local/scratch/${USER}/agenttrace-scale/${run_name}"
+export APPTAINER_CACHEDIR="${SCALE_SCRATCH}/apptainer-cache"
+source examples/scaling/environment.sh
+read -r -a workloads <<< "${SCALE_WORKLOADS:-openclaw minisweagent}"
+
+# Foreground ownership is retained by PBS. No nohup, automatic retry or qdel.
+exec .venv/bin/python -m agenttrace.experiments.pbs \
+  --concurrency "${SCALE_CC}" --inference-node "${INFERENCE_NODE}" \
+  --workloads "${workloads[@]}" \
+  --pools "${SCALE_POOLS:-runs/scaling/preflight-20260906-1}" \
+  --output "${output}" --job-id "${PBS_JOBID}"

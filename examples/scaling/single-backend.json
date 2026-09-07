@@ -1,0 +1,24 @@
+{
+  "inference_node": "x3005c0s1b1n0",
+  "replay_node": "x3005c0s1b0n0",
+  "workloads": ["openclaw", "minisweagent"],
+  "concurrency": [1, 2, 4, 8],
+  "warmup_seconds": 120,
+  "duration_seconds": 600,
+  "seed": 42,
+  "profiles": {
+    "openclaw": "examples/openclaw_gaia/replay_profile_local_vllm.json",
+    "minisweagent": "examples/minisweagent_swebench/replay_profile_local_vllm.json"
+  },
+  "serve": {
+    "VLLM_MODEL": "Qwen/Qwen3-32B",
+    "VLLM_SERVED_MODEL_NAME": "qwen/qwen3-32b",
+    "VLLM_TENSOR_PARALLEL_SIZE": "4",
+    "VLLM_MAX_MODEL_LEN": "32768",
+    "VLLM_MAX_NUM_SEQS": "32",
+    "VLLM_MAX_NUM_BATCHED_TOKENS": "2048",
+    "VLLM_GPU_MEMORY_UTILIZATION": "0.90",
+    "VLLM_PREFIX_CACHING": "1",
+    "VLLM_PORT": "8000"
+  }
+}

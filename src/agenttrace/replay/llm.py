@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import time
 from pathlib import Path
 from typing import Any
 
@@ -55,6 +56,10 @@ class OpenAICompatibleExecutor:
         endpoint = node["request"]["endpoint"]
         url = f"{self.base_url}/{endpoint.lstrip('/')}"
         actual: int | None = None
+        started = time.perf_counter()
+        first_output: float | None = None
+        last_output: float | None = None
+        output_chunks = 0
         async with self.client.stream("POST", url, json=payload) as response:
             response.raise_for_status()
             async for line in response.aiter_lines():
@@ -64,6 +69,13 @@ class OpenAICompatibleExecutor:
                 if not data or data == "[DONE]":
                     continue
                 value = json.loads(data)
+                # Role/usage/finish-only events are not generated output. A
+                # stream chunk can contain several tokens (including tool args).
+                if any(_has_output(choice.get("delta") or {}) for choice in value.get("choices", [])):
+                    last_output = time.perf_counter()
+                    if first_output is None:
+                        first_output = last_output
+                    output_chunks += 1
                 usage = value.get("usage") or {}
                 if isinstance(usage.get("completion_tokens"), int):
                     actual = usage["completion_tokens"]
@@ -73,12 +85,24 @@ class OpenAICompatibleExecutor:
             raise RuntimeError(
                 f"LLM output token mismatch for {node['id']}: target {target}, actual {actual}"
             )
-        return LLMExecutionResult(actual_output_tokens=actual)
+        return LLMExecutionResult(
+            actual_output_tokens=actual,
+            ttft_seconds=first_output - started if first_output is not None else None,
+            output_stream_seconds=last_output - first_output if first_output is not None else None,
+            output_chunks=output_chunks,
+        )
 
     async def close(self) -> None:
         if self.client is not None:
             await self.client.aclose()
             self.client = None
+
+
+def _has_output(delta: dict[str, Any]) -> bool:
+    if any(delta.get(key) for key in ("content", "reasoning", "reasoning_content")):
+        return True
+    calls = delta.get("tool_calls") or []
+    return any((call.get("function") or {}).get("arguments") for call in calls)
 
 
 def create_openai_executor(config: dict[str, Any]) -> OpenAICompatibleExecutor:

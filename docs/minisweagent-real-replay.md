@@ -1,5 +1,8 @@
 # Real mini-SWE-agent Replay on Polaris
 
+For multiple tasks and hardware/latency measurements, see
+[Concurrent replay and instrumentation](concurrent-replay.md).
+
 This workflow replays one complete mini-SWE-agent trace using two allocated
 Polaris compute nodes:
 

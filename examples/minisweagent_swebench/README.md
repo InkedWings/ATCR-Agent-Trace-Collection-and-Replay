@@ -104,6 +104,10 @@ Bash commands execute through one persistent mini-SWE-agent
 
 ## Real replay with local Qwen3-32B
 
+For controlled task concurrency and hardware/latency sampling, use
+[`benchmark_qwen3_32b.sh`](scripts/benchmark_qwen3_32b.sh) and follow
+[the instrumentation guide](../../docs/concurrent-replay.md).
+
 The complete two-node workflow is documented in
 [`docs/minisweagent-real-replay.md`](../../docs/minisweagent-real-replay.md).
 

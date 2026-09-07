@@ -18,7 +18,9 @@ port="${VLLM_PORT:-8000}"
 tp="${VLLM_TENSOR_PARALLEL_SIZE:-4}"
 max_model_len="${VLLM_MAX_MODEL_LEN:-32768}"
 max_num_seqs="${VLLM_MAX_NUM_SEQS:-1}"
+max_num_batched_tokens="${VLLM_MAX_NUM_BATCHED_TOKENS:-2048}"
 gpu_memory_utilization="${VLLM_GPU_MEMORY_UTILIZATION:-0.90}"
+prefix_caching="${VLLM_PREFIX_CACHING:-1}"
 
 usage() {
   echo "Usage: $(basename "$0") serve|smoke" >&2
@@ -68,33 +70,45 @@ serve() {
   [[ -n "${HF_TOKEN:-}" ]] && export APPTAINERENV_HF_TOKEN="${HF_TOKEN}"
 
   local log_path="${log_dir}/qwen3-32b-$(hostname -s)-$(date -u +%Y%m%dT%H%M%SZ).log"
+  local backend_events="${VLLM_BACKEND_EVENTS:-${log_path%.log}-requests.jsonl}"
   echo "host=$(hostname -s) model=${model} served_model=${served_model}"
   echo "container=${container}"
   echo "hf_home=${hf_home} vllm_cache=${vllm_cache}"
   echo "tp=${tp} max_model_len=${max_model_len} max_num_seqs=${max_num_seqs} gpu_memory_utilization=${gpu_memory_utilization}"
+  echo "prefix_caching=${prefix_caching}"
+  echo "max_num_batched_tokens=${max_num_batched_tokens}"
   echo "log=${log_path}"
+  echo "backend_events=${backend_events}"
 
-  set +e
-  apptainer exec --nv \
+  local prefix_flag
+  case "${prefix_caching}" in
+    1) prefix_flag=--enable-prefix-caching ;;
+    0) prefix_flag=--no-enable-prefix-caching ;;
+    *) echo "VLLM_PREFIX_CACHING must be 0 or 1" >&2; exit 2 ;;
+  esac
+
+  # Keep the tracked PID attached to the container runtime, not a pipeline
+  # shell. A private PID namespace ties every vLLM worker to container exit.
+  exec > >(tee "${log_path}") 2>&1
+  exec apptainer exec --pid --nv \
     --bind /lus/eagle:/lus/eagle,/local/scratch:/local/scratch \
     "${container}" \
-    vllm serve "${model}" \
+    python3 "${repo_dir}/src/agenttrace/vllm_backend.py" \
+      --backend-events "${backend_events}" serve "${model}" \
       --served-model-name "${served_model}" \
       --host "${host}" \
       --port "${port}" \
+      --api-server-count 1 \
       --tensor-parallel-size "${tp}" \
       --max-model-len "${max_model_len}" \
       --max-num-seqs "${max_num_seqs}" \
+      --max-num-batched-tokens "${max_num_batched_tokens}" \
       --gpu-memory-utilization "${gpu_memory_utilization}" \
       --trust-remote-code \
-      --enable-prefix-caching \
+      "${prefix_flag}" \
       --enable-auto-tool-choice \
       --tool-call-parser hermes \
-      --default-chat-template-kwargs '{"enable_thinking": false}' \
-      2>&1 | tee "${log_path}"
-  local status="${PIPESTATUS[0]}"
-  set -e
-  exit "${status}"
+      --default-chat-template-kwargs '{"enable_thinking": false}'
 }
 
 smoke() {

@@ -31,6 +31,9 @@ class ToolExecutionResult:
 @dataclass(slots=True)
 class LLMExecutionResult:
     actual_output_tokens: int
+    ttft_seconds: float | None = None
+    output_stream_seconds: float | None = None
+    output_chunks: int = 0
 
 
 class CollectionAdapter(Protocol):
@@ -42,6 +45,11 @@ class CollectionAdapter(Protocol):
 
 
 class ToolExecutor(Protocol):
+    """Return native tool failures as isError results; do not abort the DAG.
+
+    Exceptions signal runtime/setup/transport failures, not failed tool work.
+    """
+
     async def setup(self, trace: dict[str, Any], workspace: Path) -> None: ...
 
     async def execute(self, node: dict[str, Any]) -> ToolExecutionResult: ...

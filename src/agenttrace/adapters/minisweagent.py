@@ -290,6 +290,7 @@ class MiniSWEAgentToolExecutor:
             "image": context["container_image"],
             "cwd": self.container_cwd,
             "timeout": self.timeout,
+            "sandbox_build_retries": 1,
             "exec_args": [
                 "--contain",
                 "--cleanenv",

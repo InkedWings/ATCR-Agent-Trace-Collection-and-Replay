@@ -1,0 +1,20 @@
+{
+  "llm_executor": {
+    "factory": "agenttrace.replay.llm:create_openai_executor",
+    "config": {
+      "base_url_env": "AGENTTRACE_LLM_BASE_URL",
+      "model_override": "qwen/qwen3-32b",
+      "ignore_eos": true,
+      "max_tokens_field": "max_tokens",
+      "trust_env": false
+    }
+  },
+  "tool_executor": {
+    "factory": "agenttrace.adapters.openclaw:create_tool_executor",
+    "config": {
+      "openclaw_bin_env": "OPENCLAW_BIN",
+      "plugin_state_dir": ".openclaw-state/gaia",
+      "startup_timeout": 180
+    }
+  }
+}

@@ -19,6 +19,7 @@ openclaw-state/
 # Generated or gated data
 runs/
 data/
+/data
 datasets/
 replay-runs/
 examples/openclaw_gaia/runs/
