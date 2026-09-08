@@ -31,9 +31,12 @@
 | Backend waiting requests max | 0 | 1 | 2 | 3 | 4 | 20 | 53 |
 | KV occupancy mean (%) | 0.91 | 2.75 | 6.18 | 14.55 | 30.24 | 50.34 | 28.22 |
 | KV occupancy max (%) | 6.23 | 12.57 | 18.41 | 28.96 | 45.25 | 74.48 | 61.75 |
-| Prefix-cache hit ratio (%) | 92.80 | 93.61 | 93.03 | 93.53 | 93.31 | 61.48 | 19.27 |
+| Prefix lookup hit ratio (%) | 92.80 | 93.61 | 93.03 | 93.53 | 93.31 | 61.48 | 19.27 |
+| Prompt tokens actually reused (%) | 92.80 | 93.71 | 93.46 | 94.11 | 93.77 | 81.14 | 21.79 |
+| Lookup tokens / processed prompt tokens | 1.00 | 1.02 | 1.10 | 1.13 | 1.30 | 4.45 | 16.48 |
+| Prefill compute tokens / sampled second | 793.79 | 1553.42 | 2433.49 | 3279.73 | 4253.58 | 8371.19 | 14971.23 |
 | Preemptions (sample delta) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Recomputed prompt tokens (sample delta) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Fully cached last-token recomputes (sample delta) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Replay-node CPU mean (%) | 0.76 | 1.19 | 1.88 | 2.55 | 3.11 | 2.53 | 2.00 |
 | Inference-node CPU mean (%) | 5.99 | 8.43 | 9.35 | 9.42 | 9.40 | 9.04 | 8.50 |
 | Native tool errors | 41 | 75 | 107 | 154 | 189 | 148 | 85 |

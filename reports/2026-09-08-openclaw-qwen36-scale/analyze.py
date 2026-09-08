@@ -67,6 +67,7 @@ def replay_partition(report):
 
 
 PROM_NAMES = ['num_preemptions_total', 'prompt_tokens_recomputed_total', 'prompt_tokens_total',
+              'prompt_tokens_cached_total',
               'generation_tokens_total', 'prefix_cache_hits_total', 'prefix_cache_queries_total',
               'num_requests_running', 'num_requests_waiting', 'kv_cache_usage_perc']
 PROM_RE = re.compile(r'^vllm:('+'|'.join(PROM_NAMES)+r')(?:\{[^\n]*\})?\s+([^\s]+)', re.M)
@@ -97,11 +98,16 @@ def raw_metrics(path, start, end, cc, tasks):
         dt = b['time']-a['time']
         delta = lambda key: b[key]-a[key]
         queries = delta('prefix_cache_queries_total')
+        prompts = delta('prompt_tokens_total')
+        cached = delta('prompt_tokens_cached_total')
         bins.append(dict(cc=cc, minute_start=i, minute_end=i+1, samples=len(selected),
             sampled_span_s=dt,
             output_tokens_per_s=delta('generation_tokens_total')/dt,
             prompt_tokens_per_s=delta('prompt_tokens_total')/dt,
             prefix_hit_percent=100*delta('prefix_cache_hits_total')/queries if queries else None,
+            prompt_reuse_percent=100*cached/prompts if prompts else None,
+            prefix_query_amplification=queries/prompts if prompts else None,
+            prefill_compute_tokens_per_s=(prompts-cached)/dt,
             preemptions=delta('num_preemptions_total'),
             recomputed_tokens=delta('prompt_tokens_recomputed_total'),
             backend_running_mean=float(np.mean([s['num_requests_running'] for s in selected])),
@@ -187,6 +193,9 @@ def extract():
         assert sum(v for (name,before,after),v in transitions.items() if after) == m['native_tool_errors']
         assert math.isclose(finished/1800, m['task_throughput_per_second'])
         counters, bins, raw_span = raw_metrics(root/'metrics.jsonl', start, end, cc, s['tasks'])
+        prompt_tokens = counters['prompt_tokens_total']
+        cached_tokens = counters['prompt_tokens_cached_total']
+        assert 0 <= cached_tokens <= prompt_tokens
         series.extend(bins)
         gauges = m['metrics']['vllm_gauge_sample_statistics']
         def gauge(name):
@@ -227,6 +236,12 @@ def extract():
             kv_mean_percent=gauge('kv_cache_usage_perc')['mean']*100,
             kv_max_percent=gauge('kv_cache_usage_perc')['max']*100,
             prefix_hit_percent=m['metrics']['vllm']['prefix_cache_hit_ratio']*100,
+            prompt_tokens_sample_delta=prompt_tokens,
+            cached_prompt_tokens_sample_delta=cached_tokens,
+            prefill_compute_tokens_sample_delta=prompt_tokens-cached_tokens,
+            prompt_reuse_percent=100*cached_tokens/prompt_tokens,
+            prefix_query_amplification=counters['prefix_cache_queries_total']/prompt_tokens,
+            prefill_compute_tokens_per_sample_s=(prompt_tokens-cached_tokens)/raw_span,
             preemptions_sample_delta=counters['num_preemptions_total'],
             recomputed_tokens_sample_delta=counters['prompt_tokens_recomputed_total'],
             prompt_tokens_per_sample_s=counters['prompt_tokens_total']/raw_span,
@@ -301,7 +316,9 @@ def plot(rows,tasks,series,paired,n_common):
         cc_axis(ax[1,0],'P95 seconds','(d) First-token and queue delay',True);ax[1,0].legend(fontsize=8)
         line(ax[1,1],'gpu_busy_mean_percent','GPU busy');line(ax[1,1],'backend_active_percent','Backend active','#228833')
         cc_axis(ax[1,1],'Window mean / time share (%)','(e) Inference utilization');ax[1,1].set_ylim(0,105);ax[1,1].legend(fontsize=8)
-        line(ax[1,2],'prefix_hit_percent','Prefix hit rate');cc_axis(ax[1,2],'Prefix tokens hit (%)','(f) Prefix-cache reuse');ax[1,2].set_ylim(0,105)
+        line(ax[1,2],'prompt_reuse_percent','Prompt tokens reused')
+        line(ax[1,2],'prefix_hit_percent','Lookup hit rate','#EE6677',ls='--')
+        cc_axis(ax[1,2],'Token share (%)','(f) Cache reuse vs. cache lookups');ax[1,2].set_ylim(0,105);ax[1,2].legend(fontsize=8)
         save(fig,'01_scale_overview','OpenClaw scaling | Qwen3.6-35B-A3B, TP4, 110-trace pool',
              '120 s warmup + 1800 s measurement; one repetition per cc. Latencies follow window admissions through natural drain.\nweb_search uses recorded delay. cc16 is the best observed point in this sweep, not an SLO capacity bound.')
 
@@ -326,7 +343,7 @@ def plot(rows,tasks,series,paired,n_common):
         line(ax[0,0],'backend_running_mean','Running');line(ax[0,0],'backend_waiting_mean','Waiting','#EE6677')
         cc_axis(ax[0,0],'Mean requests','(a) Scheduler occupancy');ax[0,0].legend()
         line(ax[0,1],'kv_mean_percent','Mean KV usage');line(ax[0,1],'kv_max_percent','Peak KV usage','#EE6677')
-        cc_axis(ax[0,1],'Reported KV occupancy (%)','(b) KV-cache occupancy');ax[0,1].set_ylim(0,100);ax[0,1].legend()
+        cc_axis(ax[0,1],'Non-free KV blocks (%)','(b) Active KV-block occupancy');ax[0,1].set_ylim(0,100);ax[0,1].legend()
         ax[1,0].bar(x,[r['preemptions_sample_delta'] for r in rows],color='#AA3377')
         cc_axis(ax[1,0],'Preemption counter delta','(c) Engine preemptions')
         if all(r['preemptions_sample_delta']==0 for r in rows):
@@ -335,7 +352,7 @@ def plot(rows,tasks,series,paired,n_common):
             ax[1,0].text(.5,.55,'0 in every measured window',transform=ax[1,0].transAxes,ha='center',fontsize=12)
         line(ax[1,1],'tpot_mean_ms','Mean client TPOT estimate');cc_axis(ax[1,1],'Milliseconds / output token','(d) Output streaming slowdown')
         save(fig,'03_backend_pressure','Backend scheduling, cache and output streaming',
-             'KV occupancy is the reported vLLM gauge, not total allocated GPU memory. Counters span the in-window samples (~1799 s).\nTPOT is estimated from client streaming chunks; it is not an exact per-token engine measurement.')
+             'Free KV blocks can still hold evictable cached prefixes; this gauge does not measure all resident prefix data.\nCounters span ~1799 s. TPOT is estimated from client streaming chunks, not exact engine per-token timestamps.')
 
         fig,ax=plt.subplots(1,2,figsize=(12,6))
         cohorts=[[t['lifecycle_s']/60 for t in tasks if t['cc']==cc and t['in_admission_cohort']] for cc in CCS]
@@ -361,7 +378,7 @@ def plot(rows,tasks,series,paired,n_common):
             selected=[s for s in series if s['cc']==cc]
             for a,key,label,title in [(ax[0,0],'output_tokens_per_s','Output tokens / second','(a) Output throughput'),
                 (ax[0,1],'backend_waiting_mean','Mean waiting requests','(b) Queue accumulation'),
-                (ax[1,0],'prefix_hit_percent','Prefix hit rate (%)','(c) Interval cache hit rate'),
+                (ax[1,0],'prompt_reuse_percent','Prompt tokens reused (%)','(c) Interval prompt-token reuse'),
                 (ax[1,1],'completed_tasks','Tasks completed / minute','(d) Task completions')]:
                 a.plot([s['minute_end'] for s in selected],[s[key] for s in selected],color=color,label=f'cc{cc}')
                 a.set(xlabel='Minutes since measurement start',ylabel=label,title=title);a.grid(alpha=.18)
@@ -396,8 +413,12 @@ def report(rows,n_common,figures,config,paired,series):
         ('Backend active time (%)','backend_active_percent',2),('Backend running requests mean','backend_running_mean',2),
         ('Backend waiting requests mean','backend_waiting_mean',2),('Backend waiting requests max','backend_waiting_max',0),
         ('KV occupancy mean (%)','kv_mean_percent',2),('KV occupancy max (%)','kv_max_percent',2),
-        ('Prefix-cache hit ratio (%)','prefix_hit_percent',2),('Preemptions (sample delta)','preemptions_sample_delta',0),
-        ('Recomputed prompt tokens (sample delta)','recomputed_tokens_sample_delta',0),
+        ('Prefix lookup hit ratio (%)','prefix_hit_percent',2),
+        ('Prompt tokens actually reused (%)','prompt_reuse_percent',2),
+        ('Lookup tokens / processed prompt tokens','prefix_query_amplification',2),
+        ('Prefill compute tokens / sampled second','prefill_compute_tokens_per_sample_s',2),
+        ('Preemptions (sample delta)','preemptions_sample_delta',0),
+        ('Fully cached last-token recomputes (sample delta)','recomputed_tokens_sample_delta',0),
         ('Replay-node CPU mean (%)','replay_cpu_mean_percent',2),('Inference-node CPU mean (%)','inference_cpu_mean_percent',2),
         ('Native tool errors','native_tool_errors',0),('New tool errors','new_tool_errors',0),
         ('New tool error share (%)','new_tool_error_percent',3),('Cohort tasks finishing after window','cohort_finished_after_window',0),
@@ -412,14 +433,15 @@ def report(rows,n_common,figures,config,paired,series):
     early64=[s for s in series if s['cc']==64 and s['minute_start']<10]
     md=['# OpenClaw 单推理节点 Scale 分析：Qwen3.6 TP4','',
         '**7 个点均完成并通过测量校验。当前 sweep 的吞吐峰值在 cc16；cc32/64 吞吐下降、延迟和排队上升。**','',
-        '[全部图表 PDF](openclaw_scale.pdf) · [完整指标表](tables.md) · [汇总 CSV](summary.csv)','',
+        '[全部图表 PDF](openclaw_scale.pdf) · [完整指标表](tables.md) · [汇总 CSV](summary.csv) · [缓存指标复核](cache_interpretation.md)','',
         '## 主要观察','',
         f"- 吞吐从 cc1 的 {rows[0]['tasks_per_min']:.2f} tasks/min 上升到 cc16 的 {r16['tasks_per_min']:.2f}，为 {r16['speedup_vs_cc1']:.2f} 倍；cc32/64 分别回落到 {r32['tasks_per_min']:.2f}/{r64['tasks_per_min']:.2f}，较 cc16 下降 {100*(1-r32['tasks_per_min']/r16['tasks_per_min']):.1f}%/{100*(1-r64['tasks_per_min']/r16['tasks_per_min']):.1f}%。这只是本次七档中观测到的最佳点，未进行重复试验或定义延迟 SLO。",
         f"- 后端窗口输出率同样在 cc16 达到 {r16['output_tokens_per_window_s']:.1f} tokens/s，cc32/64 降到 {r32['output_tokens_per_window_s']:.1f}/{r64['output_tokens_per_window_s']:.1f}。下降同时出现在任务吞吐和后端 token 产出上，具体机制还需结合调度、缓存及请求组成进一步分析。",
         f"- 全七档共有的 {n_common} 条 trace 配对后，cc16/32/64 相对各自 cc1 延迟的中位倍数为 {paired_median[16]:.2f}/{paired_median[32]:.2f}/{paired_median[64]:.2f}。同一条任务也明显变慢，说明总体延迟上升不只是因为某些档位选中了更长任务；仍需注意这个小子集、缓存历史与重复次数不同。",
         f"- cc16 → cc32 → cc64 的任务 p95 为 {r16['task_p95_s']/60:.2f} → {r32['task_p95_s']/60:.2f} → {r64['task_p95_s']/60:.2f} 分钟；客户端 TTFT p95 为 {r16['ttft_p95_s']:.2f} → {r32['ttft_p95_s']:.2f} → {r64['ttft_p95_s']:.2f} 秒。初始调度排队 p95 同期升至 {r32['queue_p95_s']:.2f}/{r64['queue_p95_s']:.2f} 秒，表明高并发下明显存在后端等待。不同指标的 p95 不能相加。",
-        f"- Prefix-cache token 命中率由 cc16 的 {r16['prefix_hit_percent']:.1f}% 降到 cc32 的 {r32['prefix_hit_percent']:.1f}%、cc64 的 {r64['prefix_hit_percent']:.1f}%；GPU busy 仍约 {r64['gpu_busy_mean_percent']:.1f}%。GPU 保持活跃并不意味着有用输出保持高吞吐。缓存复用降低、队列积压与输出变慢同时出现，支持进一步研究调度/缓存行为；本次 sweep 尚不能单独证明某一种根因。",
-        f"- 原始 Prometheus 中的引擎抢占计数增量（cc1→64）为 {[int(r['preemptions_sample_delta']) for r in rows]}；对应 recomputed-prompt-token 计数增量也全部为 0。本次没有观察到抢占计数增加，不能把吞吐下降归因为已证实的抢占、重计算或 OOM。KV 占用和总分配显存也分开呈现。",
+        f"- 实际 prompt token 复用比例由 cc16 的 {r16['prompt_reuse_percent']:.1f}% 降到 cc32 的 {r32['prompt_reuse_percent']:.1f}%、cc64 的 {r64['prompt_reuse_percent']:.1f}%。原图的查询命中率分别为 {r16['prefix_hit_percent']:.1f}%/{r32['prefix_hit_percent']:.1f}%/{r64['prefix_hit_percent']:.1f}%，受等待请求反复查询影响，不能当作实际复用比例。查询 token 数 / 实际处理 prompt token 数达到 {r32['prefix_query_amplification']:.2f}×/{r64['prefix_query_amplification']:.2f}×；现已分开绘制两种指标。",
+        f"- cc16/32/64 的本地 prefill 计算 token 计数率为 {r16['prefill_compute_tokens_per_sample_s']:.0f}/{r32['prefill_compute_tokens_per_sample_s']:.0f}/{r64['prefill_compute_tokens_per_sample_s']:.0f} tokens/s；缓存复用下降时，需要计算的输入 token 增多，而输出率降低。这是 token 记账量，不能直接等同于计算耗时或 FLOPs。",
+        f"- 引擎抢占计数增量（cc1→64）为 {[int(r['preemptions_sample_delta']) for r in rows]}，没有直接证据指向抢占或 OOM。`prompt_tokens_recomputed_total` 也全为 0，但 vLLM 0.19.1 的该字段主要记录全命中时强制重算末 token 的特殊情况，不能据此排除缓存 miss 后重复计算历史输入。KV usage 不统计空闲队列中仍保留的可淘汰前缀，低于 100% 也不能排除历史缓存淘汰。详见缓存指标复核。",
         f"- 窗口内存在明显动态变化：cc64 前 10 分钟平均输出率约 {np.mean([s['output_tokens_per_s'] for s in early64]):.1f} tokens/s，最后 10 分钟约 {np.mean([s['output_tokens_per_s'] for s in late64]):.1f}；平均 waiting 从 {np.mean([s['backend_waiting_mean'] for s in early64]):.1f} 升至 {np.mean([s['backend_waiting_mean'] for s in late64]):.1f}。cc32 也有明显波动，因此 30 分钟均值不能直接当作已建立稳态的长期容量。",
         f"- 工具 p95 在七档之间为 {min(r['tool_p95_s'] for r in rows):.2f}–{max(r['tool_p95_s'] for r in rows):.2f} 秒，未呈现与 LLM 相同的延迟恶化。但存在原成功→回放失败的工具调用，已输出逐工具错误转换表；`valid=True` 不代表所有原生工具结果与采集一致。",
         '', '## 配置与测量口径','',
@@ -429,16 +451,17 @@ def report(rows,n_common,figures,config,paired,series):
         '- 任务吞吐 = 测量窗口内完成数 / 1800 秒。任务延迟 = 窗口内启动任务的完整生命周期，包含窗口后完成部分。节点延迟按窗口内启动的调用统计，后端延迟按窗口内首次调度的请求统计；这些 cohort 不必相同。',
         f"- cc64 有 {r64['cohort_finished_after_window']}/{r64['admitted_tasks']} 个延迟样本在窗口结束后才完成，排空用了 {r64['drain_s']/60:.1f} 分钟。不能只看窗口内已完成任务来计算 p95；本报告保留完整 admission cohort。固定时长和长任务意味着窗口可能尚有明显瞬态，见时间趋势图。",
         '- 主吞吐图的 token/s 用完整 1800 秒作分母；active-output/decode throughput 是不同活跃时间分母，仅放在完整指标表，不能混用。LLM-only/task breakdown 使用互斥区间，不重复累加并行调用；其中包含等待与网络时间，并非纯 GPU 计算时间。',
+        '- `prefix_hit_percent` 保留原始 lookup hit/query 口径；`prompt_reuse_percent` = cached prompt tokens / processed prompt tokens，按同一采样边界求计数增量。本系列无外部 KV transfer、无抢占；原始 local_compute + local_cache_hit 计数与 prompt 总量一致。KV usage = 1 − free blocks / usable blocks，free 中可以存放仍可复用、但随时可淘汰的历史前缀。',
         '- `scheduled_to_first_token` 是首次被调度到首 token 的墙钟间隔，不是单独测得的 prefill kernel 时间。TPOT 来自客户端流式 chunk 的估算。原始计数器新增指标采用测量窗内首末样本之差，边界约少 1 秒；不是重新读取全部 backend token 事件。',
         '- 总 pool 和 seed 一致，但各档实际 admission 数、唯一 trace 覆盖及缓存历史不同。任务级总体曲线可能受 workload mix 影响。',
         f'- 提供全部七档共有的 {n_common} 条 trace 的配对延迟比较：每档先平均同一 trace 的重复回放，再按 trace 等权汇总。该子集用于敏感性分析，不能代表完整 pool，也未消除不同缓存历史和工具结果的影响。',
         '- 这是一次探索性 sweep，没有独立重复，因此不提供把同一轮中的任务当独立实验重复的置信区间，也不把 cc16 宣称为已验证的可持续容量上限。','',
         '## 图表','']
     for name in figures:md.extend([f'### {name}','',f'![{name}]({name}.png)','',f'[矢量 PDF]({name}.pdf)',''])
-    quick=['| cc | tasks/min | 任务 p95（分钟） | TTFT p95（秒） | Prefix hit |',
+    quick=['| cc | tasks/min | 任务 p95（分钟） | TTFT p95（秒） | Prompt token 复用 |',
            '|---:|---:|---:|---:|---:|']
     for r in rows:
-        quick.append(f"| {r['cc']} | {r['tasks_per_min']:.2f} | {r['task_p95_s']/60:.2f} | {r['ttft_p95_s']:.2f} | {r['prefix_hit_percent']:.1f}% |")
+        quick.append(f"| {r['cc']} | {r['tasks_per_min']:.2f} | {r['task_p95_s']/60:.2f} | {r['ttft_p95_s']:.2f} | {r['prompt_reuse_percent']:.1f}% |")
     md[6:6]=quick+['']
     md += ['## 数据与复现','',
         '- `summary.csv` / `tables.md`：七档完整指标；`tasks.csv`：每次任务的 cohort 标记、生命周期及分解。',
