@@ -1,0 +1,16 @@
+{
+  "full_traces": 176,
+  "selected_traces": 171,
+  "full_llm_calls": 7187,
+  "full_tool_calls": 7083,
+  "selected_llm_calls": 7105,
+  "selected_tool_calls": 7006,
+  "native_response_counts_match": true,
+  "preflight_output_targets_match": true,
+  "output_partitions_match": true,
+  "time_partitions_match": true,
+  "source_and_preflight_paths_exist": true,
+  "unknown_output_calls": 22,
+  "selected_unknown_output_calls": 19,
+  "missing_timestamp_events": 2
+}

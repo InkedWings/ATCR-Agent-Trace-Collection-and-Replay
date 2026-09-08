@@ -1,0 +1,5 @@
+workload,scope,traces,llm_calls,tool_calls,agent_statuses,splits
+openclaw,all_frozen,115,1672,1570,"{""success"": 93, ""failed"": 22}","{""validation"": 115}"
+openclaw,scale_pool,110,1590,1493,"{""success"": 91, ""failed"": 19}","{""validation"": 110}"
+minisweagent,all_frozen,61,5515,5513,"{""Submitted"": 60, ""LimitsExceeded"": 1}","{""dev"": 23, ""test"": 38}"
+minisweagent,scale_pool,61,5515,5513,"{""Submitted"": 60, ""LimitsExceeded"": 1}","{""dev"": 23, ""test"": 38}"

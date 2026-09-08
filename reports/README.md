@@ -1,9 +1,10 @@
 # 实验分析报告
 
-这里保存 2026-09-07 的分析快照、统计脚本、CSV 和图表。后续结果应注明选用的 run 和测量口径。
+这里保存分析快照、统计脚本、CSV 和图表。各报告注明选用的 run 和测量口径。
 
 | 报告 | 内容 |
 |---|---|
+| [扩展 Trace 分布与构成](2026-09-08-expanded-trace-analysis/README.md) | 对齐 Qwen3.6 scale 池的 110 条 OpenClaw、61 条 mini-SWE；steps、耗时、token 分布，token/tool/time 堆叠图与上下文增长；含 PNG、矢量 PDF 和逐调用 CSV |
 | [cc=1/2/4 数据复核](2026-09-07-cc124/report.md) | 六个有效点的计数复核、性能趋势与后续实验建议 |
 | [Trace 统计与展示方案](2026-09-07-trace-characterization/plan.md) | 24 条 OpenClaw 与 22 条 mini-SWE 原始 trace 的调用、token、工具画像；包含预览图与逐调用统计 |
 | [cc=1/2/4/8/32 scaling 汇总](2026-09-07-scale-cc1-32/README.md) | 十个有效点的完整指标表、窗口定义与趋势解释；cc=16 在此快照中仍缺失 |
