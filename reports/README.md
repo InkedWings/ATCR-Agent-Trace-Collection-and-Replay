@@ -4,6 +4,7 @@
 
 | 报告 | 内容 |
 |---|---|
+| [mini-SWE / Qwen3.6 七档 scale 分析](2026-09-13-minisweagent-qwen36-scale/README.md) | cc1–64 的吞吐、延迟、排队、实际 token 缓存复用与时间分解；完整样本箱线图、初始同 trace 辅助比较及 cc64 窗口偏差、工具结果变化复核 |
 | [OpenClaw / Qwen3.6 七档 scale 分析](2026-09-08-openclaw-qwen36-scale/README.md) | cc1–64 的吞吐、延迟、后端排队与缓存趋势；时间分解、箱线图、同 trace 配对比较及工具错误复核 |
 | [扩展 Trace 分布与构成](2026-09-08-expanded-trace-analysis/README.md) | 对齐 Qwen3.6 scale 池的 110 条 OpenClaw、61 条 mini-SWE；steps、耗时、token 分布，token/tool/time 堆叠图与上下文增长；含 PNG、矢量 PDF 和逐调用 CSV |
 | [cc=1/2/4 数据复核](2026-09-07-cc124/report.md) | 六个有效点的计数复核、性能趋势与后续实验建议 |
