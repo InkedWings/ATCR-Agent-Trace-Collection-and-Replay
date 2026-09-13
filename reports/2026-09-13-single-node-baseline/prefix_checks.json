@@ -1,0 +1,50 @@
+[
+  {
+    "workload": "minisweagent",
+    "trace_id": "marshmallow-code__marshmallow-1343",
+    "nodes": [
+      "llm-064",
+      "llm-065"
+    ],
+    "previous_prompt_tokens": 40872,
+    "current_prompt_tokens": 40962,
+    "common_prefix_tokens": 40871,
+    "aligned_common_prefix_tokens": 40656,
+    "prompt_variants": [
+      {
+        "node_id": "llm-064",
+        "actual_prompt_tokens": 40872,
+        "with_recorded_reasoning_tokens": 43440
+      },
+      {
+        "node_id": "llm-065",
+        "actual_prompt_tokens": 40962,
+        "with_recorded_reasoning_tokens": 43561
+      }
+    ]
+  },
+  {
+    "workload": "openclaw",
+    "trace_id": "676e5e31-a554-4acc-9286-b60d90a92d26",
+    "nodes": [
+      "llm-023",
+      "llm-024"
+    ],
+    "previous_prompt_tokens": 168331,
+    "current_prompt_tokens": 168814,
+    "common_prefix_tokens": 168330,
+    "aligned_common_prefix_tokens": 167904,
+    "prompt_variants": [
+      {
+        "node_id": "llm-023",
+        "actual_prompt_tokens": 168331,
+        "with_recorded_reasoning_tokens": 168331
+      },
+      {
+        "node_id": "llm-024",
+        "actual_prompt_tokens": 168814,
+        "with_recorded_reasoning_tokens": 168814
+      }
+    ]
+  }
+]

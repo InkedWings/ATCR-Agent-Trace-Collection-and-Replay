@@ -75,10 +75,11 @@ def test_request_hook_preserves_native_call_without_recording_content(tmp_path, 
     req = SimpleNamespace(queued_ts=9, scheduled_ts=10, first_token_ts=11, last_token_ts=14,
         num_generation_tokens=101, response_body="PRIVATE")
     try:
-        assert stats.update_from_finished_request("length", 20, 101, req, 0) == "native-result"
-        assert stats.args == ("length", 20, 101, req, 0)
+        assert stats.update_from_finished_request("length", 20, 101, req, 12) == "native-result"
+        assert stats.args == ("length", 20, 101, req, 12)
         row = json.loads(path.read_text())  # flushed at request finish
         assert row["output_tokens"] == 101
+        assert row["prompt_tokens"] == 20 and row["cached_prompt_tokens"] == 12
         assert row["last_token_monotonic"] - row["scheduled_monotonic"] == 4
         assert "PRIVATE" not in path.read_text()
     finally:

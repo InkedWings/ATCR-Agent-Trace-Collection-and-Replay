@@ -187,6 +187,8 @@ def install_request_logger(path: Path):
             "scheduled_unix": offset + req_stats.scheduled_ts,
             "first_token_unix": offset + req_stats.first_token_ts,
             "finished_unix": offset + req_stats.last_token_ts,
+            "prompt_tokens": num_prompt_tokens,
+            "cached_prompt_tokens": num_cached_tokens,
             "output_tokens": req_stats.num_generation_tokens}
         write(row, finish=True)
         return result
