@@ -1,0 +1,17 @@
+{
+  "description": "Balanced weak scaling. Keys are inference replicas; physical nodes = 2 * replicas. Null at N=4 is an explicitly theoretical throughput placeholder.",
+  "openclaw": {
+    "1": "runs/scaling/multinode/openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "2": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "4": null,
+    "8": "runs/scaling/multinode/openclaw-balanced-n8-7618907.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "16": "runs/scaling/multinode/openclaw-balanced-n16-7618908.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov"
+  },
+  "minisweagent": {
+    "1": "runs/scaling/multinode/minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "2": "runs/scaling/multinode/minisweagent-balanced-n2-7619132.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "4": null,
+    "8": "runs/scaling/multinode/minisweagent-balanced-n8-7619134.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "16": "runs/scaling/multinode/minisweagent-balanced-n16-7619136.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov"
+  }
+}
