@@ -1,0 +1,446 @@
+{
+  "sources": {
+    "state": "reports/2026-09-16-kv-cache-cause/evidence.json",
+    "weak_scaling": "reports/2026-09-15-weak-scaling/analysis.json",
+    "merged_results": "reports/2026-09-22-routing-and-frontend/analysis.json",
+    "replicas": "reports/2026-09-22-routing-and-frontend/replica_diagnostics.json",
+    "arrivals": "reports/2026-09-22-routing-and-frontend/routing_arrivals.json",
+    "timeseries": "reports/2026-09-22-routing-and-frontend/timeseries.csv",
+    "replica_timeseries": "reports/2026-09-22-routing-and-frontend/replica_timeseries.csv"
+  },
+  "insight1": {
+    "cc": [
+      {
+        "name": "openclaw-cc16",
+        "source": "runs/scaling/multinode/openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "output_tokens_per_second": 433.58444444444444,
+        "actual_prefix_reuse": 0.9394768856664717,
+        "uncached_prompt_per_output": 10.324056444214378,
+        "valid": true,
+        "steady": true
+      },
+      {
+        "name": "openclaw-cc32",
+        "source": "runs/scaling/multinode/openclaw-calibration-cc32-n1-8192-20260914-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "output_tokens_per_second": 282.40722222222223,
+        "actual_prefix_reuse": 0.6886715516421845,
+        "uncached_prompt_per_output": 50.762627057460364,
+        "valid": true,
+        "steady": false
+      },
+      {
+        "name": "openclaw-cc64",
+        "source": "runs/scaling/multinode/openclaw-calibration-cc64-n1-8192-20260914-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "output_tokens_per_second": 167.29333333333332,
+        "actual_prefix_reuse": 0.09242872368688297,
+        "uncached_prompt_per_output": 132.47592884089158,
+        "valid": true,
+        "steady": false
+      }
+    ],
+    "pair": [
+      {
+        "request_id": "chatcmpl-9d2065ec9cb6380b-acc87524",
+        "timestamp_unix": 1789320360.5925732,
+        "prompt": 168814,
+        "attention_hit": 167904,
+        "cached": 167904,
+        "mamba_reduction": 0,
+        "output_tokens": 71,
+        "queue_seconds": 3.44705767929554e-06,
+        "scheduled_to_first_token_seconds": 0.4257675439585
+      },
+      {
+        "request_id": "chatcmpl-86a3b06f2bdb8687-86268093",
+        "timestamp_unix": 1789321419.9516156,
+        "prompt": 168814,
+        "attention_hit": 167904,
+        "cached": 4752,
+        "mamba_reduction": 163152,
+        "output_tokens": 71,
+        "queue_seconds": 3.3460091799497604e-06,
+        "scheduled_to_first_token_seconds": 9.27511384501122
+      }
+    ]
+  },
+  "insight2": [
+    {
+      "workload": "minisweagent",
+      "backends": 1,
+      "source_run": "runs/scaling/multinode/minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 722.1357407407407,
+      "prefix_reuse": 0.9562109744487783,
+      "quality_note": "complete_steady",
+      "token_speedup": 1.0,
+      "token_efficiency_percent": 100.0
+    },
+    {
+      "workload": "minisweagent",
+      "backends": 2,
+      "source_run": "runs/scaling/multinode/minisweagent-balanced-n2-7619132.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 1421.5783333333334,
+      "prefix_reuse": 0.9530658557708218,
+      "quality_note": "complete_steady",
+      "token_speedup": 1.9685749550010219,
+      "token_efficiency_percent": 98.42874775005109
+    },
+    {
+      "workload": "minisweagent",
+      "backends": 8,
+      "source_run": "runs/scaling/multinode/minisweagent-balanced-n8-7619134.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 5699.781481481482,
+      "prefix_reuse": 0.9544795603769294,
+      "quality_note": "complete_steady",
+      "token_speedup": 7.892950258402737,
+      "token_efficiency_percent": 98.66187823003422
+    },
+    {
+      "workload": "minisweagent",
+      "backends": 16,
+      "source_run": "runs/scaling/multinode/minisweagent-balanced-n16-7619136.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 11446.84925925926,
+      "prefix_reuse": 0.95585092667678,
+      "quality_note": "complete_steady",
+      "token_speedup": 15.851381691089676,
+      "token_efficiency_percent": 99.07113556931047
+    },
+    {
+      "workload": "openclaw",
+      "backends": 1,
+      "source_run": "runs/scaling/multinode/openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 433.58444444444444,
+      "prefix_reuse": 0.9394768856664717,
+      "quality_note": "complete_steady",
+      "token_speedup": 1.0,
+      "token_efficiency_percent": 100.0
+    },
+    {
+      "workload": "openclaw",
+      "backends": 2,
+      "source_run": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 869.0375,
+      "prefix_reuse": 0.9389497729992127,
+      "quality_note": "frontend sampling gap; main counts checked",
+      "token_speedup": 2.0043096820816655,
+      "token_efficiency_percent": 100.21548410408327
+    },
+    {
+      "workload": "openclaw",
+      "backends": 4,
+      "source_run": "runs/scaling/multinode/openclaw-balanced-n4-7616566.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 1752.9675,
+      "prefix_reuse": 0.9394942209312193,
+      "quality_note": "complete_steady",
+      "token_speedup": 4.04296676797548,
+      "token_efficiency_percent": 101.07416919938701
+    },
+    {
+      "workload": "openclaw",
+      "backends": 8,
+      "source_run": "runs/scaling/multinode/openclaw-balanced-n8-7618907.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 3510.686111111111,
+      "prefix_reuse": 0.9399047778178855,
+      "quality_note": "complete_steady",
+      "token_speedup": 8.096891288637867,
+      "token_efficiency_percent": 101.21114110797333
+    },
+    {
+      "workload": "openclaw",
+      "backends": 16,
+      "source_run": "runs/scaling/multinode/openclaw-balanced-n16-7618908.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "output_tokens_s": 7027.791944444444,
+      "prefix_reuse": 0.9395685377084949,
+      "quality_note": "complete_steady",
+      "token_speedup": 16.20858874088349,
+      "token_efficiency_percent": 101.3036796305218
+    }
+  ],
+  "insight3": {
+    "cpu": [
+      {
+        "workload": "openclaw",
+        "run": "openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "total_cc": 128,
+        "frontend_cpu_mean_percent": 35.43319517793644
+      },
+      {
+        "workload": "minisweagent",
+        "run": "minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "total_cc": 256,
+        "frontend_cpu_mean_percent": 95.79368564633464
+      }
+    ],
+    "controls": [
+      {
+        "label": "1 FE / 4 slots",
+        "run": "minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "frontends": 1,
+        "total_slots": 4,
+        "total_cc": 256,
+        "output_tokens_s": 5259.454259259259,
+        "cpu_per_frontend": 95.79368564633464,
+        "slot_wait_s": 97.28587008065749,
+        "environment_creation_s": 12.71774674118111,
+        "tool_phase_s": 194.7163157552114
+      },
+      {
+        "label": "1 FE / 8 slots",
+        "run": "minisweagent-frontend-f1-n8-build8-7643324.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "frontends": 1,
+        "total_slots": 8,
+        "total_cc": 256,
+        "output_tokens_s": 5204.485185185185,
+        "cpu_per_frontend": 98.09285231915241,
+        "slot_wait_s": 11.093810929861949,
+        "environment_creation_s": 21.03650028730548,
+        "tool_phase_s": 257.4432459122596
+      },
+      {
+        "label": "2 FE / 4 slots total",
+        "run": "minisweagent-frontend-f2-n8-build2-7643323.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "frontends": 2,
+        "total_slots": 4,
+        "total_cc": 256,
+        "output_tokens_s": 5690.477777777778,
+        "cpu_per_frontend": 44.97892514332882,
+        "slot_wait_s": 0.9432526321925618,
+        "environment_creation_s": 5.323872193746898,
+        "tool_phase_s": 102.6230139171662
+      }
+    ]
+  },
+  "insight4": {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "status": "window_complete_warmup_failures",
+    "replicas": [
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r00",
+        "samples": 3590,
+        "waiting_mean": 0.06406685236768803,
+        "running_mean": 2.4111420612813372,
+        "kv_cache_mean": 0.06652419277464694,
+        "output_tokens_s": 156.53416666666666,
+        "prefix_reuse": 0.6817078200306929,
+        "arrivals": 2006,
+        "residence_s": 4.601378500639857
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r01",
+        "samples": 3590,
+        "waiting_mean": 0.05766016713091922,
+        "running_mean": 2.754317548746518,
+        "kv_cache_mean": 0.07207060833075124,
+        "output_tokens_s": 160.0025,
+        "prefix_reuse": 0.6729261361898262,
+        "arrivals": 2006,
+        "residence_s": 5.06030474167878
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r02",
+        "samples": 3590,
+        "waiting_mean": 0.05097493036211699,
+        "running_mean": 2.4217270194986074,
+        "kv_cache_mean": 0.06655997508607416,
+        "output_tokens_s": 160.18722222222223,
+        "prefix_reuse": 0.6814400813211071,
+        "arrivals": 2006,
+        "residence_s": 4.498751726844612
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r03",
+        "samples": 3590,
+        "waiting_mean": 0.10250696378830083,
+        "running_mean": 2.7178272980501395,
+        "kv_cache_mean": 0.07705834797393475,
+        "output_tokens_s": 154.41972222222222,
+        "prefix_reuse": 0.6884657068648348,
+        "arrivals": 2006,
+        "residence_s": 5.177035869059273
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r04",
+        "samples": 3590,
+        "waiting_mean": 0.08495821727019498,
+        "running_mean": 2.301949860724234,
+        "kv_cache_mean": 0.06623856342277076,
+        "output_tokens_s": 151.27694444444444,
+        "prefix_reuse": 0.6910334138252672,
+        "arrivals": 2006,
+        "residence_s": 4.461866097578618
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r05",
+        "samples": 3590,
+        "waiting_mean": 0.05626740947075209,
+        "running_mean": 2.349025069637883,
+        "kv_cache_mean": 0.06322474909128657,
+        "output_tokens_s": 160.0275,
+        "prefix_reuse": 0.6925894537364794,
+        "arrivals": 2006,
+        "residence_s": 4.488689742915533
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r06",
+        "samples": 3590,
+        "waiting_mean": 0.07270194986072423,
+        "running_mean": 2.372423398328691,
+        "kv_cache_mean": 0.06650060004183778,
+        "output_tokens_s": 156.38,
+        "prefix_reuse": 0.6890188190299069,
+        "arrivals": 2006,
+        "residence_s": 4.562961496360756
+      },
+      {
+        "workload": "openclaw",
+        "group": "routing_rr",
+        "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+        "replica": "r07",
+        "samples": 3590,
+        "waiting_mean": 61.85292479108635,
+        "running_mean": 39.81532033426184,
+        "kv_cache_mean": 0.9175652614310723,
+        "output_tokens_s": 148.20583333333335,
+        "prefix_reuse": 0.13898685526207863,
+        "arrivals": 2006,
+        "residence_s": 188.2582503881673
+      }
+    ],
+    "trajectory": [
+      {
+        "minute": 2.5,
+        "output_tokens_s": 1747.2166666666667,
+        "hotspot_waiting": 40.847401129943506,
+        "other_waiting": 0.1374011299435028
+      },
+      {
+        "minute": 7.5,
+        "output_tokens_s": 1438.2633333333333,
+        "hotspot_waiting": 55.42,
+        "other_waiting": 0.061904761904761886
+      },
+      {
+        "minute": 12.5,
+        "output_tokens_s": 1268.5233333333333,
+        "hotspot_waiting": 58.998305084745766,
+        "other_waiting": 0.03202582728006456
+      },
+      {
+        "minute": 17.5,
+        "output_tokens_s": 1250.0,
+        "hotspot_waiting": 59.88581920903955,
+        "other_waiting": 0.07333333333333332
+      },
+      {
+        "minute": 22.5,
+        "output_tokens_s": 1121.4266666666667,
+        "hotspot_waiting": 62.33158192090396,
+        "other_waiting": 0.09944309927360774
+      },
+      {
+        "minute": 27.5,
+        "output_tokens_s": 1141.33,
+        "hotspot_waiting": 63.20745762711864,
+        "other_waiting": 0.04101694915254237
+      },
+      {
+        "minute": 32.5,
+        "output_tokens_s": 1302.6266666666668,
+        "hotspot_waiting": 66.26152542372881,
+        "other_waiting": 0.06004035512510088
+      },
+      {
+        "minute": 37.5,
+        "output_tokens_s": 1317.7366666666667,
+        "hotspot_waiting": 55.92666666666666,
+        "other_waiting": 0.12828894269572233
+      },
+      {
+        "minute": 42.5,
+        "output_tokens_s": 1215.8066666666666,
+        "hotspot_waiting": 64.50762711864407,
+        "other_waiting": 0.10885391444713478
+      },
+      {
+        "minute": 47.5,
+        "output_tokens_s": 1039.1866666666667,
+        "hotspot_waiting": 72.94853107344633,
+        "other_waiting": 0.02482647296206618
+      },
+      {
+        "minute": 52.5,
+        "output_tokens_s": 1078.6833333333334,
+        "hotspot_waiting": 68.70090395480227,
+        "other_waiting": 0.05231638418079096
+      },
+      {
+        "minute": 57.5,
+        "output_tokens_s": 1043.6066666666666,
+        "hotspot_waiting": 73.17005649717514,
+        "other_waiting": 0.02004842615012107
+      }
+    ],
+    "half_output_tokens_s": [
+      1327.7933333333333,
+      1166.2744444444445
+    ]
+  },
+  "insight5": [
+    {
+      "workload": "openclaw",
+      "policy": "routing_rr",
+      "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "status": "complete_nonsteady",
+      "output_tokens_s": 614.5880555555556,
+      "prefix_reuse": 0.6347977431895123,
+      "max_replica_mean_waiting": 13.578272980501392
+    },
+    {
+      "workload": "openclaw",
+      "policy": "routing_cache",
+      "run": "openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "status": "complete_steady",
+      "output_tokens_s": 1618.4922222222222,
+      "prefix_reuse": 0.905777757322709,
+      "max_replica_mean_waiting": 0.1860724233983287
+    },
+    {
+      "workload": "minisweagent",
+      "policy": "routing_rr",
+      "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "status": "window_only_drain_timeout",
+      "output_tokens_s": 775.5961111111111,
+      "prefix_reuse": 0.5949036097624263,
+      "max_replica_mean_waiting": 62.56118848653668
+    },
+    {
+      "workload": "minisweagent",
+      "policy": "routing_cache",
+      "run": "minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "status": "complete_steady",
+      "output_tokens_s": 2412.6724074074073,
+      "prefix_reuse": 0.8857951246749552,
+      "max_replica_mean_waiting": 0.6
+    }
+  ]
+}
