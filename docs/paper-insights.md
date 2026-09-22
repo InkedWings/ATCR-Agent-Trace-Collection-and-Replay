@@ -1,36 +1,16 @@
 # Paper Insights
 
-[All figures (PDF)](figures/paper-insights/paper-insights-figures.pdf) · [Plotting data](figures/paper-insights/figure-data.json) · [Reproduce figures](figures/paper-insights/README.md). Figures use measured windows; missing results are not imputed.
-
 ## Insight 1: State retention can limit concurrency scaling
 
 Agentic workloads alternate between LLM calls and tool execution while repeatedly reusing growing histories, making efficient execution depend on inference state retained between calls. In hybrid architectures combining attention and recurrent layers, prefix reuse requires both attention KV and the corresponding recurrent state. In the evaluated vLLM implementation, both are managed through a shared block pool: historical state blocks become reclaimable when their reference counts reach zero, and subsequent allocations can evict their cached contents. Higher concurrency can intensify this competition, leaving attention KV available but the required recurrent state missing. The resulting loss of prefix reuse forces additional prefill and can reduce output throughput, making state retention across calls a key constraint on agent concurrency scaling.
-
-![Concurrency scaling and request-level evidence of hybrid state limitations](figures/paper-insights/01_state_retention.png)
-
-*Figure 1. OpenClaw with an 8,192-token batch budget. (a–b) One-hour CC sweep; hollow markers identify nonsteady windows. (c–d) Two executions of the same 168,814-token prompt in a separate CC32 diagnostic: attention KV matches 167,904 tokens in both, but final reuse falls to 4,752. The diagnostic establishes a state limitation without attributing all long-run degradation to that mechanism.*
-
-[Vector PDF](figures/paper-insights/01_state_retention.pdf) · [Evidence and measurement definitions](../reports/2026-09-16-kv-cache-cause/README.md)
 
 ## Insight 2: Agentic workloads can achieve nearly linear weak scaling
 
 Agentic workloads can scale nearly linearly when frontend resources and independent inference replicas grow together, task concurrency per replica remains fixed, and tasks retain affinity to their backends. In our experiments, scaling from one to sixteen inference replicas with matching frontend resources achieves approximately 99–101% scaling efficiency in output token throughput across both workloads while maintaining prefix reuse. These results show that dependencies between agent steps and intervening tool execution need not prevent scaling across nodes: replicating a stable serving configuration preserves local cache and request supply conditions while increasing aggregate throughput.
 
-![Measured weak-scaling speedup, efficiency, and prefix reuse](figures/paper-insights/02_weak_scaling.png)
-
-*Figure 2. Equal numbers of frontends and inference replicas, with per-replica CC fixed at 16 for OpenClaw and 32 for mini-SWE. Speedup is relative to each workload's one-replica baseline; efficiency divides speedup by replica count. At 16 replicas, efficiencies are 101.3% and 99.1%. The missing mini-SWE four-replica point breaks its line; the dashed ideal line is a reference.*
-
-[Vector PDF](figures/paper-insights/02_weak_scaling.pdf) · [Weak-scaling measurements](../reports/2026-09-15-weak-scaling/README.md) · [Updated OpenClaw four-replica measurement](../reports/2026-09-22-routing-and-frontend/analysis.json)
-
 ## Insight 3: Frontend–backend provisioning must reflect tool and environment demand
 
 Agentic serving requires workload-dependent frontend–backend ratios because tool execution and environment management shape the supply of requests to inference replicas. In our replay experiments with eight inference replicas, one frontend averages about 35% CPU utilization for OpenClaw but 96% for mini-SWE. For mini-SWE, adding a second frontend while keeping total task concurrency and the aggregate environment-creation limit unchanged improves output throughput by 8.2%. Increasing the creation limit on the existing frontend reduces explicit waiting but slows environment creation and tool execution, yielding no throughput gain. These results indicate that frontend resource contention can constrain inference throughput, and higher software concurrency cannot substitute for additional capacity once the frontend saturates. Frontend resources should therefore be provisioned according to aggregate tool and environment demand rather than a fixed ratio to inference replicas.
-
-![Frontend CPU demand and controlled mini-SWE resource comparisons](figures/paper-insights/03_frontend_capacity.png)
-
-*Figure 3. Eight inference backends. (a) One frontend, with total CC128 for OpenClaw and CC256 for mini-SWE. (b–d) mini-SWE at fixed CC256; slots denote the aggregate environment-creation limit. A second frontend raises output throughput by 8.2%. Increasing slots on the existing frontend reduces explicit waiting while environment creation and tools slow down. Timings are means over complete measurement-admission cohorts.*
-
-[Vector PDF](figures/paper-insights/03_frontend_capacity.pdf) · [Controlled frontend comparisons](../reports/2026-09-22-routing-and-frontend/README.md#2-前端对照增加资源有效单纯增加-build-名额无吞吐收益)
 
 ## Insight 4: Similar backend throughput can mask severe load imbalance
 
