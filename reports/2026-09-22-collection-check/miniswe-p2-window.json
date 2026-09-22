@@ -1,0 +1,189 @@
+{
+  "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-routing-n4-power_of_two-7643321.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+  "raw_status": {
+    "status": "failed",
+    "valid": false,
+    "error": "",
+    "error_type": "TimeoutError",
+    "ended_unix": 1790067999.4933045
+  },
+  "summary": {
+    "output_tokens": 4117950,
+    "prompt_tokens": 642845445,
+    "cached_prompt_tokens": 369195024,
+    "replicas": [
+      {
+        "replica": "r00",
+        "output_tokens": 1009293,
+        "prompt_tokens": 157985643,
+        "cached_prompt_tokens": 117982128
+      },
+      {
+        "replica": "r01",
+        "output_tokens": 1029154,
+        "prompt_tokens": 161567175,
+        "cached_prompt_tokens": 119952624
+      },
+      {
+        "replica": "r02",
+        "output_tokens": 1056666,
+        "prompt_tokens": 163820821,
+        "cached_prompt_tokens": 12527328
+      },
+      {
+        "replica": "r03",
+        "output_tokens": 1022837,
+        "prompt_tokens": 159471806,
+        "cached_prompt_tokens": 118732944
+      }
+    ],
+    "measurement": {
+      "start_unix": 1790058914.8253946,
+      "measurement_start_unix": 1790060714.8253946,
+      "measurement_end_unix": 1790066114.8253946
+    },
+    "valid": false,
+    "steady": null,
+    "collection_complete": false,
+    "validation_errors": [
+      "drain timeout; censored admission cohort"
+    ],
+    "diagnostic_warnings": [],
+    "duration_seconds": 5400.0,
+    "output_tokens_per_second": 762.5833333333334,
+    "actual_prefix_reuse": 0.5743138212638342,
+    "completed_in_window": 237,
+    "uncached_prompt_tokens": 273650421,
+    "failed_tasks": 0
+  },
+  "workers": [
+    {
+      "replica": "r00",
+      "status": "cancelled",
+      "failed_tasks": 0,
+      "window_start": 1790060714.8253946,
+      "window_end": 1790066114.8253946
+    },
+    {
+      "replica": "r01",
+      "status": "cancelled",
+      "failed_tasks": 0,
+      "window_start": 1790060714.8253946,
+      "window_end": 1790066114.8253946
+    },
+    {
+      "replica": "r02",
+      "status": "cancelled",
+      "failed_tasks": 0,
+      "window_start": 1790060714.8253946,
+      "window_end": 1790066114.8253946
+    },
+    {
+      "replica": "r03",
+      "status": "cancelled",
+      "failed_tasks": 0,
+      "window_start": 1790060714.8253946,
+      "window_end": 1790066114.8253946
+    }
+  ],
+  "all_task_status_counts": {
+    "completed": 431,
+    "cancelled": 38
+  },
+  "window_admission_status_counts": {
+    "completed": 200,
+    "cancelled": 37
+  },
+  "recovery_audit": [
+    {
+      "replica": "r00",
+      "window_token_requests": 5503,
+      "unmatched_window_token_requests": 0,
+      "token_total_mismatches": 0,
+      "first_token_request_finish_reasons": {
+        "length": 5502
+      },
+      "prometheus_boundary_offsets_seconds": [
+        0.024970531463623047,
+        0.9585673809051514
+      ],
+      "metrics_max_gap_seconds": 1.1100516319274902,
+      "counter_resets_in_window": 0,
+      "prometheus_deltas": {
+        "output": 1009291.0,
+        "prompt": 158077274.0,
+        "cached": 118001664.0,
+        "preemptions": 0.0
+      },
+      "output_event_counter_relative_difference": 1.981585129392555e-06
+    },
+    {
+      "replica": "r01",
+      "window_token_requests": 5537,
+      "unmatched_window_token_requests": 0,
+      "token_total_mismatches": 0,
+      "first_token_request_finish_reasons": {
+        "length": 5536
+      },
+      "prometheus_boundary_offsets_seconds": [
+        0.5286252498626709,
+        0.4586365222930908
+      ],
+      "metrics_max_gap_seconds": 1.1086704730987549,
+      "counter_resets_in_window": 0,
+      "prometheus_deltas": {
+        "output": 1029206.0,
+        "prompt": 161620392.0,
+        "cached": 120004896.0,
+        "preemptions": 0.0
+      },
+      "output_event_counter_relative_difference": 5.052693765947565e-05
+    },
+    {
+      "replica": "r02",
+      "window_token_requests": 5590,
+      "unmatched_window_token_requests": 0,
+      "token_total_mismatches": 0,
+      "first_token_request_finish_reasons": {
+        "length": 5536
+      },
+      "prometheus_boundary_offsets_seconds": [
+        0.03815412521362305,
+        0.9669320583343506
+      ],
+      "metrics_max_gap_seconds": 1.1112890243530273,
+      "counter_resets_in_window": 0,
+      "prometheus_deltas": {
+        "output": 1056812.0,
+        "prompt": 163859270.0,
+        "cached": 12527328.0,
+        "preemptions": 8.0
+      },
+      "output_event_counter_relative_difference": 0.00013817043417693007
+    },
+    {
+      "replica": "r03",
+      "window_token_requests": 5469,
+      "unmatched_window_token_requests": 0,
+      "token_total_mismatches": 0,
+      "first_token_request_finish_reasons": {
+        "length": 5465
+      },
+      "prometheus_boundary_offsets_seconds": [
+        0.11565113067626953,
+        0.10532402992248535
+      ],
+      "metrics_max_gap_seconds": 1.1230509281158447,
+      "counter_resets_in_window": 0,
+      "prometheus_deltas": {
+        "output": 1022786.0,
+        "prompt": 159471806.0,
+        "cached": 118732945.0,
+        "preemptions": 0.0
+      },
+      "output_event_counter_relative_difference": 4.9861317101356325e-05
+    }
+  ],
+  "window_usable": true,
+  "complete_latency_cohort": false
+}

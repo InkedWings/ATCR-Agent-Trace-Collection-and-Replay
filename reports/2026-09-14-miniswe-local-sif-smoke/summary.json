@@ -1,0 +1,89 @@
+{
+  "run_directory": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-sif-smoke-n1-20260914-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+  "status": {
+    "status": "completed",
+    "ended_unix": 1789419505.8639157,
+    "valid": true,
+    "steady": false
+  },
+  "point": {
+    "id": "minisweagent-sif-smoke-n1-20260914",
+    "workload": "minisweagent",
+    "inference_replicas": 1,
+    "layout": "balanced",
+    "frontend_nodes": 1,
+    "physical_nodes": 2,
+    "routing": "sticky",
+    "prefix_reuse": "normal",
+    "proxy": false,
+    "smoke": true,
+    "task_cc_per_replica": 2,
+    "warmup_seconds": 30,
+    "duration_seconds": 60,
+    "seed": 42,
+    "pbs": {
+      "queue": "preemptable",
+      "walltime": "03:00:00",
+      "drain_budget_seconds": 1800
+    }
+  },
+  "serve": {
+    "VLLM_MODEL": "Qwen/Qwen3.6-35B-A3B",
+    "VLLM_SERVED_MODEL_NAME": "qwen/qwen3.6-35b-a3b",
+    "VLLM_TENSOR_PARALLEL_SIZE": "4",
+    "VLLM_MAX_MODEL_LEN": "262144",
+    "VLLM_MAX_NUM_SEQS": "64",
+    "VLLM_MAX_NUM_BATCHED_TOKENS": "8192",
+    "VLLM_GPU_MEMORY_UTILIZATION": "0.90",
+    "VLLM_PREFIX_CACHING": "1",
+    "VLLM_PORT": "18000",
+    "VLLM_TOOL_CALL_PARSER": "qwen3_coder",
+    "VLLM_REASONING_PARSER": "qwen3",
+    "VLLM_LANGUAGE_MODEL_ONLY": "1",
+    "VLLM_SAFETENSORS_LOAD_STRATEGY": "eager",
+    "VLLM_ENABLE_THINKING": "1"
+  },
+  "validation_errors": [],
+  "diagnostic_warnings": [],
+  "image_staging": {
+    "shared_cache": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/cache/minisweagent-images",
+    "local_cache": "/local/scratch/zye25/agenttrace-multinode/minisweagent-images",
+    "images": 61,
+    "copied": 61,
+    "reused": 0,
+    "total_bytes": 69423398912,
+    "elapsed_seconds": 73.10648621595465,
+    "completed_unix": 1789419318.0914943
+  },
+  "reuse_check": {
+    "shared_cache": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/cache/minisweagent-images",
+    "local_cache": "/local/scratch/zye25/agenttrace-multinode/minisweagent-images",
+    "images": 61,
+    "copied": 0,
+    "reused": 61,
+    "total_bytes": 69423398912,
+    "elapsed_seconds": 0.008075160905718803,
+    "completed_unix": 1789419562.866253,
+    "builds": 6,
+    "unique_sandbox_paths": 6,
+    "remaining_sandboxes": [],
+    "all_build_sources_node_local": true
+  },
+  "checks": {
+    "task_reports": 4,
+    "llm_calls": 106,
+    "tool_calls": 106,
+    "actual_output_tokens": 22480,
+    "target_token_mismatches": [],
+    "native_tool_errors": 10,
+    "new_tool_errors": [],
+    "tool_error_state_changes": [],
+    "node_set_mismatches": [],
+    "missing_task_artifacts": []
+  },
+  "worker_completed": 4,
+  "window_output_tokens": 9870,
+  "backend_requests": 106,
+  "backend_all_output_tokens": 22480,
+  "unit_tests": "27 passed"
+}

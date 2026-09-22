@@ -1,0 +1,436 @@
+{
+  "experiments": [
+    {
+      "label": "mini-SWE 2+8，build=2/frontend",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-frontend-f2-n8-build2-7643323.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "complete",
+      "job_id": "7643323",
+      "raw_status": {
+        "status": "completed",
+        "ended_unix": 1790069271.0320036,
+        "valid": true,
+        "steady": true
+      },
+      "frontends": 2,
+      "backends": 8,
+      "total_task_cc": 256,
+      "duration_seconds": 5400.0,
+      "completed_in_window": 1835,
+      "output_tokens_per_second": 5690.477777777778,
+      "tasks_per_minute": 20.38888888888889,
+      "actual_prefix_reuse": 0.9556786395092096,
+      "raw_steady": true,
+      "validation_errors": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "tasks": 332,
+          "completed_in_window": 238
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "tasks": 331,
+          "completed_in_window": 223
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "tasks": 322,
+          "completed_in_window": 224
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "tasks": 323,
+          "completed_in_window": 232
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "tasks": 326,
+          "completed_in_window": 232
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "tasks": 321,
+          "completed_in_window": 222
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "tasks": 326,
+          "completed_in_window": 230
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "tasks": 329,
+          "completed_in_window": 234
+        }
+      ],
+      "task_status_counts": {
+        "completed": 2610
+      },
+      "frontend_cpu_mean_percent": [
+        44.829627493563514,
+        45.128222793094125
+      ],
+      "local_frontend_profiles": [
+        {
+          "host": "x3001c0s25b0n0",
+          "build_slots": 2,
+          "sif_count": 61,
+          "image_cache_dir": "/local/scratch/zye25/agenttrace-multinode/minisweagent-images"
+        },
+        {
+          "host": "x3001c0s25b1n0",
+          "build_slots": 2,
+          "sif_count": 61,
+          "image_cache_dir": "/local/scratch/zye25/agenttrace-multinode/minisweagent-images"
+        }
+      ]
+    },
+    {
+      "label": "mini-SWE 1+8，build=8",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-frontend-f1-n8-build8-7643324.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "complete",
+      "job_id": "7643324",
+      "raw_status": {
+        "status": "completed",
+        "ended_unix": 1790070434.971553,
+        "valid": true,
+        "steady": true
+      },
+      "frontends": 1,
+      "backends": 8,
+      "total_task_cc": 256,
+      "duration_seconds": 5400.0,
+      "completed_in_window": 1664,
+      "output_tokens_per_second": 5204.485185185185,
+      "tasks_per_minute": 18.488888888888887,
+      "actual_prefix_reuse": 0.9628551588789972,
+      "raw_steady": true,
+      "validation_errors": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "tasks": 301,
+          "completed_in_window": 213
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "tasks": 296,
+          "completed_in_window": 206
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "tasks": 301,
+          "completed_in_window": 209
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "tasks": 294,
+          "completed_in_window": 210
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "tasks": 299,
+          "completed_in_window": 211
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "tasks": 294,
+          "completed_in_window": 202
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "tasks": 297,
+          "completed_in_window": 206
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "tasks": 294,
+          "completed_in_window": 207
+        }
+      ],
+      "task_status_counts": {
+        "completed": 2376
+      },
+      "frontend_cpu_mean_percent": [
+        98.09285231915241
+      ],
+      "local_frontend_profiles": [
+        {
+          "host": "x3003c0s25b1n0",
+          "build_slots": 8,
+          "sif_count": 61,
+          "image_cache_dir": "/local/scratch/zye25/agenttrace-multinode/minisweagent-images"
+        }
+      ]
+    },
+    {
+      "label": "OpenClaw 1+8 RR",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "window_with_warmup_errors",
+      "job_id": "7643277",
+      "raw_status": {
+        "status": "failed",
+        "valid": false,
+        "error": "global count/window validation failed (collection_complete=True, failed_tasks=2); inspect summary.json",
+        "error_type": "RuntimeError",
+        "ended_unix": 1790065461.7708626
+      },
+      "frontends": 1,
+      "backends": 8,
+      "total_task_cc": 128,
+      "warmup_failures": [
+        {
+          "replica": "r06",
+          "task_id": "00008",
+          "failure": {
+            "kind": "http_transport",
+            "error_type": "ReadTimeout"
+          },
+          "started_unix": 1790059914.3107738,
+          "ended_unix": 1790059999.979774
+        },
+        {
+          "replica": "r07",
+          "task_id": "00009",
+          "failure": {
+            "kind": "http_transport",
+            "error_type": "ReadTimeout"
+          },
+          "started_unix": 1790059915.0377681,
+          "ended_unix": 1790059998.4902797
+        }
+      ],
+      "duration_seconds": 3600.0,
+      "completed_in_window": 1122,
+      "output_tokens_per_second": 1247.033888888889,
+      "tasks_per_minute": 18.7,
+      "actual_prefix_reuse": 0.6176562374263403,
+      "raw_steady": false,
+      "validation_errors": [
+        "r06/00008: failed",
+        "r07/00009: failed"
+      ],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "tasks": 194,
+          "completed_in_window": 141
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "tasks": 178,
+          "completed_in_window": 130
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "tasks": 201,
+          "completed_in_window": 143
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "tasks": 194,
+          "completed_in_window": 142
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "tasks": 184,
+          "completed_in_window": 132
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "tasks": 203,
+          "completed_in_window": 149
+        },
+        {
+          "replica": "r06",
+          "status": "completed_with_errors",
+          "tasks": 193,
+          "completed_in_window": 144
+        },
+        {
+          "replica": "r07",
+          "status": "completed_with_errors",
+          "tasks": 190,
+          "completed_in_window": 141
+        }
+      ],
+      "task_status_counts": {
+        "completed": 1535,
+        "failed": 2
+      },
+      "frontend_cpu_mean_percent": [
+        10.743675478645436
+      ]
+    },
+    {
+      "label": "mini-SWE 1+4 P2",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-routing-n4-power_of_two-7643321.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "window_recovered_after_drain_timeout",
+      "job_id": "7643321",
+      "raw_status": {
+        "status": "failed",
+        "valid": false,
+        "error": "",
+        "error_type": "TimeoutError",
+        "ended_unix": 1790067999.4933045
+      },
+      "frontends": 1,
+      "backends": 4,
+      "total_task_cc": 128,
+      "duration_seconds": 5400.0,
+      "completed_in_window": 237,
+      "output_tokens_per_second": 762.5833333333334,
+      "tasks_per_minute": 2.6333333333333333,
+      "actual_prefix_reuse": 0.5743138212638342,
+      "raw_steady": null,
+      "validation_errors": [
+        "drain timeout; censored admission cohort"
+      ],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "cancelled",
+          "tasks": 115,
+          "completed_in_window": 60
+        },
+        {
+          "replica": "r01",
+          "status": "cancelled",
+          "tasks": 118,
+          "completed_in_window": 61
+        },
+        {
+          "replica": "r02",
+          "status": "cancelled",
+          "tasks": 121,
+          "completed_in_window": 62
+        },
+        {
+          "replica": "r03",
+          "status": "cancelled",
+          "tasks": 115,
+          "completed_in_window": 54
+        }
+      ],
+      "task_status_counts": {
+        "completed": 431,
+        "cancelled": 38
+      },
+      "local_frontend_profiles": [
+        {
+          "host": "x3003c0s13b1n0",
+          "build_slots": 4,
+          "sif_count": 61,
+          "image_cache_dir": "/local/scratch/zye25/agenttrace-multinode/minisweagent-images"
+        }
+      ]
+    },
+    {
+      "label": "OpenClaw 1+8 cache-aware",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/openclaw-routing-n8-cache_aware-7643278.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "startup_failed",
+      "job_id": "7643278",
+      "raw_status": {
+        "status": "failed",
+        "valid": false,
+        "error": "unhandled errors in a TaskGroup (1 sub-exception)",
+        "error_type": "ExceptionGroup",
+        "ended_unix": 1790058054.8765237
+      },
+      "frontends": 1,
+      "backends": 8,
+      "total_task_cc": 128,
+      "failure_host": "x3003c0s25b0n0",
+      "failure_log": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/openclaw-routing-n8-cache_aware-7643278.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/backends/r07/service.log",
+      "failure_reason": "CUDA device=1, num_gpus=1 assertion"
+    },
+    {
+      "label": "mini-SWE 1+8 RR",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-routing-n8-round_robin-7643279.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "startup_failed",
+      "job_id": "7643279",
+      "raw_status": {
+        "status": "failed",
+        "valid": false,
+        "error": "unhandled errors in a TaskGroup (1 sub-exception)",
+        "error_type": "ExceptionGroup",
+        "ended_unix": 1790058152.4913843
+      },
+      "frontends": 1,
+      "backends": 8,
+      "total_task_cc": 256,
+      "failure_host": "x3208c0s37b1n0",
+      "failure_log": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-routing-n8-round_robin-7643279.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/backends/r00/service.log",
+      "failure_reason": "CUDA-capable device(s) busy or unavailable"
+    },
+    {
+      "label": "mini-SWE 1+8 cache-aware",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-routing-n8-cache_aware-7643280.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "startup_failed",
+      "job_id": "7643280",
+      "raw_status": {
+        "status": "failed",
+        "valid": false,
+        "error": "unhandled errors in a TaskGroup (1 sub-exception)",
+        "error_type": "ExceptionGroup",
+        "ended_unix": 1790058244.148728
+      },
+      "frontends": 1,
+      "backends": 8,
+      "total_task_cc": 256,
+      "failure_host": "x3208c0s37b1n0",
+      "failure_log": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-routing-n8-cache_aware-7643280.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/backends/r00/service.log",
+      "failure_reason": "CUDA-capable device(s) busy or unavailable"
+    },
+    {
+      "label": "OpenClaw 1+4 P2",
+      "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/openclaw-routing-n4-power_of_two-7643321.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "classification": "startup_failed",
+      "job_id": "7643321",
+      "raw_status": {
+        "status": "failed",
+        "valid": false,
+        "error": "unhandled errors in a TaskGroup (1 sub-exception)",
+        "error_type": "ExceptionGroup",
+        "ended_unix": 1790058327.2793753
+      },
+      "frontends": 1,
+      "backends": 4,
+      "total_task_cc": 64,
+      "failure_host": "x3208c0s37b1n0",
+      "failure_log": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/openclaw-routing-n4-power_of_two-7643321.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/backends/r00/service.log",
+      "failure_reason": "CUDA-capable device(s) busy or unavailable"
+    }
+  ],
+  "counts": {
+    "complete": 2,
+    "window_with_warmup_errors": 1,
+    "window_recovered_after_drain_timeout": 1,
+    "startup_failed": 4
+  },
+  "scope": "PBS/archive and saved global validation; worker counts/windows/seeds/profiles/files; raw backend window recovery only for mini-SWE P2",
+  "raw_runs_modified": false,
+  "jobs_submitted": 0
+}

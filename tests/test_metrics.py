@@ -35,6 +35,34 @@ def test_interval_prefix_ratio_and_counter_reset(tmp_path):
     assert prometheus_values('# HELP hi\nvllm:a{model_name="a b"} 4\n') == {'vllm:a{model_name="a b"}': 4}
 
 
+def test_single_busy_core_is_distinct_from_node_saturation(tmp_path):
+    (tmp_path / "stat").write_text("cpu 100 0 0 100 0 0 0 0\n"
+                                 "cpu0 50 0 0 50 0 0 0 0\ncpu1 50 0 0 50 0 0 0 0\n")
+    (tmp_path / "meminfo").write_text("MemTotal: 100 kB\nMemAvailable: 60 kB\n")
+    (tmp_path / "diskstats").write_text("")
+    (tmp_path / "net").mkdir()
+    (tmp_path / "net/dev").write_text("header\nheader\n")
+    (tmp_path / "loadavg").write_text("1.5 1.0 0.5 4/100 123\n")
+    sampler = HardwareSampler(tmp_path)
+    sampler.cpu_memory_io()
+    (tmp_path / "stat").write_text("cpu 130 0 0 160 10 0 0 0\n"
+                                 "cpu0 80 0 0 50 10 0 0 0\ncpu1 50 0 0 110 0 0 0 0\n"
+                                 "procs_running 4\nprocs_blocked 2\n")
+    sample = sampler.cpu_memory_io()
+    assert sample["cpu_busy_percent"] == 30
+    assert sample["cpu_busy_percent_by_logical_cpu"] == {"cpu0": 75, "cpu1": 0}
+    assert sample["cpu_max_busy_percent"] == 75
+    assert sample["cpu_busy_logical_cpus"] == .75
+    assert sample["cpu_logical_count"] == 2
+    assert sample["cpu_runnable_processes"] == 4 and sample["cpu_blocked_processes"] == 2
+    assert sample["load_average_1m"] == 1.5
+    path = tmp_path / "metrics.jsonl"
+    path.write_text(json.dumps({"timestamp_unix": 1, "hardware": sample}) + "\n")
+    summary = summarize_metrics(path)["hardware_sample_statistics"]
+    assert summary["cpu_max_busy_percent"]["mean"] == 75
+    assert summary["cpu_busy_percent"]["mean"] == 30
+
+
 def test_scrape_failure_is_not_a_zero(tmp_path):
     path = tmp_path / "samples.jsonl"
     asyncio.run(monitor(path, duration=.02, interval=.01, metrics_url="http://127.0.0.1:1/metrics"))

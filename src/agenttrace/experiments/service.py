@@ -57,6 +57,8 @@ async def serve(point: Path, repo: Path, config: dict) -> None:
         sock.bind(("0.0.0.0", port))
     env = dict(os.environ, **config["serve"], VLLM_BACKEND_EVENTS=str(point / "backend.jsonl"),
         VLLM_LOG_DIR=str(point / "serve-logs"))
+    if config.get("point", {}).get("router_impl") == "vllm-router":
+        env.update(VLLM_ROUTING_REPLICA=point.name, VLLM_ROUTING_EVENTS=str(point / "routing.jsonl"))
     stop = asyncio.Event()
     sampler = None
     process = await asyncio.create_subprocess_exec("bash",
@@ -89,7 +91,9 @@ async def serve(point: Path, repo: Path, config: dict) -> None:
                 await asyncio.sleep(1)
         ready = asyncio.Event()
         sampler = asyncio.create_task(monitor(point / "inference-metrics.jsonl",
-            interval=1, label="inference", stop=stop, ready=ready))
+            interval=1, label="inference", stop=stop, ready=ready,
+            **({"metrics_url": f"http://127.0.0.1:{port}/metrics"}
+               if config.get("sample_vllm_metrics", False) else {})))
         readiness = asyncio.create_task(ready.wait())
         await asyncio.wait([readiness, sampler], return_when=asyncio.FIRST_COMPLETED)
         if sampler.done():

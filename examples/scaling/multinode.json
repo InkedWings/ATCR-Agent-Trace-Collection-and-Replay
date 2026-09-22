@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "inference_nodes": [1, 2, 4, 8, 16],
+  "seed": 42,
+  "pbs": {
+    "account": "lc-mpi", "queue": "preemptable", "max_nodes": 10, "walltime": "03:00:00",
+    "overflow_routes": [
+      {"min_nodes": 11, "max_nodes": 24, "queue": "prod", "walltime": "03:00:00", "drain_budget_seconds": 1800},
+      {"min_nodes": 25, "max_nodes": 496, "queue": "prod", "walltime": "06:00:00", "drain_budget_seconds": 7200}
+    ]
+  },
+  "preparation_timeout_seconds": 7200,
+  "drain_budget_seconds": 1800,
+  "proxy_port": 18010,
+  "workloads": {
+    "openclaw": {
+      "pool": "runs/scaling/qwen36-expanded-7594555-20260908/pools/openclaw/traces.txt",
+      "profile": "runs/scaling/qwen36-expanded-7594555-20260908/profiles/openclaw.json",
+      "expected_trace_count": 110,
+      "task_cc_per_replica": 16,
+      "warmup_seconds": 600,
+      "duration_seconds": 3600
+    },
+    "minisweagent": {
+      "pool": "runs/scaling/qwen36-expanded-7594555-20260908/pools/minisweagent/traces.txt",
+      "profile": "runs/scaling/qwen36-expanded-7594555-20260908/recovery-minisweagent-20260908T1330Z/minisweagent-profile.json",
+      "expected_trace_count": 61,
+      "task_cc_per_replica": 32,
+      "warmup_seconds": 1800,
+      "duration_seconds": 5400
+    }
+  },
+  "serve": {
+    "VLLM_MODEL": "Qwen/Qwen3.6-35B-A3B",
+    "VLLM_SERVED_MODEL_NAME": "qwen/qwen3.6-35b-a3b",
+    "VLLM_TENSOR_PARALLEL_SIZE": "4",
+    "VLLM_MAX_MODEL_LEN": "262144",
+    "VLLM_MAX_NUM_SEQS": "64",
+    "VLLM_MAX_NUM_BATCHED_TOKENS": "8192",
+    "VLLM_GPU_MEMORY_UTILIZATION": "0.90",
+    "VLLM_PREFIX_CACHING": "1",
+    "VLLM_PORT": "18000",
+    "VLLM_TOOL_CALL_PARSER": "qwen3_coder",
+    "VLLM_REASONING_PARSER": "qwen3",
+    "VLLM_LANGUAGE_MODEL_ONLY": "1",
+    "VLLM_SAFETENSORS_LOAD_STRATEGY": "eager",
+    "VLLM_ENABLE_THINKING": "1"
+  }
+}

@@ -1,0 +1,157 @@
+[
+  {
+    "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "routing_rr",
+    "batch": "previous",
+    "status": "complete_nonsteady"
+  },
+  {
+    "run": "openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "routing_cache",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "routing_rr",
+    "batch": "previous",
+    "status": "window_only_drain_timeout"
+  },
+  {
+    "run": "minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "routing_cache",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "fixed_sticky",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "fixed_sticky",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-fixed_frontend-n2-7637010.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-fixed_frontend-n2-7637010.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "fixed_sticky",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-fixed_frontend-n4-7637012.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-fixed_frontend-n4-7637012.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "fixed_sticky",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-fixed_frontend-n2-7637011.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n2-7637011.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "fixed_sticky",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-balanced-n4-7616566.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-balanced-n4-7616566.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-balanced-n8-7618907.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-balanced-n8-7618907.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-balanced-n16-7618908.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-balanced-n16-7618908.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-balanced-n2-7619132.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-balanced-n2-7619132.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-balanced-n8-7619134.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-balanced-n8-7619134.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-balanced-n16-7619136.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-balanced-n16-7619136.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "balanced",
+    "batch": "previous",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-frontend-f2-n8-build2-7643323.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-frontend-f2-n8-build2-7643323.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "frontend_f2_build2",
+    "batch": "new_20260922",
+    "status": "complete_steady"
+  },
+  {
+    "run": "minisweagent-frontend-f1-n8-build8-7643324.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-frontend-f1-n8-build8-7643324.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "frontend_f1_build8",
+    "batch": "new_20260922",
+    "status": "complete_steady"
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "routing_rr",
+    "batch": "new_20260922",
+    "status": "window_complete_warmup_failures"
+  },
+  {
+    "run": "openclaw-routing-n8-cache_aware-7643278.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-routing-n8-cache_aware-7643278.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "status": "startup_failed_no_measurement"
+  },
+  {
+    "run": "minisweagent-routing-n8-round_robin-7643279.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-routing-n8-round_robin-7643279.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "status": "startup_failed_no_measurement"
+  },
+  {
+    "run": "minisweagent-routing-n8-cache_aware-7643280.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/minisweagent-routing-n8-cache_aware-7643280.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "status": "startup_failed_no_measurement"
+  }
+]

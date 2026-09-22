@@ -1,0 +1,16 @@
+[
+  {
+    "workload": "openclaw",
+    "root": "runs/scaling/multinode/openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "warmup_start_unix": 1790010534.784058,
+    "measurement_offset_seconds": 600.0,
+    "limit_seconds": 1200
+  },
+  {
+    "workload": "minisweagent",
+    "root": "runs/scaling/multinode/minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "warmup_start_unix": 1790009315.527821,
+    "measurement_offset_seconds": 1800.0,
+    "limit_seconds": 1200
+  }
+]

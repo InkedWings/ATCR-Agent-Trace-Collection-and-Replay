@@ -1,0 +1,22 @@
+{
+  "repo": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework",
+  "account": "lc-mpi",
+  "packs": [
+    {
+      "id": "at-r-oc-ca-n8",
+      "configs": ["runs/routing-n8-prod-20260921/configs/openclaw-routing-n8-cache_aware.json"]
+    },
+    {
+      "id": "at-r-ms-rr-n8",
+      "configs": ["runs/routing-n8-prod-20260921/configs/minisweagent-routing-n8-round_robin.json"]
+    },
+    {
+      "id": "at-r-ms-ca-n8",
+      "configs": ["runs/routing-n8-prod-20260921/configs/minisweagent-routing-n8-cache_aware.json"]
+    },
+    {
+      "id": "at-p2-oc-n4",
+      "configs": ["runs/mechanism-followups-20260921/configs/openclaw-routing-n4-power_of_two.json"]
+    }
+  ]
+}

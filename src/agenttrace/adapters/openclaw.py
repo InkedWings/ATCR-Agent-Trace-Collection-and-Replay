@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import asyncio
+import copy
 import fcntl
 import hashlib
 import json
+import math
 import os
 import secrets
 import shutil
@@ -137,7 +139,8 @@ def sha256(path: Path) -> str:
 
 
 def capture_spill_artifacts(
-    trajectory_path: Path, artifact_dir: Path, trace_parent: Path
+    trajectory_path: Path, artifact_dir: Path, trace_parent: Path,
+    *, include_checksums: bool = True,
 ) -> list[dict[str, Any]]:
     """Copy tool spill files while the collection node's ``/tmp`` still exists."""
 
@@ -164,7 +167,7 @@ def capture_spill_artifacts(
                 "kind": "tool_output",
                 "captured_path": recorded_path,
                 "path": destination.relative_to(trace_parent).as_posix(),
-                "sha256": sha256(destination),
+                **({"sha256": sha256(destination)} if include_checksums else {}),
             }
         )
     return artifacts
@@ -467,8 +470,40 @@ def _stage_brave_plugins(source_state: Path, replay_state: Path) -> list[str]:
     return paths
 
 
+def _recorded_search_delay(node: dict[str, Any]) -> tuple[float, str, bool]:
+    """Read the provider's recorded latency, including persisted detail spills.
+
+    tookMs measures the original provider request, not the entire tool lifecycle.
+    Cached responses retain that original value; report this approximation.
+    """
+    result = node["recorded_result"]
+    payload = result["details"]
+    source = "recorded_result.details.tookMs"
+    if "tookMs" not in payload:
+        for index, part in enumerate(result["content"]):
+            if not isinstance(part, dict) or part.get("type") != "text":
+                continue
+            try:
+                value = json.loads(part.get("text", ""))
+            except (ValueError, TypeError):
+                continue
+            if isinstance(value, dict) and "tookMs" in value:
+                payload = value
+                source = f"recorded_result.content[{index}].text.tookMs"
+                break
+    milliseconds = payload.get("tookMs")
+    if (isinstance(milliseconds, bool) or not isinstance(milliseconds, (int, float))
+            or not math.isfinite(milliseconds) or milliseconds < 0):
+        raise ValueError(
+            f"web_search recorded_delay requires a finite nonnegative tookMs for {node['id']}; "
+            "no zero-delay or live-search fallback is used"
+        )
+    cached = bool(payload.get("cached") or result["details"].get("cached"))
+    return milliseconds / 1000, source, cached
+
+
 class OpenClawToolExecutor:
-    """Execute recorded tools through one long-lived native OpenClaw Gateway."""
+    """Native tools, with optional recorded-delay replay for web_search only."""
 
     def __init__(
         self,
@@ -478,7 +513,12 @@ class OpenClawToolExecutor:
         token_env: str | None = None,
         plugin_state_dir: str | None = None,
         startup_timeout: float = 30.0,
+        web_search_mode: str = "native",
     ) -> None:
+        if web_search_mode not in {"native", "recorded_delay"}:
+            raise ValueError("web_search_mode must be native or recorded_delay")
+        self.web_search_mode = web_search_mode
+        self._search_delays: dict[str, tuple[float, str, bool]] = {}
         self.openclaw_bin = openclaw_bin
         self.gateway_url = gateway_url
         self.token_env = token_env
@@ -497,6 +537,15 @@ class OpenClawToolExecutor:
 
     async def setup(self, trace: dict[str, Any], workspace: Path) -> None:
         self.session_key = f"agenttrace-{trace['trace_id']}"
+        tool_nodes = [node for node in trace["nodes"] if node["type"] == "tool"]
+        if self.web_search_mode == "recorded_delay":
+            # Validate before launching a Gateway or sending any tool request.
+            self._search_delays = {
+                node["id"]: _recorded_search_delay(node)
+                for node in tool_nodes if node["request"]["name"] == "web_search"
+            }
+            if tool_nodes and len(self._search_delays) == len(tool_nodes):
+                return
         self.token = (
             os.environ.get(self.token_env, "") if self.token_env else ""
         ) or secrets.token_urlsafe(32)
@@ -508,7 +557,7 @@ class OpenClawToolExecutor:
             bridge_dir = run_root / "openclaw-replay-plugin"
             _write_tool_bridge(bridge_dir)
             self._use_coding_bridge = True
-            needs_brave = any(
+            needs_brave = self.web_search_mode == "native" and any(
                 node["type"] == "tool" and node["request"]["name"] == "web_search"
                 for node in trace["nodes"]
             )
@@ -536,7 +585,8 @@ class OpenClawToolExecutor:
             tools_config: dict[str, Any] = {
                 "profile": "full",
                 "allow": sorted(
-                    {"web_search", "web_fetch", *CODING_TOOL_BRIDGE.values()}
+                    {"web_fetch", *CODING_TOOL_BRIDGE.values()}
+                    | ({"web_search"} if self.web_search_mode == "native" else set())
                 ),
                 "exec": {"host": "gateway", "mode": "full"},
                 "web": {
@@ -645,7 +695,11 @@ class OpenClawToolExecutor:
             )
 
         self.client = httpx.AsyncClient(
-            headers={"Authorization": f"Bearer {self.token}"}, timeout=None, trust_env=False
+            # Readiness probes and successive tool calls may straddle the
+            # Gateway's idle timeout. A fresh connection avoids stale reuse;
+            # ambiguous POST failures must not repeat a tool's side effects.
+            headers={"Authorization": f"Bearer {self.token}", "Connection": "close"},
+            timeout=None, trust_env=False, limits=httpx.Limits(max_keepalive_connections=0),
         )
         if self.process is not None:
             deadline = asyncio.get_running_loop().time() + self.startup_timeout
@@ -674,13 +728,27 @@ class OpenClawToolExecutor:
                 await asyncio.sleep(0.1)
 
     async def execute(self, node: dict[str, Any]) -> ToolExecutionResult:
-        if self.client is None or self.gateway_url is None:
-            raise RuntimeError("OpenClaw tool executor is not set up")
         request = node["request"]
         if request["protocol"] != "openclaw-tools-invoke":
             raise ValueError(f"unsupported OpenClaw tool protocol: {request['protocol']}")
         if request["name"] not in SUPPORTED_TOOLS:
             raise ValueError(f"unsupported OpenClaw tool: {request['name']}")
+        if request["name"] == "web_search" and self.web_search_mode == "recorded_delay":
+            if node["id"] not in self._search_delays:
+                raise RuntimeError("OpenClaw search delay was not validated during setup")
+            seconds, source, cached = self._search_delays[node["id"]]
+            await asyncio.sleep(seconds)
+            return ToolExecutionResult(
+                result=copy.deepcopy(node["recorded_result"]),
+                replay_metadata={
+                    "mode": "recorded_delay",
+                    "delay_seconds": seconds,
+                    "delay_source": source,
+                    "recorded_cached": cached,
+                },
+            )
+        if self.client is None or self.gateway_url is None:
+            raise RuntimeError("OpenClaw tool executor is not set up")
         tool_name = request["name"]
         if self._use_coding_bridge:
             tool_name = CODING_TOOL_BRIDGE.get(tool_name, tool_name)
@@ -717,6 +785,7 @@ class OpenClawToolExecutor:
         return ToolExecutionResult(result=result)
 
     async def close(self) -> None:
+        self._search_delays.clear()
         if self.client is not None:
             await self.client.aclose()
             self.client = None
@@ -757,4 +826,5 @@ def create_tool_executor(config: dict[str, Any]) -> OpenClawToolExecutor:
         token_env=config.get("token_env"),
         plugin_state_dir=str(plugin_state_dir) if plugin_state_dir else None,
         startup_timeout=float(config.get("startup_timeout", 30)),
+        web_search_mode=str(config.get("web_search_mode", "native")),
     )

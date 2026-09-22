@@ -1,0 +1,53 @@
+{
+  "allocation": "7608115",
+  "frontend": "x3005c0s31b0n0",
+  "inference": "x3005c0s7b0n0",
+  "scope": "one inference node + one frontend; cc2; warmup30s; measurement60s; full traces with natural drain",
+  "approx_elapsed_minutes": 11.90090115070343,
+  "workloads": [
+    {
+      "workload": "openclaw",
+      "status": "passed",
+      "run_directory": "runs/scaling/multinode/openclaw-smoke-existing-n1-20260914c-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "unique_traces": 2,
+      "completed_replays": 8,
+      "llm_calls": 16,
+      "tool_calls": 8,
+      "total_output_tokens": 11580,
+      "measurement_output_tokens": 6469,
+      "measurement_completed_tasks": 5,
+      "measurement_seconds": 60.0,
+      "validation_errors": [],
+      "diagnostic_warnings": [],
+      "native_error_calls": 0,
+      "tool_error_transitions": [],
+      "serve_and_profile_match_formal": true,
+      "sampling_nodes": 2
+    },
+    {
+      "workload": "minisweagent",
+      "status": "passed",
+      "run_directory": "runs/scaling/multinode/minisweagent-smoke-existing-n1-20260914c-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "unique_traces": 2,
+      "completed_replays": 3,
+      "llm_calls": 82,
+      "tool_calls": 82,
+      "total_output_tokens": 15975,
+      "measurement_output_tokens": 10630,
+      "measurement_completed_tasks": 1,
+      "measurement_seconds": 60.0,
+      "validation_errors": [],
+      "diagnostic_warnings": [],
+      "native_error_calls": 7,
+      "tool_error_transitions": [],
+      "serve_and_profile_match_formal": true,
+      "sampling_nodes": 2
+    }
+  ],
+  "not_covered": [
+    "multiple inference replicas starting together",
+    "formal per-replica concurrency and full trace pools",
+    "scheduler preemption"
+  ],
+  "submitted_jobs": 0
+}

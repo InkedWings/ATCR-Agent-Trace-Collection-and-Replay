@@ -1,0 +1,5295 @@
+{
+  "result": {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "root": "runs/scaling/multinode/openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "group": "routing_rr",
+    "batch": "new_20260922",
+    "workload": "openclaw",
+    "backends": 8,
+    "frontends": 1,
+    "physical_nodes_used": 9,
+    "cc_per_backend": 16,
+    "status": "window_complete_warmup_failures",
+    "raw_valid": false,
+    "raw_steady": false,
+    "raw_collection_complete": true,
+    "worker_completion_verified": false,
+    "duration_seconds": 3600.0,
+    "measurement_start_unix": 1790060514.2198567,
+    "measurement_end_unix": 1790064114.2198567,
+    "completed_tasks_in_window": 1122,
+    "true_admissions_in_window": 1122,
+    "cancelled_admissions": 0,
+    "task_status_counts": {
+      "completed": 1535,
+      "failed": 2
+    },
+    "failed_tasks": 2,
+    "output_tokens": 4489322,
+    "output_tokens_s": 1247.033888888889,
+    "tasks_per_minute": 18.7,
+    "prompt_tokens": 736050127,
+    "cached_prompt_tokens": 454625952,
+    "prefix_reuse": 0.6176562374263403,
+    "uncached_prompt_per_output": 62.6874559231884,
+    "frontend_cpu_mean_percent": 10.743675478645436,
+    "frontend": [
+      {
+        "host": "x3208c0s13b0n0",
+        "samples": 3593,
+        "cpu": {
+          "count": 3593,
+          "mean": 10.743675478645436,
+          "p50": 10.476935105551211,
+          "p95": 18.297032625913463,
+          "max": 29.627289955780164
+        },
+        "cpu_logical_count": 64,
+        "cpu_sample_fraction_ge90": 0.0,
+        "runnable_processes_mean": 7.7138881157806845,
+        "iowait_percent_mean": 0.00014297486152198624,
+        "memory_available_min_gib": 432.0763931274414,
+        "scratch_free_min_gib": 2783.654296875,
+        "max_sampling_gap_seconds": 1.0400991439819336
+      }
+    ],
+    "halves": [
+      {
+        "output_tokens_s": 1327.7933333333333,
+        "completed_tasks": 626.0,
+        "prefix_reuse": 0.6111259238250724,
+        "waiting_per_replica": 7.1623486803775585
+      },
+      {
+        "output_tokens_s": 1166.2744444444445,
+        "completed_tasks": 496.0,
+        "prefix_reuse": 0.624522103662014,
+        "waiting_per_replica": 8.422629399632136
+      }
+    ],
+    "replica_output_cv": 0.026415630535916043,
+    "replicas": [
+      {
+        "replica": "r00",
+        "output_tokens_s": 156.53416666666666,
+        "prefix_reuse": 0.6817078200306929
+      },
+      {
+        "replica": "r01",
+        "output_tokens_s": 160.0025,
+        "prefix_reuse": 0.6729261361898262
+      },
+      {
+        "replica": "r02",
+        "output_tokens_s": 160.18722222222223,
+        "prefix_reuse": 0.6814400813211071
+      },
+      {
+        "replica": "r03",
+        "output_tokens_s": 154.41972222222222,
+        "prefix_reuse": 0.6884657068648348
+      },
+      {
+        "replica": "r04",
+        "output_tokens_s": 151.27694444444444,
+        "prefix_reuse": 0.6910334138252672
+      },
+      {
+        "replica": "r05",
+        "output_tokens_s": 160.0275,
+        "prefix_reuse": 0.6925894537364794
+      },
+      {
+        "replica": "r06",
+        "output_tokens_s": 156.38,
+        "prefix_reuse": 0.6890188190299069
+      },
+      {
+        "replica": "r07",
+        "output_tokens_s": 148.20583333333335,
+        "prefix_reuse": 0.13898685526207863
+      }
+    ],
+    "ttft_seconds": {
+      "count": 16048,
+      "mean": 15.440330464072192,
+      "p50": 0.533945876872167,
+      "p95": 121.58919729805784,
+      "p99": 164.38924131621144
+    },
+    "task_lifecycle_seconds": {
+      "count": 1122,
+      "mean": 410.1512613076899,
+      "p50": 231.77270943589974,
+      "p95": 1419.053296036029,
+      "p99": 2392.4951169333413
+    },
+    "tool_latency_seconds": {
+      "count": 15071,
+      "mean": 0.5382318820914339,
+      "p50": 0.499703,
+      "p95": 0.828064,
+      "p99": 2.81542899999997
+    },
+    "execution_seconds_mean": {
+      "setup": 11.929475019607844,
+      "llm_only": 386.12966059982176,
+      "tool_only": 7.321090552584667,
+      "llm_tool_overlap": 9.797272915702852e-15,
+      "other_and_cleanup": 4.77103513567562
+    },
+    "backend_latency": {
+      "queue_seconds": {
+        "count": 16015,
+        "mean": 13.667800664200392,
+        "p50": 3.6570709198713303e-06,
+        "p95": 116.61436687724199,
+        "p99": 152.44123643176164
+      },
+      "prefill_seconds": {
+        "count": 16015,
+        "mean": 0.9260735479370458,
+        "p50": 0.39637149893678725,
+        "p95": 3.407120419247075,
+        "p99": 6.0839311294118
+      },
+      "decode_latency_seconds": {
+        "count": 16015,
+        "mean": 11.871125460102459,
+        "p50": 1.5182908230926841,
+        "p95": 40.77157823690212,
+        "p99": 173.07260986302552
+      }
+    },
+    "setup": {},
+    "routing": {
+      "statuses": {
+        "completed": 16048
+      },
+      "tasks_with_at_least_8_window_calls": 631,
+      "adjacent_call_pairs": 12731,
+      "adjacent_call_switches": 10961,
+      "adjacent_call_backend_switch_fraction": 0.8609692875657843,
+      "distinct_backends_per_task_mean": 6.79080824088748
+    },
+    "raw_validation_errors": [
+      "r06/00008: failed",
+      "r07/00009: failed"
+    ],
+    "raw_diagnostic_warnings": [],
+    "recovery_audit": [],
+    "workers": [
+      {
+        "replica": "r00",
+        "status": "completed",
+        "failed_tasks": 0,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r01",
+        "status": "completed",
+        "failed_tasks": 0,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r02",
+        "status": "completed",
+        "failed_tasks": 0,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r03",
+        "status": "completed",
+        "failed_tasks": 0,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r04",
+        "status": "completed",
+        "failed_tasks": 0,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r05",
+        "status": "completed",
+        "failed_tasks": 0,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r06",
+        "status": "completed_with_errors",
+        "failed_tasks": 1,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      },
+      {
+        "replica": "r07",
+        "status": "completed_with_errors",
+        "failed_tasks": 1,
+        "window_start": 1790060514.2198567,
+        "window_end": 1790064114.2198567
+      }
+    ],
+    "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+  },
+  "bins": [
+    {
+      "start_unix": 1790060514.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 102900.0,
+      "completed_tasks": 22.0,
+      "prompt_tokens": 12934588.0,
+      "cached_prompt_tokens": 7871952.0,
+      "output_tokens_per_second": 1715.0,
+      "tasks_per_second": 0.36666666666666664,
+      "actual_prefix_reuse": 0.6085970422869287,
+      "frontend_cpu_percent": 13.234111843091144,
+      "minute": 0.0,
+      "tasks_per_minute": 22.0,
+      "waiting_per_replica_mean": 5.61875,
+      "running_per_replica_mean": 9.125,
+      "kv_cache_per_replica_mean": 0.20447604931300584
+    },
+    {
+      "start_unix": 1790060574.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 108781.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 12786058.0,
+      "cached_prompt_tokens": 8027712.0,
+      "output_tokens_per_second": 1813.0166666666667,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.627848864755658,
+      "frontend_cpu_percent": 10.195369532797123,
+      "minute": 1.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 5.55,
+      "running_per_replica_mean": 9.372916666666667,
+      "kv_cache_per_replica_mean": 0.21751129305477132
+    },
+    {
+      "start_unix": 1790060634.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 100158.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 15098191.0,
+      "cached_prompt_tokens": 9352992.0,
+      "output_tokens_per_second": 1669.3,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.6194776579525322,
+      "frontend_cpu_percent": 12.011073694639405,
+      "minute": 2.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 5.417536534446764,
+      "running_per_replica_mean": 9.323590814196242,
+      "kv_cache_per_replica_mean": 0.22048687447616375
+    },
+    {
+      "start_unix": 1790060694.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 104803.0,
+      "completed_tasks": 23.0,
+      "prompt_tokens": 12666883.0,
+      "cached_prompt_tokens": 7002336.0,
+      "output_tokens_per_second": 1746.7166666666667,
+      "tasks_per_second": 0.38333333333333336,
+      "actual_prefix_reuse": 0.55280655864588,
+      "frontend_cpu_percent": 12.941346000352643,
+      "minute": 3.0,
+      "tasks_per_minute": 23.0,
+      "waiting_per_replica_mean": 4.437238493723849,
+      "running_per_replica_mean": 10.384937238493723,
+      "kv_cache_per_replica_mean": 0.2221477358370209
+    },
+    {
+      "start_unix": 1790060754.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 107523.0,
+      "completed_tasks": 20.0,
+      "prompt_tokens": 16660232.0,
+      "cached_prompt_tokens": 10487136.0,
+      "output_tokens_per_second": 1792.05,
+      "tasks_per_second": 0.3333333333333333,
+      "actual_prefix_reuse": 0.6294711862355818,
+      "frontend_cpu_percent": 12.170785796386006,
+      "minute": 4.0,
+      "tasks_per_minute": 20.0,
+      "waiting_per_replica_mean": 5.103157894736842,
+      "running_per_replica_mean": 9.64421052631579,
+      "kv_cache_per_replica_mean": 0.2289964040536123
+    },
+    {
+      "start_unix": 1790060814.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 107922.0,
+      "completed_tasks": 22.0,
+      "prompt_tokens": 15973481.0,
+      "cached_prompt_tokens": 10829808.0,
+      "output_tokens_per_second": 1798.7,
+      "tasks_per_second": 0.36666666666666664,
+      "actual_prefix_reuse": 0.6779867206152498,
+      "frontend_cpu_percent": 12.487367439012935,
+      "minute": 5.0,
+      "tasks_per_minute": 22.0,
+      "waiting_per_replica_mean": 5.377083333333333,
+      "running_per_replica_mean": 9.41875,
+      "kv_cache_per_replica_mean": 0.20999729437229436
+    },
+    {
+      "start_unix": 1790060874.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 95612.0,
+      "completed_tasks": 27.0,
+      "prompt_tokens": 14531065.0,
+      "cached_prompt_tokens": 9627552.0,
+      "output_tokens_per_second": 1593.5333333333333,
+      "tasks_per_second": 0.45,
+      "actual_prefix_reuse": 0.662549647943905,
+      "frontend_cpu_percent": 13.0501911998635,
+      "minute": 6.0,
+      "tasks_per_minute": 27.0,
+      "waiting_per_replica_mean": 6.435416666666667,
+      "running_per_replica_mean": 8.347916666666666,
+      "kv_cache_per_replica_mean": 0.18696946169772258
+    },
+    {
+      "start_unix": 1790060934.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 81563.0,
+      "completed_tasks": 20.0,
+      "prompt_tokens": 10389917.0,
+      "cached_prompt_tokens": 5920464.0,
+      "output_tokens_per_second": 1359.3833333333334,
+      "tasks_per_second": 0.3333333333333333,
+      "actual_prefix_reuse": 0.5698278436680485,
+      "frontend_cpu_percent": 13.370155568232404,
+      "minute": 7.0,
+      "tasks_per_minute": 20.0,
+      "waiting_per_replica_mean": 7.675,
+      "running_per_replica_mean": 7.114583333333333,
+      "kv_cache_per_replica_mean": 0.17569699322416713
+    },
+    {
+      "start_unix": 1790060994.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 77738.0,
+      "completed_tasks": 27.0,
+      "prompt_tokens": 10511559.0,
+      "cached_prompt_tokens": 5775264.0,
+      "output_tokens_per_second": 1295.6333333333334,
+      "tasks_per_second": 0.45,
+      "actual_prefix_reuse": 0.5494203095849055,
+      "frontend_cpu_percent": 16.080603687209575,
+      "minute": 8.0,
+      "tasks_per_minute": 27.0,
+      "waiting_per_replica_mean": 7.784968684759916,
+      "running_per_replica_mean": 6.88517745302714,
+      "kv_cache_per_replica_mean": 0.15790531516228168
+    },
+    {
+      "start_unix": 1790061054.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 68644.0,
+      "completed_tasks": 21.0,
+      "prompt_tokens": 11774122.0,
+      "cached_prompt_tokens": 6348672.0,
+      "output_tokens_per_second": 1144.0666666666666,
+      "tasks_per_second": 0.35,
+      "actual_prefix_reuse": 0.539205556049105,
+      "frontend_cpu_percent": 11.944822763904822,
+      "minute": 9.0,
+      "tasks_per_minute": 21.0,
+      "waiting_per_replica_mean": 7.652083333333334,
+      "running_per_replica_mean": 7.2,
+      "kv_cache_per_replica_mean": 0.17341309053265574
+    },
+    {
+      "start_unix": 1790061114.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 82794.0,
+      "completed_tasks": 24.0,
+      "prompt_tokens": 12602427.0,
+      "cached_prompt_tokens": 8387808.0,
+      "output_tokens_per_second": 1379.9,
+      "tasks_per_second": 0.4,
+      "actual_prefix_reuse": 0.6655708459965688,
+      "frontend_cpu_percent": 13.30648444675478,
+      "minute": 10.0,
+      "tasks_per_minute": 24.0,
+      "waiting_per_replica_mean": 6.6849894291754755,
+      "running_per_replica_mean": 7.978858350951374,
+      "kv_cache_per_replica_mean": 0.16267848338810742
+    },
+    {
+      "start_unix": 1790061174.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 80432.0,
+      "completed_tasks": 20.0,
+      "prompt_tokens": 14122988.0,
+      "cached_prompt_tokens": 8723616.0,
+      "output_tokens_per_second": 1340.5333333333333,
+      "tasks_per_second": 0.3333333333333333,
+      "actual_prefix_reuse": 0.6176891179118753,
+      "frontend_cpu_percent": 9.289538959866954,
+      "minute": 11.0,
+      "tasks_per_minute": 20.0,
+      "waiting_per_replica_mean": 6.958333333333333,
+      "running_per_replica_mean": 8.035416666666666,
+      "kv_cache_per_replica_mean": 0.1705368906455863
+    },
+    {
+      "start_unix": 1790061234.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 85812.0,
+      "completed_tasks": 20.0,
+      "prompt_tokens": 13485377.0,
+      "cached_prompt_tokens": 9059424.0,
+      "output_tokens_per_second": 1430.2,
+      "tasks_per_second": 0.3333333333333333,
+      "actual_prefix_reuse": 0.671796124053484,
+      "frontend_cpu_percent": 13.693999435943724,
+      "minute": 12.0,
+      "tasks_per_minute": 20.0,
+      "waiting_per_replica_mean": 7.1875,
+      "running_per_replica_mean": 7.5875,
+      "kv_cache_per_replica_mean": 0.15966438452851497
+    },
+    {
+      "start_unix": 1790061294.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 66409.0,
+      "completed_tasks": 24.0,
+      "prompt_tokens": 12902631.0,
+      "cached_prompt_tokens": 8358768.0,
+      "output_tokens_per_second": 1106.8166666666666,
+      "tasks_per_second": 0.4,
+      "actual_prefix_reuse": 0.6478343835454955,
+      "frontend_cpu_percent": 13.806179408562953,
+      "minute": 13.0,
+      "tasks_per_minute": 24.0,
+      "waiting_per_replica_mean": 8.239583333333334,
+      "running_per_replica_mean": 6.508333333333334,
+      "kv_cache_per_replica_mean": 0.14373706004140788
+    },
+    {
+      "start_unix": 1790061354.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 65110.0,
+      "completed_tasks": 25.0,
+      "prompt_tokens": 10678416.0,
+      "cached_prompt_tokens": 6773712.0,
+      "output_tokens_per_second": 1085.1666666666667,
+      "tasks_per_second": 0.4166666666666667,
+      "actual_prefix_reuse": 0.63433677803899,
+      "frontend_cpu_percent": 11.529753026004904,
+      "minute": 14.0,
+      "tasks_per_minute": 25.0,
+      "waiting_per_replica_mean": 7.945720250521921,
+      "running_per_replica_mean": 6.92901878914405,
+      "kv_cache_per_replica_mean": 0.143672883347931
+    },
+    {
+      "start_unix": 1790061414.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 77465.0,
+      "completed_tasks": 18.0,
+      "prompt_tokens": 11671306.0,
+      "cached_prompt_tokens": 7063584.0,
+      "output_tokens_per_second": 1291.0833333333333,
+      "tasks_per_second": 0.3,
+      "actual_prefix_reuse": 0.6052093913054803,
+      "frontend_cpu_percent": 9.870650892984575,
+      "minute": 15.0,
+      "tasks_per_minute": 18.0,
+      "waiting_per_replica_mean": 8.375,
+      "running_per_replica_mean": 6.552083333333333,
+      "kv_cache_per_replica_mean": 0.1573628364389234
+    },
+    {
+      "start_unix": 1790061474.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 60827.0,
+      "completed_tasks": 27.0,
+      "prompt_tokens": 11314608.0,
+      "cached_prompt_tokens": 6949536.0,
+      "output_tokens_per_second": 1013.7833333333333,
+      "tasks_per_second": 0.45,
+      "actual_prefix_reuse": 0.6142091710114924,
+      "frontend_cpu_percent": 13.729348828504369,
+      "minute": 16.0,
+      "tasks_per_minute": 27.0,
+      "waiting_per_replica_mean": 8.094736842105263,
+      "running_per_replica_mean": 6.524210526315789,
+      "kv_cache_per_replica_mean": 0.15484858391036882
+    },
+    {
+      "start_unix": 1790061534.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 70734.0,
+      "completed_tasks": 10.0,
+      "prompt_tokens": 13146634.0,
+      "cached_prompt_tokens": 7522944.0,
+      "output_tokens_per_second": 1178.9,
+      "tasks_per_second": 0.16666666666666666,
+      "actual_prefix_reuse": 0.5722334705598406,
+      "frontend_cpu_percent": 8.264972040425377,
+      "minute": 17.0,
+      "tasks_per_minute": 10.0,
+      "waiting_per_replica_mean": 7.391213389121339,
+      "running_per_replica_mean": 7.675732217573222,
+      "kv_cache_per_replica_mean": 0.17568142245238844
+    },
+    {
+      "start_unix": 1790061594.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 77597.0,
+      "completed_tasks": 23.0,
+      "prompt_tokens": 12229761.0,
+      "cached_prompt_tokens": 7510272.0,
+      "output_tokens_per_second": 1293.2833333333333,
+      "tasks_per_second": 0.38333333333333336,
+      "actual_prefix_reuse": 0.61409801875932,
+      "frontend_cpu_percent": 11.717199486637424,
+      "minute": 18.0,
+      "tasks_per_minute": 23.0,
+      "waiting_per_replica_mean": 6.558333333333334,
+      "running_per_replica_mean": 8.0875,
+      "kv_cache_per_replica_mean": 0.17736565970261622
+    },
+    {
+      "start_unix": 1790061654.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 88377.0,
+      "completed_tasks": 17.0,
+      "prompt_tokens": 12521948.0,
+      "cached_prompt_tokens": 7584720.0,
+      "output_tokens_per_second": 1472.95,
+      "tasks_per_second": 0.2833333333333333,
+      "actual_prefix_reuse": 0.6057140630195876,
+      "frontend_cpu_percent": 9.860138686055826,
+      "minute": 19.0,
+      "tasks_per_minute": 17.0,
+      "waiting_per_replica_mean": 7.308333333333334,
+      "running_per_replica_mean": 7.5875,
+      "kv_cache_per_replica_mean": 0.18422736683606247
+    },
+    {
+      "start_unix": 1790061714.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 85011.0,
+      "completed_tasks": 24.0,
+      "prompt_tokens": 10616387.0,
+      "cached_prompt_tokens": 6244656.0,
+      "output_tokens_per_second": 1416.85,
+      "tasks_per_second": 0.4,
+      "actual_prefix_reuse": 0.5882091525111133,
+      "frontend_cpu_percent": 14.365707279710817,
+      "minute": 20.0,
+      "tasks_per_minute": 24.0,
+      "waiting_per_replica_mean": 7.703549060542797,
+      "running_per_replica_mean": 7.123173277661795,
+      "kv_cache_per_replica_mean": 0.16753152447987701
+    },
+    {
+      "start_unix": 1790061774.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 69791.0,
+      "completed_tasks": 21.0,
+      "prompt_tokens": 11452462.0,
+      "cached_prompt_tokens": 6548784.0,
+      "output_tokens_per_second": 1163.1833333333334,
+      "tasks_per_second": 0.35,
+      "actual_prefix_reuse": 0.5718232463901648,
+      "frontend_cpu_percent": 10.755172390026809,
+      "minute": 21.0,
+      "tasks_per_minute": 21.0,
+      "waiting_per_replica_mean": 7.862212943632568,
+      "running_per_replica_mean": 7.068893528183716,
+      "kv_cache_per_replica_mean": 0.16961213425768204
+    },
+    {
+      "start_unix": 1790061834.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 57019.0,
+      "completed_tasks": 18.0,
+      "prompt_tokens": 12601981.0,
+      "cached_prompt_tokens": 7467504.0,
+      "output_tokens_per_second": 950.3166666666667,
+      "tasks_per_second": 0.3,
+      "actual_prefix_reuse": 0.5925658830940945,
+      "frontend_cpu_percent": 9.896545438952664,
+      "minute": 22.0,
+      "tasks_per_minute": 18.0,
+      "waiting_per_replica_mean": 7.856540084388186,
+      "running_per_replica_mean": 7.094936708860759,
+      "kv_cache_per_replica_mean": 0.1721750089939413
+    },
+    {
+      "start_unix": 1790061894.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 60268.0,
+      "completed_tasks": 18.0,
+      "prompt_tokens": 14670921.0,
+      "cached_prompt_tokens": 10046256.0,
+      "output_tokens_per_second": 1004.4666666666667,
+      "tasks_per_second": 0.3,
+      "actual_prefix_reuse": 0.6847733690338869,
+      "frontend_cpu_percent": 10.54604300955507,
+      "minute": 23.0,
+      "tasks_per_minute": 18.0,
+      "waiting_per_replica_mean": 8.072916666666666,
+      "running_per_replica_mean": 6.902083333333334,
+      "kv_cache_per_replica_mean": 0.17295313382269906
+    },
+    {
+      "start_unix": 1790061954.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 64339.0,
+      "completed_tasks": 16.0,
+      "prompt_tokens": 11327074.0,
+      "cached_prompt_tokens": 6407808.0,
+      "output_tokens_per_second": 1072.3166666666666,
+      "tasks_per_second": 0.26666666666666666,
+      "actual_prefix_reuse": 0.5657072603215976,
+      "frontend_cpu_percent": 9.926382957268958,
+      "minute": 24.0,
+      "tasks_per_minute": 16.0,
+      "waiting_per_replica_mean": 7.895833333333333,
+      "running_per_replica_mean": 7.164583333333334,
+      "kv_cache_per_replica_mean": 0.1851072840203275
+    },
+    {
+      "start_unix": 1790062014.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 75011.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 10256122.0,
+      "cached_prompt_tokens": 5584128.0,
+      "output_tokens_per_second": 1250.1833333333334,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.5444677822670206,
+      "frontend_cpu_percent": 10.719071098640802,
+      "minute": 25.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 7.983333333333333,
+      "running_per_replica_mean": 7.0125,
+      "kv_cache_per_replica_mean": 0.17903373800112932
+    },
+    {
+      "start_unix": 1790062074.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 63522.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 11664991.0,
+      "cached_prompt_tokens": 6587856.0,
+      "output_tokens_per_second": 1058.7,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.5647544863086478,
+      "frontend_cpu_percent": 10.62695986725093,
+      "minute": 26.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 7.979123173277662,
+      "running_per_replica_mean": 7.01670146137787,
+      "kv_cache_per_replica_mean": 0.1728986725355973
+    },
+    {
+      "start_unix": 1790062134.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 66968.0,
+      "completed_tasks": 22.0,
+      "prompt_tokens": 13057315.0,
+      "cached_prompt_tokens": 7972272.0,
+      "output_tokens_per_second": 1116.1333333333334,
+      "tasks_per_second": 0.36666666666666664,
+      "actual_prefix_reuse": 0.6105598279585045,
+      "frontend_cpu_percent": 11.331333372942424,
+      "minute": 27.0,
+      "tasks_per_minute": 22.0,
+      "waiting_per_replica_mean": 7.711899791231732,
+      "running_per_replica_mean": 7.202505219206681,
+      "kv_cache_per_replica_mean": 0.1614688751386582
+    },
+    {
+      "start_unix": 1790062194.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 67526.0,
+      "completed_tasks": 22.0,
+      "prompt_tokens": 13137506.0,
+      "cached_prompt_tokens": 8285904.0,
+      "output_tokens_per_second": 1125.4333333333334,
+      "tasks_per_second": 0.36666666666666664,
+      "actual_prefix_reuse": 0.6307060107146668,
+      "frontend_cpu_percent": 11.56080033188711,
+      "minute": 28.0,
+      "tasks_per_minute": 22.0,
+      "waiting_per_replica_mean": 7.639240506329114,
+      "running_per_replica_mean": 7.20042194092827,
+      "kv_cache_per_replica_mean": 0.16696030991573094
+    },
+    {
+      "start_unix": 1790062254.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 69372.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 10456545.0,
+      "cached_prompt_tokens": 6219840.0,
+      "output_tokens_per_second": 1156.2,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.5948274501759424,
+      "frontend_cpu_percent": 11.337696257550462,
+      "minute": 29.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 8.370833333333334,
+      "running_per_replica_mean": 6.45625,
+      "kv_cache_per_replica_mean": 0.15250682288725767
+    },
+    {
+      "start_unix": 1790062314.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 74610.0,
+      "completed_tasks": 23.0,
+      "prompt_tokens": 10353093.0,
+      "cached_prompt_tokens": 5973264.0,
+      "output_tokens_per_second": 1243.5,
+      "tasks_per_second": 0.38333333333333336,
+      "actual_prefix_reuse": 0.5769545390928102,
+      "frontend_cpu_percent": 12.872728173879507,
+      "minute": 30.0,
+      "tasks_per_minute": 23.0,
+      "waiting_per_replica_mean": 8.127083333333333,
+      "running_per_replica_mean": 6.545833333333333,
+      "kv_cache_per_replica_mean": 0.15418607660455486
+    },
+    {
+      "start_unix": 1790062374.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 70017.0,
+      "completed_tasks": 15.0,
+      "prompt_tokens": 12135921.0,
+      "cached_prompt_tokens": 6893568.0,
+      "output_tokens_per_second": 1166.95,
+      "tasks_per_second": 0.25,
+      "actual_prefix_reuse": 0.5680300654560951,
+      "frontend_cpu_percent": 9.498913170895662,
+      "minute": 31.0,
+      "tasks_per_minute": 15.0,
+      "waiting_per_replica_mean": 8.622916666666667,
+      "running_per_replica_mean": 6.425,
+      "kv_cache_per_replica_mean": 0.1662802324487107
+    },
+    {
+      "start_unix": 1790062434.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 87345.0,
+      "completed_tasks": 27.0,
+      "prompt_tokens": 9718381.0,
+      "cached_prompt_tokens": 5323296.0,
+      "output_tokens_per_second": 1455.75,
+      "tasks_per_second": 0.45,
+      "actual_prefix_reuse": 0.5477554337497161,
+      "frontend_cpu_percent": 14.309456674929628,
+      "minute": 32.0,
+      "tasks_per_minute": 27.0,
+      "waiting_per_replica_mean": 8.15866388308977,
+      "running_per_replica_mean": 6.588726513569937,
+      "kv_cache_per_replica_mean": 0.157872897729483
+    },
+    {
+      "start_unix": 1790062494.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 76651.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 11603161.0,
+      "cached_prompt_tokens": 6378240.0,
+      "output_tokens_per_second": 1277.5166666666667,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.5496984830254446,
+      "frontend_cpu_percent": 10.262322584962117,
+      "minute": 33.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 8.321503131524008,
+      "running_per_replica_mean": 6.69937369519833,
+      "kv_cache_per_replica_mean": 0.17334603310821883
+    },
+    {
+      "start_unix": 1790062554.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 82165.0,
+      "completed_tasks": 15.0,
+      "prompt_tokens": 13237683.0,
+      "cached_prompt_tokens": 8080512.0,
+      "output_tokens_per_second": 1369.4166666666667,
+      "tasks_per_second": 0.25,
+      "actual_prefix_reuse": 0.6104173970626129,
+      "frontend_cpu_percent": 9.308798407791247,
+      "minute": 34.0,
+      "tasks_per_minute": 15.0,
+      "waiting_per_replica_mean": 8.409663865546218,
+      "running_per_replica_mean": 6.6155462184873945,
+      "kv_cache_per_replica_mean": 0.19071620743158924
+    },
+    {
+      "start_unix": 1790062614.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 87414.0,
+      "completed_tasks": 21.0,
+      "prompt_tokens": 12037843.0,
+      "cached_prompt_tokens": 7628016.0,
+      "output_tokens_per_second": 1456.9,
+      "tasks_per_second": 0.35,
+      "actual_prefix_reuse": 0.6336696698901955,
+      "frontend_cpu_percent": 12.14695902393642,
+      "minute": 35.0,
+      "tasks_per_minute": 21.0,
+      "waiting_per_replica_mean": 7.370292887029288,
+      "running_per_replica_mean": 7.391213389121339,
+      "kv_cache_per_replica_mean": 0.1807243147974456
+    },
+    {
+      "start_unix": 1790062674.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 75974.0,
+      "completed_tasks": 16.0,
+      "prompt_tokens": 12314445.0,
+      "cached_prompt_tokens": 6759984.0,
+      "output_tokens_per_second": 1266.2333333333333,
+      "tasks_per_second": 0.26666666666666666,
+      "actual_prefix_reuse": 0.5489475165141425,
+      "frontend_cpu_percent": 9.63467549262112,
+      "minute": 36.0,
+      "tasks_per_minute": 16.0,
+      "waiting_per_replica_mean": 7.414583333333334,
+      "running_per_replica_mean": 7.4375,
+      "kv_cache_per_replica_mean": 0.1845826275174101
+    },
+    {
+      "start_unix": 1790062734.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 71660.0,
+      "completed_tasks": 15.0,
+      "prompt_tokens": 13270697.0,
+      "cached_prompt_tokens": 7892544.0,
+      "output_tokens_per_second": 1194.3333333333333,
+      "tasks_per_second": 0.25,
+      "actual_prefix_reuse": 0.5947347000688811,
+      "frontend_cpu_percent": 8.514871692498838,
+      "minute": 37.0,
+      "tasks_per_minute": 15.0,
+      "waiting_per_replica_mean": 6.560416666666667,
+      "running_per_replica_mean": 8.4375,
+      "kv_cache_per_replica_mean": 0.1877752682100508
+    },
+    {
+      "start_unix": 1790062794.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 82149.0,
+      "completed_tasks": 24.0,
+      "prompt_tokens": 10309645.0,
+      "cached_prompt_tokens": 5614752.0,
+      "output_tokens_per_second": 1369.15,
+      "tasks_per_second": 0.4,
+      "actual_prefix_reuse": 0.5446115748893391,
+      "frontend_cpu_percent": 14.193103811380475,
+      "minute": 38.0,
+      "tasks_per_minute": 24.0,
+      "waiting_per_replica_mean": 6.92901878914405,
+      "running_per_replica_mean": 7.653444676409186,
+      "kv_cache_per_replica_mean": 0.20666231290720716
+    },
+    {
+      "start_unix": 1790062854.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 78124.0,
+      "completed_tasks": 20.0,
+      "prompt_tokens": 14034494.0,
+      "cached_prompt_tokens": 9200928.0,
+      "output_tokens_per_second": 1302.0666666666666,
+      "tasks_per_second": 0.3333333333333333,
+      "actual_prefix_reuse": 0.6555938532589775,
+      "frontend_cpu_percent": 11.932333358083095,
+      "minute": 39.0,
+      "tasks_per_minute": 20.0,
+      "waiting_per_replica_mean": 7.285416666666666,
+      "running_per_replica_mean": 7.591666666666667,
+      "kv_cache_per_replica_mean": 0.20765339732731036
+    },
+    {
+      "start_unix": 1790062914.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 76707.0,
+      "completed_tasks": 19.0,
+      "prompt_tokens": 13862908.0,
+      "cached_prompt_tokens": 8762160.0,
+      "output_tokens_per_second": 1278.45,
+      "tasks_per_second": 0.31666666666666665,
+      "actual_prefix_reuse": 0.6320578626071817,
+      "frontend_cpu_percent": 11.812004219298238,
+      "minute": 40.0,
+      "tasks_per_minute": 19.0,
+      "waiting_per_replica_mean": 6.5399159663865545,
+      "running_per_replica_mean": 8.123949579831933,
+      "kv_cache_per_replica_mean": 0.1970620263915843
+    },
+    {
+      "start_unix": 1790062974.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 74441.0,
+      "completed_tasks": 15.0,
+      "prompt_tokens": 13167722.0,
+      "cached_prompt_tokens": 8264784.0,
+      "output_tokens_per_second": 1240.6833333333334,
+      "tasks_per_second": 0.25,
+      "actual_prefix_reuse": 0.6276548061995841,
+      "frontend_cpu_percent": 9.63740647438208,
+      "minute": 41.0,
+      "tasks_per_minute": 15.0,
+      "waiting_per_replica_mean": 8.19706498951782,
+      "running_per_replica_mean": 6.779874213836478,
+      "kv_cache_per_replica_mean": 0.17880788430419275
+    },
+    {
+      "start_unix": 1790063034.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 76960.0,
+      "completed_tasks": 21.0,
+      "prompt_tokens": 14419859.0,
+      "cached_prompt_tokens": 9756912.0,
+      "output_tokens_per_second": 1282.6666666666667,
+      "tasks_per_second": 0.35,
+      "actual_prefix_reuse": 0.6766301945116107,
+      "frontend_cpu_percent": 11.242075908932433,
+      "minute": 42.0,
+      "tasks_per_minute": 21.0,
+      "waiting_per_replica_mean": 7.597916666666666,
+      "running_per_replica_mean": 7.35625,
+      "kv_cache_per_replica_mean": 0.19003152644456991
+    },
+    {
+      "start_unix": 1790063094.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 79061.0,
+      "completed_tasks": 16.0,
+      "prompt_tokens": 14104562.0,
+      "cached_prompt_tokens": 9660816.0,
+      "output_tokens_per_second": 1317.6833333333334,
+      "tasks_per_second": 0.26666666666666666,
+      "actual_prefix_reuse": 0.6849426447981866,
+      "frontend_cpu_percent": 8.114341167973022,
+      "minute": 43.0,
+      "tasks_per_minute": 16.0,
+      "waiting_per_replica_mean": 8.876826722338205,
+      "running_per_replica_mean": 6.2045929018789145,
+      "kv_cache_per_replica_mean": 0.18052619976918788
+    },
+    {
+      "start_unix": 1790063154.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 57573.0,
+      "completed_tasks": 8.0,
+      "prompt_tokens": 12252713.0,
+      "cached_prompt_tokens": 7453248.0,
+      "output_tokens_per_second": 959.55,
+      "tasks_per_second": 0.13333333333333333,
+      "actual_prefix_reuse": 0.608293689732225,
+      "frontend_cpu_percent": 6.215063343286517,
+      "minute": 44.0,
+      "tasks_per_minute": 8.0,
+      "waiting_per_replica_mean": 9.597916666666666,
+      "running_per_replica_mean": 5.789583333333334,
+      "kv_cache_per_replica_mean": 0.17675454074910596
+    },
+    {
+      "start_unix": 1790063214.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 75169.0,
+      "completed_tasks": 17.0,
+      "prompt_tokens": 13871013.0,
+      "cached_prompt_tokens": 9285936.0,
+      "output_tokens_per_second": 1252.8166666666666,
+      "tasks_per_second": 0.2833333333333333,
+      "actual_prefix_reuse": 0.6694490157279789,
+      "frontend_cpu_percent": 9.581717615239565,
+      "minute": 45.0,
+      "tasks_per_minute": 17.0,
+      "waiting_per_replica_mean": 8.402922755741127,
+      "running_per_replica_mean": 6.674321503131524,
+      "kv_cache_per_replica_mean": 0.17290456661428796
+    },
+    {
+      "start_unix": 1790063274.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 81123.0,
+      "completed_tasks": 21.0,
+      "prompt_tokens": 10738750.0,
+      "cached_prompt_tokens": 6349728.0,
+      "output_tokens_per_second": 1352.05,
+      "tasks_per_second": 0.35,
+      "actual_prefix_reuse": 0.5912911651728553,
+      "frontend_cpu_percent": 10.700593130638413,
+      "minute": 46.0,
+      "tasks_per_minute": 21.0,
+      "waiting_per_replica_mean": 8.147368421052631,
+      "running_per_replica_mean": 6.698947368421052,
+      "kv_cache_per_replica_mean": 0.16265565098517043
+    },
+    {
+      "start_unix": 1790063334.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 58803.0,
+      "completed_tasks": 17.0,
+      "prompt_tokens": 8489713.0,
+      "cached_prompt_tokens": 4698144.0,
+      "output_tokens_per_second": 980.05,
+      "tasks_per_second": 0.2833333333333333,
+      "actual_prefix_reuse": 0.5533925587354955,
+      "frontend_cpu_percent": 11.437247067492116,
+      "minute": 47.0,
+      "tasks_per_minute": 17.0,
+      "waiting_per_replica_mean": 9.872651356993737,
+      "running_per_replica_mean": 5.11482254697286,
+      "kv_cache_per_replica_mean": 0.1421740191368947
+    },
+    {
+      "start_unix": 1790063394.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 48789.0,
+      "completed_tasks": 12.0,
+      "prompt_tokens": 11597941.0,
+      "cached_prompt_tokens": 8084208.0,
+      "output_tokens_per_second": 813.15,
+      "tasks_per_second": 0.2,
+      "actual_prefix_reuse": 0.6970382070403703,
+      "frontend_cpu_percent": 7.3989752286172585,
+      "minute": 48.0,
+      "tasks_per_minute": 12.0,
+      "waiting_per_replica_mean": 9.927083333333334,
+      "running_per_replica_mean": 5.295833333333333,
+      "kv_cache_per_replica_mean": 0.14654738377564464
+    },
+    {
+      "start_unix": 1790063454.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 47872.0,
+      "completed_tasks": 8.0,
+      "prompt_tokens": 10081049.0,
+      "cached_prompt_tokens": 6383520.0,
+      "output_tokens_per_second": 797.8666666666667,
+      "tasks_per_second": 0.13333333333333333,
+      "actual_prefix_reuse": 0.6332198167075669,
+      "frontend_cpu_percent": 5.389109735941558,
+      "minute": 49.0,
+      "tasks_per_minute": 8.0,
+      "waiting_per_replica_mean": 9.356993736951983,
+      "running_per_replica_mean": 6.135699373695198,
+      "kv_cache_per_replica_mean": 0.1491148862030227
+    },
+    {
+      "start_unix": 1790063514.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 56929.0,
+      "completed_tasks": 13.0,
+      "prompt_tokens": 11627109.0,
+      "cached_prompt_tokens": 6671808.0,
+      "output_tokens_per_second": 948.8166666666667,
+      "tasks_per_second": 0.21666666666666667,
+      "actual_prefix_reuse": 0.5738148666190366,
+      "frontend_cpu_percent": 7.2010677462709225,
+      "minute": 50.0,
+      "tasks_per_minute": 13.0,
+      "waiting_per_replica_mean": 8.602083333333333,
+      "running_per_replica_mean": 6.647916666666666,
+      "kv_cache_per_replica_mean": 0.17246906173536608
+    },
+    {
+      "start_unix": 1790063574.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 70335.0,
+      "completed_tasks": 14.0,
+      "prompt_tokens": 11547365.0,
+      "cached_prompt_tokens": 7868784.0,
+      "output_tokens_per_second": 1172.25,
+      "tasks_per_second": 0.23333333333333334,
+      "actual_prefix_reuse": 0.6814354616832499,
+      "frontend_cpu_percent": 8.080257265032504,
+      "minute": 51.0,
+      "tasks_per_minute": 14.0,
+      "waiting_per_replica_mean": 8.407098121085594,
+      "running_per_replica_mean": 6.853862212943633,
+      "kv_cache_per_replica_mean": 0.17049388842980565
+    },
+    {
+      "start_unix": 1790063634.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 66473.0,
+      "completed_tasks": 12.0,
+      "prompt_tokens": 12153985.0,
+      "cached_prompt_tokens": 7988640.0,
+      "output_tokens_per_second": 1107.8833333333334,
+      "tasks_per_second": 0.2,
+      "actual_prefix_reuse": 0.6572856556923511,
+      "frontend_cpu_percent": 7.678846009141668,
+      "minute": 52.0,
+      "tasks_per_minute": 12.0,
+      "waiting_per_replica_mean": 8.82563025210084,
+      "running_per_replica_mean": 6.523109243697479,
+      "kv_cache_per_replica_mean": 0.16351797636050466
+    },
+    {
+      "start_unix": 1790063694.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 58753.0,
+      "completed_tasks": 17.0,
+      "prompt_tokens": 12879758.0,
+      "cached_prompt_tokens": 9243696.0,
+      "output_tokens_per_second": 979.2166666666667,
+      "tasks_per_second": 0.2833333333333333,
+      "actual_prefix_reuse": 0.7176917454504969,
+      "frontend_cpu_percent": 8.74646259158639,
+      "minute": 53.0,
+      "tasks_per_minute": 17.0,
+      "waiting_per_replica_mean": 8.744769874476987,
+      "running_per_replica_mean": 6.2343096234309625,
+      "kv_cache_per_replica_mean": 0.16225083811949376
+    },
+    {
+      "start_unix": 1790063754.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 71115.0,
+      "completed_tasks": 17.0,
+      "prompt_tokens": 11144047.0,
+      "cached_prompt_tokens": 6859776.0,
+      "output_tokens_per_second": 1185.25,
+      "tasks_per_second": 0.2833333333333333,
+      "actual_prefix_reuse": 0.6155551928307553,
+      "frontend_cpu_percent": 10.836847480214807,
+      "minute": 54.0,
+      "tasks_per_minute": 17.0,
+      "waiting_per_replica_mean": 8.566666666666666,
+      "running_per_replica_mean": 6.410416666666666,
+      "kv_cache_per_replica_mean": 0.17108566252587992
+    },
+    {
+      "start_unix": 1790063814.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 61100.0,
+      "completed_tasks": 14.0,
+      "prompt_tokens": 13997433.0,
+      "cached_prompt_tokens": 9446448.0,
+      "output_tokens_per_second": 1018.3333333333334,
+      "tasks_per_second": 0.23333333333333334,
+      "actual_prefix_reuse": 0.6748700279544113,
+      "frontend_cpu_percent": 8.712333018457649,
+      "minute": 55.0,
+      "tasks_per_minute": 14.0,
+      "waiting_per_replica_mean": 8.417536534446764,
+      "running_per_replica_mean": 6.705636743215031,
+      "kv_cache_per_replica_mean": 0.17630839705814744
+    },
+    {
+      "start_unix": 1790063874.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 63794.0,
+      "completed_tasks": 18.0,
+      "prompt_tokens": 11839970.0,
+      "cached_prompt_tokens": 8081040.0,
+      "output_tokens_per_second": 1063.2333333333333,
+      "tasks_per_second": 0.3,
+      "actual_prefix_reuse": 0.6825219996334451,
+      "frontend_cpu_percent": 9.171261150819259,
+      "minute": 56.0,
+      "tasks_per_minute": 18.0,
+      "waiting_per_replica_mean": 9.173277661795407,
+      "running_per_replica_mean": 5.933194154488517,
+      "kv_cache_per_replica_mean": 0.15713849552462605
+    },
+    {
+      "start_unix": 1790063934.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 54864.0,
+      "completed_tasks": 7.0,
+      "prompt_tokens": 12169939.0,
+      "cached_prompt_tokens": 7166544.0,
+      "output_tokens_per_second": 914.4,
+      "tasks_per_second": 0.11666666666666667,
+      "actual_prefix_reuse": 0.5888726311610929,
+      "frontend_cpu_percent": 5.030080939082192,
+      "minute": 57.0,
+      "tasks_per_minute": 7.0,
+      "waiting_per_replica_mean": 9.244769874476987,
+      "running_per_replica_mean": 6.2238493723849375,
+      "kv_cache_per_replica_mean": 0.16308482312666414
+    },
+    {
+      "start_unix": 1790063994.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 62216.0,
+      "completed_tasks": 20.0,
+      "prompt_tokens": 10277029.0,
+      "cached_prompt_tokens": 6320160.0,
+      "output_tokens_per_second": 1036.9333333333334,
+      "tasks_per_second": 0.3333333333333333,
+      "actual_prefix_reuse": 0.6149792902209383,
+      "frontend_cpu_percent": 10.802925504088254,
+      "minute": 58.0,
+      "tasks_per_minute": 20.0,
+      "waiting_per_replica_mean": 9.199579831932773,
+      "running_per_replica_mean": 5.651260504201681,
+      "kv_cache_per_replica_mean": 0.14986963164712525
+    },
+    {
+      "start_unix": 1790064054.2198567,
+      "duration_seconds": 60.0,
+      "output_tokens": 71108.0,
+      "completed_tasks": 15.0,
+      "prompt_tokens": 9568403.0,
+      "cached_prompt_tokens": 5991216.0,
+      "output_tokens_per_second": 1185.1333333333334,
+      "tasks_per_second": 0.25,
+      "actual_prefix_reuse": 0.6261458678109607,
+      "frontend_cpu_percent": 10.485919576096807,
+      "minute": 59.0,
+      "tasks_per_minute": 15.0,
+      "waiting_per_replica_mean": 9.78125,
+      "running_per_replica_mean": 5.31875,
+      "kv_cache_per_replica_mean": 0.14780020703933747
+    }
+  ],
+  "setups": [],
+  "replicas": [
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "samples": 3590,
+      "waiting_mean": 0.06406685236768803,
+      "running_mean": 2.4111420612813372,
+      "kv_cache_mean": 0.06652419277464694
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "samples": 3590,
+      "waiting_mean": 0.05766016713091922,
+      "running_mean": 2.754317548746518,
+      "kv_cache_mean": 0.07207060833075124
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "samples": 3590,
+      "waiting_mean": 0.05097493036211699,
+      "running_mean": 2.4217270194986074,
+      "kv_cache_mean": 0.06655997508607416
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "samples": 3590,
+      "waiting_mean": 0.10250696378830083,
+      "running_mean": 2.7178272980501395,
+      "kv_cache_mean": 0.07705834797393475
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "samples": 3590,
+      "waiting_mean": 0.08495821727019498,
+      "running_mean": 2.301949860724234,
+      "kv_cache_mean": 0.06623856342277076
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "samples": 3590,
+      "waiting_mean": 0.05626740947075209,
+      "running_mean": 2.349025069637883,
+      "kv_cache_mean": 0.06322474909128657
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "samples": 3590,
+      "waiting_mean": 0.07270194986072423,
+      "running_mean": 2.372423398328691,
+      "kv_cache_mean": 0.06650060004183778
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "samples": 3590,
+      "waiting_mean": 61.85292479108635,
+      "running_mean": 39.81532033426184,
+      "kv_cache_mean": 0.9175652614310723
+    }
+  ],
+  "replica_minutes": [
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 0,
+      "waiting_mean": 0.0,
+      "running_mean": 2.1166666666666667,
+      "kv_cache_mean": 0.03781761716544325
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 1,
+      "waiting_mean": 0.0,
+      "running_mean": 2.3,
+      "kv_cache_mean": 0.037845849802371545
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 2,
+      "waiting_mean": 0.25,
+      "running_mean": 2.216666666666667,
+      "kv_cache_mean": 0.053806700545830984
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 3,
+      "waiting_mean": 0.1694915254237288,
+      "running_mean": 5.288135593220339,
+      "kv_cache_mean": 0.10024500186622515
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 4,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 6.55,
+      "kv_cache_mean": 0.14435347261434217
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 5,
+      "waiting_mean": 0.0,
+      "running_mean": 6.666666666666667,
+      "kv_cache_mean": 0.13174289478637305
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 6,
+      "waiting_mean": 0.0,
+      "running_mean": 5.1,
+      "kv_cache_mean": 0.08522492000752871
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 7,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.5833333333333333,
+      "kv_cache_mean": 0.03350743459439111
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 8,
+      "waiting_mean": 0.0,
+      "running_mean": 1.3333333333333333,
+      "kv_cache_mean": 0.01593261810653115
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 9,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 2.2666666666666666,
+      "kv_cache_mean": 0.05361848296630905
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 10,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6779661016949152,
+      "kv_cache_mean": 0.056144665945697635
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 11,
+      "waiting_mean": 0.0,
+      "running_mean": 1.75,
+      "kv_cache_mean": 0.036805947675512894
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 12,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.033333333333333,
+      "kv_cache_mean": 0.046033314511575385
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 13,
+      "waiting_mean": 0.0,
+      "running_mean": 1.3333333333333333,
+      "kv_cache_mean": 0.03547430830039526
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 14,
+      "waiting_mean": 0.0,
+      "running_mean": 1.0833333333333333,
+      "kv_cache_mean": 0.016271409749670625
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 15,
+      "waiting_mean": 0.2,
+      "running_mean": 3.1166666666666667,
+      "kv_cache_mean": 0.0842273668360625
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 16,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 1.728813559322034,
+      "kv_cache_mean": 0.04715328886294252
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 17,
+      "waiting_mean": 0.0,
+      "running_mean": 3.15,
+      "kv_cache_mean": 0.0731837003576134
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 18,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.3,
+      "kv_cache_mean": 0.04895068699416526
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 19,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 4.033333333333333,
+      "kv_cache_mean": 0.10137869376999811
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 20,
+      "waiting_mean": 0.0,
+      "running_mean": 2.283333333333333,
+      "kv_cache_mean": 0.042471296819122914
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 21,
+      "waiting_mean": 0.23333333333333334,
+      "running_mean": 2.6166666666666667,
+      "kv_cache_mean": 0.0773621306230002
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 22,
+      "waiting_mean": 0.0,
+      "running_mean": 1.5423728813559323,
+      "kv_cache_mean": 0.05173750346926471
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 23,
+      "waiting_mean": 0.05,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.05600414078674949
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 24,
+      "waiting_mean": 0.0,
+      "running_mean": 1.5333333333333334,
+      "kv_cache_mean": 0.03309806135893093
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 25,
+      "waiting_mean": 0.05,
+      "running_mean": 2.5833333333333335,
+      "kv_cache_mean": 0.061373047242612465
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 26,
+      "waiting_mean": 0.18333333333333332,
+      "running_mean": 3.033333333333333,
+      "kv_cache_mean": 0.07937605872388481
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 27,
+      "waiting_mean": 0.0,
+      "running_mean": 2.183333333333333,
+      "kv_cache_mean": 0.06487389422172031
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 28,
+      "waiting_mean": 0.05084745762711865,
+      "running_mean": 2.6440677966101696,
+      "kv_cache_mean": 0.09068418685220454
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 29,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.4833333333333334,
+      "kv_cache_mean": 0.043958215697346134
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 30,
+      "waiting_mean": 0.0,
+      "running_mean": 1.2166666666666666,
+      "kv_cache_mean": 0.02246376811594203
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 31,
+      "waiting_mean": 0.0,
+      "running_mean": 1.0666666666666667,
+      "kv_cache_mean": 0.02140033879164314
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 32,
+      "waiting_mean": 0.0,
+      "running_mean": 3.3333333333333335,
+      "kv_cache_mean": 0.03973743647656691
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 33,
+      "waiting_mean": 0.0,
+      "running_mean": 2.066666666666667,
+      "kv_cache_mean": 0.02702804441934877
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 34,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 1.7118644067796611,
+      "kv_cache_mean": 0.05729789738632775
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 35,
+      "waiting_mean": 0.26666666666666666,
+      "running_mean": 2.95,
+      "kv_cache_mean": 0.0963674007152268
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 36,
+      "waiting_mean": 0.1,
+      "running_mean": 2.9833333333333334,
+      "kv_cache_mean": 0.07282608695652174
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 37,
+      "waiting_mean": 0.18333333333333332,
+      "running_mean": 2.0166666666666666,
+      "kv_cache_mean": 0.05108695652173913
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 38,
+      "waiting_mean": 0.2833333333333333,
+      "running_mean": 4.833333333333333,
+      "kv_cache_mean": 0.22532938076416337
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 39,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 4.283333333333333,
+      "kv_cache_mean": 0.2119329945416902
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 40,
+      "waiting_mean": 0.0,
+      "running_mean": 2.466666666666667,
+      "kv_cache_mean": 0.0897844908714474
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 41,
+      "waiting_mean": 0.0,
+      "running_mean": 2.711864406779661,
+      "kv_cache_mean": 0.06485850185186957
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 42,
+      "waiting_mean": 0.05,
+      "running_mean": 3.2666666666666666,
+      "kv_cache_mean": 0.12404009034443816
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 43,
+      "waiting_mean": 0.38333333333333336,
+      "running_mean": 2.9,
+      "kv_cache_mean": 0.09799548277809148
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 44,
+      "waiting_mean": 0.6333333333333333,
+      "running_mean": 2.966666666666667,
+      "kv_cache_mean": 0.13681065311500093
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 45,
+      "waiting_mean": 0.0,
+      "running_mean": 3.457627118644068,
+      "kv_cache_mean": 0.18556020250935507
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 46,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.8,
+      "kv_cache_mean": 0.1397750799924713
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 47,
+      "waiting_mean": 0.05,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.030034820252211564
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 48,
+      "waiting_mean": 0.0,
+      "running_mean": 0.8333333333333334,
+      "kv_cache_mean": 0.020247506117071334
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 49,
+      "waiting_mean": 0.15,
+      "running_mean": 1.5666666666666667,
+      "kv_cache_mean": 0.04124788255223038
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 50,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4,
+      "kv_cache_mean": 0.04655561829474874
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 51,
+      "waiting_mean": 0.0,
+      "running_mean": 2.016949152542373,
+      "kv_cache_mean": 0.05186191847945716
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 52,
+      "waiting_mean": 0.0,
+      "running_mean": 2.05,
+      "kv_cache_mean": 0.037012987012987004
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 53,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.95,
+      "kv_cache_mean": 0.05895445134575569
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 54,
+      "waiting_mean": 0.0,
+      "running_mean": 1.45,
+      "kv_cache_mean": 0.024783549783549783
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 55,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 1.4333333333333333,
+      "kv_cache_mean": 0.03902220967438359
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 56,
+      "waiting_mean": 0.0,
+      "running_mean": 1.0338983050847457,
+      "kv_cache_mean": 0.029117897577735453
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 57,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.4666666666666666,
+      "kv_cache_mean": 0.050621118012422354
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 58,
+      "waiting_mean": 0.0,
+      "running_mean": 1.35,
+      "kv_cache_mean": 0.04089026915113872
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "minute": 59,
+      "waiting_mean": 0.0,
+      "running_mean": 0.9166666666666666,
+      "kv_cache_mean": 0.017306606437041214
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 0,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 7.866666666666666,
+      "kv_cache_mean": 0.19823075475249388
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 1,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 10.05,
+      "kv_cache_mean": 0.24562864671560325
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 2,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 10.683333333333334,
+      "kv_cache_mean": 0.2829051383399209
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 3,
+      "waiting_mean": 0.26666666666666666,
+      "running_mean": 9.916666666666666,
+      "kv_cache_mean": 0.2890080933559194
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 4,
+      "waiting_mean": 0.1016949152542373,
+      "running_mean": 9.05084745762712,
+      "kv_cache_mean": 0.20539482624965308
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 5,
+      "waiting_mean": 0.0,
+      "running_mean": 5.216666666666667,
+      "kv_cache_mean": 0.1042490118577075
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 6,
+      "waiting_mean": 0.0,
+      "running_mean": 2.15,
+      "kv_cache_mean": 0.04582156973461322
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 7,
+      "waiting_mean": 0.0,
+      "running_mean": 1.95,
+      "kv_cache_mean": 0.04876717485413138
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 8,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.8666666666666667,
+      "kv_cache_mean": 0.06457745153397328
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 9,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.03838226990400903
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 10,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 2.4915254237288136,
+      "kv_cache_mean": 0.06512168745035363
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 11,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.2666666666666666,
+      "kv_cache_mean": 0.05803218520609825
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 12,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.4166666666666665,
+      "kv_cache_mean": 0.06236118953510257
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 13,
+      "waiting_mean": 0.0,
+      "running_mean": 1.45,
+      "kv_cache_mean": 0.036853002070393374
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 14,
+      "waiting_mean": 0.0,
+      "running_mean": 1.7,
+      "kv_cache_mean": 0.03666478449087145
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 15,
+      "waiting_mean": 0.05,
+      "running_mean": 1.3833333333333333,
+      "kv_cache_mean": 0.028867871259175604
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 16,
+      "waiting_mean": 0.16666666666666666,
+      "running_mean": 0.8333333333333334,
+      "kv_cache_mean": 0.024887069452286838
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 17,
+      "waiting_mean": 0.0847457627118644,
+      "running_mean": 2.830508474576271,
+      "kv_cache_mean": 0.05561829474872953
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 18,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 3.2333333333333334,
+      "kv_cache_mean": 0.05594297007340485
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 19,
+      "waiting_mean": 0.15,
+      "running_mean": 1.9333333333333333,
+      "kv_cache_mean": 0.04564746847355543
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 20,
+      "waiting_mean": 0.0,
+      "running_mean": 2.033333333333333,
+      "kv_cache_mean": 0.04151138716356108
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 21,
+      "waiting_mean": 0.0,
+      "running_mean": 3.3333333333333335,
+      "kv_cache_mean": 0.08000658761528327
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 22,
+      "waiting_mean": 0.0,
+      "running_mean": 1.2542372881355932,
+      "kv_cache_mean": 0.04593784991721617
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 23,
+      "waiting_mean": 0.5833333333333334,
+      "running_mean": 2.5833333333333335,
+      "kv_cache_mean": 0.08852343308865049
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 24,
+      "waiting_mean": 0.05,
+      "running_mean": 1.4333333333333333,
+      "kv_cache_mean": 0.03158761528326746
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 25,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.7,
+      "kv_cache_mean": 0.03634010916619613
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 26,
+      "waiting_mean": 0.0,
+      "running_mean": 1.5166666666666666,
+      "kv_cache_mean": 0.045021645021645025
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 27,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 3.1166666666666667,
+      "kv_cache_mean": 0.08817523056653491
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 28,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 1.4067796610169492,
+      "kv_cache_mean": 0.02284450994841562
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 29,
+      "waiting_mean": 0.05,
+      "running_mean": 2.1166666666666667,
+      "kv_cache_mean": 0.04757669866365519
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 30,
+      "waiting_mean": 0.2,
+      "running_mean": 2.9,
+      "kv_cache_mean": 0.05661584792019574
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 31,
+      "waiting_mean": 0.05,
+      "running_mean": 3.066666666666667,
+      "kv_cache_mean": 0.10703463203463202
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 32,
+      "waiting_mean": 0.15,
+      "running_mean": 1.6833333333333333,
+      "kv_cache_mean": 0.04435347261434217
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 33,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.3833333333333333,
+      "kv_cache_mean": 0.051999811782420476
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 34,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 3.016949152542373,
+      "kv_cache_mean": 0.10003923858013763
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 35,
+      "waiting_mean": 0.0,
+      "running_mean": 2.1166666666666667,
+      "kv_cache_mean": 0.07060041407867494
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 36,
+      "waiting_mean": 0.05,
+      "running_mean": 2.216666666666667,
+      "kv_cache_mean": 0.06202239789196311
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 37,
+      "waiting_mean": 0.05,
+      "running_mean": 2.55,
+      "kv_cache_mean": 0.06636081309994353
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 38,
+      "waiting_mean": 0.21666666666666667,
+      "running_mean": 2.3,
+      "kv_cache_mean": 0.0711133069828722
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 39,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4666666666666666,
+      "kv_cache_mean": 0.0541313758705063
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 40,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.7118644067796611,
+      "kv_cache_mean": 0.030859707720429907
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 41,
+      "waiting_mean": 0.15,
+      "running_mean": 2.033333333333333,
+      "kv_cache_mean": 0.04777432712215321
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 42,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 4.85,
+      "kv_cache_mean": 0.13925277620929793
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 43,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.6,
+      "kv_cache_mean": 0.05822510822510822
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 44,
+      "waiting_mean": 0.0,
+      "running_mean": 2.533333333333333,
+      "kv_cache_mean": 0.04114906832298137
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 45,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 3.6166666666666667,
+      "kv_cache_mean": 0.08206286467156033
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 46,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9661016949152543,
+      "kv_cache_mean": 0.03430026127152141
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 47,
+      "waiting_mean": 0.0,
+      "running_mean": 1.1166666666666667,
+      "kv_cache_mean": 0.02078392621870883
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 48,
+      "waiting_mean": 0.0,
+      "running_mean": 1.2666666666666666,
+      "kv_cache_mean": 0.039892715979672505
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 49,
+      "waiting_mean": 0.0,
+      "running_mean": 0.7,
+      "kv_cache_mean": 0.02419536984754376
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 50,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.0166666666666666,
+      "kv_cache_mean": 0.0339262187088274
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 51,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.8,
+      "kv_cache_mean": 0.04795313382269904
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 52,
+      "waiting_mean": 0.1694915254237288,
+      "running_mean": 1.8135593220338984,
+      "kv_cache_mean": 0.08490367407095484
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 53,
+      "waiting_mean": 0.0,
+      "running_mean": 0.8,
+      "kv_cache_mean": 0.042537172971955584
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 54,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 1.8,
+      "kv_cache_mean": 0.06268115942028986
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 55,
+      "waiting_mean": 0.0,
+      "running_mean": 2.45,
+      "kv_cache_mean": 0.09822134387351779
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 56,
+      "waiting_mean": 0.0,
+      "running_mean": 1.5833333333333333,
+      "kv_cache_mean": 0.04466873706004141
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 57,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4745762711864407,
+      "kv_cache_mean": 0.056852874465254714
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 58,
+      "waiting_mean": 0.0,
+      "running_mean": 2.0166666666666666,
+      "kv_cache_mean": 0.0595990965556183
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "minute": 59,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.3,
+      "kv_cache_mean": 0.0693252399774139
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 0,
+      "waiting_mean": 0.23333333333333334,
+      "running_mean": 5.7,
+      "kv_cache_mean": 0.23145115753811407
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 1,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.816666666666667,
+      "kv_cache_mean": 0.15752399774138903
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 2,
+      "waiting_mean": 0.05,
+      "running_mean": 3.5166666666666666,
+      "kv_cache_mean": 0.08801054018445323
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 3,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.2333333333333334,
+      "kv_cache_mean": 0.05932147562582345
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 4,
+      "waiting_mean": 0.6440677966101694,
+      "running_mean": 3.0847457627118646,
+      "kv_cache_mean": 0.07565389658241538
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 5,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.95,
+      "kv_cache_mean": 0.053086768304159614
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 6,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.316666666666667,
+      "kv_cache_mean": 0.04347355543007717
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 7,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.216666666666667,
+      "kv_cache_mean": 0.06818652362130623
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 8,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.8333333333333333,
+      "kv_cache_mean": 0.03816581968755882
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 9,
+      "waiting_mean": 0.3333333333333333,
+      "running_mean": 4.816666666666666,
+      "kv_cache_mean": 0.17136269527573875
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 10,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4576271186440677,
+      "kv_cache_mean": 0.04935926269750883
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 11,
+      "waiting_mean": 0.0,
+      "running_mean": 3.3,
+      "kv_cache_mean": 0.07587991718426501
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 12,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.283333333333333,
+      "kv_cache_mean": 0.056093544137022396
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 13,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.45,
+      "kv_cache_mean": 0.052818558253340864
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 14,
+      "waiting_mean": 0.0,
+      "running_mean": 0.85,
+      "kv_cache_mean": 0.017833615659702626
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 15,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9333333333333333,
+      "kv_cache_mean": 0.04642857142857142
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 16,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 1.9830508474576272,
+      "kv_cache_mean": 0.06884935256342772
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 17,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.35,
+      "kv_cache_mean": 0.047350837568228867
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 18,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.6,
+      "kv_cache_mean": 0.04342179559570864
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 19,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.7666666666666666,
+      "kv_cache_mean": 0.055910031996988525
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 20,
+      "waiting_mean": 0.0,
+      "running_mean": 2.55,
+      "kv_cache_mean": 0.051421042725390546
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 21,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.15,
+      "kv_cache_mean": 0.034514398644833424
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 22,
+      "waiting_mean": 0.05084745762711865,
+      "running_mean": 1.576271186440678,
+      "kv_cache_mean": 0.05064169434103111
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 23,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8666666666666667,
+      "kv_cache_mean": 0.049016563146997934
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 24,
+      "waiting_mean": 0.05,
+      "running_mean": 3.6,
+      "kv_cache_mean": 0.1594532279314888
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 25,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.183333333333333,
+      "kv_cache_mean": 0.15152926783361567
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 26,
+      "waiting_mean": 0.2833333333333333,
+      "running_mean": 1.8166666666666667,
+      "kv_cache_mean": 0.05840391492565406
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 27,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.283333333333333,
+      "kv_cache_mean": 0.04997647280255976
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 28,
+      "waiting_mean": 0.0,
+      "running_mean": 3.9322033898305087,
+      "kv_cache_mean": 0.112739140005168
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 29,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.25,
+      "kv_cache_mean": 0.036264822134387344
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 30,
+      "waiting_mean": 0.05,
+      "running_mean": 1.8666666666666667,
+      "kv_cache_mean": 0.05258328627893845
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 31,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8833333333333333,
+      "kv_cache_mean": 0.0558206286467156
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 32,
+      "waiting_mean": 0.1,
+      "running_mean": 1.65,
+      "kv_cache_mean": 0.03388857519292303
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 33,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.2333333333333334,
+      "kv_cache_mean": 0.08942217203086769
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 34,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 2.983050847457627,
+      "kv_cache_mean": 0.0985510436505278
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 35,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.0833333333333335,
+      "kv_cache_mean": 0.05257858083945041
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 36,
+      "waiting_mean": 0.0,
+      "running_mean": 1.65,
+      "kv_cache_mean": 0.03585544889892717
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 37,
+      "waiting_mean": 0.13333333333333333,
+      "running_mean": 2.2,
+      "kv_cache_mean": 0.05512422360248448
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 38,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.4,
+      "kv_cache_mean": 0.046677959721437984
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 39,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6333333333333333,
+      "kv_cache_mean": 0.03560135516657256
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 40,
+      "waiting_mean": 0.2542372881355932,
+      "running_mean": 4.305084745762712,
+      "kv_cache_mean": 0.06167634870656241
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 41,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 7.633333333333334,
+      "kv_cache_mean": 0.18088179936006024
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 42,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.8666666666666667,
+      "kv_cache_mean": 0.0721202710333145
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 43,
+      "waiting_mean": 0.0,
+      "running_mean": 2.683333333333333,
+      "kv_cache_mean": 0.0769715791454922
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 44,
+      "waiting_mean": 0.11666666666666667,
+      "running_mean": 2.5,
+      "kv_cache_mean": 0.134669678147939
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 45,
+      "waiting_mean": 0.0,
+      "running_mean": 2.3666666666666667,
+      "kv_cache_mean": 0.03346508563899868
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 46,
+      "waiting_mean": 0.0,
+      "running_mean": 3.3728813559322033,
+      "kv_cache_mean": 0.0498712783163778
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 47,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.4166666666666667,
+      "kv_cache_mean": 0.03241577263316394
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 48,
+      "waiting_mean": 0.0,
+      "running_mean": 1.1333333333333333,
+      "kv_cache_mean": 0.02748447204968944
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 49,
+      "waiting_mean": 0.0,
+      "running_mean": 0.48333333333333334,
+      "kv_cache_mean": 0.018271221532091094
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 50,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6833333333333333,
+      "kv_cache_mean": 0.03383681535855449
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 51,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.783333333333333,
+      "kv_cache_mean": 0.07944664031620553
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 52,
+      "waiting_mean": 0.0,
+      "running_mean": 1.2372881355932204,
+      "kv_cache_mean": 0.05184756290135804
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 53,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.055853566723131944
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 54,
+      "waiting_mean": 0.0,
+      "running_mean": 2.0833333333333335,
+      "kv_cache_mean": 0.07081686429512517
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 55,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.03635422548466027
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 56,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4833333333333334,
+      "kv_cache_mean": 0.02915490306794655
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 57,
+      "waiting_mean": 0.13333333333333333,
+      "running_mean": 1.3333333333333333,
+      "kv_cache_mean": 0.042466591379634856
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 58,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.3559322033898304,
+      "kv_cache_mean": 0.037788666749610005
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "minute": 59,
+      "waiting_mean": 0.0,
+      "running_mean": 2.716666666666667,
+      "kv_cache_mean": 0.057815734989648024
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 0,
+      "waiting_mean": 0.16666666666666666,
+      "running_mean": 5.85,
+      "kv_cache_mean": 0.10647939017504235
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 1,
+      "waiting_mean": 0.0,
+      "running_mean": 5.416666666666667,
+      "kv_cache_mean": 0.14087144739318652
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 2,
+      "waiting_mean": 0.0,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.03628834933182759
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 3,
+      "waiting_mean": 0.21666666666666667,
+      "running_mean": 2.25,
+      "kv_cache_mean": 0.050795219273480144
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 4,
+      "waiting_mean": 0.7627118644067796,
+      "running_mean": 8.05084745762712,
+      "kv_cache_mean": 0.2505431193714171
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 5,
+      "waiting_mean": 0.36666666666666664,
+      "running_mean": 11.266666666666667,
+      "kv_cache_mean": 0.32354131375870504
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 6,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 11.8,
+      "kv_cache_mean": 0.28298042537172974
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 7,
+      "waiting_mean": 0.0,
+      "running_mean": 6.566666666666666,
+      "kv_cache_mean": 0.22323546019198193
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 8,
+      "waiting_mean": 0.6666666666666666,
+      "running_mean": 4.583333333333333,
+      "kv_cache_mean": 0.1211038961038961
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 9,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 4.266666666666667,
+      "kv_cache_mean": 0.09603801995106342
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 10,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.8983050847457628,
+      "kv_cache_mean": 0.039942003464479514
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 11,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.45,
+      "kv_cache_mean": 0.05481837003576134
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 12,
+      "waiting_mean": 0.0,
+      "running_mean": 2.5833333333333335,
+      "kv_cache_mean": 0.0651750423489554
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 13,
+      "waiting_mean": 0.0,
+      "running_mean": 1.1,
+      "kv_cache_mean": 0.027540937323546025
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 14,
+      "waiting_mean": 0.3,
+      "running_mean": 1.7166666666666666,
+      "kv_cache_mean": 0.035243741765480896
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 15,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 4.116666666666666,
+      "kv_cache_mean": 0.06097308488612837
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 16,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6166666666666667,
+      "kv_cache_mean": 0.02034632034632035
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 17,
+      "waiting_mean": 0.6610169491525424,
+      "running_mean": 3.76271186440678,
+      "kv_cache_mean": 0.15861478241728796
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 18,
+      "waiting_mean": 0.21666666666666667,
+      "running_mean": 5.65,
+      "kv_cache_mean": 0.2019904009034444
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 19,
+      "waiting_mean": 0.15,
+      "running_mean": 4.333333333333333,
+      "kv_cache_mean": 0.17903726708074535
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 20,
+      "waiting_mean": 0.23333333333333334,
+      "running_mean": 4.133333333333334,
+      "kv_cache_mean": 0.07089685676642199
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 21,
+      "waiting_mean": 0.2,
+      "running_mean": 3.1,
+      "kv_cache_mean": 0.08236871823828346
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 22,
+      "waiting_mean": 0.22033898305084745,
+      "running_mean": 2.3220338983050848,
+      "kv_cache_mean": 0.07616591220128435
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 23,
+      "waiting_mean": 0.0,
+      "running_mean": 1.5166666666666666,
+      "kv_cache_mean": 0.05020703933747412
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 24,
+      "waiting_mean": 0.0,
+      "running_mean": 2.716666666666667,
+      "kv_cache_mean": 0.08819875776397516
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 25,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.5666666666666667,
+      "kv_cache_mean": 0.033385093167701864
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 26,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4333333333333333,
+      "kv_cache_mean": 0.05776397515527951
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 27,
+      "waiting_mean": 0.15,
+      "running_mean": 1.6333333333333333,
+      "kv_cache_mean": 0.03528609072087333
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 28,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.9830508474576272,
+      "kv_cache_mean": 0.07004086554565553
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 29,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9333333333333333,
+      "kv_cache_mean": 0.026289290419725202
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 30,
+      "waiting_mean": 0.15,
+      "running_mean": 3.183333333333333,
+      "kv_cache_mean": 0.0664455110107284
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 31,
+      "waiting_mean": 0.05,
+      "running_mean": 1.2666666666666666,
+      "kv_cache_mean": 0.0338085827216262
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 32,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.066666666666667,
+      "kv_cache_mean": 0.05231978166760775
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 33,
+      "waiting_mean": 0.21666666666666667,
+      "running_mean": 2.433333333333333,
+      "kv_cache_mean": 0.0729296066252588
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 34,
+      "waiting_mean": 0.15,
+      "running_mean": 2.45,
+      "kv_cache_mean": 0.08849520045172218
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 35,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 2.016949152542373,
+      "kv_cache_mean": 0.0706007330915216
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 36,
+      "waiting_mean": 0.2,
+      "running_mean": 2.0833333333333335,
+      "kv_cache_mean": 0.07676453980801808
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 37,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.9,
+      "kv_cache_mean": 0.05483248635422549
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 38,
+      "waiting_mean": 0.0,
+      "running_mean": 1.1833333333333333,
+      "kv_cache_mean": 0.027409185017880675
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 39,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.3333333333333335,
+      "kv_cache_mean": 0.047529644268774714
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 40,
+      "waiting_mean": 0.18333333333333332,
+      "running_mean": 1.35,
+      "kv_cache_mean": 0.041911349520045174
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 41,
+      "waiting_mean": 0.06779661016949153,
+      "running_mean": 1.5084745762711864,
+      "kv_cache_mean": 0.055125419900659396
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 42,
+      "waiting_mean": 0.0,
+      "running_mean": 1.85,
+      "kv_cache_mean": 0.07263316393751176
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 43,
+      "waiting_mean": 0.05,
+      "running_mean": 2.066666666666667,
+      "kv_cache_mean": 0.06552324487107096
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 44,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.2666666666666666,
+      "kv_cache_mean": 0.050470543948804826
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 45,
+      "waiting_mean": 0.05,
+      "running_mean": 0.9166666666666666,
+      "kv_cache_mean": 0.035559006211180126
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 46,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.5833333333333333,
+      "kv_cache_mean": 0.031869941652550346
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 47,
+      "waiting_mean": 0.1016949152542373,
+      "running_mean": 1.0169491525423728,
+      "kv_cache_mean": 0.027993377293303607
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 48,
+      "waiting_mean": 0.05,
+      "running_mean": 1.0166666666666666,
+      "kv_cache_mean": 0.03498494259363825
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 49,
+      "waiting_mean": 0.0,
+      "running_mean": 1.7,
+      "kv_cache_mean": 0.037624694146433275
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 50,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.4166666666666667,
+      "kv_cache_mean": 0.04971767363071711
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 51,
+      "waiting_mean": 0.0,
+      "running_mean": 0.95,
+      "kv_cache_mean": 0.037012987012987004
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 52,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 0.9166666666666666,
+      "kv_cache_mean": 0.024355354790137392
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 53,
+      "waiting_mean": 0.2033898305084746,
+      "running_mean": 1.9830508474576272,
+      "kv_cache_mean": 0.07637167548737188
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 54,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9833333333333334,
+      "kv_cache_mean": 0.059010916619612275
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 55,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.2333333333333334,
+      "kv_cache_mean": 0.03260869565217391
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 56,
+      "waiting_mean": 0.0,
+      "running_mean": 3.1333333333333333,
+      "kv_cache_mean": 0.11114718614718615
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 57,
+      "waiting_mean": 0.0,
+      "running_mean": 1.7833333333333334,
+      "kv_cache_mean": 0.08283455674760022
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 58,
+      "waiting_mean": 0.0,
+      "running_mean": 0.559322033898305,
+      "kv_cache_mean": 0.015111638545684234
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "minute": 59,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 0.95,
+      "kv_cache_mean": 0.02550348202522116
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 0,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.5166666666666666,
+      "kv_cache_mean": 0.029281949934123846
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 1,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 4.05,
+      "kv_cache_mean": 0.07895727460944853
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 2,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 5.383333333333334,
+      "kv_cache_mean": 0.14377470355731226
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 3,
+      "waiting_mean": 0.2,
+      "running_mean": 3.7,
+      "kv_cache_mean": 0.08741294936947111
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 4,
+      "waiting_mean": 0.1864406779661017,
+      "running_mean": 4.5423728813559325,
+      "kv_cache_mean": 0.08441558441558442
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 5,
+      "waiting_mean": 0.0,
+      "running_mean": 2.9166666666666665,
+      "kv_cache_mean": 0.05670995670995671
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 6,
+      "waiting_mean": 0.0,
+      "running_mean": 2.433333333333333,
+      "kv_cache_mean": 0.044701675136457744
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 7,
+      "waiting_mean": 0.0,
+      "running_mean": 1.1166666666666667,
+      "kv_cache_mean": 0.021593261810653117
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 8,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 2.85,
+      "kv_cache_mean": 0.049872953133822694
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 9,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.15,
+      "kv_cache_mean": 0.033789760963674
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 10,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 2.1016949152542375,
+      "kv_cache_mean": 0.03739628094823379
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 11,
+      "waiting_mean": 0.3,
+      "running_mean": 5.383333333333334,
+      "kv_cache_mean": 0.12513175230566534
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 12,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.7166666666666666,
+      "kv_cache_mean": 0.0380764163372859
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 13,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.5,
+      "kv_cache_mean": 0.03539902126858648
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 14,
+      "waiting_mean": 0.0,
+      "running_mean": 1.0833333333333333,
+      "kv_cache_mean": 0.016647844908714474
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 15,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4833333333333334,
+      "kv_cache_mean": 0.031197063805759456
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 16,
+      "waiting_mean": 0.1694915254237288,
+      "running_mean": 2.3220338983050848,
+      "kv_cache_mean": 0.06591602943850548
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 17,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4,
+      "kv_cache_mean": 0.04043384152079805
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 18,
+      "waiting_mean": 0.1,
+      "running_mean": 2.2333333333333334,
+      "kv_cache_mean": 0.06437982307547525
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 19,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 2.3833333333333333,
+      "kv_cache_mean": 0.05783455674760022
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 20,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9666666666666666,
+      "kv_cache_mean": 0.04682382834556747
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 21,
+      "waiting_mean": 0.0,
+      "running_mean": 2.033333333333333,
+      "kv_cache_mean": 0.053157349896480334
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 22,
+      "waiting_mean": 0.3050847457627119,
+      "running_mean": 2.9661016949152543,
+      "kv_cache_mean": 0.09188527021983176
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 23,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.4666666666666666,
+      "kv_cache_mean": 0.05520892151326934
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 24,
+      "waiting_mean": 0.45,
+      "running_mean": 1.9333333333333333,
+      "kv_cache_mean": 0.07334368530020703
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 25,
+      "waiting_mean": 0.05,
+      "running_mean": 2.1,
+      "kv_cache_mean": 0.03971861471861472
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 26,
+      "waiting_mean": 0.05,
+      "running_mean": 2.2666666666666666,
+      "kv_cache_mean": 0.07123564840956145
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 27,
+      "waiting_mean": 0.13333333333333333,
+      "running_mean": 1.45,
+      "kv_cache_mean": 0.03658008658008658
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 28,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.4406779661016949,
+      "kv_cache_mean": 0.05372335843964437
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 29,
+      "waiting_mean": 0.05,
+      "running_mean": 1.4666666666666666,
+      "kv_cache_mean": 0.04899303594955769
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 30,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.5333333333333334,
+      "kv_cache_mean": 0.027762092979484284
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 31,
+      "waiting_mean": 0.1,
+      "running_mean": 2.4166666666666665,
+      "kv_cache_mean": 0.0665537361189535
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 32,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8,
+      "kv_cache_mean": 0.03851872764916243
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 33,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 2.9166666666666665,
+      "kv_cache_mean": 0.04885187276491624
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 34,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 2.95,
+      "kv_cache_mean": 0.06102955015998494
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 35,
+      "waiting_mean": 0.3898305084745763,
+      "running_mean": 3.0338983050847457,
+      "kv_cache_mean": 0.08599469800648872
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 36,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 3.316666666666667,
+      "kv_cache_mean": 0.09903538490495012
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 37,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 2.5166666666666666,
+      "kv_cache_mean": 0.07374835309617918
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 38,
+      "waiting_mean": 0.25,
+      "running_mean": 3.4,
+      "kv_cache_mean": 0.1488001129305477
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 39,
+      "waiting_mean": 0.23333333333333334,
+      "running_mean": 4.216666666666667,
+      "kv_cache_mean": 0.20253623188405798
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 40,
+      "waiting_mean": 0.75,
+      "running_mean": 5.283333333333333,
+      "kv_cache_mean": 0.22780914737436475
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 41,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 1.4915254237288136,
+      "kv_cache_mean": 0.043119371417086966
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 42,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.8,
+      "kv_cache_mean": 0.04732731037078864
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 43,
+      "waiting_mean": 0.0,
+      "running_mean": 2.1666666666666665,
+      "kv_cache_mean": 0.07172971955580651
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 44,
+      "waiting_mean": 0.0,
+      "running_mean": 1.2166666666666666,
+      "kv_cache_mean": 0.042419536984754376
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 45,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6833333333333333,
+      "kv_cache_mean": 0.024985883681535852
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 46,
+      "waiting_mean": 0.0,
+      "running_mean": 2.0338983050847457,
+      "kv_cache_mean": 0.03718573246944654
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 47,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 1.7666666666666666,
+      "kv_cache_mean": 0.03836344814605685
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 48,
+      "waiting_mean": 0.0,
+      "running_mean": 1.3666666666666667,
+      "kv_cache_mean": 0.04737436476566911
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 49,
+      "waiting_mean": 0.05,
+      "running_mean": 1.0333333333333334,
+      "kv_cache_mean": 0.059316770186335396
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 50,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.6166666666666667,
+      "kv_cache_mean": 0.15873800112930547
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 51,
+      "waiting_mean": 0.0,
+      "running_mean": 3.466666666666667,
+      "kv_cache_mean": 0.19577922077922078
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 52,
+      "waiting_mean": 0.4915254237288136,
+      "running_mean": 3.593220338983051,
+      "kv_cache_mean": 0.10796351769085741
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 53,
+      "waiting_mean": 0.0,
+      "running_mean": 0.7666666666666667,
+      "kv_cache_mean": 0.03476849237718803
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 54,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9333333333333333,
+      "kv_cache_mean": 0.07301900997553172
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 55,
+      "waiting_mean": 0.0,
+      "running_mean": 2.0,
+      "kv_cache_mean": 0.07086391869000565
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 56,
+      "waiting_mean": 0.0,
+      "running_mean": 0.7666666666666667,
+      "kv_cache_mean": 0.020346320346320352
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 57,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.1864406779661016,
+      "kv_cache_mean": 0.02266745781852635
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 58,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6,
+      "kv_cache_mean": 0.059086203651421046
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "minute": 59,
+      "waiting_mean": 0.0,
+      "running_mean": 0.9166666666666666,
+      "kv_cache_mean": 0.024491812535290796
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 0,
+      "waiting_mean": 0.0,
+      "running_mean": 2.933333333333333,
+      "kv_cache_mean": 0.042711274233013366
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 1,
+      "waiting_mean": 0.16666666666666666,
+      "running_mean": 3.75,
+      "kv_cache_mean": 0.07547524938829286
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 2,
+      "waiting_mean": 0.2542372881355932,
+      "running_mean": 5.491525423728813,
+      "kv_cache_mean": 0.11392586779469609
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 3,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 4.016666666666667,
+      "kv_cache_mean": 0.09679559570863919
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 4,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.9833333333333334,
+      "kv_cache_mean": 0.08623658949745906
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 5,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9666666666666666,
+      "kv_cache_mean": 0.03872576698663656
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 6,
+      "waiting_mean": 0.0,
+      "running_mean": 2.816666666666667,
+      "kv_cache_mean": 0.06747600225861096
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 7,
+      "waiting_mean": 0.0,
+      "running_mean": 2.466666666666667,
+      "kv_cache_mean": 0.04087144739318652
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 8,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8135593220338984,
+      "kv_cache_mean": 0.03130473064150293
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 9,
+      "waiting_mean": 0.25,
+      "running_mean": 0.9833333333333333,
+      "kv_cache_mean": 0.030270092226613966
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 10,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.3833333333333333,
+      "kv_cache_mean": 0.06017316017316016
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 11,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.5333333333333334,
+      "kv_cache_mean": 0.04618388857519292
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 12,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6833333333333333,
+      "kv_cache_mean": 0.03950686994165255
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 13,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.9666666666666666,
+      "kv_cache_mean": 0.05007999247129681
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 14,
+      "waiting_mean": 0.1694915254237288,
+      "running_mean": 1.88135593220339,
+      "kv_cache_mean": 0.061331814832183286
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 15,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6666666666666667,
+      "kv_cache_mean": 0.04361471861471861
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 16,
+      "waiting_mean": 0.0,
+      "running_mean": 2.0166666666666666,
+      "kv_cache_mean": 0.048386034255599474
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 17,
+      "waiting_mean": 0.0,
+      "running_mean": 2.3,
+      "kv_cache_mean": 0.04758610954263127
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 18,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.2166666666666666,
+      "kv_cache_mean": 0.03058535667231319
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 19,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.433333333333333,
+      "kv_cache_mean": 0.05559476755128929
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 20,
+      "waiting_mean": 0.23728813559322035,
+      "running_mean": 2.23728813559322,
+      "kv_cache_mean": 0.07029926595143987
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 21,
+      "waiting_mean": 0.0,
+      "running_mean": 2.5166666666666666,
+      "kv_cache_mean": 0.08531432335780162
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 22,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 2.0833333333333335,
+      "kv_cache_mean": 0.07770092226613966
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 23,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.3833333333333333,
+      "kv_cache_mean": 0.05568887634105026
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 24,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.4166666666666667,
+      "kv_cache_mean": 0.05151515151515152
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 25,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.3166666666666667,
+      "kv_cache_mean": 0.02676453980801808
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 26,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 2.152542372881356,
+      "kv_cache_mean": 0.05917847811731378
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 27,
+      "waiting_mean": 0.0,
+      "running_mean": 2.283333333333333,
+      "kv_cache_mean": 0.04645209862601168
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 28,
+      "waiting_mean": 0.0,
+      "running_mean": 1.4833333333333334,
+      "kv_cache_mean": 0.030350084697910788
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 29,
+      "waiting_mean": 0.0,
+      "running_mean": 1.5166666666666666,
+      "kv_cache_mean": 0.03503670242800678
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 30,
+      "waiting_mean": 0.05,
+      "running_mean": 1.8333333333333333,
+      "kv_cache_mean": 0.03544607566346697
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 31,
+      "waiting_mean": 0.05,
+      "running_mean": 3.95,
+      "kv_cache_mean": 0.06697722567287784
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 32,
+      "waiting_mean": 0.0,
+      "running_mean": 2.0508474576271185,
+      "kv_cache_mean": 0.0215955746537913
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 33,
+      "waiting_mean": 0.18333333333333332,
+      "running_mean": 3.6,
+      "kv_cache_mean": 0.09317711274233013
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 34,
+      "waiting_mean": 0.05,
+      "running_mean": 2.85,
+      "kv_cache_mean": 0.07796442687747036
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 35,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 4.866666666666666,
+      "kv_cache_mean": 0.11449745906267646
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 36,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 5.733333333333333,
+      "kv_cache_mean": 0.15041407867494824
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 37,
+      "waiting_mean": 0.1,
+      "running_mean": 1.6166666666666667,
+      "kv_cache_mean": 0.054333709768492375
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 38,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9322033898305084,
+      "kv_cache_mean": 0.045636382777134436
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 39,
+      "waiting_mean": 0.16666666666666666,
+      "running_mean": 3.3,
+      "kv_cache_mean": 0.08529079616036138
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 40,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.683333333333333,
+      "kv_cache_mean": 0.09936947110860155
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 41,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.55,
+      "kv_cache_mean": 0.046075663466967814
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 42,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.55,
+      "kv_cache_mean": 0.03030773574251835
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 43,
+      "waiting_mean": 0.0,
+      "running_mean": 1.423728813559322,
+      "kv_cache_mean": 0.042430303668328714
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 44,
+      "waiting_mean": 0.38333333333333336,
+      "running_mean": 2.85,
+      "kv_cache_mean": 0.07803971390927912
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 45,
+      "waiting_mean": 0.0,
+      "running_mean": 1.05,
+      "kv_cache_mean": 0.03452380952380952
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 46,
+      "waiting_mean": 0.0,
+      "running_mean": 1.1666666666666667,
+      "kv_cache_mean": 0.031215885563711656
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 47,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9833333333333334,
+      "kv_cache_mean": 0.04590156220591003
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 48,
+      "waiting_mean": 0.0,
+      "running_mean": 0.9333333333333333,
+      "kv_cache_mean": 0.018101825710521366
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 49,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 2.3220338983050848,
+      "kv_cache_mean": 0.06990209495736392
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 50,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 3.316666666666667,
+      "kv_cache_mean": 0.12033690946734425
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 51,
+      "waiting_mean": 0.15,
+      "running_mean": 1.1,
+      "kv_cache_mean": 0.027112742330133634
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 52,
+      "waiting_mean": 0.0,
+      "running_mean": 2.1166666666666667,
+      "kv_cache_mean": 0.055326557500470545
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 53,
+      "waiting_mean": 0.21666666666666667,
+      "running_mean": 2.45,
+      "kv_cache_mean": 0.09373235460191982
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 54,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.716666666666667,
+      "kv_cache_mean": 0.13713062300018822
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 55,
+      "waiting_mean": 0.06779661016949153,
+      "running_mean": 4.423728813559322,
+      "kv_cache_mean": 0.22420063355951345
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 56,
+      "waiting_mean": 0.0,
+      "running_mean": 2.1,
+      "kv_cache_mean": 0.10308676830415961
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 57,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.4333333333333333,
+      "kv_cache_mean": 0.05373141351402221
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 58,
+      "waiting_mean": 0.18333333333333332,
+      "running_mean": 1.8666666666666667,
+      "kv_cache_mean": 0.05615000941087898
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "minute": 59,
+      "waiting_mean": 0.0,
+      "running_mean": 2.5166666666666666,
+      "kv_cache_mean": 0.038132881611142484
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 0,
+      "waiting_mean": 0.0,
+      "running_mean": 2.7,
+      "kv_cache_mean": 0.043450028232636925
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 1,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.9833333333333334,
+      "kv_cache_mean": 0.05558065123282515
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 2,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 5.1,
+      "kv_cache_mean": 0.1289149256540561
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 3,
+      "waiting_mean": 0.423728813559322,
+      "running_mean": 7.4576271186440675,
+      "kv_cache_mean": 0.16228502521796553
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 4,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 3.5,
+      "kv_cache_mean": 0.08273574251835122
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 5,
+      "waiting_mean": 0.08333333333333333,
+      "running_mean": 2.5166666666666666,
+      "kv_cache_mean": 0.04087144739318653
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 6,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6333333333333333,
+      "kv_cache_mean": 0.02827969132316958
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 7,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.45,
+      "kv_cache_mean": 0.03241577263316394
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 8,
+      "waiting_mean": 0.0,
+      "running_mean": 1.3333333333333333,
+      "kv_cache_mean": 0.028411443628834934
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 9,
+      "waiting_mean": 0.05,
+      "running_mean": 1.5666666666666667,
+      "kv_cache_mean": 0.04564746847355543
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 10,
+      "waiting_mean": 0.03389830508474576,
+      "running_mean": 3.6779661016949152,
+      "kv_cache_mean": 0.06872493755323526
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 11,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.9333333333333333,
+      "kv_cache_mean": 0.04398174289478638
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 12,
+      "waiting_mean": 0.0,
+      "running_mean": 2.433333333333333,
+      "kv_cache_mean": 0.06070958027479766
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 13,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.75,
+      "kv_cache_mean": 0.0604978354978355
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 14,
+      "waiting_mean": 0.0,
+      "running_mean": 2.1666666666666665,
+      "kv_cache_mean": 0.03132881611142481
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 15,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.2666666666666666,
+      "kv_cache_mean": 0.02721155655938265
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 16,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.2372881355932204,
+      "kv_cache_mean": 0.045033448496970975
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 17,
+      "waiting_mean": 0.05,
+      "running_mean": 3.066666666666667,
+      "kv_cache_mean": 0.05533596837944663
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 18,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.2166666666666666,
+      "kv_cache_mean": 0.03232636928289102
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 19,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.316666666666667,
+      "kv_cache_mean": 0.035568417090156214
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 20,
+      "waiting_mean": 0.43333333333333335,
+      "running_mean": 2.533333333333333,
+      "kv_cache_mean": 0.07936664784490871
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 21,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 1.3898305084745763,
+      "kv_cache_mean": 0.02620371522361205
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 22,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8333333333333333,
+      "kv_cache_mean": 0.06995576886881234
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 23,
+      "waiting_mean": 0.2,
+      "running_mean": 2.15,
+      "kv_cache_mean": 0.08659420289855073
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 24,
+      "waiting_mean": 0.0,
+      "running_mean": 2.4,
+      "kv_cache_mean": 0.11063429324298889
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 25,
+      "waiting_mean": 0.0,
+      "running_mean": 2.6333333333333333,
+      "kv_cache_mean": 0.1387116506681724
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 26,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 3.65,
+      "kv_cache_mean": 0.13331921701486918
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 27,
+      "waiting_mean": 0.0,
+      "running_mean": 1.6779661016949152,
+      "kv_cache_mean": 0.042109695757448155
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 28,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.1166666666666667,
+      "kv_cache_mean": 0.06357989836250706
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 29,
+      "waiting_mean": 0.0,
+      "running_mean": 1.2,
+      "kv_cache_mean": 0.029244306418219464
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 30,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8333333333333333,
+      "kv_cache_mean": 0.04640033879164313
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 31,
+      "waiting_mean": 0.13333333333333333,
+      "running_mean": 1.7166666666666666,
+      "kv_cache_mean": 0.061970638057594576
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 32,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 3.05,
+      "kv_cache_mean": 0.07795031055900621
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 33,
+      "waiting_mean": 0.01694915254237288,
+      "running_mean": 2.593220338983051,
+      "kv_cache_mean": 0.060384346677640706
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 34,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.5166666666666666,
+      "kv_cache_mean": 0.09841426689252776
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 35,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.45,
+      "kv_cache_mean": 0.09783079239600978
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 36,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.25,
+      "kv_cache_mean": 0.05967908902691511
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 37,
+      "waiting_mean": 0.31666666666666665,
+      "running_mean": 8.216666666666667,
+      "kv_cache_mean": 0.2865330321852061
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 38,
+      "waiting_mean": 0.05,
+      "running_mean": 4.416666666666667,
+      "kv_cache_mean": 0.13893280632411067
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 39,
+      "waiting_mean": 1.0666666666666667,
+      "running_mean": 3.466666666666667,
+      "kv_cache_mean": 0.11003670242800678
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 40,
+      "waiting_mean": 0.22033898305084745,
+      "running_mean": 4.711864406779661,
+      "kv_cache_mean": 0.13931131506665773
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 41,
+      "waiting_mean": 0.2,
+      "running_mean": 1.75,
+      "kv_cache_mean": 0.06909467344249953
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 42,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.4833333333333334,
+      "kv_cache_mean": 0.09910126105778279
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 43,
+      "waiting_mean": 0.0,
+      "running_mean": 3.316666666666667,
+      "kv_cache_mean": 0.09577451533973273
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 44,
+      "waiting_mean": 0.0,
+      "running_mean": 1.35,
+      "kv_cache_mean": 0.03298042537172972
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 45,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 2.2666666666666666,
+      "kv_cache_mean": 0.0614059853190288
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 46,
+      "waiting_mean": 0.0,
+      "running_mean": 1.8305084745762712,
+      "kv_cache_mean": 0.03261587344122348
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 47,
+      "waiting_mean": 0.0,
+      "running_mean": 0.8833333333333333,
+      "kv_cache_mean": 0.0190523244871071
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 48,
+      "waiting_mean": 0.06666666666666667,
+      "running_mean": 1.55,
+      "kv_cache_mean": 0.06405044231131188
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 49,
+      "waiting_mean": 0.11666666666666667,
+      "running_mean": 0.75,
+      "kv_cache_mean": 0.03428853754940712
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 50,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 1.0666666666666667,
+      "kv_cache_mean": 0.024792960662525877
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 51,
+      "waiting_mean": 0.13333333333333333,
+      "running_mean": 1.1,
+      "kv_cache_mean": 0.0323828345567476
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 52,
+      "waiting_mean": 0.0,
+      "running_mean": 0.9322033898305084,
+      "kv_cache_mean": 0.015982543617031462
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 53,
+      "waiting_mean": 0.11666666666666667,
+      "running_mean": 2.05,
+      "kv_cache_mean": 0.06796066252587991
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 54,
+      "waiting_mean": 0.0,
+      "running_mean": 2.15,
+      "kv_cache_mean": 0.046659137963485794
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 55,
+      "waiting_mean": 0.03333333333333333,
+      "running_mean": 1.1,
+      "kv_cache_mean": 0.027385657820440428
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 56,
+      "waiting_mean": 0.05,
+      "running_mean": 1.1,
+      "kv_cache_mean": 0.03291925465838509
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 57,
+      "waiting_mean": 0.016666666666666666,
+      "running_mean": 2.8,
+      "kv_cache_mean": 0.11055900621118012
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 58,
+      "waiting_mean": 0.0,
+      "running_mean": 1.9491525423728813,
+      "kv_cache_mean": 0.03126166390720555
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "minute": 59,
+      "waiting_mean": 0.0,
+      "running_mean": 0.8666666666666667,
+      "kv_cache_mean": 0.024609448522492
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 0,
+      "waiting_mean": 44.45,
+      "running_mean": 44.31666666666667,
+      "kv_cache_mean": 0.9463862224731789
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 1,
+      "waiting_mean": 44.1,
+      "running_mean": 42.61666666666667,
+      "kv_cache_mean": 0.9482072275550536
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 2,
+      "waiting_mean": 42.46666666666667,
+      "running_mean": 40.81666666666667,
+      "kv_cache_mean": 0.9144927536231884
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 3,
+      "waiting_mean": 34.0,
+      "running_mean": 47.083333333333336,
+      "kv_cache_mean": 0.9282891022021457
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 4,
+      "waiting_mean": 39.220338983050844,
+      "running_mean": 38.644067796610166,
+      "kv_cache_mean": 0.9089712792734164
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 5,
+      "waiting_mean": 42.53333333333333,
+      "running_mean": 41.85,
+      "kv_cache_mean": 0.9310511951816299
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 6,
+      "waiting_mean": 51.45,
+      "running_mean": 38.53333333333333,
+      "kv_cache_mean": 0.8977978543195935
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 7,
+      "waiting_mean": 61.35,
+      "running_mean": 38.56666666666667,
+      "kv_cache_mean": 0.9369988706945229
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 8,
+      "waiting_mean": 61.36666666666667,
+      "running_mean": 38.38333333333333,
+      "kv_cache_mean": 0.9117635987201205
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 9,
+      "waiting_mean": 60.4,
+      "running_mean": 40.233333333333334,
+      "kv_cache_mean": 0.9181959345002824
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 10,
+      "waiting_mean": 53.49152542372882,
+      "running_mean": 48.23728813559322,
+      "kv_cache_mean": 0.926303247231766
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 11,
+      "waiting_mean": 55.25,
+      "running_mean": 45.666666666666664,
+      "kv_cache_mean": 0.9234613212874082
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 12,
+      "waiting_mean": 57.43333333333333,
+      "running_mean": 44.55,
+      "kv_cache_mean": 0.9093591191417278
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 13,
+      "waiting_mean": 65.85,
+      "running_mean": 39.516666666666666,
+      "kv_cache_mean": 0.8512328251458686
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 14,
+      "waiting_mean": 62.96666666666667,
+      "running_mean": 44.86666666666667,
+      "kv_cache_mean": 0.9326886881234707
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 15,
+      "waiting_mean": 66.7,
+      "running_mean": 37.45,
+      "kv_cache_mean": 0.9363824581215886
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 16,
+      "waiting_mean": 64.7457627118644,
+      "running_mean": 40.71186440677966,
+      "kv_cache_mean": 0.9245040147766751
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 17,
+      "waiting_mean": 58.06666666666667,
+      "running_mean": 43.4,
+      "kv_cache_mean": 0.9250423489553924
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 18,
+      "waiting_mean": 51.95,
+      "running_mean": 47.25,
+      "kv_cache_mean": 0.9413278750235272
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 19,
+      "waiting_mean": 57.96666666666667,
+      "running_mean": 40.5,
+      "kv_cache_mean": 0.9428477319781667
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 20,
+      "waiting_mean": 60.6,
+      "running_mean": 39.166666666666664,
+      "kv_cache_mean": 0.935841332580463
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 21,
+      "waiting_mean": 62.28333333333333,
+      "running_mean": 40.31666666666667,
+      "kv_cache_mean": 0.9155797101449276
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 22,
+      "waiting_mean": 62.47457627118644,
+      "running_mean": 43.355932203389834,
+      "kv_cache_mean": 0.9167089358688474
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 23,
+      "waiting_mean": 63.7,
+      "running_mean": 42.93333333333333,
+      "kv_cache_mean": 0.94238189346885
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 24,
+      "waiting_mean": 62.6,
+      "running_mean": 42.28333333333333,
+      "kv_cache_mean": 0.9330274797666102
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 25,
+      "waiting_mean": 63.68333333333333,
+      "running_mean": 41.016666666666666,
+      "kv_cache_mean": 0.9444475814041031
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 26,
+      "waiting_mean": 63.13333333333333,
+      "running_mean": 40.18333333333333,
+      "kv_cache_mean": 0.8769951063429324
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 27,
+      "waiting_mean": 61.166666666666664,
+      "running_mean": 42.9,
+      "kv_cache_mean": 0.9263081121776774
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 28,
+      "waiting_mean": 61.23728813559322,
+      "running_mean": 42.779661016949156,
+      "kv_cache_mean": 0.8957880733857152
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 29,
+      "waiting_mean": 66.81666666666666,
+      "running_mean": 40.68333333333333,
+      "kv_cache_mean": 0.9526915113871636
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 30,
+      "waiting_mean": 64.55,
+      "running_mean": 38.0,
+      "kv_cache_mean": 0.9257716920760399
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 31,
+      "waiting_mean": 68.6,
+      "running_mean": 36.03333333333333,
+      "kv_cache_mean": 0.9166760775456427
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 32,
+      "waiting_mean": 64.83333333333333,
+      "running_mean": 37.0,
+      "kv_cache_mean": 0.9523480143045361
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 33,
+      "waiting_mean": 65.86666666666666,
+      "running_mean": 35.3,
+      "kv_cache_mean": 0.9410926030491248
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 34,
+      "waiting_mean": 67.45762711864407,
+      "running_mean": 34.71186440677966,
+      "kv_cache_mean": 0.9513441606293486
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 35,
+      "waiting_mean": 57.95,
+      "running_mean": 39.45,
+      "kv_cache_mean": 0.8539102202145681
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 36,
+      "waiting_mean": 58.81666666666667,
+      "running_mean": 39.266666666666666,
+      "kv_cache_mean": 0.9200639939770374
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 37,
+      "waiting_mean": 51.61666666666667,
+      "running_mean": 46.483333333333334,
+      "kv_cache_mean": 0.8601825710521362
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 38,
+      "waiting_mean": 54.5,
+      "running_mean": 40.666666666666664,
+      "kv_cache_mean": 0.9467156032373424
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 39,
+      "waiting_mean": 56.75,
+      "running_mean": 40.03333333333333,
+      "kv_cache_mean": 0.9141680782985131
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 40,
+      "waiting_mean": 51.28813559322034,
+      "running_mean": 42.83050847457627,
+      "kv_cache_mean": 0.8913569849457837
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 41,
+      "waiting_mean": 64.63333333333334,
+      "running_mean": 35.31666666666667,
+      "kv_cache_mean": 0.9173113118765293
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 42,
+      "waiting_mean": 60.56666666666667,
+      "running_mean": 40.18333333333333,
+      "kv_cache_mean": 0.9354696028609072
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 43,
+      "waiting_mean": 70.41666666666667,
+      "running_mean": 32.4,
+      "kv_cache_mean": 0.9332580463015245
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 44,
+      "waiting_mean": 75.63333333333334,
+      "running_mean": 31.633333333333333,
+      "kv_cache_mean": 0.8974967061923583
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 45,
+      "waiting_mean": 66.96666666666667,
+      "running_mean": 37.983333333333334,
+      "kv_cache_mean": 0.925884622623753
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 46,
+      "waiting_mean": 65.55932203389831,
+      "running_mean": 39.08474576271186,
+      "kv_cache_mean": 0.9492434610341759
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 47,
+      "waiting_mean": 78.56666666666666,
+      "running_mean": 31.35,
+      "kv_cache_mean": 0.9209439111613025
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 48,
+      "waiting_mean": 79.3,
+      "running_mean": 34.266666666666666,
+      "kv_cache_mean": 0.9202428006775832
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 49,
+      "waiting_mean": 74.35,
+      "running_mean": 40.46666666666667,
+      "kv_cache_mean": 0.9067523056653491
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 50,
+      "waiting_mean": 68.68333333333334,
+      "running_mean": 40.666666666666664,
+      "kv_cache_mean": 0.9118482966309053
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 51,
+      "waiting_mean": 66.78333333333333,
+      "running_mean": 41.53333333333333,
+      "kv_cache_mean": 0.890424430641822
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 52,
+      "waiting_mean": 69.35,
+      "running_mean": 39.21666666666667,
+      "kv_cache_mean": 0.9241953698475438
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 53,
+      "waiting_mean": 70.27118644067797,
+      "running_mean": 39.03389830508475,
+      "kv_cache_mean": 0.8783316904171731
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 54,
+      "waiting_mean": 68.41666666666667,
+      "running_mean": 37.166666666666664,
+      "kv_cache_mean": 0.8945840391492565
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 55,
+      "waiting_mean": 66.98333333333333,
+      "running_mean": 39.65,
+      "kv_cache_mean": 0.8826086956521739
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 56,
+      "waiting_mean": 73.18333333333334,
+      "running_mean": 36.18333333333333,
+      "kv_cache_mean": 0.8845332204027856
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 57,
+      "waiting_mean": 73.45,
+      "running_mean": 38.15,
+      "kv_cache_mean": 0.8808347449651798
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 58,
+      "waiting_mean": 74.01694915254237,
+      "running_mean": 34.779661016949156,
+      "kv_cache_mean": 0.9055737924566223
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "minute": 59,
+      "waiting_mean": 78.21666666666667,
+      "running_mean": 31.366666666666667,
+      "kv_cache_mean": 0.9252164502164503
+    }
+  ],
+  "audit": null,
+  "arrivals": [
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r00",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 4.601378500639857,
+        "p50": 1.8847993612289429,
+        "p95": 16.528632760047913,
+        "max": 139.97372341156006
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r01",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 5.06030474167878,
+        "p50": 2.156413197517395,
+        "p95": 16.258886337280273,
+        "max": 262.63678789138794
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r02",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 4.498751726844612,
+        "p50": 1.949112057685852,
+        "p95": 15.686864852905273,
+        "max": 143.04915475845337
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r03",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 5.177035869059273,
+        "p50": 2.058850646018982,
+        "p95": 17.951188147068024,
+        "max": 247.30593276023865
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r04",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 4.461866097578618,
+        "p50": 1.8616340160369873,
+        "p95": 15.288325190544128,
+        "max": 164.01678919792175
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r05",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 4.488689742915533,
+        "p50": 1.9748163223266602,
+        "p95": 16.31424903869629,
+        "max": 147.2843267917633
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r06",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 4.562961496360756,
+        "p50": 1.9532732963562012,
+        "p95": 16.3296999335289,
+        "max": 130.55430507659912
+      }
+    },
+    {
+      "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "replica": "r07",
+      "arrivals": 2006,
+      "statuses": {
+        "completed": 2006
+      },
+      "residence_seconds": {
+        "count": 2006,
+        "mean": 188.2582503881673,
+        "p50": 153.0506216287613,
+        "p95": 370.38750171661377,
+        "max": 2330.520637512207
+      }
+    }
+  ]
+}

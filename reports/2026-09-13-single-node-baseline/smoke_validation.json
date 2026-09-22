@@ -1,0 +1,48 @@
+{
+  "source": "runs/scaling/baseline-validation-7608115-20260913/smoke2048/openclaw-cc2",
+  "status": "completed",
+  "measurement_valid": true,
+  "validation": {
+    "backend_client_counts_match": true,
+    "vllm_generation_counter_delta": 14895.0,
+    "client_output_tokens": 14895,
+    "counter_counts_match": true,
+    "inference_gpu_samples_ok": true,
+    "window_has_backend_tokens": true
+  },
+  "scheduler_configuration": {
+    "event": "scheduler_config",
+    "timestamp_unix": 1789316410.0642936,
+    "max_scheduled_tokens": 2048,
+    "max_num_seqs": 64,
+    "async_scheduling": true,
+    "reserve_full_isl": true,
+    "mamba_alignment": true,
+    "block_size": 528,
+    "num_gpu_blocks": 3630,
+    "groups": [
+      {
+        "spec": "MambaSpec",
+        "block_size": 528,
+        "layers": 10
+      },
+      {
+        "spec": "MambaSpec",
+        "block_size": 528,
+        "layers": 10
+      },
+      {
+        "spec": "MambaSpec",
+        "block_size": 528,
+        "layers": 10
+      },
+      {
+        "spec": "FullAttentionSpec",
+        "block_size": 528,
+        "layers": 10
+      }
+    ]
+  },
+  "completed_requests_with_matching_prompt_and_cache_counts": 31,
+  "scope": "Smoke validates instrumentation and token accounting, not cc32 performance or the cause of the throughput drop."
+}

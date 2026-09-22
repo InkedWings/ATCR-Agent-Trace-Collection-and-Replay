@@ -56,7 +56,8 @@ def validate_trace(trace: dict[str, Any]) -> None:
         _string(artifact.get("kind"), f"artifacts[{index}].kind")
         _string(artifact.get("captured_path"), f"artifacts[{index}].captured_path")
         _string(artifact.get("path"), f"artifacts[{index}].path")
-        _string(artifact.get("sha256"), f"artifacts[{index}].sha256")
+        if "sha256" in artifact:
+            _string(artifact["sha256"], f"artifacts[{index}].sha256")
         workspace_path = artifact.get("workspace_path")
         if workspace_path is not None:
             _string(workspace_path, f"artifacts[{index}].workspace_path")

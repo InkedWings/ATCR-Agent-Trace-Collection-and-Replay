@@ -1,0 +1,3373 @@
+{
+  "generated_utc": "2026-09-21T19:43:23.345242+00:00",
+  "scope": "full measurement windows; no theoretical replacement points; no raw artifacts modified",
+  "routing_matched_configuration": true,
+  "results": [
+    {
+      "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "routing_rr",
+      "batch": "new",
+      "workload": "openclaw",
+      "backends": 4,
+      "frontends": 1,
+      "physical_nodes_used": 5,
+      "cc_per_backend": 16,
+      "status": "complete_nonsteady",
+      "raw_valid": true,
+      "raw_steady": false,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1790011134.784058,
+      "measurement_end_unix": 1790014734.784058,
+      "completed_tasks_in_window": 546,
+      "true_admissions_in_window": 546,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 787
+      },
+      "failed_tasks": 0,
+      "output_tokens": 2212517,
+      "output_tokens_s": 614.5880555555556,
+      "tasks_per_minute": 9.1,
+      "prompt_tokens": 365212943,
+      "cached_prompt_tokens": 231836352,
+      "prefix_reuse": 0.6347977431895123,
+      "uncached_prompt_per_output": 60.28274178232303,
+      "frontend_cpu_mean_percent": 4.958334045889796,
+      "frontend": [
+        {
+          "host": "x3105c0s1b0n0",
+          "samples": 3592,
+          "cpu": {
+            "count": 3592,
+            "mean": 4.958334045889796,
+            "p50": 4.583071158601195,
+            "p95": 10.273753111789272,
+            "max": 15.600186828584773
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.0,
+          "runnable_processes_mean": 4.177895322939866,
+          "iowait_percent_mean": 8.695555458099279e-05,
+          "memory_available_min_gib": 461.9155807495117,
+          "scratch_free_min_gib": 2783.6571731567383,
+          "max_sampling_gap_seconds": 1.0185003280639648
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 675.1755555555555,
+          "completed_tasks": 314.0,
+          "prefix_reuse": 0.6287102448676243,
+          "waiting_per_replica": 2.3868972116678884
+        },
+        {
+          "output_tokens_s": 554.0005555555556,
+          "completed_tasks": 232.0,
+          "prefix_reuse": 0.6411943245071837,
+          "waiting_per_replica": 4.449009753134169
+        }
+      ],
+      "replica_output_cv": 0.057474417393160664,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 141.34916666666666,
+          "prefix_reuse": 0.807152467622551
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 162.38805555555555,
+          "prefix_reuse": 0.7815331619662063
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 149.18194444444444,
+          "prefix_reuse": 0.7978355444110364
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 161.6688888888889,
+          "prefix_reuse": 0.12264785198928162
+        }
+      ],
+      "ttft_seconds": {
+        "count": 7824,
+        "mean": 7.532912850437824,
+        "p50": 0.5043431819649413,
+        "p95": 43.51864966477732,
+        "p99": 53.56555347998393
+      },
+      "task_lifecycle_seconds": {
+        "count": 546,
+        "mean": 402.6368360358159,
+        "p50": 224.67754270753358,
+        "p95": 1505.1996673339163,
+        "p99": 2066.5207557467143
+      },
+      "tool_latency_seconds": {
+        "count": 7349,
+        "mean": 0.48596706490679004,
+        "p50": 0.497634,
+        "p95": 0.7944775999999993,
+        "p99": 2.907242999999982
+      },
+      "execution_seconds_mean": {
+        "setup": 10.904011212454211,
+        "llm_only": 380.4544596923077,
+        "tool_only": 6.6352220769230765,
+        "llm_tool_overlap": 1.0858225185894387e-14,
+        "other_and_cleanup": 4.643143054130911
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 7807,
+          "mean": 6.253582811484153,
+          "p50": 6.361864507198334e-06,
+          "p95": 39.93462555902077,
+          "p99": 50.543937191511475
+        },
+        "prefill_seconds": {
+          "count": 7807,
+          "mean": 1.00230681658497,
+          "p50": 0.36421266105026007,
+          "p95": 3.81118118839804,
+          "p99": 6.619463973515655
+        },
+        "decode_latency_seconds": {
+          "count": 7807,
+          "mean": 19.933706962028854,
+          "p50": 1.754908757051453,
+          "p95": 76.51393717427271,
+          "p99": 297.1540420964864
+        }
+      },
+      "setup": {},
+      "routing": {
+        "statuses": {
+          "completed": 7824
+        },
+        "tasks_with_at_least_8_window_calls": 314,
+        "adjacent_call_pairs": 6213,
+        "adjacent_call_switches": 4592,
+        "adjacent_call_backend_switch_fraction": 0.7390954450346049,
+        "distinct_backends_per_task_mean": 3.872611464968153
+      },
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.784058,
+          "window_end": 1790014734.784058
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.784058,
+          "window_end": 1790014734.784058
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.784058,
+          "window_end": 1790014734.784058
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.784058,
+          "window_end": 1790014734.784058
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "routing_cache",
+      "batch": "new",
+      "workload": "openclaw",
+      "backends": 4,
+      "frontends": 1,
+      "physical_nodes_used": 5,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1790011134.3432715,
+      "measurement_end_unix": 1790014734.3432715,
+      "completed_tasks_in_window": 1416,
+      "true_admissions_in_window": 1416,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 1745
+      },
+      "failed_tasks": 0,
+      "output_tokens": 5826572,
+      "output_tokens_s": 1618.4922222222222,
+      "tasks_per_minute": 23.6,
+      "prompt_tokens": 980664293,
+      "cached_prompt_tokens": 888263904,
+      "prefix_reuse": 0.905777757322709,
+      "uncached_prompt_per_output": 15.858447986225864,
+      "frontend_cpu_mean_percent": 13.6014937336555,
+      "frontend": [
+        {
+          "host": "x3105c0s31b1n0",
+          "samples": 3592,
+          "cpu": {
+            "count": 3592,
+            "mean": 13.6014937336555,
+            "p50": 13.279176345968786,
+            "p95": 22.66508806183436,
+            "max": 32.382892057026474
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.0,
+          "runnable_processes_mean": 9.638641425389755,
+          "iowait_percent_mean": 0.0002576619800386986,
+          "memory_available_min_gib": 449.17657470703125,
+          "scratch_free_min_gib": 2783.6534881591797,
+          "max_sampling_gap_seconds": 1.105853796005249
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 1647.0288888888888,
+          "completed_tasks": 704.0,
+          "prefix_reuse": 0.9108202544353121,
+          "waiting_per_replica": 0.09205009200332853
+        },
+        {
+          "output_tokens_s": 1589.9555555555555,
+          "completed_tasks": 712.0,
+          "prefix_reuse": 0.9005339559560598,
+          "waiting_per_replica": 0.15369619465638418
+        }
+      ],
+      "replica_output_cv": 0.11490862869756681,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 426.95916666666665,
+          "prefix_reuse": 0.9184448710328094
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 329.1697222222222,
+          "prefix_reuse": 0.9267229754191665
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 408.33222222222224,
+          "prefix_reuse": 0.8922798408623682
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 454.0311111111111,
+          "prefix_reuse": 0.8618561106863701
+        }
+      ],
+      "ttft_seconds": {
+        "count": 20458,
+        "mean": 0.6776712756804807,
+        "p50": 0.4400370579678565,
+        "p95": 1.945222903182729,
+        "p99": 4.845582170647105
+      },
+      "task_lifecycle_seconds": {
+        "count": 1416,
+        "mean": 161.08690549109835,
+        "p50": 98.8704283030238,
+        "p95": 558.4276109280763,
+        "p99": 778.4723602485012
+      },
+      "tool_latency_seconds": {
+        "count": 19205,
+        "mean": 0.5032506630044259,
+        "p50": 0.50068,
+        "p95": 0.8145007999999999,
+        "p99": 2.5906239199999703
+      },
+      "execution_seconds_mean": {
+        "setup": 12.181574605225988,
+        "llm_only": 137.2835128114407,
+        "tool_only": 6.769391753531068,
+        "llm_tool_overlap": 5.187313228050873e-15,
+        "other_and_cleanup": 4.852426320900595
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 20459,
+          "mean": 0.08387619124917925,
+          "p50": 3.2759271562099457e-06,
+          "p95": 1.462101936340284e-05,
+          "p99": 2.332704043989044
+        },
+        "prefill_seconds": {
+          "count": 20459,
+          "mean": 0.42031859935175864,
+          "p50": 0.2868690979667008,
+          "p95": 1.151919452869333,
+          "p99": 2.778452373878094
+        },
+        "decode_latency_seconds": {
+          "count": 20459,
+          "mean": 8.952066946342802,
+          "p50": 3.8007531338371336,
+          "p95": 30.521955315209855,
+          "p99": 85.17522373593877
+        }
+      },
+      "setup": {},
+      "routing": {
+        "statuses": {
+          "completed": 20458
+        },
+        "tasks_with_at_least_8_window_calls": 767,
+        "adjacent_call_pairs": 16469,
+        "adjacent_call_switches": 2829,
+        "adjacent_call_backend_switch_fraction": 0.17177727852328617,
+        "distinct_backends_per_task_mean": 2.469361147327249
+      },
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.3432715,
+          "window_end": 1790014734.3432715
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.3432715,
+          "window_end": 1790014734.3432715
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.3432715,
+          "window_end": 1790014734.3432715
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011134.3432715,
+          "window_end": 1790014734.3432715
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "routing_rr",
+      "batch": "new",
+      "workload": "minisweagent",
+      "backends": 4,
+      "frontends": 1,
+      "physical_nodes_used": 5,
+      "cc_per_backend": 32,
+      "status": "window_only_drain_timeout",
+      "raw_valid": false,
+      "raw_steady": null,
+      "raw_collection_complete": false,
+      "worker_completion_verified": false,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1790011115.527821,
+      "measurement_end_unix": 1790016515.527821,
+      "completed_tasks_in_window": 235,
+      "true_admissions_in_window": 235,
+      "cancelled_admissions": 36,
+      "task_status_counts": {
+        "completed": 435,
+        "cancelled": 36
+      },
+      "failed_tasks": 0,
+      "output_tokens": 4188219,
+      "output_tokens_s": 775.5961111111111,
+      "tasks_per_minute": 2.611111111111111,
+      "prompt_tokens": 654549170,
+      "cached_prompt_tokens": 389393664,
+      "prefix_reuse": 0.5949036097624263,
+      "uncached_prompt_per_output": 63.30984745544586,
+      "frontend_cpu_mean_percent": 11.830471755534067,
+      "frontend": [
+        {
+          "host": "x3106c0s19b0n0",
+          "samples": 5390,
+          "cpu": {
+            "count": 5390,
+            "mean": 11.830471755534067,
+            "p50": 8.787324396193473,
+            "p95": 28.15495869763615,
+            "max": 96.39404634034065
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.0016697588126159556,
+          "runnable_processes_mean": 8.50074211502783,
+          "iowait_percent_mean": 0.003268586875500489,
+          "memory_available_min_gib": 471.3493881225586,
+          "scratch_free_min_gib": 2340.473075866699,
+          "max_sampling_gap_seconds": 1.0434715747833252
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 799.8514814814815,
+          "completed_tasks": 116,
+          "prefix_reuse": 0.5863259240190432,
+          "waiting_per_replica": 15.311562802910473
+        },
+        {
+          "output_tokens_s": 751.3407407407408,
+          "completed_tasks": 119,
+          "prefix_reuse": 0.6034410669852193,
+          "waiting_per_replica": 15.991775992191037
+        }
+      ],
+      "replica_output_cv": 0.02538622985689877,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 189.0098148148148,
+          "prefix_reuse": 0.7695552567698257
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 197.85962962962964,
+          "prefix_reuse": 0.08197456196400629
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 189.02962962962962,
+          "prefix_reuse": 0.7665083952442079
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 199.69703703703703,
+          "prefix_reuse": 0.7636997229466838
+        }
+      ],
+      "ttft_seconds": null,
+      "task_lifecycle_seconds": null,
+      "tool_latency_seconds": null,
+      "execution_seconds_mean": null,
+      "backend_latency": null,
+      "setup": {
+        "admissions": 235,
+        "records": 235,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "count": 235,
+          "mean": 0.00010217653706352761,
+          "p50": 8.078198879957199e-05,
+          "p95": 0.0001287593506276607,
+          "max": 0.0031244931742548943
+        },
+        "build_seconds": {
+          "count": 235,
+          "mean": 4.400317736714087,
+          "p50": 4.291138305095956,
+          "p95": 5.89170862280298,
+          "max": 6.238570749061182
+        }
+      },
+      "routing": {
+        "statuses": {
+          "completed": 22319
+        },
+        "tasks_with_at_least_8_window_calls": 353,
+        "adjacent_call_pairs": 21927,
+        "adjacent_call_switches": 16367,
+        "adjacent_call_backend_switch_fraction": 0.7464313403566379,
+        "distinct_backends_per_task_mean": 3.9858356940509916
+      },
+      "raw_validation_errors": [
+        "drain timeout; censored admission cohort"
+      ],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [
+        {
+          "replica": "r00",
+          "window_token_requests": 5580,
+          "unmatched_window_token_requests": 0,
+          "token_total_mismatches": 0,
+          "first_token_request_finish_reasons": {
+            "length": 5578
+          },
+          "prometheus_boundary_offsets_seconds": [
+            0.6378402709960938,
+            0.7297873497009277
+          ],
+          "metrics_max_gap_seconds": 1.1149508953094482,
+          "counter_resets_in_window": 0,
+          "prometheus_deltas": {
+            "output": 1020509.0,
+            "prompt": 163347165.0,
+            "cached": 125684594.0,
+            "preemptions": 0.0
+          },
+          "output_event_counter_relative_difference": 0.00014108614778969933
+        },
+        {
+          "replica": "r01",
+          "window_token_requests": 5627,
+          "unmatched_window_token_requests": 0,
+          "token_total_mismatches": 0,
+          "first_token_request_finish_reasons": {
+            "length": 5573
+          },
+          "prometheus_boundary_offsets_seconds": [
+            0.72530198097229,
+            0.039667367935180664
+          ],
+          "metrics_max_gap_seconds": 1.1112561225891113,
+          "counter_resets_in_window": 0,
+          "prometheus_deltas": {
+            "output": 1068336.0,
+            "prompt": 164091981.0,
+            "cached": 13440768.0,
+            "preemptions": 11.0
+          },
+          "output_event_counter_relative_difference": 9.920987756003601e-05
+        },
+        {
+          "replica": "r02",
+          "window_token_requests": 5585,
+          "unmatched_window_token_requests": 0,
+          "token_total_mismatches": 0,
+          "first_token_request_finish_reasons": {
+            "length": 5580
+          },
+          "prometheus_boundary_offsets_seconds": [
+            0.650181770324707,
+            0.6189062595367432
+          ],
+          "metrics_max_gap_seconds": 1.1121675968170166,
+          "counter_resets_in_window": 0,
+          "prometheus_deltas": {
+            "output": 1020597.0,
+            "prompt": 163243568.0,
+            "cached": 125126497.0,
+            "preemptions": 0.0
+          },
+          "output_event_counter_relative_difference": 0.00015968494063246992
+        },
+        {
+          "replica": "r03",
+          "window_token_requests": 5581,
+          "unmatched_window_token_requests": 0,
+          "token_total_mismatches": 0,
+          "first_token_request_finish_reasons": {
+            "length": 5580
+          },
+          "prometheus_boundary_offsets_seconds": [
+            0.6184384822845459,
+            0.7177774906158447
+          ],
+          "metrics_max_gap_seconds": 1.127140998840332,
+          "counter_resets_in_window": 0,
+          "prometheus_deltas": {
+            "output": 1078238.0,
+            "prompt": 163771323.0,
+            "cached": 125067888.0,
+            "preemptions": 0.0
+          },
+          "output_event_counter_relative_difference": 0.00011684366317866695
+        }
+      ],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "cancelled",
+          "failed_tasks": 0,
+          "window_start": 1790011115.527821,
+          "window_end": 1790016515.527821
+        },
+        {
+          "replica": "r01",
+          "status": "cancelled",
+          "failed_tasks": 0,
+          "window_start": 1790011115.527821,
+          "window_end": 1790016515.527821
+        },
+        {
+          "replica": "r02",
+          "status": "cancelled",
+          "failed_tasks": 0,
+          "window_start": 1790011115.527821,
+          "window_end": 1790016515.527821
+        },
+        {
+          "replica": "r03",
+          "status": "cancelled",
+          "failed_tasks": 0,
+          "window_start": 1790011115.527821,
+          "window_end": 1790016515.527821
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "routing_cache",
+      "batch": "new",
+      "workload": "minisweagent",
+      "backends": 4,
+      "frontends": 1,
+      "physical_nodes_used": 5,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1790011115.8868446,
+      "measurement_end_unix": 1790016515.8868446,
+      "completed_tasks_in_window": 786,
+      "true_admissions_in_window": 786,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 1163
+      },
+      "failed_tasks": 0,
+      "output_tokens": 13028431,
+      "output_tokens_s": 2412.6724074074073,
+      "tasks_per_minute": 8.733333333333333,
+      "prompt_tokens": 2015108964,
+      "cached_prompt_tokens": 1784973696,
+      "prefix_reuse": 0.8857951246749552,
+      "uncached_prompt_per_output": 17.66408157666875,
+      "frontend_cpu_mean_percent": 38.41554539627206,
+      "frontend": [
+        {
+          "host": "x3106c0s25b1n0",
+          "samples": 5389,
+          "cpu": {
+            "count": 5389,
+            "mean": 38.41554539627206,
+            "p50": 36.657808347662964,
+            "p95": 66.18323383698235,
+            "max": 99.07639323731998
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.004453516422341808,
+          "runnable_processes_mean": 28.517721284097235,
+          "iowait_percent_mean": 0.03154827780778529,
+          "memory_available_min_gib": 472.3082160949707,
+          "scratch_free_min_gib": 2337.7520751953125,
+          "max_sampling_gap_seconds": 1.1428091526031494
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 2381.8044444444445,
+          "completed_tasks": 381.0,
+          "prefix_reuse": 0.8850680506159558,
+          "waiting_per_replica": 0.465924949245156
+        },
+        {
+          "output_tokens_s": 2443.5403703703705,
+          "completed_tasks": 405.0,
+          "prefix_reuse": 0.8865199571129834,
+          "waiting_per_replica": 0.49894712424218435
+        }
+      ],
+      "replica_output_cv": 0.0533132090289018,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 600.8574074074074,
+          "prefix_reuse": 0.8897366475369244
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 552.5175925925926,
+          "prefix_reuse": 0.9000248474672525
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 620.6212962962964,
+          "prefix_reuse": 0.8944686423665825
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 638.6761111111111,
+          "prefix_reuse": 0.8567448823342151
+        }
+      ],
+      "ttft_seconds": {
+        "count": 70001,
+        "mean": 0.6864274809872501,
+        "p50": 0.37822775985114276,
+        "p95": 2.3048826979938895,
+        "p99": 3.7589013539254665
+      },
+      "task_lifecycle_seconds": {
+        "count": 786,
+        "mean": 849.1575611628543,
+        "p50": 734.3252380114282,
+        "p95": 1916.0189167021308,
+        "p99": 2516.3276655621708
+      },
+      "tool_latency_seconds": {
+        "count": 69971,
+        "mean": 1.1194302806448384,
+        "p50": 0.639094,
+        "p95": 2.096452,
+        "p99": 9.144082100000027
+      },
+      "execution_seconds_mean": {
+        "setup": 5.362060732824427,
+        "llm_only": 740.1002840381678,
+        "tool_only": 100.27346082061065,
+        "llm_tool_overlap": 2.8204749816431457e-14,
+        "other_and_cleanup": 3.4217555712512486
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 70008,
+          "mean": 0.14459469808168574,
+          "p50": 3.236113116145134e-06,
+          "p95": 1.0433511159266344,
+          "p99": 2.4500775885046457
+        },
+        "prefill_seconds": {
+          "count": 70008,
+          "mean": 0.3661428806439026,
+          "p50": 0.21645430789794773,
+          "p95": 1.0633579627727152,
+          "p99": 2.1155245891818657
+        },
+        "decode_latency_seconds": {
+          "count": 70008,
+          "mean": 8.004024350663725,
+          "p50": 3.5222465404804097,
+          "p95": 29.188729805359614,
+          "p99": 65.9760759659084
+        }
+      },
+      "setup": {
+        "admissions": 786,
+        "records": 786,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "count": 786,
+          "mean": 0.006784006825271453,
+          "p50": 8.292496204376221e-05,
+          "p95": 0.00016874977154657245,
+          "max": 2.6094405071344227
+        },
+        "build_seconds": {
+          "count": 786,
+          "mean": 5.1425974223242585,
+          "p50": 4.971593621070497,
+          "p95": 6.788915986020584,
+          "max": 8.632892185123637
+        }
+      },
+      "routing": {
+        "statuses": {
+          "completed": 70001
+        },
+        "tasks_with_at_least_8_window_calls": 894,
+        "adjacent_call_pairs": 69048,
+        "adjacent_call_switches": 11121,
+        "adjacent_call_backend_switch_fraction": 0.16106187000347585,
+        "distinct_backends_per_task_mean": 3.523489932885906
+      },
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011115.8868446,
+          "window_end": 1790016515.8868446
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011115.8868446,
+          "window_end": 1790016515.8868446
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011115.8868446,
+          "window_end": 1790016515.8868446
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011115.8868446,
+          "window_end": 1790016515.8868446
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "fixed_sticky",
+      "batch": "new",
+      "workload": "openclaw",
+      "backends": 8,
+      "frontends": 1,
+      "physical_nodes_used": 9,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1790011124.3283682,
+      "measurement_end_unix": 1790014724.3283682,
+      "completed_tasks_in_window": 3044,
+      "true_admissions_in_window": 3044,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 3648
+      },
+      "failed_tasks": 0,
+      "output_tokens": 12431607,
+      "output_tokens_s": 3453.224166666667,
+      "tasks_per_minute": 50.733333333333334,
+      "prompt_tokens": 2094422307,
+      "cached_prompt_tokens": 1968236160,
+      "prefix_reuse": 0.9397513354502293,
+      "uncached_prompt_per_output": 10.150429224475968,
+      "frontend_cpu_mean_percent": 35.43319517793644,
+      "frontend": [
+        {
+          "host": "x3103c0s19b0n0",
+          "samples": 3594,
+          "cpu": {
+            "count": 3594,
+            "mean": 35.43319517793644,
+            "p50": 34.7391261708663,
+            "p95": 51.15667244548054,
+            "max": 66.58175449769145
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.0,
+          "runnable_processes_mean": 23.554813578185865,
+          "iowait_percent_mean": 0.0003364171800503693,
+          "memory_available_min_gib": 404.9432029724121,
+          "scratch_free_min_gib": 2783.646183013916,
+          "max_sampling_gap_seconds": 1.0210740566253662
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 3481.9594444444447,
+          "completed_tasks": 1524.0,
+          "prefix_reuse": 0.9384982605277633,
+          "waiting_per_replica": 0.009474174913159198
+        },
+        {
+          "output_tokens_s": 3424.488888888889,
+          "completed_tasks": 1520.0,
+          "prefix_reuse": 0.9409683658938248,
+          "waiting_per_replica": 0.007524282429891449
+        }
+      ],
+      "replica_output_cv": 0.010505809824245245,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 428.18916666666667,
+          "prefix_reuse": 0.9383736717432991
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 429.90805555555556,
+          "prefix_reuse": 0.9392047896897698
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 432.4894444444444,
+          "prefix_reuse": 0.9390522403100613
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 442.8238888888889,
+          "prefix_reuse": 0.9395864104827933
+        },
+        {
+          "replica": "r04",
+          "output_tokens_s": 428.3261111111111,
+          "prefix_reuse": 0.9425890757343097
+        },
+        {
+          "replica": "r05",
+          "output_tokens_s": 430.7427777777778,
+          "prefix_reuse": 0.9399678798271509
+        },
+        {
+          "replica": "r06",
+          "output_tokens_s": 432.4713888888889,
+          "prefix_reuse": 0.9402767390517724
+        },
+        {
+          "replica": "r07",
+          "output_tokens_s": 428.2733333333333,
+          "prefix_reuse": 0.9389112898663302
+        }
+      ],
+      "ttft_seconds": {
+        "count": 43600,
+        "mean": 0.5103543825730907,
+        "p50": 0.44628132740035653,
+        "p95": 0.9889285846729762,
+        "p99": 1.6983132664160805
+      },
+      "task_lifecycle_seconds": {
+        "count": 3044,
+        "mean": 149.89784304049806,
+        "p50": 89.90726925700437,
+        "p95": 479.05434342809,
+        "p99": 685.8920225725814
+      },
+      "tool_latency_seconds": {
+        "count": 40922,
+        "mean": 0.5189725460388056,
+        "p50": 0.5017645,
+        "p95": 0.9441020499999997,
+        "p99": 2.5942173700000035
+      },
+      "execution_seconds_mean": {
+        "setup": 15.106255500985544,
+        "llm_only": 122.80320451051249,
+        "tool_only": 6.912416875492769,
+        "llm_tool_overlap": 3.2340898830342273e-15,
+        "other_and_cleanup": 5.075966153507269
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 43600,
+          "mean": 0.005079879118263114,
+          "p50": 3.186054527759552e-06,
+          "p95": 6.8636378273367455e-06,
+          "p99": 0.12938180461061205
+        },
+        "prefill_seconds": {
+          "count": 43600,
+          "mean": 0.3480982865228952,
+          "p50": 0.30364030646160245,
+          "p95": 0.6988483239314507,
+          "p99": 1.2982805841416158
+        },
+        "decode_latency_seconds": {
+          "count": 43600,
+          "mean": 8.173511743808396,
+          "p50": 3.581166344927624,
+          "p95": 28.025792152725618,
+          "p99": 76.61827274542792
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011124.3283682,
+          "window_end": 1790014724.3283682
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "fixed_sticky",
+      "batch": "new",
+      "workload": "minisweagent",
+      "backends": 8,
+      "frontends": 1,
+      "physical_nodes_used": 9,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1790011112.7426138,
+      "measurement_end_unix": 1790016512.7426138,
+      "completed_tasks_in_window": 1679,
+      "true_admissions_in_window": 1679,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 2391
+      },
+      "failed_tasks": 0,
+      "output_tokens": 28401053,
+      "output_tokens_s": 5259.454259259259,
+      "tasks_per_minute": 18.655555555555555,
+      "prompt_tokens": 4398787576,
+      "cached_prompt_tokens": 4250841408,
+      "prefix_reuse": 0.9663666031960257,
+      "uncached_prompt_per_output": 5.209178969526236,
+      "frontend_cpu_mean_percent": 95.79368564633464,
+      "frontend": [
+        {
+          "host": "x3108c0s13b0n0",
+          "samples": 5380,
+          "cpu": {
+            "count": 5380,
+            "mean": 95.79368564633464,
+            "p50": 97.42832662171023,
+            "p95": 99.57963895608655,
+            "max": 99.98536942209218
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.8936802973977696,
+          "runnable_processes_mean": 124.4217472118959,
+          "iowait_percent_mean": 0.11854953561454115,
+          "memory_available_min_gib": 452.6068534851074,
+          "scratch_free_min_gib": 1972.4419860839844,
+          "max_sampling_gap_seconds": 1.3302357196807861
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 5396.658148148148,
+          "completed_tasks": 842.0,
+          "prefix_reuse": 0.9641331674987474,
+          "waiting_per_replica": 0.06078848210677551
+        },
+        {
+          "output_tokens_s": 5122.250370370371,
+          "completed_tasks": 837.0,
+          "prefix_reuse": 0.9686462022558209,
+          "waiting_per_replica": 0.04205900291319439
+        }
+      ],
+      "replica_output_cv": 0.007370039456915925,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 651.8033333333333,
+          "prefix_reuse": 0.9665164327763262
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 652.9716666666667,
+          "prefix_reuse": 0.9650154268810585
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 664.2505555555556,
+          "prefix_reuse": 0.9661421238329161
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 658.197962962963,
+          "prefix_reuse": 0.968492423910909
+        },
+        {
+          "replica": "r04",
+          "output_tokens_s": 654.0324074074074,
+          "prefix_reuse": 0.9643524053030404
+        },
+        {
+          "replica": "r05",
+          "output_tokens_s": 665.3114814814815,
+          "prefix_reuse": 0.9657965385950077
+        },
+        {
+          "replica": "r06",
+          "output_tokens_s": 653.8394444444444,
+          "prefix_reuse": 0.9673147188811416
+        },
+        {
+          "replica": "r07",
+          "output_tokens_s": 659.0474074074074,
+          "prefix_reuse": 0.9672939662761068
+        }
+      ],
+      "ttft_seconds": {
+        "count": 152321,
+        "mean": 0.3362827796788126,
+        "p50": 0.2906528178136796,
+        "p95": 0.5257259500212967,
+        "p99": 1.730798727413638
+      },
+      "task_lifecycle_seconds": {
+        "count": 1679,
+        "mean": 798.5497201521664,
+        "p50": 684.9306059940718,
+        "p95": 1639.692069605342,
+        "p99": 1983.9773063688494
+      },
+      "tool_latency_seconds": {
+        "count": 152233,
+        "mean": 2.2195462632346468,
+        "p50": 1.380955,
+        "p95": 4.805689799999998,
+        "p99": 16.561639519999996
+      },
+      "execution_seconds_mean": {
+        "setup": 110.64855860690888,
+        "llm_only": 485.1819436235854,
+        "tool_only": 194.7163157552114,
+        "llm_tool_overlap": 1.8755958337634092e-14,
+        "other_and_cleanup": 8.002902166460633
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 152327,
+          "mean": 0.014155424437522258,
+          "p50": 3.1460076570510864e-06,
+          "p95": 7.705064490437508e-06,
+          "p99": 0.5174977027391963
+        },
+        "prefill_seconds": {
+          "count": 152327,
+          "mean": 0.1912298274144642,
+          "p50": 0.18061950313858688,
+          "p95": 0.28886279484722766,
+          "p99": 0.7077533819247037
+        },
+        "decode_latency_seconds": {
+          "count": 152327,
+          "mean": 5.210386304820363,
+          "p50": 2.2901894829701632,
+          "p95": 18.506808368593905,
+          "p99": 40.68990212738968
+        }
+      },
+      "setup": {
+        "admissions": 1679,
+        "records": 1679,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "count": 1679,
+          "mean": 97.28587008065749,
+          "p50": 50.070644489023834,
+          "p95": 350.2664033326552,
+          "max": 1126.722443385981
+        },
+        "build_seconds": {
+          "count": 1679,
+          "mean": 12.71774674118111,
+          "p50": 11.98500501504168,
+          "p95": 18.958654419146477,
+          "max": 30.355661208042875
+        }
+      },
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1790011112.7426138,
+          "window_end": 1790016512.7426138
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-fixed_frontend-n2-7637010.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n2-7637010.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "fixed_sticky",
+      "batch": "earlier",
+      "workload": "openclaw",
+      "backends": 2,
+      "frontends": 1,
+      "physical_nodes_used": 3,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1789868185.391215,
+      "measurement_end_unix": 1789871785.391215,
+      "completed_tasks_in_window": 767,
+      "true_admissions_in_window": 767,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 939
+      },
+      "failed_tasks": 0,
+      "output_tokens": 3128293,
+      "output_tokens_s": 868.9702777777778,
+      "tasks_per_minute": 12.783333333333333,
+      "prompt_tokens": 531441071,
+      "cached_prompt_tokens": 499420416,
+      "prefix_reuse": 0.93974749648207,
+      "uncached_prompt_per_output": 10.235823498630083,
+      "frontend_cpu_mean_percent": 6.769962574061531,
+      "frontend": [
+        {
+          "host": "x3209c0s19b0n0",
+          "samples": 3591,
+          "cpu": {
+            "count": 3591,
+            "mean": 6.769962574061531,
+            "p50": 6.536661466458658,
+            "p95": 12.257978418414673,
+            "max": 17.519161582981386
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.0,
+          "runnable_processes_mean": 5.279309384572542,
+          "iowait_percent_mean": 0.0002471188728918567,
+          "memory_available_min_gib": 471.9836845397949,
+          "scratch_free_min_gib": 2783.6565856933594,
+          "max_sampling_gap_seconds": 1.046715497970581
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 873.5461111111111,
+          "completed_tasks": 368.0,
+          "prefix_reuse": 0.9390686497843012,
+          "waiting_per_replica": 0.011129864375128582
+        },
+        {
+          "output_tokens_s": 864.3944444444444,
+          "completed_tasks": 399.0,
+          "prefix_reuse": 0.9403839681472518,
+          "waiting_per_replica": 0.006414565826330532
+        }
+      ],
+      "replica_output_cv": 0.0036419222879698313,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 432.90277777777777,
+          "prefix_reuse": 0.9398380175243329
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 436.0675,
+          "prefix_reuse": 0.9396583258603124
+        }
+      ],
+      "ttft_seconds": {
+        "count": 11049,
+        "mean": 0.5168798975940458,
+        "p50": 0.45288190618157387,
+        "p95": 0.9708982514217496,
+        "p99": 1.7142796716000896
+      },
+      "task_lifecycle_seconds": {
+        "count": 767,
+        "mean": 149.35742894117053,
+        "p50": 87.6328623869922,
+        "p95": 480.9129366689593,
+        "p99": 715.2662188070504
+      },
+      "tool_latency_seconds": {
+        "count": 10368,
+        "mean": 0.4815178497299383,
+        "p50": 0.49769549999999996,
+        "p95": 0.8281106,
+        "p99": 2.599417109999999
+      },
+      "execution_seconds_mean": {
+        "setup": 11.19007126988266,
+        "llm_only": 126.86634798305083,
+        "tool_only": 6.485338616688392,
+        "llm_tool_overlap": 4.266035590841279e-15,
+        "other_and_cleanup": 4.815671071548623
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 11051,
+          "mean": 0.004705553850123317,
+          "p50": 3.2261013984680176e-06,
+          "p95": 6.887945346534252e-06,
+          "p99": 0.018080649431794882
+        },
+        "prefill_seconds": {
+          "count": 11051,
+          "mean": 0.35278816257281786,
+          "p50": 0.30753757897764444,
+          "p95": 0.691824040026404,
+          "p99": 1.2983336364850402
+        },
+        "decode_latency_seconds": {
+          "count": 11051,
+          "mean": 8.347183174047133,
+          "p50": 3.656024932861328,
+          "p95": 28.49512214201968,
+          "p99": 78.26446216495242
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789868185.391215,
+          "window_end": 1789871785.391215
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789868185.391215,
+          "window_end": 1789871785.391215
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-fixed_frontend-n4-7637012.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n4-7637012.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "fixed_sticky",
+      "batch": "earlier",
+      "workload": "openclaw",
+      "backends": 4,
+      "frontends": 1,
+      "physical_nodes_used": 5,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1789913778.6088402,
+      "measurement_end_unix": 1789917378.6088402,
+      "completed_tasks_in_window": 1534,
+      "true_admissions_in_window": 1534,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 1874
+      },
+      "failed_tasks": 0,
+      "output_tokens": 6289968,
+      "output_tokens_s": 1747.2133333333334,
+      "tasks_per_minute": 25.566666666666666,
+      "prompt_tokens": 1062327703,
+      "cached_prompt_tokens": 998077872,
+      "prefix_reuse": 0.9395197632344904,
+      "uncached_prompt_per_output": 10.214651489482936,
+      "frontend_cpu_mean_percent": 14.723789508787132,
+      "frontend": [
+        {
+          "host": "x3211c0s13b0n0",
+          "samples": 3592,
+          "cpu": {
+            "count": 3592,
+            "mean": 14.723789508787132,
+            "p50": 14.296907224196755,
+            "p95": 23.799542056758927,
+            "max": 33.176544371276265
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.0,
+          "runnable_processes_mean": 10.293986636971047,
+          "iowait_percent_mean": 0.00019967156490473834,
+          "memory_available_min_gib": 448.63836669921875,
+          "scratch_free_min_gib": 2783.6529960632324,
+          "max_sampling_gap_seconds": 1.030224084854126
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 1756.8033333333333,
+          "completed_tasks": 740.0,
+          "prefix_reuse": 0.9389448337642182,
+          "waiting_per_replica": 0.01114261432023686
+        },
+        {
+          "output_tokens_s": 1737.6233333333332,
+          "completed_tasks": 794.0,
+          "prefix_reuse": 0.9400803437695362,
+          "waiting_per_replica": 0.011275716622824826
+        }
+      ],
+      "replica_output_cv": 0.012960033657870816,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 432.1691666666667,
+          "prefix_reuse": 0.9409435484536318
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 434.255,
+          "prefix_reuse": 0.938915715197264
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 434.2944444444444,
+          "prefix_reuse": 0.9386341421342507
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 446.4947222222222,
+          "prefix_reuse": 0.9396270102077788
+        }
+      ],
+      "ttft_seconds": {
+        "count": 22173,
+        "mean": 0.5162892560953719,
+        "p50": 0.4485874050296843,
+        "p95": 0.9939656925387679,
+        "p99": 1.798593741320073
+      },
+      "task_lifecycle_seconds": {
+        "count": 1534,
+        "mean": 149.48714351814849,
+        "p50": 87.87184188258834,
+        "p95": 486.2982339224311,
+        "p99": 709.0166725379191
+      },
+      "tool_latency_seconds": {
+        "count": 20809,
+        "mean": 0.5084840703541736,
+        "p50": 0.500711,
+        "p95": 0.8619201999999982,
+        "p99": 3.2262069199999925
+      },
+      "execution_seconds_mean": {
+        "setup": 12.266371154498044,
+        "llm_only": 125.68240924967405,
+        "tool_only": 6.9064190332464115,
+        "llm_tool_overlap": 3.983486002305647e-15,
+        "other_and_cleanup": 4.631944080729971
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 22175,
+          "mean": 0.006675956885266331,
+          "p50": 3.206077963113785e-06,
+          "p95": 7.143011316657066e-06,
+          "p99": 0.27167377219069566
+        },
+        "prefill_seconds": {
+          "count": 22175,
+          "mean": 0.35034764195146645,
+          "p50": 0.30431255395524204,
+          "p95": 0.7040159584255885,
+          "p99": 1.295460738609545
+        },
+        "decode_latency_seconds": {
+          "count": 22175,
+          "mean": 8.255182043119976,
+          "p50": 3.6253878651186824,
+          "p95": 28.203868001699448,
+          "p99": 78.02108702365287
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789913778.6088402,
+          "window_end": 1789917378.6088402
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789913778.6088402,
+          "window_end": 1789917378.6088402
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789913778.6088402,
+          "window_end": 1789917378.6088402
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789913778.6088402,
+          "window_end": 1789917378.6088402
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-fixed_frontend-n2-7637011.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n2-7637011.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "fixed_sticky",
+      "batch": "earlier",
+      "workload": "minisweagent",
+      "backends": 2,
+      "frontends": 1,
+      "physical_nodes_used": 3,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": true,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1789868138.0701385,
+      "measurement_end_unix": 1789873538.0701385,
+      "completed_tasks_in_window": 456,
+      "true_admissions_in_window": 456,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 665
+      },
+      "failed_tasks": 0,
+      "output_tokens": 7696900,
+      "output_tokens_s": 1425.351851851852,
+      "tasks_per_minute": 5.066666666666666,
+      "prompt_tokens": 1192645591,
+      "cached_prompt_tokens": 1138058592,
+      "prefix_reuse": 0.9542303267526187,
+      "uncached_prompt_per_output": 7.0920759006872895,
+      "frontend_cpu_mean_percent": 21.23899214186993,
+      "frontend": [
+        {
+          "host": "x3210c0s37b0n0",
+          "samples": 5381,
+          "cpu": {
+            "count": 5381,
+            "mean": 21.23899214186993,
+            "p50": 18.889408828575885,
+            "p95": 42.066478519912195,
+            "max": 92.11845102505694
+          },
+          "cpu_logical_count": 64,
+          "cpu_sample_fraction_ge90": 0.00037167812674224123,
+          "runnable_processes_mean": 15.254971194945178,
+          "iowait_percent_mean": 0.004534600410647496,
+          "memory_available_min_gib": 482.15466690063477,
+          "scratch_free_min_gib": 2525.143165588379,
+          "max_sampling_gap_seconds": 6.768538475036621
+        }
+      ],
+      "halves": [
+        {
+          "output_tokens_s": 1412.7414814814815,
+          "completed_tasks": 218.0,
+          "prefix_reuse": 0.9536044547600985,
+          "waiting_per_replica": 0.11371066694097601
+        },
+        {
+          "output_tokens_s": 1437.9622222222222,
+          "completed_tasks": 238.0,
+          "prefix_reuse": 0.9548620334181694,
+          "waiting_per_replica": 0.08779513311916104
+        }
+      ],
+      "replica_output_cv": 0.012395120113292427,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 721.5096296296297,
+          "prefix_reuse": 0.9562923679340964
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 703.8422222222222,
+          "prefix_reuse": 0.9521647499546837
+        }
+      ],
+      "ttft_seconds": {
+        "count": 41520,
+        "mean": 0.3914497330992674,
+        "p50": 0.3132438035681844,
+        "p95": 0.8297066875151359,
+        "p99": 2.173984535445922
+      },
+      "task_lifecycle_seconds": {
+        "count": 456,
+        "mean": 733.3525903087534,
+        "p50": 611.9370862074429,
+        "p95": 1641.9375440371805,
+        "p99": 2049.2446104322075
+      },
+      "tool_latency_seconds": {
+        "count": 41504,
+        "mean": 1.0196924791827295,
+        "p50": 0.580168,
+        "p95": 1.8631982999999988,
+        "p99": 7.650161270000022
+      },
+      "execution_seconds_mean": {
+        "setup": 4.724053265350878,
+        "llm_only": 632.1392455548246,
+        "tool_only": 93.80571938157892,
+        "llm_tool_overlap": 2.349777292820682e-14,
+        "other_and_cleanup": 2.6835721069990406
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 41519,
+          "mean": 0.025546638855459665,
+          "p50": 3.216089680790901e-06,
+          "p95": 8.857878856360898e-06,
+          "p99": 0.9440065746055887
+        },
+        "prefill_seconds": {
+          "count": 41519,
+          "mean": 0.22763264028476116,
+          "p50": 0.19246399099938571,
+          "p95": 0.5118795170215882,
+          "p99": 1.1362350361561402
+        },
+        "decode_latency_seconds": {
+          "count": 41519,
+          "mean": 6.853804306951927,
+          "p50": 2.9990891739726067,
+          "p95": 24.155745198647487,
+          "p99": 53.45262326004914
+        }
+      },
+      "setup": {
+        "admissions": 456,
+        "records": 456,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "count": 456,
+          "mean": 0.010209426711713732,
+          "p50": 8.048198651522398e-05,
+          "p95": 0.00013328337809070945,
+          "max": 4.615560309961438
+        },
+        "build_seconds": {
+          "count": 456,
+          "mean": 4.556816755053628,
+          "p50": 4.459172080969438,
+          "p95": 6.061002237256616,
+          "max": 6.6311950529925525
+        }
+      },
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [
+        "x3210c0s37b0n0: resource metric sampling has gaps; resource statistics have limited coverage"
+      ],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789868138.0701385,
+          "window_end": 1789873538.0701385
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": 0,
+          "window_start": 1789868138.0701385,
+          "window_end": 1789873538.0701385
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "openclaw",
+      "backends": 1,
+      "frontends": 1,
+      "physical_nodes_used": 2,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1789422522.3733726,
+      "measurement_end_unix": 1789426122.3733726,
+      "completed_tasks_in_window": 366,
+      "true_admissions_in_window": 366,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 463
+      },
+      "failed_tasks": 0,
+      "output_tokens": 1560904,
+      "output_tokens_s": 433.58444444444444,
+      "tasks_per_minute": 6.1,
+      "prompt_tokens": 266259613,
+      "cached_prompt_tokens": 250144752,
+      "prefix_reuse": 0.9394768856664717,
+      "uncached_prompt_per_output": 10.324056444214378,
+      "frontend_cpu_mean_percent": 3.203142151436229,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 439.44444444444446,
+          "completed_tasks": 178.0,
+          "prefix_reuse": 0.9389300342005976,
+          "waiting_per_replica": 0.01056497175141243
+        },
+        {
+          "output_tokens_s": 427.72444444444443,
+          "completed_tasks": 188.0,
+          "prefix_reuse": 0.9399923244583914,
+          "waiting_per_replica": 0.006685499058380414
+        }
+      ],
+      "replica_output_cv": 0.0,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 433.58444444444444,
+          "prefix_reuse": 0.9394768856664717
+        }
+      ],
+      "ttft_seconds": {
+        "count": 5410,
+        "mean": 0.5246732100278015,
+        "p50": 0.4503507814370096,
+        "p95": 1.0323064474039712,
+        "p99": 1.9032400299725116
+      },
+      "task_lifecycle_seconds": {
+        "count": 366,
+        "mean": 156.9456024838356,
+        "p50": 89.15187070053071,
+        "p95": 522.1099162295577,
+        "p99": 907.6448735733408
+      },
+      "tool_latency_seconds": {
+        "count": 5080,
+        "mean": 0.475105674015748,
+        "p50": 0.4967235,
+        "p95": 0.8299308000000009,
+        "p99": 2.150948340000001
+      },
+      "execution_seconds_mean": {
+        "setup": 10.539764786885245,
+        "llm_only": 135.19660712841528,
+        "tool_only": 6.580647863387979,
+        "llm_tool_overlap": 3.8973074919082e-15,
+        "other_and_cleanup": 4.6285827051470445
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 5410,
+          "mean": 0.005964788494419906,
+          "p50": 3.13599593937397e-06,
+          "p95": 6.728491280227902e-06,
+          "p99": 0.2697303811553812
+        },
+        "prefill_seconds": {
+          "count": 5410,
+          "mean": 0.36134551755968625,
+          "p50": 0.3107122190995142,
+          "p95": 0.7348644810845145,
+          "p99": 1.310977211035788
+        },
+        "decode_latency_seconds": {
+          "count": 5410,
+          "mean": 8.621501798979729,
+          "p50": 3.72848707344383,
+          "p95": 29.77454019483414,
+          "p99": 77.82481373330344
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789422522.3733726,
+          "window_end": 1789426122.3733726
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-balanced-n4-7616566.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-balanced-n4-7616566.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "openclaw",
+      "backends": 4,
+      "frontends": 4,
+      "physical_nodes_used": 8,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1789613062.3450513,
+      "measurement_end_unix": 1789616662.3450513,
+      "completed_tasks_in_window": 1536,
+      "true_admissions_in_window": 1536,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 1894
+      },
+      "failed_tasks": 0,
+      "output_tokens": 6310683,
+      "output_tokens_s": 1752.9675,
+      "tasks_per_minute": 25.6,
+      "prompt_tokens": 1067227478,
+      "cached_prompt_tokens": 1002654048,
+      "prefix_reuse": 0.9394942209312193,
+      "uncached_prompt_per_output": 10.232399567527002,
+      "frontend_cpu_mean_percent": 3.3367143131182577,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 1761.9255555555555,
+          "completed_tasks": 737.0,
+          "prefix_reuse": 0.9393105854130901,
+          "waiting_per_replica": 0.011554627164850015
+        },
+        {
+          "output_tokens_s": 1744.0094444444444,
+          "completed_tasks": 799.0,
+          "prefix_reuse": 0.9396732727338775,
+          "waiting_per_replica": 0.0091963724122843
+        }
+      ],
+      "replica_output_cv": 0.012486972983696132,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 433.4558333333333,
+          "prefix_reuse": 0.9406075852217092
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 435.05944444444447,
+          "prefix_reuse": 0.9384924609038512
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 436.9819444444444,
+          "prefix_reuse": 0.9395246450476192
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 447.47027777777777,
+          "prefix_reuse": 0.9393601057526902
+        }
+      ],
+      "ttft_seconds": {
+        "count": 22275,
+        "mean": 0.5164232296051038,
+        "p50": 0.45021764002740383,
+        "p95": 1.00215085609816,
+        "p99": 1.810755507717832
+      },
+      "task_lifecycle_seconds": {
+        "count": 1536,
+        "mean": 148.40491993074116,
+        "p50": 86.73355868342333,
+        "p95": 484.9424391478533,
+        "p99": 717.2983218411567
+      },
+      "tool_latency_seconds": {
+        "count": 20910,
+        "mean": 0.49894201315160214,
+        "p50": 0.495894,
+        "p95": 0.828049,
+        "p99": 3.1026375899999996
+      },
+      "execution_seconds_mean": {
+        "setup": 10.618617563151043,
+        "llm_only": 126.45280987109375,
+        "tool_only": 6.720311833984371,
+        "llm_tool_overlap": 2.89583172256395e-15,
+        "other_and_cleanup": 4.613180662512001
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 22274,
+          "mean": 0.00598429551014137,
+          "p50": 3.3259857445955276e-06,
+          "p95": 7.162883412092924e-06,
+          "p99": 0.1362400488485601
+        },
+        "prefill_seconds": {
+          "count": 22274,
+          "mean": 0.3517170142707849,
+          "p50": 0.3057317400816828,
+          "p95": 0.7093782476847984,
+          "p99": 1.3189523848798128
+        },
+        "decode_latency_seconds": {
+          "count": 22274,
+          "mean": 8.321618142465542,
+          "p50": 3.6677089494187385,
+          "p95": 28.55631087333894,
+          "p99": 78.62820909196984
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789613062.3450513,
+          "window_end": 1789616662.3450513
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789613062.3450513,
+          "window_end": 1789616662.3450513
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789613062.3450513,
+          "window_end": 1789616662.3450513
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789613062.3450513,
+          "window_end": 1789616662.3450513
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-balanced-n8-7618907.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-balanced-n8-7618907.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "openclaw",
+      "backends": 8,
+      "frontends": 8,
+      "physical_nodes_used": 16,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1789419699.0131712,
+      "measurement_end_unix": 1789423299.0131712,
+      "completed_tasks_in_window": 3085,
+      "true_admissions_in_window": 3085,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 3777
+      },
+      "failed_tasks": 0,
+      "output_tokens": 12638470,
+      "output_tokens_s": 3510.686111111111,
+      "tasks_per_minute": 51.416666666666664,
+      "prompt_tokens": 2136313992,
+      "cached_prompt_tokens": 2007931728,
+      "prefix_reuse": 0.9399047778178855,
+      "uncached_prompt_per_output": 10.15805425814992,
+      "frontend_cpu_mean_percent": 3.341487698674859,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 3518.9822222222224,
+          "completed_tasks": 1521.0,
+          "prefix_reuse": 0.9386744417302664,
+          "waiting_per_replica": 0.010930048939698886
+        },
+        {
+          "output_tokens_s": 3502.39,
+          "completed_tasks": 1564.0,
+          "prefix_reuse": 0.9411003891938499,
+          "waiting_per_replica": 0.009961916942066995
+        }
+      ],
+      "replica_output_cv": 0.008963628548326306,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 435.055,
+          "prefix_reuse": 0.9416392709055715
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 436.16805555555555,
+          "prefix_reuse": 0.9374114245965072
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 438.22194444444443,
+          "prefix_reuse": 0.939649730833479
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 447.7888888888889,
+          "prefix_reuse": 0.9397560981220797
+        },
+        {
+          "replica": "r04",
+          "output_tokens_s": 440.5075,
+          "prefix_reuse": 0.9419988086486389
+        },
+        {
+          "replica": "r05",
+          "output_tokens_s": 437.3811111111111,
+          "prefix_reuse": 0.9392602009668044
+        },
+        {
+          "replica": "r06",
+          "output_tokens_s": 440.49333333333334,
+          "prefix_reuse": 0.939797405005361
+        },
+        {
+          "replica": "r07",
+          "output_tokens_s": 435.0702777777778,
+          "prefix_reuse": 0.9397167451770313
+        }
+      ],
+      "ttft_seconds": {
+        "count": 44485,
+        "mean": 0.51681344724958,
+        "p50": 0.45147582702338696,
+        "p95": 0.997645280417054,
+        "p99": 1.7519241635315106
+      },
+      "task_lifecycle_seconds": {
+        "count": 3085,
+        "mean": 146.99380304883098,
+        "p50": 87.15000760788098,
+        "p95": 483.20987261789844,
+        "p99": 699.2367107413786
+      },
+      "tool_latency_seconds": {
+        "count": 41754,
+        "mean": 0.4696572330315658,
+        "p50": 0.495781,
+        "p95": 0.7949002,
+        "p99": 2.0876964200000034
+      },
+      "execution_seconds_mean": {
+        "setup": 10.55225688330632,
+        "llm_only": 125.6621179649919,
+        "tool_only": 6.232582298217175,
+        "llm_tool_overlap": 3.956928427993037e-15,
+        "other_and_cleanup": 4.546845902315587
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 44486,
+          "mean": 0.005595290964196403,
+          "p50": 3.235996700823307e-06,
+          "p95": 7.163966074585915e-06,
+          "p99": 0.2590201472630728
+        },
+        "prefill_seconds": {
+          "count": 44486,
+          "mean": 0.3526588614948414,
+          "p50": 0.306685313466005,
+          "p95": 0.7039618205744773,
+          "p99": 1.297757953789551
+        },
+        "decode_latency_seconds": {
+          "count": 44486,
+          "mean": 8.373484822066922,
+          "p50": 3.67563227948267,
+          "p95": 28.631041685002856,
+          "p99": 78.20622915409065
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789419699.0131712,
+          "window_end": 1789423299.0131712
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "openclaw-balanced-n16-7618908.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/openclaw-balanced-n16-7618908.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "openclaw",
+      "backends": 16,
+      "frontends": 16,
+      "physical_nodes_used": 32,
+      "cc_per_backend": 16,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 3600.0,
+      "measurement_start_unix": 1789446999.0970883,
+      "measurement_end_unix": 1789450599.0970883,
+      "completed_tasks_in_window": 6167,
+      "true_admissions_in_window": 6167,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 7537
+      },
+      "failed_tasks": 0,
+      "output_tokens": 25300051,
+      "output_tokens_s": 7027.791944444444,
+      "tasks_per_minute": 102.78333333333333,
+      "prompt_tokens": 4287518739,
+      "cached_prompt_tokens": 4028417712,
+      "prefix_reuse": 0.9395685377084949,
+      "uncached_prompt_per_output": 10.241126668084583,
+      "frontend_cpu_mean_percent": 3.351550171739399,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 7023.013888888889,
+          "completed_tasks": 3068.0,
+          "prefix_reuse": 0.9392083733159211,
+          "waiting_per_replica": 0.009610216828448485
+        },
+        {
+          "output_tokens_s": 7032.57,
+          "completed_tasks": 3099.0,
+          "prefix_reuse": 0.939926082925081,
+          "waiting_per_replica": 0.008772666754280576
+        }
+      ],
+      "replica_output_cv": 0.0091048715982005,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 435.5938888888889,
+          "prefix_reuse": 0.9408734063924491
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 436.2536111111111,
+          "prefix_reuse": 0.9384858117084555
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 438.7627777777778,
+          "prefix_reuse": 0.9397381616098934
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 447.9175,
+          "prefix_reuse": 0.93960991834205
+        },
+        {
+          "replica": "r04",
+          "output_tokens_s": 439.3286111111111,
+          "prefix_reuse": 0.9412339887165072
+        },
+        {
+          "replica": "r05",
+          "output_tokens_s": 437.8011111111111,
+          "prefix_reuse": 0.9400813952381186
+        },
+        {
+          "replica": "r06",
+          "output_tokens_s": 439.8697222222222,
+          "prefix_reuse": 0.9392820457090498
+        },
+        {
+          "replica": "r07",
+          "output_tokens_s": 435.6222222222222,
+          "prefix_reuse": 0.9395533099012672
+        },
+        {
+          "replica": "r08",
+          "output_tokens_s": 442.7988888888889,
+          "prefix_reuse": 0.9398986908981494
+        },
+        {
+          "replica": "r09",
+          "output_tokens_s": 432.0672222222222,
+          "prefix_reuse": 0.9384968803640551
+        },
+        {
+          "replica": "r10",
+          "output_tokens_s": 441.1747222222222,
+          "prefix_reuse": 0.9409809746147224
+        },
+        {
+          "replica": "r11",
+          "output_tokens_s": 443.6252777777778,
+          "prefix_reuse": 0.9392307270088587
+        },
+        {
+          "replica": "r12",
+          "output_tokens_s": 435.0394444444444,
+          "prefix_reuse": 0.9391723015321056
+        },
+        {
+          "replica": "r13",
+          "output_tokens_s": 442.785,
+          "prefix_reuse": 0.9397891654514358
+        },
+        {
+          "replica": "r14",
+          "output_tokens_s": 443.1163888888889,
+          "prefix_reuse": 0.9410765760472528
+        },
+        {
+          "replica": "r15",
+          "output_tokens_s": 436.03555555555556,
+          "prefix_reuse": 0.9354550339866913
+        }
+      ],
+      "ttft_seconds": {
+        "count": 89120,
+        "mean": 0.5139038610440572,
+        "p50": 0.44879521895200014,
+        "p95": 0.9955462571349927,
+        "p99": 1.7365318798529912
+      },
+      "task_lifecycle_seconds": {
+        "count": 6167,
+        "mean": 147.1356945307115,
+        "p50": 87.45237704413012,
+        "p95": 481.81405565180177,
+        "p99": 694.0497063660508
+      },
+      "tool_latency_seconds": {
+        "count": 83671,
+        "mean": 0.46699741451637966,
+        "p50": 0.494867,
+        "p95": 0.791899,
+        "p99": 2.0458463000000173
+      },
+      "execution_seconds_mean": {
+        "setup": 10.53543963580347,
+        "llm_only": 125.80397610815632,
+        "tool_only": 6.233508565266739,
+        "llm_tool_overlap": 4.195336041165015e-15,
+        "other_and_cleanup": 4.56277022148498
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 89119,
+          "mean": 0.005626340680914572,
+          "p50": 3.236113116145134e-06,
+          "p95": 7.173977792263031e-06,
+          "p99": 0.15689276198850433
+        },
+        "prefill_seconds": {
+          "count": 89119,
+          "mean": 0.35106748952576095,
+          "p50": 0.3057688071858138,
+          "p95": 0.7053420956712214,
+          "p99": 1.2932135431002794
+        },
+        "decode_latency_seconds": {
+          "count": 89119,
+          "mean": 8.358579761750825,
+          "p50": 3.667971766088158,
+          "p95": 28.52867387507574,
+          "p99": 77.97048054257851
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r08",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r09",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r10",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r11",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r12",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r13",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r14",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        },
+        {
+          "replica": "r15",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789446999.0970883,
+          "window_end": 1789450599.0970883
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "minisweagent",
+      "backends": 1,
+      "frontends": 1,
+      "physical_nodes_used": 2,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1789444253.6988146,
+      "measurement_end_unix": 1789449653.6988146,
+      "completed_tasks_in_window": 236,
+      "true_admissions_in_window": 236,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 335
+      },
+      "failed_tasks": 0,
+      "output_tokens": 3899533,
+      "output_tokens_s": 722.1357407407407,
+      "tasks_per_minute": 2.6222222222222222,
+      "prompt_tokens": 596755184,
+      "cached_prompt_tokens": 570623856,
+      "prefix_reuse": 0.9562109744487783,
+      "uncached_prompt_per_output": 6.701142931730543,
+      "frontend_cpu_mean_percent": 10.607032551303154,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 718.7081481481481,
+          "completed_tasks": 117.0,
+          "prefix_reuse": 0.9560163926584999,
+          "waiting_per_replica": 0.08581920903954803
+        },
+        {
+          "output_tokens_s": 725.5633333333334,
+          "completed_tasks": 119.0,
+          "prefix_reuse": 0.9564082511487855,
+          "waiting_per_replica": 0.05871311989956058
+        }
+      ],
+      "replica_output_cv": 0.0,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 722.1357407407407,
+          "prefix_reuse": 0.9562109744487783
+        }
+      ],
+      "ttft_seconds": {
+        "count": 20944,
+        "mean": 0.37436230734554604,
+        "p50": 0.31021377607248724,
+        "p95": 0.7068478869739917,
+        "p99": 1.9474656610027856
+      },
+      "task_lifecycle_seconds": {
+        "count": 236,
+        "mean": 712.2586098448966,
+        "p50": 598.609615925001,
+        "p95": 1615.056497282174,
+        "p99": 1928.9931956609487
+      },
+      "tool_latency_seconds": {
+        "count": 20937,
+        "mean": 0.9692620137077901,
+        "p50": 0.54424,
+        "p95": 1.7653492000000015,
+        "p99": 7.605727839999998
+      },
+      "execution_seconds_mean": {
+        "setup": 4.497934144067797,
+        "llm_only": 617.0381269364406,
+        "tool_only": 88.16762956779661,
+        "llm_tool_overlap": 1.9028093601711157e-14,
+        "other_and_cleanup": 2.5549191965914546
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 20944,
+          "mean": 0.01843605221864946,
+          "p50": 3.3159740269184113e-06,
+          "p95": 8.716946467757225e-06,
+          "p99": 0.7420843869191595
+        },
+        "prefill_seconds": {
+          "count": 20944,
+          "mean": 0.22050625608958144,
+          "p50": 0.1915379719575867,
+          "p95": 0.44330600678222243,
+          "p99": 0.9929383293492704
+        },
+        "decode_latency_seconds": {
+          "count": 20944,
+          "mean": 6.85075827033784,
+          "p50": 2.9511102738324553,
+          "p95": 24.05551404138095,
+          "p99": 53.045078509459245
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789444253.6988146,
+          "window_end": 1789449653.6988146
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-balanced-n2-7619132.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-balanced-n2-7619132.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "minisweagent",
+      "backends": 2,
+      "frontends": 2,
+      "physical_nodes_used": 4,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1789445134.0419095,
+      "measurement_end_unix": 1789450534.0419095,
+      "completed_tasks_in_window": 456,
+      "true_admissions_in_window": 456,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 665
+      },
+      "failed_tasks": 0,
+      "output_tokens": 7676523,
+      "output_tokens_s": 1421.5783333333334,
+      "tasks_per_minute": 5.066666666666666,
+      "prompt_tokens": 1189817582,
+      "cached_prompt_tokens": 1133974512,
+      "prefix_reuse": 0.9530658557708218,
+      "uncached_prompt_per_output": 7.274526501125575,
+      "frontend_cpu_mean_percent": 10.608378426938993,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 1406.6714814814816,
+          "completed_tasks": 219.0,
+          "prefix_reuse": 0.9518307061192122,
+          "waiting_per_replica": 0.1220320783680704
+        },
+        {
+          "output_tokens_s": 1436.4851851851852,
+          "completed_tasks": 237.0,
+          "prefix_reuse": 0.954309655398311,
+          "waiting_per_replica": 0.09229612749054424
+        }
+      ],
+      "replica_output_cv": 0.01560563291479749,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 721.8814814814815,
+          "prefix_reuse": 0.9565995315952817
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 699.6968518518519,
+          "prefix_reuse": 0.9495159333841849
+        }
+      ],
+      "ttft_seconds": {
+        "count": 41397,
+        "mean": 0.39340956703993185,
+        "p50": 0.31411779299378395,
+        "p95": 0.8804915017914018,
+        "p99": 2.151847669053823
+      },
+      "task_lifecycle_seconds": {
+        "count": 456,
+        "mean": 734.111589400351,
+        "p50": 613.8715325855883,
+        "p95": 1633.5465957866982,
+        "p99": 2053.7695549613427
+      },
+      "tool_latency_seconds": {
+        "count": 41393,
+        "mean": 0.9824155799289735,
+        "p50": 0.546535,
+        "p95": 1.7779940000000007,
+        "p99": 7.783699840000021
+      },
+      "execution_seconds_mean": {
+        "setup": 4.496186813596491,
+        "llm_only": 636.6666701008771,
+        "tool_only": 90.39327993859648,
+        "llm_tool_overlap": 2.49313240617579e-14,
+        "other_and_cleanup": 2.5554525472807748
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 41396,
+          "mean": 0.025605626632189037,
+          "p50": 3.2570678740739822e-06,
+          "p95": 9.116949513554573e-06,
+          "p99": 0.9616601142333854
+        },
+        "prefill_seconds": {
+          "count": 41396,
+          "mean": 0.22897466780137707,
+          "p50": 0.19322728808037937,
+          "p95": 0.5261558136553504,
+          "p99": 1.2008682014769898
+        },
+        "decode_latency_seconds": {
+          "count": 41396,
+          "mean": 6.9133113651196725,
+          "p50": 3.014690844924189,
+          "p95": 24.39292092336109,
+          "p99": 54.15884610773089
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789445134.0419095,
+          "window_end": 1789450534.0419095
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789445134.0419095,
+          "window_end": 1789450534.0419095
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-balanced-n8-7619134.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-balanced-n8-7619134.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "minisweagent",
+      "backends": 8,
+      "frontends": 8,
+      "physical_nodes_used": 16,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1789438734.893187,
+      "measurement_end_unix": 1789444134.893187,
+      "completed_tasks_in_window": 1826,
+      "true_admissions_in_window": 1826,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 2643
+      },
+      "failed_tasks": 0,
+      "output_tokens": 30778820,
+      "output_tokens_s": 5699.781481481482,
+      "tasks_per_minute": 20.288888888888888,
+      "prompt_tokens": 4802101030,
+      "cached_prompt_tokens": 4583507280,
+      "prefix_reuse": 0.9544795603769294,
+      "uncached_prompt_per_output": 7.102083510673898,
+      "frontend_cpu_mean_percent": 10.773873439566113,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 5704.177407407407,
+          "completed_tasks": 913.0,
+          "prefix_reuse": 0.954642382212904,
+          "waiting_per_replica": 0.10104357518901426
+        },
+        {
+          "output_tokens_s": 5695.385555555556,
+          "completed_tasks": 913.0,
+          "prefix_reuse": 0.9543156015127167,
+          "waiting_per_replica": 0.093871976916104
+        }
+      ],
+      "replica_output_cv": 0.009925425426981807,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 721.3724074074074,
+          "prefix_reuse": 0.9567418414100227
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 705.447962962963,
+          "prefix_reuse": 0.9499840203387405
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 704.6946296296296,
+          "prefix_reuse": 0.9520361148651697
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 718.5761111111111,
+          "prefix_reuse": 0.9568905836966296
+        },
+        {
+          "replica": "r04",
+          "output_tokens_s": 714.9166666666666,
+          "prefix_reuse": 0.9548247077129776
+        },
+        {
+          "replica": "r05",
+          "output_tokens_s": 701.2905555555556,
+          "prefix_reuse": 0.9522662445046931
+        },
+        {
+          "replica": "r06",
+          "output_tokens_s": 718.5161111111111,
+          "prefix_reuse": 0.9568738816177086
+        },
+        {
+          "replica": "r07",
+          "output_tokens_s": 714.967037037037,
+          "prefix_reuse": 0.9561895600805372
+        }
+      ],
+      "ttft_seconds": {
+        "count": 165534,
+        "mean": 0.39001749634431065,
+        "p50": 0.3131057660211809,
+        "p95": 0.8459855196648278,
+        "p99": 2.12046843114542
+      },
+      "task_lifecycle_seconds": {
+        "count": 1826,
+        "mean": 732.359269622039,
+        "p50": 610.4840932474472,
+        "p95": 1710.694419211126,
+        "p99": 2101.3605755226454
+      },
+      "tool_latency_seconds": {
+        "count": 165464,
+        "mean": 0.9910436678915052,
+        "p50": 0.5497425,
+        "p95": 1.788397250000001,
+        "p99": 7.750794999999998
+      },
+      "execution_seconds_mean": {
+        "setup": 4.499036365826944,
+        "llm_only": 636.2856876270537,
+        "tool_only": 88.98295835049286,
+        "llm_tool_overlap": 2.1075024407868032e-14,
+        "other_and_cleanup": 2.5915872786656267
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 165532,
+          "mean": 0.024012466198235327,
+          "p50": 3.285938873887062e-06,
+          "p95": 9.116949513554573e-06,
+          "p99": 0.8825807735876896
+        },
+        "prefill_seconds": {
+          "count": 165532,
+          "mean": 0.22764501004059662,
+          "p50": 0.19295445704483427,
+          "p95": 0.5095919510349631,
+          "p99": 1.1664669035491537
+        },
+        "decode_latency_seconds": {
+          "count": 165532,
+          "mean": 6.91133042855311,
+          "p50": 2.991528509068303,
+          "p95": 24.549090368978792,
+          "p99": 54.464386646132965
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789438734.893187,
+          "window_end": 1789444134.893187
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    },
+    {
+      "run": "minisweagent-balanced-n16-7619136.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "root": "runs/scaling/multinode/minisweagent-balanced-n16-7619136.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "balanced",
+      "batch": "historical",
+      "workload": "minisweagent",
+      "backends": 16,
+      "frontends": 16,
+      "physical_nodes_used": 32,
+      "cc_per_backend": 32,
+      "status": "complete_steady",
+      "raw_valid": true,
+      "raw_steady": true,
+      "raw_collection_complete": null,
+      "worker_completion_verified": true,
+      "duration_seconds": 5400.0,
+      "measurement_start_unix": 1789461669.0224633,
+      "measurement_end_unix": 1789467069.0224633,
+      "completed_tasks_in_window": 3674,
+      "true_admissions_in_window": 3674,
+      "cancelled_admissions": 0,
+      "task_status_counts": {
+        "completed": 5311
+      },
+      "failed_tasks": 0,
+      "output_tokens": 61812986,
+      "output_tokens_s": 11446.84925925926,
+      "tasks_per_minute": 40.82222222222222,
+      "prompt_tokens": 9633130120,
+      "cached_prompt_tokens": 9207836352,
+      "prefix_reuse": 0.95585092667678,
+      "uncached_prompt_per_output": 6.880330421183666,
+      "frontend_cpu_mean_percent": 10.761922364914835,
+      "frontend": [],
+      "halves": [
+        {
+          "output_tokens_s": 11462.475185185185,
+          "completed_tasks": 1818.0,
+          "prefix_reuse": 0.9563774608945,
+          "waiting_per_replica": 0.08891478305027281
+        },
+        {
+          "output_tokens_s": 11431.223333333333,
+          "completed_tasks": 1856.0,
+          "prefix_reuse": 0.955320085946848,
+          "waiting_per_replica": 0.09689625653975069
+        }
+      ],
+      "replica_output_cv": 0.007720276976807774,
+      "replicas": [
+        {
+          "replica": "r00",
+          "output_tokens_s": 719.6735185185186,
+          "prefix_reuse": 0.9570727755614444
+        },
+        {
+          "replica": "r01",
+          "output_tokens_s": 700.6631481481481,
+          "prefix_reuse": 0.9492803231459597
+        },
+        {
+          "replica": "r02",
+          "output_tokens_s": 707.9096296296296,
+          "prefix_reuse": 0.9527303073289849
+        },
+        {
+          "replica": "r03",
+          "output_tokens_s": 717.5501851851852,
+          "prefix_reuse": 0.9576448024495541
+        },
+        {
+          "replica": "r04",
+          "output_tokens_s": 713.4840740740741,
+          "prefix_reuse": 0.9547857903930367
+        },
+        {
+          "replica": "r05",
+          "output_tokens_s": 709.9424074074074,
+          "prefix_reuse": 0.9540834424477214
+        },
+        {
+          "replica": "r06",
+          "output_tokens_s": 721.1396296296297,
+          "prefix_reuse": 0.9571813527747401
+        },
+        {
+          "replica": "r07",
+          "output_tokens_s": 713.2690740740741,
+          "prefix_reuse": 0.9556416652471625
+        },
+        {
+          "replica": "r08",
+          "output_tokens_s": 715.1079629629629,
+          "prefix_reuse": 0.9567023857290268
+        },
+        {
+          "replica": "r09",
+          "output_tokens_s": 717.072037037037,
+          "prefix_reuse": 0.9578602165855721
+        },
+        {
+          "replica": "r10",
+          "output_tokens_s": 716.9653703703704,
+          "prefix_reuse": 0.9578893336726104
+        },
+        {
+          "replica": "r11",
+          "output_tokens_s": 712.6383333333333,
+          "prefix_reuse": 0.9555648689981088
+        },
+        {
+          "replica": "r12",
+          "output_tokens_s": 718.7522222222223,
+          "prefix_reuse": 0.9558256920556841
+        },
+        {
+          "replica": "r13",
+          "output_tokens_s": 718.8609259259259,
+          "prefix_reuse": 0.957036191662201
+        },
+        {
+          "replica": "r14",
+          "output_tokens_s": 721.7203703703703,
+          "prefix_reuse": 0.9563299036051194
+        },
+        {
+          "replica": "r15",
+          "output_tokens_s": 722.1003703703703,
+          "prefix_reuse": 0.9578850444821463
+        }
+      ],
+      "ttft_seconds": {
+        "count": 332405,
+        "mean": 0.3847096099287745,
+        "p50": 0.31283250404521823,
+        "p95": 0.7702535586431619,
+        "p99": 2.096450754422695
+      },
+      "task_lifecycle_seconds": {
+        "count": 3674,
+        "mean": 729.9083215663387,
+        "p50": 606.427250857465,
+        "p95": 1695.3186135682383,
+        "p99": 2107.8249724655298
+      },
+      "tool_latency_seconds": {
+        "count": 332283,
+        "mean": 0.9833577062233098,
+        "p50": 0.544149,
+        "p95": 1.7710489,
+        "p99": 7.562744199999948
+      },
+      "execution_seconds_mean": {
+        "setup": 4.4920319510070765,
+        "llm_only": 634.0008946600436,
+        "tool_only": 88.85246500217742,
+        "llm_tool_overlap": 2.1451660383916796e-14,
+        "other_and_cleanup": 2.562929953110586
+      },
+      "backend_latency": {
+        "queue_seconds": {
+          "count": 332406,
+          "mean": 0.022773289389841973,
+          "p50": 3.206077963113785e-06,
+          "p95": 8.686212822794914e-06,
+          "p99": 0.8367297962191514
+        },
+        "prefill_seconds": {
+          "count": 332406,
+          "mean": 0.22477648024224287,
+          "p50": 0.1930483824107796,
+          "p95": 0.4813238081987947,
+          "p99": 1.087072244798765
+        },
+        "decode_latency_seconds": {
+          "count": 332406,
+          "mean": 6.890657718281795,
+          "p50": 2.986230834387243,
+          "p95": 24.431838906544726,
+          "p99": 53.7321266209591
+        }
+      },
+      "setup": {},
+      "routing": {},
+      "raw_validation_errors": [],
+      "raw_diagnostic_warnings": [],
+      "recovery_audit": [],
+      "workers": [
+        {
+          "replica": "r00",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r01",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r02",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r03",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r04",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r05",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r06",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r07",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r08",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r09",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r10",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r11",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r12",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r13",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r14",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        },
+        {
+          "replica": "r15",
+          "status": "completed",
+          "failed_tasks": null,
+          "window_start": 1789461669.0224633,
+          "window_end": 1789467069.0224633
+        }
+      ],
+      "sampling_method": "full measurement window; 60s bins; gauges averaged across samples and replicas"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "included_windows": 20,
+  "new_windows": 3,
+  "historical_points_unchanged": 17,
+  "missing_non_p2_points": 3,
+  "p2_excluded_from_data": true,
+  "new_window_bin_totals_match": true,
+  "completed_call_audits_passed": 7,
+  "png_figures": 7,
+  "individual_pdf_figures": 7,
+  "local_report_links_exist": true
+}

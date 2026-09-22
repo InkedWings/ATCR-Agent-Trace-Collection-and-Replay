@@ -1,0 +1,89 @@
+{
+  "checked_utc": "2026-09-19T19:49:09.447592+00:00",
+  "tests": {
+    "passed": 105,
+    "elapsed_seconds": 84.53,
+    "files": [
+      "tests/test_replay_transport.py",
+      "tests/test_multinode_report.py",
+      "tests/test_llm_executor.py",
+      "tests/test_benchmark.py",
+      "tests/test_openclaw_gateway.py",
+      "tests/test_replay_engine.py",
+      "tests/test_multinode.py",
+      "tests/test_official_router.py"
+    ]
+  },
+  "pbs_syntax_checked": 12,
+  "gpu_experiment_run": false,
+  "jobs_submitted": [],
+  "jobs_cancelled": [],
+  "jobs": {
+    "7636974.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "STDIN",
+      "job_state": "R",
+      "queue": "capacity",
+      "Submit_arguments": "-I -A lc-mpi -q capacity -l select=2:system=polaris -l filesystems=home:eagle -l walltime=80:00:00"
+    },
+    "7637010.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-mn-01",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/fixed-frontend-jobs-20260919/jobs/openclaw-fixed_frontend-n2.pbs"
+    },
+    "7637011.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-mn-02",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/fixed-frontend-jobs-20260919/jobs/minisweagent-fixed_frontend-n2.pbs"
+    },
+    "7637012.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-mn-03",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/fixed-frontend-jobs-20260919/jobs/openclaw-fixed_frontend-n4.pbs"
+    },
+    "7637013.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-mn-04",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/fixed-frontend-jobs-20260919/jobs/minisweagent-fixed_frontend-n4.pbs"
+    },
+    "7637014.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-mn-05",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/fixed-frontend-jobs-20260919/jobs/openclaw-fixed_frontend-n8.pbs"
+    },
+    "7637015.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-mn-06",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/fixed-frontend-jobs-20260919/jobs/minisweagent-fixed_frontend-n8.pbs"
+    },
+    "7637645.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-r-oc-rr-n4",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "runs/routing-jobs-20260919/jobs/openclaw-routing-n4-round_robin.pbs"
+    },
+    "7637646.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-r-oc-ca-n4",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "runs/routing-jobs-20260919/jobs/openclaw-routing-n4-cache_aware.pbs"
+    },
+    "7637647.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-r-ms-rr-n4",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "runs/routing-jobs-20260919/jobs/minisweagent-routing-n4-round_robin.pbs"
+    },
+    "7637650.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov": {
+      "Job_Name": "at-r-ms-ca-n4",
+      "job_state": "Q",
+      "queue": "preemptable",
+      "Submit_arguments": "runs/routing-jobs-20260919/jobs/minisweagent-routing-n4-cache_aware.pbs"
+    }
+  }
+}

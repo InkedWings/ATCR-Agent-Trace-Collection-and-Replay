@@ -1,0 +1,119 @@
+{
+  "checked_utc": "2026-09-21T03:45:08.832599+00:00",
+  "scope": "current fixed-frontend and official routing batch",
+  "completed": [
+    {
+      "job": "7637010",
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n2-7637010.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "openclaw",
+      "frontend_nodes": 1,
+      "inference_nodes": 2,
+      "total_cc": 32,
+      "measurement_seconds": 3600.0,
+      "valid": true,
+      "steady": true,
+      "failed_tasks": 0,
+      "completed_in_window": 767,
+      "tasks_per_minute": 12.783333333333333,
+      "output_tokens_per_second": 868.9702777777778,
+      "actual_prefix_reuse": 0.93974749648207,
+      "ttft_p95_seconds": 0.9708982514217496,
+      "task_p95_seconds": 480.9129366689593,
+      "frontend_cpu_mean_percent": 6.76996257406153,
+      "frontend_cpu_max_percent": 17.519161582981386,
+      "warnings": [],
+      "native_tool_errors_in_window": 743
+    },
+    {
+      "job": "7637012",
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n4-7637012.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "openclaw",
+      "frontend_nodes": 1,
+      "inference_nodes": 4,
+      "total_cc": 64,
+      "measurement_seconds": 3600.0,
+      "valid": true,
+      "steady": true,
+      "failed_tasks": 0,
+      "completed_in_window": 1534,
+      "tasks_per_minute": 25.566666666666666,
+      "output_tokens_per_second": 1747.2133333333334,
+      "actual_prefix_reuse": 0.9395197632344904,
+      "ttft_p95_seconds": 0.9939656925387679,
+      "task_p95_seconds": 486.2982339224311,
+      "frontend_cpu_mean_percent": 14.723789508787132,
+      "frontend_cpu_max_percent": 33.176544371276265,
+      "warnings": [],
+      "native_tool_errors_in_window": 1560
+    },
+    {
+      "job": "7637011",
+      "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n2-7637011.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "minisweagent",
+      "frontend_nodes": 1,
+      "inference_nodes": 2,
+      "total_cc": 64,
+      "measurement_seconds": 5400.0,
+      "valid": true,
+      "steady": true,
+      "failed_tasks": 0,
+      "completed_in_window": 456,
+      "tasks_per_minute": 5.066666666666666,
+      "output_tokens_per_second": 1425.351851851852,
+      "actual_prefix_reuse": 0.9542303267526187,
+      "ttft_p95_seconds": 0.8297066875151359,
+      "task_p95_seconds": 1641.9375440371805,
+      "frontend_cpu_mean_percent": 21.23899214186993,
+      "frontend_cpu_max_percent": 92.11845102505694,
+      "warnings": [
+        "x3210c0s37b0n0: resource metric sampling has gaps; resource statistics have limited coverage"
+      ],
+      "native_tool_errors_in_window": 4397
+    }
+  ],
+  "openclaw_scaling": {
+    "output_speedup_2_to_4": 2.010670995331959,
+    "task_speedup_2_to_4": 2.0,
+    "ttft_p95_relative_change": 0.02375886565171914
+  },
+  "latest_failed_n16": [
+    {
+      "job": "7638384",
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n16-7638384.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "status": "failed",
+      "exit_status": 1,
+      "measurement_started": false,
+      "replica": "r05",
+      "node": "x3003c0s25b0n0",
+      "error": "torch.cuda.DeferredCudaCallError: device=1, num_gpus=1 during CUDA initialization",
+      "log": "runs/scaling/multinode/openclaw-fixed_frontend-n16-7638384.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/backends/r05/service.log"
+    },
+    {
+      "job": "7638385",
+      "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n16-7638385.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "status": "failed",
+      "exit_status": 1,
+      "measurement_started": false,
+      "replica": "r10",
+      "node": "x3003c0s25b0n0",
+      "error": "torch.cuda.DeferredCudaCallError: device=1, num_gpus=1 during CUDA initialization",
+      "log": "runs/scaling/multinode/minisweagent-fixed_frontend-n16-7638385.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/backends/r10/service.log"
+    }
+  ],
+  "queued": {
+    "7637013": "mini-SWE 1+4",
+    "7637014": "OpenClaw 1+8",
+    "7637015": "mini-SWE 1+8",
+    "7637645": "OpenClaw official RR n4",
+    "7637646": "OpenClaw official cache-aware n4",
+    "7637647": "mini-SWE official RR n4",
+    "7637650": "mini-SWE official cache-aware n4"
+  },
+  "mini_swe_cpu_sampling": {
+    "samples": 5381,
+    "measurement_seconds": 5400,
+    "largest_gap_seconds": 6.768538475036621,
+    "gaps_over_5_seconds": 1
+  },
+  "validation_scope": "PBS exit status, existing global summaries, all worker status/window checks, frontend resource samples; no new backend-wide recount"
+}

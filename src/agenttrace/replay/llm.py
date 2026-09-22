@@ -23,6 +23,7 @@ class OpenAICompatibleExecutor:
         max_tokens_field: str = "max_tokens",
         model_override: str | None = None,
         trust_env: bool = True,
+        routing_envelope: bool = False,
     ) -> None:
         self.base_url = base_url.rstrip("/")
         self.api_key_env = api_key_env
@@ -30,16 +31,21 @@ class OpenAICompatibleExecutor:
         self.max_tokens_field = max_tokens_field
         self.model_override = model_override
         self.trust_env = trust_env
+        self.routing_envelope = routing_envelope
         self.client: httpx.AsyncClient | None = None
 
     async def setup(self, trace: dict[str, Any], workspace: Path) -> None:
-        headers: dict[str, str] = {}
+        # Task steps can leave connections idle while native tools run. Do not
+        # race a server's keep-alive timeout on the next POST. In particular,
+        # never retry a read failure: the server may already have run inference.
+        headers: dict[str, str] = {"Connection": "close"}
         if self.api_key_env:
             token = os.environ.get(self.api_key_env)
             if not token:
                 raise RuntimeError(f"missing LLM credential environment: {self.api_key_env}")
             headers["Authorization"] = f"Bearer {token}"
-        self.client = httpx.AsyncClient(headers=headers, timeout=None, trust_env=self.trust_env)
+        self.client = httpx.AsyncClient(headers=headers, timeout=None, trust_env=self.trust_env,
+            limits=httpx.Limits(max_keepalive_connections=0))
 
     async def execute(self, node: dict[str, Any]) -> LLMExecutionResult:
         if self.client is None:
@@ -55,13 +61,28 @@ class OpenAICompatibleExecutor:
         payload.setdefault("stream_options", {})["include_usage"] = True
         endpoint = node["request"]["endpoint"]
         url = f"{self.base_url}/{endpoint.lstrip('/')}"
+        if self.routing_envelope:
+            from agenttrace.routing_envelope import wrap_chat
+            if not url.endswith("/chat/completions"):
+                raise ValueError("official router envelope requires a chat completions endpoint")
+            url = url.removesuffix("/chat/completions") + "/completions"
+            payload = wrap_chat(payload)
         actual: int | None = None
         started = time.perf_counter()
         first_output: float | None = None
         last_output: float | None = None
         output_chunks = 0
-        async with self.client.stream("POST", url, json=payload) as response:
+        headers = {}
+        if os.environ.get("AGENTTRACE_TASK_INSTANCE_ID"):
+            headers["X-Agenttrace-Task"] = os.environ["AGENTTRACE_TASK_INSTANCE_ID"]
+            headers["X-Agenttrace-Call"] = node["id"]
+            headers["X-Agenttrace-Home"] = os.environ["AGENTTRACE_HOME_REPLICA"]
+        replica_id = os.environ.get("AGENTTRACE_HOME_REPLICA")
+        async with self.client.stream("POST", url, json=payload, headers=headers) as response:
             response.raise_for_status()
+            replica_id = response.headers.get("X-Agenttrace-Replica", replica_id)
+            if self.routing_envelope and "X-Agenttrace-Replica" not in response.headers:
+                raise RuntimeError("official router response is missing the actual backend replica")
             async for line in response.aiter_lines():
                 if not line.startswith("data:"):
                     continue
@@ -90,6 +111,7 @@ class OpenAICompatibleExecutor:
             ttft_seconds=first_output - started if first_output is not None else None,
             output_stream_seconds=last_output - first_output if first_output is not None else None,
             output_chunks=output_chunks,
+            backend_replica_id=replica_id,
         )
 
     async def close(self) -> None:
@@ -119,4 +141,5 @@ def create_openai_executor(config: dict[str, Any]) -> OpenAICompatibleExecutor:
         max_tokens_field=str(config.get("max_tokens_field", "max_tokens")),
         model_override=config.get("model_override"),
         trust_env=bool(config.get("trust_env", True)),
+        routing_envelope=bool(config.get("routing_envelope", False)),
     )

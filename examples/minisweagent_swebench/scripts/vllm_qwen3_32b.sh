@@ -21,6 +21,11 @@ max_num_seqs="${VLLM_MAX_NUM_SEQS:-1}"
 max_num_batched_tokens="${VLLM_MAX_NUM_BATCHED_TOKENS:-2048}"
 gpu_memory_utilization="${VLLM_GPU_MEMORY_UTILIZATION:-0.90}"
 prefix_caching="${VLLM_PREFIX_CACHING:-1}"
+tool_call_parser="${VLLM_TOOL_CALL_PARSER:-hermes}"
+reasoning_parser="${VLLM_REASONING_PARSER:-}"
+language_model_only="${VLLM_LANGUAGE_MODEL_ONLY:-0}"
+safetensors_load_strategy="${VLLM_SAFETENSORS_LOAD_STRATEGY:-}"
+enable_thinking="${VLLM_ENABLE_THINKING:-0}"
 
 usage() {
   echo "Usage: $(basename "$0") serve|smoke" >&2
@@ -31,19 +36,30 @@ load_polaris_modules() {
   module load spack-pe-base apptainer
 }
 
-load_hf_token() {
-  local token_file="${HF_TOKEN_PATH:-${HOME}/.cache/huggingface/token}"
-  if [[ -z "${HF_TOKEN:-}" && -r "${token_file}" ]]; then
-    HF_TOKEN="$(<"${token_file}")"
-    export HF_TOKEN
+resolve_cached_model() {
+  local cached_model="${model}"
+  if [[ ! -d "${cached_model}" ]]; then
+    local cached_repo="${hf_home}/hub/models--${model//\//--}"
+    local cached_ref="${cached_repo}/refs/main"
+    [[ -s "${cached_ref}" ]] || {
+      echo "Model is not cached locally: ${model}; prepare its cache before submitting replay jobs" >&2
+      return 2
+    }
+    cached_model="${cached_repo}/snapshots/$(<"${cached_ref}")"
   fi
+  [[ -s "${cached_model}/config.json" && -s "${cached_model}/tokenizer.json" ]] || {
+    echo "Cached model config/tokenizer is missing: ${cached_model}" >&2
+    return 2
+  }
+  printf '%s\n' "${cached_model}"
 }
 
 serve() {
   load_polaris_modules
-  load_hf_token
 
   [[ -r "${container}" ]] || { echo "Missing vLLM container: ${container}" >&2; exit 2; }
+  local model_path
+  model_path="$(resolve_cached_model)"
 
   mkdir -p "${hf_home}/hub" "${vllm_cache}" "${local_scratch}/tmp" \
     "${local_scratch}/apptainer-cache" "${log_dir}"
@@ -58,6 +74,11 @@ serve() {
   export APPTAINER_CACHEDIR="${local_scratch}/apptainer-cache"
   export APPTAINERENV_HF_HOME="${hf_home}"
   export APPTAINERENV_HUGGINGFACE_HUB_CACHE="${hf_home}/hub"
+  # Cached repo IDs can still trigger Hub model_info/tokenizer probes per TP
+  # worker. A local snapshot bypasses those probes; offline flags also prevent
+  # optional files or weight metadata from causing network requests at startup.
+  export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+  export APPTAINERENV_HF_HUB_OFFLINE=1 APPTAINERENV_TRANSFORMERS_OFFLINE=1
   export APPTAINERENV_VLLM_CACHE_ROOT="${vllm_cache}"
   export APPTAINERENV_HTTP_PROXY="${HTTP_PROXY}"
   export APPTAINERENV_HTTPS_PROXY="${HTTPS_PROXY}"
@@ -69,14 +90,18 @@ serve() {
   export APPTAINERENV_CXX=/usr/bin/g++
   [[ -n "${HF_TOKEN:-}" ]] && export APPTAINERENV_HF_TOKEN="${HF_TOKEN}"
 
-  local log_path="${log_dir}/qwen3-32b-$(hostname -s)-$(date -u +%Y%m%dT%H%M%SZ).log"
+  local model_label="${served_model##*/}"
+  local log_path="${log_dir}/${model_label}-$(hostname -s)-$(date -u +%Y%m%dT%H%M%SZ).log"
   local backend_events="${VLLM_BACKEND_EVENTS:-${log_path%.log}-requests.jsonl}"
   echo "host=$(hostname -s) model=${model} served_model=${served_model}"
   echo "container=${container}"
   echo "hf_home=${hf_home} vllm_cache=${vllm_cache}"
+  echo "model_path=${model_path} HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1"
   echo "tp=${tp} max_model_len=${max_model_len} max_num_seqs=${max_num_seqs} gpu_memory_utilization=${gpu_memory_utilization}"
   echo "prefix_caching=${prefix_caching}"
   echo "max_num_batched_tokens=${max_num_batched_tokens}"
+  echo "tool_call_parser=${tool_call_parser} reasoning_parser=${reasoning_parser} language_model_only=${language_model_only}"
+  echo "safetensors_load_strategy=${safetensors_load_strategy:-default}"
   echo "log=${log_path}"
   echo "backend_events=${backend_events}"
 
@@ -87,6 +112,38 @@ serve() {
     *) echo "VLLM_PREFIX_CACHING must be 0 or 1" >&2; exit 2 ;;
   esac
 
+  local model_args=()
+  local thinking_json
+  case "${enable_thinking}" in
+    1) thinking_json='{"enable_thinking": true}' ;;
+    0) thinking_json='{"enable_thinking": false}' ;;
+    *) echo "VLLM_ENABLE_THINKING must be 0 or 1" >&2; exit 2 ;;
+  esac
+  [[ -n "${safetensors_load_strategy}" ]] && model_args+=(--safetensors-load-strategy "${safetensors_load_strategy}")
+  [[ -n "${reasoning_parser}" ]] && model_args+=(--reasoning-parser "${reasoning_parser}")
+  case "${language_model_only}" in
+    1) model_args+=(--language-model-only) ;;
+    0) ;;
+    *) echo "VLLM_LANGUAGE_MODEL_ONLY must be 0 or 1" >&2; exit 2 ;;
+  esac
+
+  case "${VLLM_SCHEDULER_DIAGNOSTICS:-0}" in
+    1)
+      export APPTAINERENV_PYTHONPATH="${repo_dir}/src${PYTHONPATH:+:${PYTHONPATH}}"
+      export APPTAINERENV_AGENTTRACE_SCHEDULER_EVENTS="${backend_events%.jsonl}-scheduler.jsonl"
+      model_args+=(--async-scheduling --scheduler-cls agenttrace.vllm_diagnostics.DiagnosticAsyncScheduler)
+      ;;
+    0) ;;
+    *) echo "VLLM_SCHEDULER_DIAGNOSTICS must be 0 or 1" >&2; exit 2 ;;
+  esac
+
+  if [[ -n "${VLLM_ROUTING_REPLICA:-}" ]]; then
+    export APPTAINERENV_PYTHONPATH="${repo_dir}/src${PYTHONPATH:+:${PYTHONPATH}}"
+    export APPTAINERENV_AGENTTRACE_ROUTING_REPLICA="${VLLM_ROUTING_REPLICA}"
+    export APPTAINERENV_AGENTTRACE_ROUTING_EVENTS="${VLLM_ROUTING_EVENTS:?routing ledger required}"
+    model_args+=(--middleware agenttrace.routing_envelope.RoutingEnvelopeMiddleware)
+  fi
+
   # Keep the tracked PID attached to the container runtime, not a pipeline
   # shell. A private PID namespace ties every vLLM worker to container exit.
   exec > >(tee "${log_path}") 2>&1
@@ -94,7 +151,7 @@ serve() {
     --bind /lus/eagle:/lus/eagle,/local/scratch:/local/scratch \
     "${container}" \
     python3 "${repo_dir}/src/agenttrace/vllm_backend.py" \
-      --backend-events "${backend_events}" serve "${model}" \
+      --backend-events "${backend_events}" serve "${model_path}" \
       --served-model-name "${served_model}" \
       --host "${host}" \
       --port "${port}" \
@@ -107,8 +164,9 @@ serve() {
       --trust-remote-code \
       "${prefix_flag}" \
       --enable-auto-tool-choice \
-      --tool-call-parser hermes \
-      --default-chat-template-kwargs '{"enable_thinking": false}'
+      --tool-call-parser "${tool_call_parser}" \
+      --default-chat-template-kwargs "${thinking_json}" \
+      "${model_args[@]}"
 }
 
 smoke() {

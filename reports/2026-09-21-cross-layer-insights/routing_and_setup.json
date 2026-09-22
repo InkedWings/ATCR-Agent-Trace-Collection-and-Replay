@@ -1,0 +1,120 @@
+{
+  "scope": "first 2700 seconds of measurement; routing only tasks with >=8 observed calls; setup admission cohort may be incomplete",
+  "results": [
+    {
+      "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": "minisweagent-fixed_frontend-n8",
+      "setup": {
+        "n": 842,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "mean": 65.61155429809999,
+          "p50": 34.05925415107049,
+          "p95": 246.0619630070869
+        },
+        "build_seconds": {
+          "mean": 12.484076191326372,
+          "p50": 11.85163616295904,
+          "p95": 18.378392718965188
+        }
+      }
+    },
+    {
+      "root": "runs/scaling/multinode/minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": "minisweagent-routing-n4-cache_aware",
+      "routing": {
+        "statuses": {
+          "completed": 34309
+        },
+        "tasks_with_at_least_8_window_calls": 488,
+        "distinct_backends_per_task_mean": 3.4487704918032787,
+        "adjacent_call_backend_switch_fraction": 0.16113645790128578,
+        "distinct_backends_histogram": {
+          "3": 108,
+          "1": 17,
+          "4": 308,
+          "2": 55
+        }
+      },
+      "setup": {
+        "n": 381,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "mean": 0.006943503752829913,
+          "p50": 8.204393088817596e-05,
+          "p95": 0.00015427893958985806
+        },
+        "build_seconds": {
+          "mean": 5.104322863827653,
+          "p50": 4.945879229111597,
+          "p95": 6.7406075180042535
+        }
+      }
+    },
+    {
+      "root": "runs/scaling/multinode/minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": "minisweagent-routing-n4-round_robin",
+      "routing": {
+        "statuses": {
+          "completed": 11300
+        },
+        "tasks_with_at_least_8_window_calls": 233,
+        "distinct_backends_per_task_mean": 3.96137339055794,
+        "adjacent_call_backend_switch_fraction": 0.7511792452830188,
+        "distinct_backends_histogram": {
+          "4": 224,
+          "3": 9
+        }
+      },
+      "setup": {
+        "n": 116,
+        "missing": 0,
+        "slot_wait_seconds": {
+          "mean": 8.639936728788347e-05,
+          "p50": 7.952901069074869e-05,
+          "p95": 0.00012473412789404392
+        },
+        "build_seconds": {
+          "mean": 4.430133520270264,
+          "p50": 4.29924007691443,
+          "p95": 5.90264528687112
+        }
+      }
+    },
+    {
+      "root": "runs/scaling/multinode/openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": "openclaw-routing-n4-cache_aware",
+      "routing": {
+        "statuses": {
+          "completed": 15298
+        },
+        "tasks_with_at_least_8_window_calls": 587,
+        "distinct_backends_per_task_mean": 2.48381601362862,
+        "adjacent_call_backend_switch_fraction": 0.17437808929584311,
+        "distinct_backends_histogram": {
+          "3": 195,
+          "4": 91,
+          "2": 208,
+          "1": 93
+        }
+      }
+    },
+    {
+      "root": "runs/scaling/multinode/openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": "openclaw-routing-n4-round_robin",
+      "routing": {
+        "statuses": {
+          "completed": 6042
+        },
+        "tasks_with_at_least_8_window_calls": 249,
+        "distinct_backends_per_task_mean": 3.8634538152610443,
+        "adjacent_call_backend_switch_fraction": 0.7352878691310814,
+        "distinct_backends_histogram": {
+          "4": 217,
+          "3": 30,
+          "2": 2
+        }
+      }
+    }
+  ]
+}

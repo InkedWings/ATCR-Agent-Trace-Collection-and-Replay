@@ -1,0 +1,122 @@
+[
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r00",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 4.601378500639857,
+      "p50": 1.8847993612289429,
+      "p95": 16.528632760047913,
+      "max": 139.97372341156006
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r01",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 5.06030474167878,
+      "p50": 2.156413197517395,
+      "p95": 16.258886337280273,
+      "max": 262.63678789138794
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r02",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 4.498751726844612,
+      "p50": 1.949112057685852,
+      "p95": 15.686864852905273,
+      "max": 143.04915475845337
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r03",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 5.177035869059273,
+      "p50": 2.058850646018982,
+      "p95": 17.951188147068024,
+      "max": 247.30593276023865
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r04",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 4.461866097578618,
+      "p50": 1.8616340160369873,
+      "p95": 15.288325190544128,
+      "max": 164.01678919792175
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r05",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 4.488689742915533,
+      "p50": 1.9748163223266602,
+      "p95": 16.31424903869629,
+      "max": 147.2843267917633
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r06",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 4.562961496360756,
+      "p50": 1.9532732963562012,
+      "p95": 16.3296999335289,
+      "max": 130.55430507659912
+    }
+  },
+  {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r07",
+    "arrivals": 2006,
+    "statuses": {
+      "completed": 2006
+    },
+    "residence_seconds": {
+      "count": 2006,
+      "mean": 188.2582503881673,
+      "p50": 153.0506216287613,
+      "p95": 370.38750171661377,
+      "max": 2330.520637512207
+    }
+  }
+]

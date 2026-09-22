@@ -1,0 +1,146 @@
+{
+  "admission_scope": "last cache lookup at admission in the 1800 s measurement window",
+  "short_ab": [
+    {
+      "source": "runs/scaling/baseline-validation-7608115-20260913/openclaw-warmed-budget2048/openclaw-cc32",
+      "budget": 2048,
+      "requests": 1993,
+      "reduced_requests": 303,
+      "prompt_tokens": 82040788,
+      "uncached_tokens": 15006964,
+      "attention_hit_tokens": 76281216,
+      "cached_tokens": 67033824,
+      "mamba_reduction_tokens": 9247392,
+      "mamba_reduction_fraction_of_uncached": 0.6162067157620955,
+      "attention_hit_ratio": 0.9297962374520342,
+      "actual_hit_ratio": 0.8170792313696451
+    },
+    {
+      "source": "runs/scaling/baseline-validation-7608115-20260913/openclaw-warmed-budget8192/openclaw-cc32",
+      "budget": 8192,
+      "requests": 2879,
+      "reduced_requests": 410,
+      "prompt_tokens": 127111008,
+      "uncached_tokens": 18285984,
+      "attention_hit_tokens": 119325888,
+      "cached_tokens": 108825024,
+      "mamba_reduction_tokens": 10500864,
+      "mamba_reduction_fraction_of_uncached": 0.574257529701437,
+      "attention_hit_ratio": 0.9387533768908511,
+      "actual_hit_ratio": 0.8561416175694241
+    }
+  ],
+  "paired_example": [
+    {
+      "request_id": "chatcmpl-9d2065ec9cb6380b-acc87524",
+      "timestamp_unix": 1789320360.5925732,
+      "prompt": 168814,
+      "attention_hit": 167904,
+      "cached": 167904,
+      "mamba_reduction": 0,
+      "output_tokens": 71,
+      "queue_seconds": 3.44705767929554e-06,
+      "scheduled_to_first_token_seconds": 0.4257675439585
+    },
+    {
+      "request_id": "chatcmpl-a9ef81818f261b23-881de6ad",
+      "timestamp_unix": 1789321390.0007687,
+      "prompt": 168331,
+      "attention_hit": 143088,
+      "cached": 143088,
+      "mamba_reduction": 0,
+      "output_tokens": 407,
+      "queue_seconds": 3.427034243941307e-06,
+      "scheduled_to_first_token_seconds": 2.5694869060534984
+    },
+    {
+      "request_id": "chatcmpl-86a3b06f2bdb8687-86268093",
+      "timestamp_unix": 1789321419.9516156,
+      "prompt": 168814,
+      "attention_hit": 167904,
+      "cached": 4752,
+      "mamba_reduction": 163152,
+      "output_tokens": 71,
+      "queue_seconds": 3.3460091799497604e-06,
+      "scheduled_to_first_token_seconds": 9.27511384501122
+    }
+  ],
+  "long_runs": [
+    {
+      "output_tokens_per_second": 433.58444444444444,
+      "prompt_tokens": 266259613,
+      "cached_prompt_tokens": 250144752,
+      "uncached_prompt_tokens": 16114861,
+      "actual_prefix_reuse": 0.9394768856664717,
+      "valid": true,
+      "steady": true,
+      "name": "openclaw-cc16",
+      "source": "runs/scaling/multinode/openclaw-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "uncached_prompt_per_output": 10.324056444214378,
+      "uncached_prompt_per_second": 4476.350277777778,
+      "prometheus_sample_span_seconds": 3598.575614452362,
+      "prometheus_counter_deltas": {
+        "vllm:num_preemptions_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\"}": 0.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"local_compute\"}": 16109801.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"local_cache_hit\"}": 250115184.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"external_kv_transfer\"}": 0.0,
+        "vllm:prompt_tokens_recomputed_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\"}": 0.0
+      }
+    },
+    {
+      "output_tokens_per_second": 282.40722222222223,
+      "prompt_tokens": 165769101,
+      "cached_prompt_tokens": 114160464,
+      "uncached_prompt_tokens": 51608637,
+      "actual_prefix_reuse": 0.6886715516421845,
+      "valid": true,
+      "steady": false,
+      "name": "openclaw-cc32",
+      "source": "runs/scaling/multinode/openclaw-calibration-cc32-n1-8192-20260914-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "uncached_prompt_per_output": 50.762627057460364,
+      "uncached_prompt_per_second": 14335.7325,
+      "prometheus_sample_span_seconds": 3599.362105369568,
+      "prometheus_counter_deltas": {
+        "vllm:num_preemptions_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\"}": 1.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"local_compute\"}": 51605139.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"local_cache_hit\"}": 114150432.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"external_kv_transfer\"}": 0.0,
+        "vllm:prompt_tokens_recomputed_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\"}": 0.0
+      }
+    },
+    {
+      "output_tokens_per_second": 167.29333333333332,
+      "prompt_tokens": 87909815,
+      "cached_prompt_tokens": 8125392,
+      "uncached_prompt_tokens": 79784423,
+      "actual_prefix_reuse": 0.09242872368688297,
+      "valid": true,
+      "steady": false,
+      "name": "openclaw-cc64",
+      "source": "runs/scaling/multinode/openclaw-calibration-cc64-n1-8192-20260914-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "uncached_prompt_per_output": 132.47592884089158,
+      "uncached_prompt_per_second": 22162.339722222223,
+      "prometheus_sample_span_seconds": 3599.7757291793823,
+      "prometheus_counter_deltas": {
+        "vllm:num_preemptions_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\"}": 8.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"local_compute\"}": 79784423.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"local_cache_hit\"}": 8125392.0,
+        "vllm:prompt_tokens_by_source_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\",source=\"external_kv_transfer\"}": 0.0,
+        "vllm:prompt_tokens_recomputed_total{engine=\"0\",model_name=\"qwen/qwen3.6-35b-a3b\"}": 0.0
+      }
+    },
+    {
+      "output_tokens_per_second": 722.1357407407407,
+      "prompt_tokens": 596755184,
+      "cached_prompt_tokens": 570623856,
+      "uncached_prompt_tokens": 26131328,
+      "actual_prefix_reuse": 0.9562109744487783,
+      "valid": true,
+      "steady": true,
+      "name": "minisweagent-cc32",
+      "source": "runs/scaling/multinode/minisweagent-balanced-n1-7608115.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "uncached_prompt_per_output": 6.701142931730543,
+      "uncached_prompt_per_second": 4839.1348148148145
+    }
+  ]
+}

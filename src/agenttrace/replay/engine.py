@@ -11,6 +11,8 @@ import time
 from pathlib import Path
 from typing import Any
 
+import httpx
+
 from agenttrace.interfaces import LLMExecutor, ToolExecutor
 from agenttrace.schema import load_trace
 
@@ -136,6 +138,8 @@ async def replay_trace(
                 result["ttft_seconds"] = execution.ttft_seconds
                 result["output_stream_seconds"] = execution.output_stream_seconds
                 result["output_chunks"] = execution.output_chunks
+                if execution.backend_replica_id is not None:
+                    result["backend_replica_id"] = execution.backend_replica_id
                 result["tpot_estimate_seconds"] = (
                     execution.output_stream_seconds / (execution.actual_output_tokens - 1)
                     if execution.output_stream_seconds is not None and execution.actual_output_tokens > 1
@@ -150,6 +154,8 @@ async def replay_trace(
                 )
                 execution = await tool_executor.execute(replay_node)
                 result["native_error"] = execution.is_error
+                if execution.replay_metadata:
+                    result["tool_replay"] = execution.replay_metadata
                 bindings.learn_from_results(node["recorded_result"], execution.result)
             result["elapsed_seconds"] = round(time.perf_counter() - started, 6)
             results[node_id] = result
@@ -190,15 +196,26 @@ async def replay_trace(
             "replay_makespan_seconds": round(makespan, 6),
             "nodes": [results[node["id"]] for node in trace["nodes"]],
         }
+    except BaseException as error:
+        http_status = error.response.status_code if isinstance(error, httpx.HTTPStatusError) else None
+        # Routers can turn an upstream connection failure into HTTP 500/502/503/504.
+        # These still fail the task; the load driver decides whether to keep collecting.
+        kind = ("http_transport" if isinstance(error, httpx.TransportError) else
+                "http_server" if http_status in (500, 502, 503, 504) else "execution")
+        emit("task_failed", error_type=type(error).__name__, failure_kind=kind, http_status=http_status)
+        raise
     finally:
         try:
-            if tool_started and tool_executor is not None:
-                await tool_executor.close()
-        finally:
             try:
+                if tool_started and tool_executor is not None:
+                    await tool_executor.close()
+            finally:
                 if llm_started and llm_executor is not None:
                     await llm_executor.close()
-            finally:
-                emit("closed")
-                if events:
-                    events.close()
+        except BaseException as error:
+            emit("cleanup_failed", error_type=type(error).__name__, failure_kind="cleanup")
+            raise
+        finally:
+            emit("closed")
+            if events:
+                events.close()

@@ -1,0 +1,202 @@
+[
+  {
+    "run": "openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "checks": {
+      "calls_completed": true,
+      "target_outputs_match": true,
+      "backend_requests_match": true,
+      "backend_outputs_match": true,
+      "tasks_completed": true,
+      "window_completed_tasks_match": true,
+      "window_admitted_tasks_match": true,
+      "tool_error_count_matches": true,
+      "all_workers_completed": true,
+      "worker_tasks_match": true,
+      "worker_tokens_match": true,
+      "resource_samples_no_errors": true,
+      "backend_counters_no_resets": true,
+      "inference_gpu_counts_ok": true
+    },
+    "all_calls": {
+      "llm": 25202,
+      "unfinished": 0,
+      "output_tokens": 7175656,
+      "target_mismatches": 0,
+      "tool": 23659,
+      "success_to_success": 21688,
+      "success_to_error": 254,
+      "error_to_error": 1616,
+      "error_to_success": 101
+    },
+    "window_tools": {
+      "calls": 19205,
+      "success_to_success": 17589,
+      "native_errors": 1535,
+      "error_to_error": 1337,
+      "error_to_success": 81,
+      "success_to_error": 198
+    },
+    "tasks": 1745,
+    "drain_seconds": 410.3993573188782
+  },
+  {
+    "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "checks": {
+      "calls_completed": true,
+      "target_outputs_match": true,
+      "backend_requests_match": true,
+      "backend_outputs_match": true,
+      "tasks_completed": true,
+      "window_completed_tasks_match": true,
+      "window_admitted_tasks_match": true,
+      "tool_error_count_matches": true,
+      "all_workers_completed": true,
+      "worker_tasks_match": true,
+      "worker_tokens_match": true,
+      "resource_samples_no_errors": true,
+      "backend_counters_no_resets": true,
+      "inference_gpu_counts_ok": true
+    },
+    "all_calls": {
+      "llm": 11539,
+      "unfinished": 0,
+      "output_tokens": 3269433,
+      "target_mismatches": 0,
+      "tool": 10850,
+      "success_to_success": 9940,
+      "success_to_error": 124,
+      "error_to_error": 737,
+      "error_to_success": 49
+    },
+    "window_tools": {
+      "calls": 7349,
+      "success_to_success": 6716,
+      "native_errors": 601,
+      "error_to_error": 528,
+      "error_to_success": 32,
+      "success_to_error": 73
+    },
+    "tasks": 787,
+    "drain_seconds": 875.7069058418274
+  },
+  {
+    "run": "minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "checks": {
+      "calls_completed": true,
+      "target_outputs_match": true,
+      "backend_requests_match": true,
+      "backend_outputs_match": true,
+      "tasks_completed": true,
+      "window_completed_tasks_match": true,
+      "window_admitted_tasks_match": true,
+      "tool_error_count_matches": true,
+      "all_workers_completed": true,
+      "worker_tasks_match": true,
+      "worker_tokens_match": true,
+      "resource_samples_no_errors": true,
+      "backend_counters_no_resets": true,
+      "inference_gpu_counts_ok": true
+    },
+    "all_calls": {
+      "llm": 104789,
+      "unfinished": 0,
+      "output_tokens": 19493346,
+      "target_mismatches": 0,
+      "tool": 104751,
+      "success_to_success": 92424,
+      "error_to_error": 10816,
+      "error_to_success": 1179,
+      "success_to_error": 332
+    },
+    "window_tools": {
+      "calls": 69971,
+      "success_to_success": 61721,
+      "native_errors": 7465,
+      "error_to_success": 785,
+      "error_to_error": 7268,
+      "success_to_error": 197
+    },
+    "tasks": 1163,
+    "drain_seconds": 1010.64169049263
+  },
+  {
+    "run": "openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "checks": {
+      "calls_completed": true,
+      "target_outputs_match": true,
+      "backend_requests_match": true,
+      "backend_outputs_match": true,
+      "tasks_completed": true,
+      "window_completed_tasks_match": true,
+      "window_admitted_tasks_match": true,
+      "tool_error_count_matches": true,
+      "all_workers_completed": true,
+      "worker_tasks_match": true,
+      "worker_tokens_match": true,
+      "resource_samples_no_errors": true,
+      "backend_counters_no_resets": true,
+      "inference_gpu_counts_ok": true
+    },
+    "all_calls": {
+      "llm": 52772,
+      "unfinished": 0,
+      "output_tokens": 15038086,
+      "target_mismatches": 0,
+      "tool": 49552,
+      "success_to_success": 45440,
+      "success_to_error": 539,
+      "error_to_error": 3346,
+      "error_to_success": 227
+    },
+    "window_tools": {
+      "calls": 40922,
+      "success_to_success": 37523,
+      "native_errors": 3204,
+      "error_to_error": 2799,
+      "error_to_success": 195,
+      "success_to_error": 405
+    },
+    "tasks": 3648,
+    "drain_seconds": 511.54941868782043
+  },
+  {
+    "run": "minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "checks": {
+      "calls_completed": true,
+      "target_outputs_match": true,
+      "backend_requests_match": true,
+      "backend_outputs_match": true,
+      "tasks_completed": true,
+      "window_completed_tasks_match": true,
+      "window_admitted_tasks_match": true,
+      "tool_error_count_matches": true,
+      "all_workers_completed": true,
+      "worker_tasks_match": true,
+      "worker_tokens_match": true,
+      "resource_samples_no_errors": true,
+      "backend_counters_no_resets": true,
+      "inference_gpu_counts_ok": true
+    },
+    "all_calls": {
+      "llm": 216240,
+      "unfinished": 0,
+      "output_tokens": 40220985,
+      "target_mismatches": 0,
+      "tool": 216162,
+      "success_to_success": 189783,
+      "error_to_error": 22208,
+      "error_to_success": 2473,
+      "success_to_error": 1698
+    },
+    "window_tools": {
+      "calls": 152233,
+      "error_to_error": 15648,
+      "native_errors": 16842,
+      "success_to_success": 133610,
+      "success_to_error": 1194,
+      "error_to_success": 1781
+    },
+    "tasks": 2391,
+    "drain_seconds": 957.8859355449677
+  }
+]

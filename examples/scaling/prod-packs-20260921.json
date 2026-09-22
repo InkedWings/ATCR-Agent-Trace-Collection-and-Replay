@@ -1,0 +1,32 @@
+{
+  "repo": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework",
+  "account": "lc-mpi",
+  "packs": [
+    {
+      "id": "at-prod-oc-route",
+      "configs": [
+        "runs/routing-jobs-20260919/configs/openclaw-routing-n4-round_robin.json",
+        "runs/routing-jobs-20260919/configs/openclaw-routing-n4-cache_aware.json"
+      ],
+      "replaces_jobs": ["7637645", "7637646"]
+    },
+    {
+      "id": "at-prod-ms-route",
+      "configs": [
+        "runs/routing-jobs-20260919/configs/minisweagent-routing-n4-round_robin.json",
+        "runs/routing-jobs-20260919/configs/minisweagent-routing-n4-cache_aware.json"
+      ],
+      "replaces_jobs": ["7637647", "7637650"]
+    },
+    {
+      "id": "at-prod-oc-n8",
+      "configs": ["runs/fixed-frontend-jobs-20260919/configs/openclaw-fixed_frontend-n8.json"],
+      "replaces_jobs": ["7637014"]
+    },
+    {
+      "id": "at-prod-ms-n8",
+      "configs": ["runs/fixed-frontend-jobs-20260919/configs/minisweagent-fixed_frontend-n8.json"],
+      "replaces_jobs": ["7637015"]
+    }
+  ]
+}

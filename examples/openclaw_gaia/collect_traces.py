@@ -251,6 +251,8 @@ def main() -> int:
     parser.add_argument("--run-timeout", type=int, default=3300)
     parser.add_argument("--llm-upstream")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--basic-metadata", action="store_true",
+                        help="Record collection metadata without computing file checksums")
     args = parser.parse_args()
 
     if args.start_index < 0 or args.max_tasks < 1:
@@ -318,8 +320,9 @@ def main() -> int:
         "python": sys.version.split()[0],
         "openclaw": openclaw_version,
         "model": MODEL,
-        "manifest_sha256": sha256_file(manifest),
-        "config_sha256": sha256_file(config_path) if config_path.is_file() else None,
+        **({"manifest_sha256": sha256_file(manifest),
+            "config_sha256": sha256_file(config_path) if config_path.is_file() else None}
+           if not args.basic_metadata else {}),
         "pbs_job_id": os.environ.get("PBS_JOBID"),
         "pbs_queue": os.environ.get("PBS_QUEUE"),
         "task_timeout_seconds": args.task_timeout,
@@ -456,7 +459,8 @@ def main() -> int:
                     try:
                         capture_proxy.wait_idle(str(task["task_id"]))
                         artifacts = capture_spill_artifacts(
-                            copied_trace, task_dir / "artifacts", task_dir
+                            copied_trace, task_dir / "artifacts", task_dir,
+                            include_checksums=not args.basic_metadata,
                         )
                         replay_trace = task_dir / "trace.json"
                         write_openclaw_trace(

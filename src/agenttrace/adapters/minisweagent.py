@@ -5,6 +5,8 @@ from __future__ import annotations
 import asyncio
 import copy
 import json
+import os
+import time
 from pathlib import Path
 from typing import Any
 
@@ -273,7 +275,17 @@ class MiniSWEAgentToolExecutor:
 
     def __init__(self, config: dict[str, Any]) -> None:
         self.timeout = int(config.get("timeout", 60))
+        self.sandbox_build_retries = int(config.get("sandbox_build_retries", 1))
+        if self.sandbox_build_retries < 1:
+            raise ValueError("sandbox_build_retries must be at least 1")
         self.executable = config.get("executable")
+        self.image_cache_dir = config.get("image_cache_dir") or os.environ.get("AGENTTRACE_MINISWE_IMAGE_CACHE")
+        self.max_parallel_sandbox_builds = config.get("max_parallel_sandbox_builds", 0)
+        if type(self.max_parallel_sandbox_builds) is not int or self.max_parallel_sandbox_builds < 0:
+            raise ValueError("max_parallel_sandbox_builds must be a nonnegative integer")
+        self.sandbox_build_lock_dir = config.get("sandbox_build_lock_dir")
+        if self.max_parallel_sandbox_builds and not self.sandbox_build_lock_dir:
+            raise ValueError("sandbox_build_lock_dir is required for bounded builds")
         self.environment: Any = None
         self.replay_workspace = ""
         self.replay_tmp = ""
@@ -283,14 +295,18 @@ class MiniSWEAgentToolExecutor:
         from minisweagent.environments.singularity import SingularityEnvironment
 
         context = trace["context"]
+        image = context["container_image"]
+        if self.image_cache_dir:
+            from agenttrace.miniswe_images import cached_image
+            image = str(cached_image(Path(self.image_cache_dir), image))
         self.replay_workspace = str(workspace)
         self.replay_tmp = str(workspace.parent / "tmp")
         self.container_cwd = context.get("container_cwd", "/testbed")
         options: dict[str, Any] = {
-            "image": context["container_image"],
+            "image": image,
             "cwd": self.container_cwd,
             "timeout": self.timeout,
-            "sandbox_build_retries": 1,
+            "sandbox_build_retries": self.sandbox_build_retries,
             "exec_args": [
                 "--contain",
                 "--cleanenv",
@@ -315,7 +331,26 @@ class MiniSWEAgentToolExecutor:
         }
         if self.executable:
             options["executable"] = self.executable
-        self.environment = await asyncio.to_thread(SingularityEnvironment, **options)
+
+        def create_environment():
+            if not self.max_parallel_sandbox_builds:
+                return SingularityEnvironment(**options)
+            from agenttrace.miniswe_images import sandbox_build_slot
+
+            with sandbox_build_slot(Path(self.sandbox_build_lock_dir), self.max_parallel_sandbox_builds) as waited:
+                started = time.monotonic()
+                try:
+                    environment = SingularityEnvironment(**options)
+                finally:
+                    # Keep provisioning limits visible when identifying the frontend bottleneck.
+                    (workspace.parent / "sandbox-setup.json").write_text(json.dumps({
+                        "max_parallel_builds": self.max_parallel_sandbox_builds,
+                        "slot_wait_seconds": waited,
+                        "build_seconds": time.monotonic() - started,
+                    }) + "\n")
+                return environment
+
+        self.environment = await asyncio.to_thread(create_environment)
 
     def _rewrite_arguments(self, arguments: dict[str, Any]) -> dict[str, Any]:
         rewritten = _replace_string(

@@ -135,7 +135,7 @@ Gateway resolver omits coding tools used during normal agent turns. AgentTrace
 therefore creates a temporary replay-only Gateway plugin: it imports the public
 OpenClaw `agent-sessions` SDK, registers aliases for the native
 `read`/`write`/`edit`/`bash` implementations, and maps recorded `exec` to native
-`bash`. All six tools are still invoked with `POST /tools/invoke`; no filesystem
+`bash`. In the default `native` mode all six tools are invoked with `POST /tools/invoke`; no filesystem
 or shell tool is reimplemented. The plugin, Gateway state, and ephemeral token
 live only in the replay run directory, and the Gateway is closed after replay.
 
@@ -166,3 +166,33 @@ report contains node timing, native error flags, and LLM target/actual token
 counts. It does not contain generated model text. A native tool result with
 `isError: true` completes normally; HTTP, authentication, executor, or LLM
 transport failure stops the trace without retry.
+
+### web_search recorded delay
+
+Set `tool_executor.config.web_search_mode` to `"recorded_delay"` to replay
+only `web_search` locally. The Qwen3.6 profile enables this mode. The executor
+awaits `asyncio.sleep(tookMs / 1000)` and returns a copy of the recorded result,
+including its original error state. Search makes no Gateway or search-provider
+request and requires no Brave plugin or API key. `web_fetch`, `exec`, `read`,
+`write`, and `edit` still execute through the native Gateway. Traces whose only
+tools are searches need no Gateway. The original DAG dependencies, concurrent
+sibling execution, and recorded LLM request payloads are preserved.
+
+The delay comes from `recorded_result.details.tookMs`, or the JSON text in
+`recorded_result.content` when OpenClaw truncated persisted details. Setup
+rejects missing, negative, or non-finite timings before any tool execution;
+there is no fallback to live search or an invented zero delay. Explicitly
+recorded zero remains valid. Node reports and completion events include
+`tool_replay` with `mode`, `delay_seconds`, `delay_source`, and `recorded_cached`.
+Measured `elapsed_seconds` still includes the actual asynchronous wait.
+
+This is an approximation using the recorded provider latency, excluding
+Gateway overhead. OpenClaw cache hits retain the original request's `tookMs`;
+the replay uses that retained value and marks `recorded_cached: true`, rather
+than claiming to measure cache-hit latency. It also does not reproduce new
+provider queueing or rate limits at higher concurrency. Use the same mode at
+every concurrency point and report it as recorded-delay search. For the
+original behavior, use `web_search_mode: "native"` (the default).
+
+Trace collection continues to call Brave normally; this setting belongs to
+the replay profile only.

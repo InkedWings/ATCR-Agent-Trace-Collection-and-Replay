@@ -22,6 +22,7 @@ class CapturedArtifacts:
 @dataclass(slots=True)
 class ToolExecutionResult:
     result: dict[str, Any]
+    replay_metadata: dict[str, Any] = field(default_factory=dict)
 
     @property
     def is_error(self) -> bool:
@@ -34,6 +35,7 @@ class LLMExecutionResult:
     ttft_seconds: float | None = None
     output_stream_seconds: float | None = None
     output_chunks: int = 0
+    backend_replica_id: str | None = None
 
 
 class CollectionAdapter(Protocol):

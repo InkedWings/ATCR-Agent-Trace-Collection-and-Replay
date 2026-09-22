@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import copy
 import json
 import subprocess
 import sys
@@ -11,7 +12,8 @@ from pathlib import Path
 import httpx
 import pytest
 
-from agenttrace.adapters.openclaw import OpenClawToolExecutor, _stage_brave_plugins, _write_tool_bridge, _free_port, _reserve_gateway_port
+from agenttrace.adapters.openclaw import OpenClawToolExecutor, _stage_brave_plugins, _write_tool_bridge, _free_port, _reserve_gateway_port, create_tool_executor
+from agenttrace.interfaces import LLMExecutionResult
 from agenttrace.replay.benchmark import benchmark
 from agenttrace.replay.engine import replay_trace
 
@@ -150,7 +152,8 @@ def test_brave_payload_is_seeded_in_each_private_state(tmp_path):
     assert _stage_brave_plugins(tmp_path / "missing", tmp_path / "run3") == []
 
 
-def test_no_search_trace_disables_env_selected_search_plugin(tmp_path, monkeypatch):
+@pytest.mark.parametrize("delay_search", [False, True])
+def test_no_native_search_disables_env_selected_search_plugin(tmp_path, monkeypatch, delay_search):
     monkeypatch.setenv("BRAVE_API_KEY", "test-only")
 
     async def intercept_spawn(*args, **kwargs):
@@ -160,9 +163,12 @@ def test_no_search_trace_disables_env_selected_search_plugin(tmp_path, monkeypat
     workspace = tmp_path / "workspace"
     workspace.mkdir()
     trace = base_trace([tool_node("tool-001", [], "read", {}, recorded_result("call-1", "read"))])
+    if delay_search:
+        trace["nodes"].append(tool_node("tool-002", [], "web_search", {},
+            recorded_result("call-2", "web_search", {"tookMs": 10})))
 
     async def setup():
-        executor = OpenClawToolExecutor()
+        executor = OpenClawToolExecutor(web_search_mode="recorded_delay" if delay_search else "native")
         try:
             with pytest.raises(RuntimeError, match="intercepted before Gateway spawn"):
                 await executor.setup(trace, workspace)
@@ -174,6 +180,8 @@ def test_no_search_trace_disables_env_selected_search_plugin(tmp_path, monkeypat
     assert config["tools"]["web"]["search"] == {"enabled": False}
     assert "brave" not in config["plugins"]["allow"]
     assert not (tmp_path / "openclaw-state/npm").exists()
+    if delay_search:
+        assert "web_search" not in config["tools"]["allow"]
 
 
 def test_same_session_dynamic_spill_binding_and_native_error(tmp_path):
@@ -401,3 +409,181 @@ def test_replay_bridge_uses_openclaw_native_sdk(tmp_path):
     assert 'from "openclaw/plugin-sdk/agent-sessions"' in source
     assert 'agenttrace_exec: "bash"' in source
     assert "isError: true" in source
+
+
+@pytest.mark.parametrize("in_content,cached,is_error", [
+    (False, False, False), (True, False, False), (True, True, False), (False, False, True),
+])
+def test_search_delay_returns_recorded_result_without_network(tmp_path, monkeypatch, in_content, cached, is_error):
+    payload = {"tookMs": 125, "cached": cached}
+    result = recorded_result("search-1", "web_search", payload, is_error)
+    if in_content:
+        result["details"] = {"persistedDetailsTruncated": True}
+        result["content"] = [{"type": "text", "text": json.dumps(payload)}]
+    node = tool_node("tool-001", [], "web_search", {"query": "recorded query"}, result)
+    original = copy.deepcopy(result)
+    delays = []
+
+    def no_network(*args, **kwargs):
+        pytest.fail("search delay must not create an HTTP client or start OpenClaw")
+
+    async def sleep(seconds):
+        delays.append(seconds)
+
+    monkeypatch.delenv("BRAVE_API_KEY", raising=False)
+    monkeypatch.setattr(httpx, "AsyncClient", no_network)
+    monkeypatch.setattr(asyncio, "create_subprocess_exec", no_network)
+    monkeypatch.setattr(asyncio, "sleep", sleep)
+
+    async def exercise():
+        executor = create_tool_executor({"web_search_mode": "recorded_delay", "openclaw_bin": "/missing"})
+        await executor.setup(base_trace([node]), tmp_path)
+        try:
+            execution = await executor.execute(node)
+            assert execution.result == original
+            assert execution.is_error is is_error
+            assert execution.replay_metadata["recorded_cached"] is cached
+            assert execution.replay_metadata["delay_source"].startswith(
+                "recorded_result.content[0].text" if in_content else "recorded_result.details")
+            execution.result["details"]["mutated"] = True
+            assert node["recorded_result"] == original
+        finally:
+            await executor.close()
+
+    asyncio.run(exercise())
+    assert delays == [.125]
+
+
+@pytest.mark.parametrize("tool_name", ["web_fetch", "read", "write", "edit", "exec"])
+def test_search_delay_still_executes_other_tools(tmp_path, monkeypatch, tool_name):
+    requests = []
+
+    def handler(request):
+        body = json.loads(request.content)
+        requests.append(body)
+        assert body["tool"] == tool_name
+        return httpx.Response(200, json={"ok": True, "result": {"isError": False, "content": ["native"]}})
+
+    client = httpx.AsyncClient
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **kwargs: client(**kwargs, transport=httpx.MockTransport(handler)))
+    search = tool_node("tool-001", [], "web_search", {}, recorded_result("s", "web_search", {"tookMs": 0}))
+    other = tool_node("tool-002", [], tool_name, {"argument": "recorded"}, recorded_result("n", tool_name, is_error=True))
+
+    async def exercise():
+        executor = OpenClawToolExecutor(gateway_url="http://gateway.test", web_search_mode="recorded_delay")
+        await executor.setup(base_trace([search, other]), tmp_path)
+        try:
+            await executor.execute(search)
+            result = await executor.execute(other)
+            assert result.result["content"] == ["native"]
+            assert not result.is_error
+            assert result.replay_metadata == {}
+        finally:
+            await executor.close()
+
+    asyncio.run(exercise())
+    assert len(requests) == 1
+    assert requests[0]["args"] == other["request"]["arguments"]
+
+
+@pytest.mark.parametrize("milliseconds", [None, -1, True, "100", float("nan"), float("inf")])
+def test_missing_or_invalid_search_delay_fails_before_gateway_setup(tmp_path, milliseconds):
+    search = tool_node("tool-001", [], "web_search", {},
+        recorded_result("s", "web_search", {"tookMs": milliseconds}))
+    other = tool_node("tool-002", [], "read", {}, recorded_result("r", "read"))
+
+    async def exercise():
+        executor = OpenClawToolExecutor(openclaw_bin="/missing", web_search_mode="recorded_delay")
+        with pytest.raises(ValueError, match="finite nonnegative tookMs for tool-001"):
+            await executor.setup(base_trace([search, other]), tmp_path)
+        assert not (tmp_path / "openclaw-state").exists()
+        assert executor.client is executor.process is None
+
+    asyncio.run(exercise())
+
+
+def test_delayed_search_siblings_join_before_unchanged_llm_request(tmp_path, monkeypatch):
+    nodes = [tool_node(f"tool-{i}", [], "web_search", {},
+        recorded_result(f"call-{i}", "web_search", {"tookMs": i * 10}, is_error=i == 2)) for i in [1, 2]]
+    messages = [{"role": "user", "content": "original search results already embedded"}]
+    nodes.append({"id": "llm-001", "type": "llm", "depends_on": ["tool-1", "tool-2"],
+        "request": {"protocol": "openai-chat-completions", "endpoint": "/chat/completions",
+            "payload": {"messages": messages}}, "output_tokens": 2})
+    path = tmp_path / "trace.json"
+    path.write_text(json.dumps(base_trace(nodes)))
+    delays = []
+    finished = []
+
+    async def exercise():
+        both_started = asyncio.Event()
+
+        async def sleep(seconds):
+            delays.append(seconds)
+            if len(delays) == 2:
+                both_started.set()
+            await asyncio.wait_for(both_started.wait(), 1)
+            finished.append(seconds)
+
+        class LLM:
+            async def setup(self, trace, workspace):
+                pass
+            async def execute(self, node):
+                assert len(finished) == 2
+                assert node["request"]["payload"] == {"messages": messages}
+                return LLMExecutionResult(2)
+            async def close(self):
+                pass
+
+        monkeypatch.setattr(asyncio, "sleep", sleep)
+        return await replay_trace(path, tool_executor=OpenClawToolExecutor(web_search_mode="recorded_delay"),
+            llm_executor=LLM(), run_dir=tmp_path / "replay", event_path=tmp_path / "events.jsonl")
+
+    report = asyncio.run(exercise())
+    assert sorted(delays) == [.01, .02]
+    assert report["nodes"][0]["native_error"] is False
+    assert report["nodes"][1]["native_error"] is True
+    assert all(n["tool_replay"]["mode"] == "recorded_delay" for n in report["nodes"][:2])
+    events = [json.loads(line) for line in (tmp_path / "events.jsonl").read_text().splitlines()]
+    assert sum(e.get("tool_replay", {}).get("mode") == "recorded_delay" for e in events) == 2
+
+
+def test_search_delay_is_cancellable(tmp_path):
+    node = tool_node("tool-001", [], "web_search", {}, recorded_result("s", "web_search", {"tookMs": 60000}))
+
+    async def exercise():
+        executor = OpenClawToolExecutor(web_search_mode="recorded_delay")
+        await executor.setup(base_trace([node]), tmp_path)
+        task = asyncio.create_task(executor.execute(node))
+        await asyncio.sleep(0)
+        assert not task.done()
+        task.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await task
+        await executor.close()
+
+    asyncio.run(exercise())
+
+
+def test_native_search_remains_the_default(tmp_path, monkeypatch):
+    requests = []
+
+    def handler(request):
+        requests.append(json.loads(request.content))
+        return httpx.Response(200, json={"ok": True, "result": {"isError": False}})
+
+    client = httpx.AsyncClient
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **kwargs: client(**kwargs, transport=httpx.MockTransport(handler)))
+    node = tool_node("tool-001", [], "web_search", {}, recorded_result("s", "web_search", is_error=True))
+
+    async def exercise():
+        executor = create_tool_executor({"gateway_url": "http://gateway.test"})
+        await executor.setup(base_trace([node]), tmp_path)
+        try:
+            result = await executor.execute(node)
+            assert not result.is_error
+            assert result.replay_metadata == {}
+        finally:
+            await executor.close()
+
+    asyncio.run(exercise())
+    assert [r["tool"] for r in requests] == ["web_search"]

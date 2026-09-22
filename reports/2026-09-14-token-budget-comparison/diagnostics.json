@@ -1,0 +1,130 @@
+{
+  "2048": {
+    "source": "runs/scaling/baseline-validation-7608115-20260913/openclaw-warmed-budget2048/openclaw-cc32",
+    "validation": {
+      "backend_client_counts_match": true,
+      "vllm_generation_counter_delta": 778161.0,
+      "client_output_tokens": 778161,
+      "counter_counts_match": true,
+      "inference_gpu_samples_ok": true,
+      "window_has_backend_tokens": true
+    },
+    "scheduler_config": {
+      "event": "scheduler_config",
+      "timestamp_unix": 1789316996.6710858,
+      "max_scheduled_tokens": 2048,
+      "max_num_seqs": 64,
+      "async_scheduling": true,
+      "reserve_full_isl": true,
+      "mamba_alignment": true,
+      "block_size": 528,
+      "num_gpu_blocks": 3630,
+      "groups": [
+        {
+          "spec": "MambaSpec",
+          "block_size": 528,
+          "layers": 10
+        },
+        {
+          "spec": "MambaSpec",
+          "block_size": 528,
+          "layers": 10
+        },
+        {
+          "spec": "MambaSpec",
+          "block_size": 528,
+          "layers": 10
+        },
+        {
+          "spec": "FullAttentionSpec",
+          "block_size": 528,
+          "layers": 10
+        }
+      ]
+    },
+    "scheduler_counts": {
+      "cache_lookup_calls": 9078,
+      "alignment_zero_waiting": 7085,
+      "steps": 20274,
+      "scheduled_tokens": 15526701,
+      "unused_budget_tokens": 25994451,
+      "steps_ending_with_waiters": 7121,
+      "steps_ending_with_waiters_and_budget_exhausted": 36
+    },
+    "blocking_examples": {
+      "alignment_zero_waiting": {
+        "request_id": "chatcmpl-bc851e2efec6a563-afa67351",
+        "status": "WAITING",
+        "prompt_tokens": 17309,
+        "free_blocks": 2568,
+        "available_tokens": 441
+      }
+    },
+    "admissions_in_window": 1993,
+    "metric_samples": 1796
+  },
+  "8192": {
+    "source": "runs/scaling/baseline-validation-7608115-20260913/openclaw-warmed-budget8192/openclaw-cc32",
+    "validation": {
+      "backend_client_counts_match": true,
+      "vllm_generation_counter_delta": 1076454.0,
+      "client_output_tokens": 1076454,
+      "counter_counts_match": true,
+      "inference_gpu_samples_ok": true,
+      "window_has_backend_tokens": true
+    },
+    "scheduler_config": {
+      "event": "scheduler_config",
+      "timestamp_unix": 1789319850.6371646,
+      "max_scheduled_tokens": 8192,
+      "max_num_seqs": 64,
+      "async_scheduling": true,
+      "reserve_full_isl": true,
+      "mamba_alignment": true,
+      "block_size": 528,
+      "num_gpu_blocks": 3543,
+      "groups": [
+        {
+          "spec": "MambaSpec",
+          "block_size": 528,
+          "layers": 10
+        },
+        {
+          "spec": "MambaSpec",
+          "block_size": 528,
+          "layers": 10
+        },
+        {
+          "spec": "MambaSpec",
+          "block_size": 528,
+          "layers": 10
+        },
+        {
+          "spec": "FullAttentionSpec",
+          "block_size": 528,
+          "layers": 10
+        }
+      ]
+    },
+    "scheduler_counts": {
+      "steps": 27414,
+      "scheduled_tokens": 19035058,
+      "unused_budget_tokens": 205540430,
+      "cache_lookup_calls": 3697,
+      "alignment_zero_waiting": 822,
+      "steps_ending_with_waiters": 827,
+      "steps_ending_with_waiters_and_budget_exhausted": 5
+    },
+    "blocking_examples": {
+      "alignment_zero_waiting": {
+        "request_id": "chatcmpl-b4e103f95dab68f4-9813cd82",
+        "status": "WAITING",
+        "prompt_tokens": 18539,
+        "free_blocks": 2052,
+        "available_tokens": 246
+      }
+    },
+    "admissions_in_window": 2879,
+    "metric_samples": 1796
+  }
+}

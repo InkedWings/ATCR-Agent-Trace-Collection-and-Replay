@@ -1,0 +1,93 @@
+{
+  "scope": "Selected trace pool once per trace; occupancy and hotspot from previously checked measurement summaries. P2 excluded.",
+  "trace_concentration": [
+    {
+      "workload": "openclaw",
+      "traces": 110,
+      "top_input_trace_count": 11,
+      "top_input_trace_fraction": 0.1,
+      "top_input_trace_ids": [
+        "16d825ff-1623-4176-a5b5-42e0f5c2b0ac",
+        "384d0dd8-e8a4-4cfe-963c-d37f256e7662",
+        "33d8ea3b-6c6b-4ff1-803d-7e270dea8a57",
+        "f0f46385-fc03-4599-b5d3-f56496c3e69f",
+        "8131e2c0-0083-4265-9ce7-78c2d568425d",
+        "676e5e31-a554-4acc-9286-b60d90a92d26",
+        "a7feb290-76bb-4cb7-8800-7edaf7954f2f",
+        "114d5fd0-e2ae-4b6d-a65a-870da2d19c08",
+        "65638e28-7f37-4fa7-b7b9-8c19bb609879",
+        "c8b7e059-c60d-472e-ad64-3b04ae1166dc",
+        "9f41b083-683e-4dcf-9185-ccfeaa88fa45"
+      ],
+      "top_input_trace_input_share": 0.6624441201354008,
+      "top_input_trace_output_share": 0.27221197902290917,
+      "top_input_trace_call_share": 0.3918238993710692,
+      "median_sum_prompt_div_max_prompt": 5.417718663023518,
+      "llm_calls": 1590
+    },
+    {
+      "workload": "minisweagent",
+      "traces": 61,
+      "top_input_trace_count": 7,
+      "top_input_trace_fraction": 0.11475409836065574,
+      "top_input_trace_ids": [
+        "pvlib__pvlib-python-1854",
+        "django__django-11797",
+        "pylint-dev__astroid-1333",
+        "django__django-11910",
+        "django__django-12470",
+        "sqlfluff__sqlfluff-1733",
+        "sqlfluff__sqlfluff-1763"
+      ],
+      "top_input_trace_input_share": 0.3866512446713186,
+      "top_input_trace_output_share": 0.25861727774057164,
+      "top_input_trace_call_share": 0.24605621033544878,
+      "median_sum_prompt_div_max_prompt": 41.2213079548794,
+      "llm_calls": 5515
+    }
+  ],
+  "phase_occupancy": [
+    {
+      "run": "minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "fixed_sticky",
+      "task_cc": 256,
+      "backends": 8,
+      "llm_lifecycle_fraction": 0.6075788787843196,
+      "estimated_client_llm_occupancy_per_backend": 19.442524121098227,
+      "observed_running_per_backend": 18.894904677090288,
+      "observed_waiting_per_backend": 0.05140973013844785
+    },
+    {
+      "run": "minisweagent-frontend-f1-n8-build8-7643324.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "frontend_f1_build8",
+      "task_cc": 256,
+      "backends": 8,
+      "llm_lifecycle_fraction": 0.6209730213206827,
+      "estimated_client_llm_occupancy_per_backend": 19.871136682261845,
+      "observed_running_per_backend": 19.1734280706781,
+      "observed_waiting_per_backend": 0.07234670097963668
+    },
+    {
+      "run": "minisweagent-frontend-f2-n8-build2-7643323.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "group": "frontend_f2_build2",
+      "task_cc": 256,
+      "backends": 8,
+      "llm_lifecycle_fraction": 0.8471939033860505,
+      "estimated_client_llm_occupancy_per_backend": 27.110204908353616,
+      "observed_running_per_backend": 26.445236963605563,
+      "observed_waiting_per_backend": 0.09657633997974735
+    }
+  ],
+  "rr_n8_hotspot": {
+    "run": "openclaw-routing-n8-round_robin-7643277.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "replica": "r07",
+    "arrival_share": 0.125,
+    "share_of_summed_mean_running_and_waiting": 0.8508814464954285
+  },
+  "interpretation": {
+    "trace_concentration": "Top ceil(10% of traces), ranked by cumulative submitted Qwen input. Output is recorded replay output budget. Not uncached compute or replay-window weights.",
+    "sum_prompt_div_max_prompt": "Repeated input-volume descriptor, not exact shared prefix, unique information, or attainable cache savings.",
+    "phase_occupancy": "Approximate stage-occupancy explanation for mostly serial calls with a full task population and stable mix; client lifecycle cohorts differ from backend wall-clock gauges. Not an exact identity or fitted predictor.",
+    "hotspot": "Ratio of full-window per-backend gauge means, not share of task count and not proof of steady state."
+  }
+}

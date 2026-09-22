@@ -4,6 +4,9 @@
 
 | 报告 | 内容 |
 |---|---|
+| [前端资源对照与 routing 扩展：合并更新](2026-09-22-routing-and-frontend/README.md) | 20 个新旧实测窗口；mini-SWE 2+8 / build8 对照，OpenClaw RR 4→8、热点与非稳态；7 张 PNG/PDF，P2 暂不纳入 |
+| [Routing 与固定前端扩展：09-21 快照](2026-09-21-routing-and-fixed-frontend/README.md) | RR/cache-aware、固定前端与历史 weak scaling；完整窗口计数、逐后端负载及请求级归因 |
+| [多节点 weak scaling](2026-09-15-weak-scaling/README.md) | 两类任务 weak scaling 的吞吐、延迟、资源与工具行为；图表注明实测和当时缺测点 |
 | [单节点吞吐下降与基线待验证项](2026-09-13-single-node-baseline/README.md) | 两类负载历史前缀未复用的请求级证据；2048 调度预算、历史 thinking 字段兼容性和多节点之前的必要对照 |
 | [mini-SWE / Qwen3.6 七档 scale 分析](2026-09-13-minisweagent-qwen36-scale/README.md) | cc1–64 的吞吐、延迟、排队、实际 token 缓存复用与时间分解；完整样本箱线图、初始同 trace 辅助比较及 cc64 窗口偏差、工具结果变化复核 |
 | [OpenClaw / Qwen3.6 七档 scale 分析](2026-09-08-openclaw-qwen36-scale/README.md) | cc1–64 的吞吐、延迟、后端排队与缓存趋势；时间分解、箱线图、同 trace 配对比较及工具错误复核 |

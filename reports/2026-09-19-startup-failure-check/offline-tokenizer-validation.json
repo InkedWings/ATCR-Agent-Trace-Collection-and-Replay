@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "scope": "CPU config/tokenizer load with socket connects blocked; weight paths only",
+  "snapshot": "/lus/eagle/projects/lc-mpi/ZhijingYe/Models/huggingface/hub/models--Qwen--Qwen3.6-35B-A3B/snapshots/995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "model_type": "qwen3_5_moe",
+  "weight_shards": 26,
+  "vocabulary_size": 248077,
+  "sample_token_count": 4,
+  "transformers_version": "5.5.4",
+  "vllm_version": "0.19.1"
+}

@@ -1,0 +1,68 @@
+{
+  "run": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+  "counts": {
+    "reports": 939,
+    "llm_calls": 13490,
+    "llm_output_tokens": 3879920,
+    "tool_calls": 12657,
+    "tool_web_search": 6048,
+    "tool_web_fetch": 4034,
+    "tool_read": 100,
+    "tool_exec": 2425,
+    "tool_write": 41,
+    "tool_edit": 9
+  },
+  "trace_count": 110,
+  "issues": [],
+  "tool_errors_all": {
+    "web_fetch": 694,
+    "exec": 201
+  },
+  "tool_errors_window": {
+    "exec": 173,
+    "web_fetch": 564
+  },
+  "new_error_transitions_all": {
+    "web_fetch": 38,
+    "exec": 6
+  },
+  "new_error_examples": [
+    {
+      "report": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/workers/r00/tasks/00001/report.json",
+      "node_id": "tool-002",
+      "tool": "web_fetch"
+    },
+    {
+      "report": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/workers/r00/tasks/00044/report.json",
+      "node_id": "tool-041",
+      "tool": "web_fetch"
+    },
+    {
+      "report": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/workers/r00/tasks/00046/report.json",
+      "node_id": "tool-006",
+      "tool": "web_fetch"
+    },
+    {
+      "report": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/workers/r00/tasks/00100/report.json",
+      "node_id": "tool-008",
+      "tool": "exec"
+    },
+    {
+      "report": "runs/scaling/multinode/openclaw-balanced-n2-7616564.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/workers/r00/tasks/00113/report.json",
+      "node_id": "tool-002",
+      "tool": "web_fetch"
+    }
+  ],
+  "expected_backend_calls": 13490,
+  "expected_backend_output_tokens": 3879920,
+  "client_backend_counts_match": true,
+  "checked_at_utc": "2026-09-14T16:59:44.211174+00:00",
+  "project_quota_snapshot": {
+    "project_id": 20219,
+    "filesystem": "/lus/eagle",
+    "used_kib": 23620380908,
+    "hard_limit_kib": 23622320128,
+    "available_gib": 1.8493843078613281,
+    "home_over_quota": false
+  }
+}

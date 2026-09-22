@@ -1,5 +1,7 @@
 # 单节点吞吐下降：已证实的路径与基线待验证项
 
+**2026-09-14 更新：OpenClaw cc32 的 2048/8192 对照已完成，8192 显著缓解了调度排队及 KV 活跃占用下跌，输出吞吐提高 46.9%。见[完整对照结果](../2026-09-14-token-budget-comparison/README.md)。下文保留此前诊断和待验证项的历史记录。**
+
 2026-09-13。基于同一轮 Qwen3.6 TP4 的 OpenClaw 与 mini-SWE 数据，以及实际使用的 vLLM 0.19.1 容器源码。
 
 **已证实：高并发时，原本相同的历史输入前缀未被复用，导致大量历史 token 再次进入 prefill，同时输出吞吐下降、排队增加。尚未证实：缓存/状态为什么未命中，以及 2048-token 调度预算对下降的贡献。当前结果能作为此配置和请求处理方式的探索性观测，尚不能作为已经确认的稳态容量基线。**
@@ -55,11 +57,17 @@ mini-SWE 同一 trace、task、node 在 cc32 的 TTFT 为 0.374 秒，初始排�
 ## 成为多节点基线前要完成的验证
 
 1. 先在当前请求处理方式下复现 OpenClaw cc32，对比 `max_num_batched_tokens=2048 / 8192`；根据结果补 16384 或缓存相关对照，再在 mini-SWE cc64 确认。复用既有 runner、冻结的 trace pool 和 seed，所有调用完成后自然排空。无需先重跑完整七档。
-2. 对照中记录每请求 prompt/cached tokens、各缓存组匹配长度，以及等待原因：预算/对齐不足、full-ISL gate、块分配失败或 running 数上限。原请求日志已补 prompt/cached 两个字段，相关 11 项测试通过；缓存组与调度分支诊断仍待接入。增大 batch 预算可能改变内存 profiling 和可用 KV 块数，需要一起记录，避免误判机制。
+2. 对照中记录每请求 prompt/cached tokens、各缓存组匹配长度，以及等待原因：预算/对齐不足、full-ISL gate、块分配失败或 running 数上限。原请求日志已补 prompt/cached 两个字段；本次已接入保留原生 AsyncScheduler 的可选诊断，相关 14 项测试通过，实际容器导入正常。[诊断字段与统计口径](../../docs/scheduler-diagnostics.md)。增大 batch 预算可能改变内存 profiling 和可用 KV 块数，需要一起记录，避免误判机制。
 3. 明确历史 thinking 的输入处理，冻结最终配置和 trace eligibility。正式容量统计需要更充分的 warmup/measurement 或固定同一批 trace 全部完成的 batch 试验。mini-SWE cc64 现有 30 分钟窗口的 15 个完成任务全来自 warmup，不能作为稳态任务完成率。
 4. 多节点如果采用每节点一个 TP4 副本，应固定单副本配置和同一 trace 连续调用的路由规则，明确总 cc 与每副本 cc。否则节点数变化还会同时改变前缀缓存复用条件。
 
-当前已准备四个参数对照配置，位于本地 `runs/scaling/baseline-validation-7608115-20260913/`。**尚未启动 GPU 对照**：新 allocation 7608115 的节点目前空闲，资源用途澄清待答复。本报告没有把未执行的对照写成已经验证的结果。
+当前四个参数对照配置位于本地 `runs/scaling/baseline-validation-7608115-20260913/`。用户已授权使用 allocation 7608115；2026-09-13 16:16 UTC 已启动完整短 trace 检查流程，通过后自动顺序运行 OpenClaw cc32 的 2048/8192 对照，各自使用新的后端。推理节点为 `x3005c0s31b0n0`，replay 节点为 `x3005c0s7b0n0`。mini-SWE cc64 两个配置已准备，待首轮结果决定下一步。**对照结果尚未完成，本报告的根因判断仍以上述既有证据为限。**
+
+16:21 UTC 短 trace 检查通过：benchmark 的 14,895 个输出 tokens 在客户端、后端事件和 vLLM counter 中一致；包含前置单 trace 的全部 31 个请求，其调度日志和请求完成日志的 prompt/cached token 数均一致。实际 2048 配置为 3630 个 KV 块、528-token block，包含三个 Mamba 组和一个 Full Attention 组。详见 [smoke 检查记录](smoke_validation.json)；这项检查验证日志和计数路径，不验证吞吐下降的根因。
+
+首轮 cc32 启动发现新 replay 节点的工具冷启动差异：首批已完成任务的 setup 中位数为 69.24 秒，原实验首批 32 个任务为 21.08 秒；同轮后续 3 个已完成任务降到 11.76 秒。为避免把这项差异带入预算对比，16:27 UTC 有序停止了首轮并保留为环境预热记录，**排除 `openclaw-budget2048` 这段未完成数据**。清理所有自有进程后已重新启动比较流程，正式输出为 `openclaw-warmed-budget2048` / `openclaw-warmed-budget8192`，日志为 `coordinator-warmed.log`。仍使用各自全新的推理后端、原 120/1800 秒窗口，并继续核对两组工具 setup 分布。
+
+重启后的 2048 组首个真实请求在 benchmark 开始后 19.08 秒进入调度，已接近原实验启动水平；请求与调度日志均正常写入。8192 组将在 2048 完成校验和清理后自动运行。
 
 ## 本地诊断输入与复现
 

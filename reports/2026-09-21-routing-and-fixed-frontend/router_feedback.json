@@ -1,0 +1,42 @@
+{
+  "method": "First router Prometheus sample at/after measurement boundaries; load_balancing_events counts cache_aware imbalance branch, not all minimum-load selections.",
+  "policy_source": "https://github.com/vllm-project/router/blob/v0.1.15/src/policies/cache_aware.rs",
+  "results": [
+    {
+      "workload": "openclaw",
+      "source": "runs/scaling/multinode/openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/frontends/x3105c0s31b1n0/router/metrics.jsonl",
+      "boundary_offsets_seconds": [
+        0.6130731105804443,
+        0.5816147327423096
+      ],
+      "policy_decisions": 20460.0,
+      "imbalance_branch_decisions": 2699.0,
+      "imbalance_branch_fraction": 0.13191593352883677,
+      "counter_deltas": {
+        "vllm_router_load_balancing_events_total": 2699.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3105c0s37b0n0:18000\"}": 5133.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3105c0s7b0n0:18000\"}": 4393.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3105c0s7b1n0:18000\"}": 5756.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3105c0s37b1n0:18000\"}": 5178.0
+      }
+    },
+    {
+      "workload": "minisweagent",
+      "source": "runs/scaling/multinode/minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov/frontends/x3106c0s25b1n0/router/metrics.jsonl",
+      "boundary_offsets_seconds": [
+        0.6629924774169922,
+        0.48372817039489746
+      ],
+      "policy_decisions": 69993.0,
+      "imbalance_branch_decisions": 7829.0,
+      "imbalance_branch_fraction": 0.11185404254711186,
+      "counter_deltas": {
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3106c0s37b1n0:18000\"}": 16367.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3106c0s37b0n0:18000\"}": 18823.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3106c0s31b1n0:18000\"}": 17017.0,
+        "vllm_router_policy_decisions_total{policy=\"cache_aware\",worker=\"http://x3106c0s31b0n0:18000\"}": 17786.0,
+        "vllm_router_load_balancing_events_total": 7829.0
+      }
+    }
+  ]
+}

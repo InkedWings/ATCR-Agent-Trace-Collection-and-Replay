@@ -6,9 +6,11 @@ import asyncio
 import csv
 import json
 import math
+import os
 import re
 import shutil
 import socket
+import tempfile
 import time
 from pathlib import Path
 from typing import Any
@@ -57,7 +59,9 @@ def summarize_metrics(path: Path, *, started_unix: float | None = None,
             last_hw = sample
         gpu_status = metrics.get("gpu_status", "unknown")
         gpu_statuses[gpu_status] = gpu_statuses.get(gpu_status, 0) + 1
-        for key in ("cpu_busy_percent", "cpu_iowait_percent", "memory_available_bytes"):
+        for key in ("cpu_busy_percent", "cpu_iowait_percent", "memory_available_bytes",
+                    "cpu_max_busy_percent", "cpu_busy_logical_cpus", "cpu_runnable_processes",
+                    "cpu_blocked_processes", "load_average_1m", "scratch_free_bytes"):
             if metrics.get(key) is not None:
                 hardware.setdefault(key, []).append(metrics[key])
         for gpu in metrics.get("gpus", []):
@@ -124,11 +128,13 @@ class HardwareSampler:
     def __init__(self, proc_root: Path = Path("/proc")) -> None:
         self.proc_root = proc_root
         self.previous: tuple[float, list[int]] | None = None
+        self.previous_cpus: dict[str, list[int]] = {}
         self.gpu_executable = shutil.which("nvidia-smi")
 
     def cpu_memory_io(self) -> dict[str, Any]:
         now = time.monotonic()
-        ticks = list(map(int, (self.proc_root / "stat").read_text().splitlines()[0].split()[1:9]))
+        stat_lines = (self.proc_root / "stat").read_text().splitlines()
+        ticks = list(map(int, stat_lines[0].split()[1:9]))
         busy = iowait = None
         if self.previous:
             delta = [a - b for a, b in zip(ticks, self.previous[1])]
@@ -137,6 +143,38 @@ class HardwareSampler:
                 busy = 100 * (total - delta[3] - delta[4]) / total
                 iowait = 100 * delta[4] / total
         self.previous = (now, ticks)
+        cpus, per_cpu = {}, {}
+        for line in stat_lines[1:]:
+            fields = line.split()
+            if fields and re.fullmatch(r"cpu\d+", fields[0]):
+                name = fields[0]
+                cpus[name] = list(map(int, fields[1:9]))
+                old = self.previous_cpus.get(name)
+                if old is not None:
+                    delta = [a-b for a, b in zip(cpus[name], old)]
+                    total = sum(delta)
+                    if total > 0 and min(delta) >= 0:
+                        per_cpu[name] = 100 * (total-delta[3]-delta[4]) / total
+        self.previous_cpus = cpus
+        extra = {"cpu_logical_count": len(cpus), "cpu_busy_percent_by_logical_cpu": per_cpu,
+                 "cpu_max_busy_percent": max(per_cpu.values()) if per_cpu else None,
+                 "cpu_busy_logical_cpus": sum(per_cpu.values())/100 if per_cpu else None,
+                 "sampler_cpu_affinity": sorted(os.sched_getaffinity(0))}
+        for line in stat_lines:
+            fields = line.split()
+            if fields and fields[0] in ("procs_running", "procs_blocked"):
+                key = "cpu_runnable_processes" if fields[0] == "procs_running" else "cpu_blocked_processes"
+                extra[key] = int(fields[1])
+        try:
+            extra["load_average_1m"] = float((self.proc_root / "loadavg").read_text().split()[0])
+        except (OSError, ValueError, IndexError):
+            pass
+        scratch = tempfile.gettempdir()
+        try:
+            usage = shutil.disk_usage(scratch)
+            extra.update(scratch_path=scratch, scratch_free_bytes=usage.free, scratch_total_bytes=usage.total)
+        except OSError:
+            pass
         mem = {line.split()[0].rstrip(":"): int(line.split()[1]) * 1024
                for line in (self.proc_root / "meminfo").read_text().splitlines()}
         disks = []
@@ -153,7 +191,7 @@ class HardwareSampler:
                 "tx_bytes": int(counters[8])})
         return {"cpu_busy_percent": busy, "cpu_iowait_percent": iowait,
             "memory_total_bytes": mem["MemTotal"], "memory_available_bytes": mem["MemAvailable"],
-            "disks": disks, "network": network}
+            "disks": disks, "network": network, **extra}
 
     async def sample(self) -> dict[str, Any]:
         result = self.cpu_memory_io()

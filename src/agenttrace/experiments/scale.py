@@ -28,7 +28,7 @@ def allocation_remaining(job: str) -> float:
     def seconds(value):
         h, m, s = map(int, value.split(":"))
         return h * 3600 + m * 60 + s
-    return seconds(data["Resource_List"]["walltime"]) - seconds(data["resources_used"]["walltime"])
+    return seconds(data["Resource_List"]["walltime"]) - seconds(data.get("resources_used", {}).get("walltime", "00:00:00"))
 
 
 @asynccontextmanager

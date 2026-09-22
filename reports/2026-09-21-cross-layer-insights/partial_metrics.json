@@ -1,0 +1,3307 @@
+{
+  "generated_utc": "2026-09-21T18:10:41.117546+00:00",
+  "scope": "provisional first 2700s of each measurement; not final task/cohort/count validation",
+  "counters": "first Prometheus sample at/after each boundary; per-replica actual sample intervals",
+  "gauges": "backend samples every 300s, including boundaries; frontend uses all samples in the window",
+  "routing_matched_configuration": true,
+  "results": [
+    {
+      "root": "runs/scaling/multinode/minisweagent-fixed_frontend-n8-7642788.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": {
+        "id": "minisweagent-fixed_frontend-n8",
+        "workload": "minisweagent",
+        "inference_replicas": 8,
+        "layout": "fixed_frontend",
+        "frontend_nodes": 1,
+        "physical_nodes": 9,
+        "routing": "sticky",
+        "prefix_reuse": "normal",
+        "proxy": false,
+        "smoke": false,
+        "task_cc_per_replica": 32,
+        "warmup_seconds": 1800,
+        "duration_seconds": 5400,
+        "seed": 42,
+        "pbs": {
+          "queue": "prod",
+          "walltime": "03:00:00",
+          "drain_budget_seconds": 1800
+        }
+      },
+      "provisional": true,
+      "duration_seconds": 2700,
+      "start_unix": 1790011112.7426138,
+      "end_unix": 1790013812.7426138,
+      "output_tokens_s": 5396.683117697437,
+      "prefix_reuse": 0.9641351106369909,
+      "uncached_prompt_per_output": 5.469163257404243,
+      "backend_ttft_mean_s": 0.31389763495097,
+      "prompt_tokens_per_first_token_request": 28600.6620287542,
+      "replica_output_cv": 0.008038478783133919,
+      "preemptions": 0.0,
+      "gpu_busy_sparse_sample_mean": 96.040625,
+      "waiting_sparse_sample_mean": 0.0,
+      "running_sparse_sample_mean": 20.3,
+      "kv_usage_sparse_sample_mean": 0.34256422924901186,
+      "counter_delta": {
+        "output": 14571578.0,
+        "prompt": 2222071235.0,
+        "cached": 2142376896.0,
+        "local_compute": 79694339.0,
+        "ttft_sum": 24387.648952245712,
+        "ttft_count": 77693.0,
+        "preemptions": 0.0
+      },
+      "frontend": [
+        {
+          "host": "x3108c0s13b0n0",
+          "samples": 2690,
+          "cpu_mean": 95.40867601824367,
+          "cpu_p95": 99.53365459350225,
+          "cpu_iowait_mean": 0.13623640681488375,
+          "cpu_count": 64,
+          "cpu_90pct_sample_fraction": 0.8728624535315985,
+          "memory_available_min_gib": 457.83179473876953,
+          "scratch_free_min_gib": 1972.4419860839844,
+          "max_sampling_gap_seconds": 1.3302357196807861
+        }
+      ],
+      "replicas": [
+        {
+          "replica": "r00",
+          "counter_delta": {
+            "output": 1795324.0,
+            "prompt": 282018776.0,
+            "cached": 271863504.0,
+            "local_compute": 10155272.0,
+            "ttft_sum": 3134.5126988887787,
+            "ttft_count": 9647.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.3082699775696,
+          "start_offset_seconds": 0.10030531883239746,
+          "end_offset_seconds": 0.40857529640197754,
+          "output_tokens_s": 664.8589051704504,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011112.842919,
+              "gpu_busy": 89.0,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.310841332580463
+            },
+            {
+              "timestamp_unix": 1790011413.6319017,
+              "gpu_busy": 94.25,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.3512140033879164
+            },
+            {
+              "timestamp_unix": 1790011713.4570234,
+              "gpu_busy": 95.5,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.4536984754376059
+            },
+            {
+              "timestamp_unix": 1790012013.256154,
+              "gpu_busy": 96.5,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.34443817052512704
+            },
+            {
+              "timestamp_unix": 1790012313.0499866,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.33766233766233766
+            },
+            {
+              "timestamp_unix": 1790012612.8058708,
+              "gpu_busy": 95.0,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.3407679277244494
+            },
+            {
+              "timestamp_unix": 1790012913.6365223,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.36815358554488986
+            },
+            {
+              "timestamp_unix": 1790013213.5467486,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 16.0,
+              "kv_usage": 0.2924901185770751
+            },
+            {
+              "timestamp_unix": 1790013513.3540359,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.3633540372670807
+            },
+            {
+              "timestamp_unix": 1790013813.151189,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 19.0,
+              "kv_usage": 0.35573122529644263
+            }
+          ]
+        },
+        {
+          "replica": "r01",
+          "counter_delta": {
+            "output": 1810061.0,
+            "prompt": 270573754.0,
+            "cached": 260329344.0,
+            "local_compute": 10244410.0,
+            "ttft_sum": 3068.323168039322,
+            "ttft_count": 9449.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.3543252944946,
+          "start_offset_seconds": 0.1254105567932129,
+          "end_offset_seconds": 0.4797358512878418,
+          "output_tokens_s": 670.3049977719494,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011112.8680243,
+              "gpu_busy": 88.5,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.21118012422360244
+            },
+            {
+              "timestamp_unix": 1790011413.6767213,
+              "gpu_busy": 92.5,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.31677018633540377
+            },
+            {
+              "timestamp_unix": 1790011713.4347138,
+              "gpu_busy": 95.5,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.45962732919254656
+            },
+            {
+              "timestamp_unix": 1790012013.2102711,
+              "gpu_busy": 96.5,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.44918125352907967
+            },
+            {
+              "timestamp_unix": 1790012312.989454,
+              "gpu_busy": 92.25,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.36561264822134387
+            },
+            {
+              "timestamp_unix": 1790012612.758843,
+              "gpu_busy": 97.25,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.43760587238848103
+            },
+            {
+              "timestamp_unix": 1790012913.625313,
+              "gpu_busy": 92.75,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.32608695652173914
+            },
+            {
+              "timestamp_unix": 1790013213.5648115,
+              "gpu_busy": 95.0,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.3543195934500283
+            },
+            {
+              "timestamp_unix": 1790013513.3574846,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.34472049689441
+            },
+            {
+              "timestamp_unix": 1790013813.2223496,
+              "gpu_busy": 92.75,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.32439299830604174
+            }
+          ]
+        },
+        {
+          "replica": "r02",
+          "counter_delta": {
+            "output": 1829426.0,
+            "prompt": 284646488.0,
+            "cached": 274643424.0,
+            "local_compute": 10003064.0,
+            "ttft_sum": 3088.551283121109,
+            "ttft_count": 9745.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.1910030841827,
+          "start_offset_seconds": 0.15386247634887695,
+          "end_offset_seconds": 0.3448655605316162,
+          "output_tokens_s": 677.517256338686,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011112.8964763,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.3362507058159232
+            },
+            {
+              "timestamp_unix": 1790011413.6777966,
+              "gpu_busy": 94.75,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.43421795595708634
+            },
+            {
+              "timestamp_unix": 1790011713.474254,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.3913043478260869
+            },
+            {
+              "timestamp_unix": 1790012013.2616665,
+              "gpu_busy": 87.5,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.3805759457933371
+            },
+            {
+              "timestamp_unix": 1790012313.050709,
+              "gpu_busy": 95.0,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.32523997741389044
+            },
+            {
+              "timestamp_unix": 1790012612.804603,
+              "gpu_busy": 95.0,
+              "waiting": 0.0,
+              "running": 19.0,
+              "kv_usage": 0.3512140033879164
+            },
+            {
+              "timestamp_unix": 1790012913.594349,
+              "gpu_busy": 91.5,
+              "waiting": 0.0,
+              "running": 19.0,
+              "kv_usage": 0.2885375494071146
+            },
+            {
+              "timestamp_unix": 1790013213.483644,
+              "gpu_busy": 95.0,
+              "waiting": 0.0,
+              "running": 27.0,
+              "kv_usage": 0.4565217391304348
+            },
+            {
+              "timestamp_unix": 1790013513.2635803,
+              "gpu_busy": 96.0,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.36109542631281766
+            },
+            {
+              "timestamp_unix": 1790013813.0874794,
+              "gpu_busy": 87.5,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.28006775832862785
+            }
+          ]
+        },
+        {
+          "replica": "r03",
+          "counter_delta": {
+            "output": 1844081.0,
+            "prompt": 275902126.0,
+            "cached": 266762496.0,
+            "local_compute": 9139630.0,
+            "ttft_sum": 2919.284772872925,
+            "ttft_count": 9760.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.4621975421906,
+          "start_offset_seconds": 0.9785256385803223,
+          "end_offset_seconds": 0.440723180770874,
+          "output_tokens_s": 683.1290327677124,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011113.7211394,
+              "gpu_busy": 94.5,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.2507058159232072
+            },
+            {
+              "timestamp_unix": 1790011413.5183156,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.3354037267080745
+            },
+            {
+              "timestamp_unix": 1790011713.3701606,
+              "gpu_busy": 94.75,
+              "waiting": 0.0,
+              "running": 19.0,
+              "kv_usage": 0.2885375494071146
+            },
+            {
+              "timestamp_unix": 1790012013.163693,
+              "gpu_busy": 82.0,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.26256352343308864
+            },
+            {
+              "timestamp_unix": 1790012312.9729884,
+              "gpu_busy": 96.25,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.2509881422924901
+            },
+            {
+              "timestamp_unix": 1790012612.7902699,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.22134387351778662
+            },
+            {
+              "timestamp_unix": 1790012913.6120837,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.34613212874082444
+            },
+            {
+              "timestamp_unix": 1790013213.5407634,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.4381705251270469
+            },
+            {
+              "timestamp_unix": 1790013513.3392813,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.44579333709768487
+            },
+            {
+              "timestamp_unix": 1790013813.183337,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.41756070016939584
+            }
+          ]
+        },
+        {
+          "replica": "r04",
+          "counter_delta": {
+            "output": 1821652.0,
+            "prompt": 279804483.0,
+            "cached": 269160144.0,
+            "local_compute": 10644339.0,
+            "ttft_sum": 3116.261815071106,
+            "ttft_count": 9777.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.4030573368073,
+          "start_offset_seconds": 0.08537006378173828,
+          "end_offset_seconds": 0.48842740058898926,
+          "output_tokens_s": 674.585223509764,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011112.8279839,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.29587803500846976
+            },
+            {
+              "timestamp_unix": 1790011413.6791306,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.38622247317899494
+            },
+            {
+              "timestamp_unix": 1790011713.4905958,
+              "gpu_busy": 97.5,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.2944664031620553
+            },
+            {
+              "timestamp_unix": 1790012013.3561976,
+              "gpu_busy": 97.0,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.3094297007340485
+            },
+            {
+              "timestamp_unix": 1790012313.148707,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.20214568040655
+            },
+            {
+              "timestamp_unix": 1790012612.9292085,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.26369282891022017
+            },
+            {
+              "timestamp_unix": 1790012913.726544,
+              "gpu_busy": 96.75,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.4147374364765669
+            },
+            {
+              "timestamp_unix": 1790013213.6613207,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 24.0,
+              "kv_usage": 0.3667419536984754
+            },
+            {
+              "timestamp_unix": 1790013513.4571152,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.42970073404856013
+            },
+            {
+              "timestamp_unix": 1790013813.2310412,
+              "gpu_busy": 95.5,
+              "waiting": 0.0,
+              "running": 8.0,
+              "kv_usage": 0.13212874082439297
+            }
+          ]
+        },
+        {
+          "replica": "r05",
+          "counter_delta": {
+            "output": 1837308.0,
+            "prompt": 274586517.0,
+            "cached": 264390720.0,
+            "local_compute": 10195797.0,
+            "ttft_sum": 3046.794541835785,
+            "ttft_count": 9770.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.050898551941,
+          "start_offset_seconds": 0.011850833892822266,
+          "end_offset_seconds": 0.06274938583374023,
+          "output_tokens_s": 680.4716166592871,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011112.7544646,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.27216261998870694
+            },
+            {
+              "timestamp_unix": 1790011413.5865295,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 24.0,
+              "kv_usage": 0.411914172783738
+            },
+            {
+              "timestamp_unix": 1790011713.3812854,
+              "gpu_busy": 91.0,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.3354037267080745
+            },
+            {
+              "timestamp_unix": 1790012013.1671782,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.3390739695087521
+            },
+            {
+              "timestamp_unix": 1790012312.9729917,
+              "gpu_busy": 93.0,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.295313382269904
+            },
+            {
+              "timestamp_unix": 1790012612.7728891,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.34895539243365326
+            },
+            {
+              "timestamp_unix": 1790012913.548116,
+              "gpu_busy": 96.5,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.4675324675324676
+            },
+            {
+              "timestamp_unix": 1790013213.3284862,
+              "gpu_busy": 96.25,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.30858272162619993
+            },
+            {
+              "timestamp_unix": 1790013513.0429158,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.41247882552230375
+            },
+            {
+              "timestamp_unix": 1790013812.8053632,
+              "gpu_busy": 95.75,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.26623376623376627
+            }
+          ]
+        },
+        {
+          "replica": "r06",
+          "counter_delta": {
+            "output": 1815685.0,
+            "prompt": 270595874.0,
+            "cached": 260703168.0,
+            "local_compute": 9892706.0,
+            "ttft_sum": 3056.821437597275,
+            "ttft_count": 9754.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.1687767505646,
+          "start_offset_seconds": 0.10231590270996094,
+          "end_offset_seconds": 0.27109265327453613,
+          "output_tokens_s": 672.4338921454497,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011112.8449297,
+              "gpu_busy": 93.5,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.26764539808018073
+            },
+            {
+              "timestamp_unix": 1790011413.6499794,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.4232072275550537
+            },
+            {
+              "timestamp_unix": 1790011713.4820023,
+              "gpu_busy": 94.25,
+              "waiting": 0.0,
+              "running": 27.0,
+              "kv_usage": 0.3935629587803501
+            },
+            {
+              "timestamp_unix": 1790012013.2921336,
+              "gpu_busy": 97.0,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.41586674195369844
+            },
+            {
+              "timestamp_unix": 1790012313.078309,
+              "gpu_busy": 93.75,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.40654997176736307
+            },
+            {
+              "timestamp_unix": 1790012612.8633304,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.25578769057029926
+            },
+            {
+              "timestamp_unix": 1790012913.6610389,
+              "gpu_busy": 93.75,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.2998306041784302
+            },
+            {
+              "timestamp_unix": 1790013213.4673817,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.3935629587803501
+            },
+            {
+              "timestamp_unix": 1790013513.241441,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.3952569169960475
+            },
+            {
+              "timestamp_unix": 1790013813.0137064,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.36815358554488986
+            }
+          ]
+        },
+        {
+          "replica": "r07",
+          "counter_delta": {
+            "output": 1818041.0,
+            "prompt": 283943217.0,
+            "cached": 274524096.0,
+            "local_compute": 9419121.0,
+            "ttft_sum": 2957.0992348194122,
+            "ttft_count": 9791.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.864977121353,
+          "start_offset_seconds": 0.9461863040924072,
+          "end_offset_seconds": 0.8111634254455566,
+          "output_tokens_s": 673.3821933341384,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011113.6888,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 19.0,
+              "kv_usage": 0.3040654997176736
+            },
+            {
+              "timestamp_unix": 1790011413.58425,
+              "gpu_busy": 96.5,
+              "waiting": 0.0,
+              "running": 27.0,
+              "kv_usage": 0.5042348955392434
+            },
+            {
+              "timestamp_unix": 1790011713.7136734,
+              "gpu_busy": 96.0,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.3407679277244494
+            },
+            {
+              "timestamp_unix": 1790012013.5425951,
+              "gpu_busy": 89.25,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.25409373235460186
+            },
+            {
+              "timestamp_unix": 1790012313.370546,
+              "gpu_busy": 95.75,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.28091473743647655
+            },
+            {
+              "timestamp_unix": 1790012613.3162487,
+              "gpu_busy": 90.25,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.23489553924336537
+            },
+            {
+              "timestamp_unix": 1790012913.1667202,
+              "gpu_busy": 82.0,
+              "waiting": 0.0,
+              "running": 23.0,
+              "kv_usage": 0.36024844720496896
+            },
+            {
+              "timestamp_unix": 1790013213.006459,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.39751552795031053
+            },
+            {
+              "timestamp_unix": 1790013512.7553954,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.2744212309429701
+            },
+            {
+              "timestamp_unix": 1790013813.5537772,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.3116883116883117
+            }
+          ]
+        }
+      ],
+      "frontend_cpu_60s_means": [
+        97.36304714039571,
+        95.0979640936496,
+        94.88697602251933,
+        91.13161786751971,
+        96.45778408698148,
+        90.3342634023895,
+        93.27699695720553,
+        95.47885930619469,
+        96.22213873355871,
+        97.6003549709235,
+        95.77134202520895,
+        97.6837141329592,
+        97.71042421814292,
+        96.06553270519801,
+        97.07160239296434,
+        97.607573400883,
+        97.32496170634282,
+        97.06297731270699,
+        97.32181603801358,
+        98.2553219943393,
+        98.21429576125786,
+        96.87162979537833,
+        91.57512719079442,
+        91.00042393767956,
+        91.45556278342612,
+        95.63252435312688,
+        98.22625521556878,
+        97.5497510609954,
+        96.51790981123696,
+        97.46241194971562,
+        94.62573113186902,
+        94.66143827510206,
+        92.23105695923233,
+        91.15250226371126,
+        91.21825230873725,
+        89.35895659684302,
+        94.01048454049139,
+        97.745503210514,
+        93.48739686399115,
+        95.73877676394243,
+        96.74801417875938,
+        96.84838072345242,
+        96.18193890707346,
+        96.89288990614817,
+        98.51001111848022
+      ]
+    },
+    {
+      "root": "runs/scaling/multinode/minisweagent-routing-n4-cache_aware-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": {
+        "id": "minisweagent-routing-n4-cache_aware",
+        "workload": "minisweagent",
+        "inference_replicas": 4,
+        "layout": "fixed_frontend",
+        "frontend_nodes": 1,
+        "physical_nodes": 5,
+        "routing": "cache_aware",
+        "prefix_reuse": "normal",
+        "proxy": true,
+        "smoke": false,
+        "task_cc_per_replica": 32,
+        "warmup_seconds": 1800,
+        "duration_seconds": 5400,
+        "seed": 42,
+        "router_impl": "vllm-router",
+        "pbs": {
+          "queue": "prod",
+          "walltime": "03:00:00",
+          "drain_budget_seconds": 1800
+        }
+      },
+      "provisional": true,
+      "duration_seconds": 2700,
+      "start_unix": 1790011115.8868446,
+      "end_unix": 1790013815.8868446,
+      "output_tokens_s": 2382.049182769673,
+      "prefix_reuse": 0.8850477675810821,
+      "uncached_prompt_per_output": 17.98395621062426,
+      "backend_ttft_mean_s": 0.6447654716617318,
+      "prompt_tokens_per_first_token_request": 29320.56855602506,
+      "replica_output_cv": 0.05472142037153127,
+      "preemptions": 0.0,
+      "gpu_busy_sparse_sample_mean": 98.06875,
+      "waiting_sparse_sample_mean": 0.3,
+      "running_sparse_sample_mean": 26.975,
+      "kv_usage_sparse_sample_mean": 0.376468097120271,
+      "counter_delta": {
+        "output": 6431149.0,
+        "prompt": 1006135310.0,
+        "cached": 890477810.0,
+        "local_compute": 115657502.0,
+        "ttft_sum": 22125.127160072327,
+        "ttft_count": 34315.0,
+        "preemptions": 0.0
+      },
+      "frontend": [
+        {
+          "host": "x3106c0s25b1n0",
+          "samples": 2694,
+          "cpu_mean": 36.30742226024444,
+          "cpu_p95": 62.29662077596996,
+          "cpu_iowait_mean": 0.03157007038860473,
+          "cpu_count": 64,
+          "cpu_90pct_sample_fraction": 0.002969561989606533,
+          "memory_available_min_gib": 472.43402099609375,
+          "scratch_free_min_gib": 2343.7064094543457,
+          "max_sampling_gap_seconds": 1.1060278415679932
+        }
+      ],
+      "replicas": [
+        {
+          "replica": "r00",
+          "counter_delta": {
+            "output": 1620505.0,
+            "prompt": 262855238.0,
+            "cached": 234693362.0,
+            "local_compute": 28161878.0,
+            "ttft_sum": 5698.596502065659,
+            "ttft_count": 8867.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.3097338676453,
+          "start_offset_seconds": 0.21651411056518555,
+          "end_offset_seconds": 0.5262479782104492,
+          "output_tokens_s": 600.1181937299302,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.1033587,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 31.0,
+              "kv_usage": 0.4234895539243365
+            },
+            {
+              "timestamp_unix": 1790011415.9364414,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 28.0,
+              "kv_usage": 0.38735177865612647
+            },
+            {
+              "timestamp_unix": 1790011716.7063794,
+              "gpu_busy": 100.0,
+              "waiting": 2.0,
+              "running": 25.0,
+              "kv_usage": 0.33399209486166004
+            },
+            {
+              "timestamp_unix": 1790012016.4818134,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.33399209486166004
+            },
+            {
+              "timestamp_unix": 1790012316.2675643,
+              "gpu_busy": 95.75,
+              "waiting": 0.0,
+              "running": 24.0,
+              "kv_usage": 0.3526256352343309
+            },
+            {
+              "timestamp_unix": 1790012616.0576668,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 36.0,
+              "kv_usage": 0.5782044042913608
+            },
+            {
+              "timestamp_unix": 1790012916.8625698,
+              "gpu_busy": 96.25,
+              "waiting": 0.0,
+              "running": 33.0,
+              "kv_usage": 0.4268774703557312
+            },
+            {
+              "timestamp_unix": 1790013216.7974987,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 29.0,
+              "kv_usage": 0.4105025409373235
+            },
+            {
+              "timestamp_unix": 1790013516.634784,
+              "gpu_busy": 96.5,
+              "waiting": 0.0,
+              "running": 33.0,
+              "kv_usage": 0.45172219085262566
+            },
+            {
+              "timestamp_unix": 1790013816.4130926,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.2820440429136082
+            }
+          ]
+        },
+        {
+          "replica": "r01",
+          "counter_delta": {
+            "output": 1461542.0,
+            "prompt": 236693091.0,
+            "cached": 212943456.0,
+            "local_compute": 23749635.0,
+            "ttft_sum": 4222.992658615112,
+            "ttft_count": 8242.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.3486034870148,
+          "start_offset_seconds": 0.8515908718109131,
+          "end_offset_seconds": 0.2001943588256836,
+          "output_tokens_s": 541.4424791640406,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.7384355,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.32975719932241676
+            },
+            {
+              "timestamp_unix": 1790011416.559414,
+              "gpu_busy": 97.5,
+              "waiting": 0.0,
+              "running": 25.0,
+              "kv_usage": 0.38791643139469223
+            },
+            {
+              "timestamp_unix": 1790011716.3305066,
+              "gpu_busy": 89.0,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.2092038396386222
+            },
+            {
+              "timestamp_unix": 1790012016.1547863,
+              "gpu_busy": 100.0,
+              "waiting": 7.0,
+              "running": 12.0,
+              "kv_usage": 0.20271033314511577
+            },
+            {
+              "timestamp_unix": 1790012315.9519236,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.1933935629587803
+            },
+            {
+              "timestamp_unix": 1790012616.8288925,
+              "gpu_busy": 93.25,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.2377188029361943
+            },
+            {
+              "timestamp_unix": 1790012916.7383015,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.29757199322416716
+            },
+            {
+              "timestamp_unix": 1790013216.5156882,
+              "gpu_busy": 96.75,
+              "waiting": 0.0,
+              "running": 16.0,
+              "kv_usage": 0.2405420666290231
+            },
+            {
+              "timestamp_unix": 1790013516.2990758,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.20948616600790515
+            },
+            {
+              "timestamp_unix": 1790013816.087039,
+              "gpu_busy": 97.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.2168266516092603
+            }
+          ]
+        },
+        {
+          "replica": "r02",
+          "counter_delta": {
+            "output": 1657854.0,
+            "prompt": 271467110.0,
+            "cached": 241001376.0,
+            "local_compute": 30465734.0,
+            "ttft_sum": 6102.300810813904,
+            "ttft_count": 9175.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.3756577968597,
+          "start_offset_seconds": 0.125091552734375,
+          "end_offset_seconds": 0.5007493495941162,
+          "output_tokens_s": 613.9345817361515,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.0119362,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.3413325804630153
+            },
+            {
+              "timestamp_unix": 1790011416.824621,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 27.0,
+              "kv_usage": 0.4573687182382834
+            },
+            {
+              "timestamp_unix": 1790011716.6221817,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 36.0,
+              "kv_usage": 0.4443817052512705
+            },
+            {
+              "timestamp_unix": 1790012016.423428,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 29.0,
+              "kv_usage": 0.4398644833427442
+            },
+            {
+              "timestamp_unix": 1790012316.2466826,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 27.0,
+              "kv_usage": 0.33596837944664026
+            },
+            {
+              "timestamp_unix": 1790012616.1496246,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 30.0,
+              "kv_usage": 0.4937888198757764
+            },
+            {
+              "timestamp_unix": 1790012915.9233048,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 28.0,
+              "kv_usage": 0.3709768492377188
+            },
+            {
+              "timestamp_unix": 1790013216.8215048,
+              "gpu_busy": 96.0,
+              "waiting": 0.0,
+              "running": 27.0,
+              "kv_usage": 0.46470920383963865
+            },
+            {
+              "timestamp_unix": 1790013516.6138492,
+              "gpu_busy": 90.5,
+              "waiting": 0.0,
+              "running": 32.0,
+              "kv_usage": 0.38650479954827777
+            },
+            {
+              "timestamp_unix": 1790013816.387594,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 26.0,
+              "kv_usage": 0.31479390175042354
+            }
+          ]
+        },
+        {
+          "replica": "r03",
+          "counter_delta": {
+            "output": 1691248.0,
+            "prompt": 235119871.0,
+            "cached": 201839616.0,
+            "local_compute": 33280255.0,
+            "ttft_sum": 6101.237188577652,
+            "ttft_count": 8031.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.285606622696,
+          "start_offset_seconds": 0.9652488231658936,
+          "end_offset_seconds": 0.2508554458618164,
+          "output_tokens_s": 626.5539281395506,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.8520935,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 38.0,
+              "kv_usage": 0.41332580463015245
+            },
+            {
+              "timestamp_unix": 1790011416.6392946,
+              "gpu_busy": 100.0,
+              "waiting": 3.0,
+              "running": 28.0,
+              "kv_usage": 0.34895539243365326
+            },
+            {
+              "timestamp_unix": 1790011716.4154766,
+              "gpu_busy": 95.75,
+              "waiting": 0.0,
+              "running": 29.0,
+              "kv_usage": 0.40372670807453415
+            },
+            {
+              "timestamp_unix": 1790012016.1978884,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 33.0,
+              "kv_usage": 0.46725014116318464
+            },
+            {
+              "timestamp_unix": 1790012316.0554383,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 43.0,
+              "kv_usage": 0.5999435347261435
+            },
+            {
+              "timestamp_unix": 1790012616.884168,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 40.0,
+              "kv_usage": 0.4737436476566911
+            },
+            {
+              "timestamp_unix": 1790012916.6421046,
+              "gpu_busy": 96.75,
+              "waiting": 0.0,
+              "running": 34.0,
+              "kv_usage": 0.4536984754376059
+            },
+            {
+              "timestamp_unix": 1790013216.55851,
+              "gpu_busy": 97.0,
+              "waiting": 0.0,
+              "running": 35.0,
+              "kv_usage": 0.4449463579898363
+            },
+            {
+              "timestamp_unix": 1790013516.376588,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 34.0,
+              "kv_usage": 0.39779785431959347
+            },
+            {
+              "timestamp_unix": 1790013816.1377,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 36.0,
+              "kv_usage": 0.49971767363071706
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "root": "runs/scaling/multinode/minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": {
+        "id": "minisweagent-routing-n4-round_robin",
+        "workload": "minisweagent",
+        "inference_replicas": 4,
+        "layout": "fixed_frontend",
+        "frontend_nodes": 1,
+        "physical_nodes": 5,
+        "routing": "round_robin",
+        "prefix_reuse": "normal",
+        "proxy": true,
+        "smoke": false,
+        "task_cc_per_replica": 32,
+        "warmup_seconds": 1800,
+        "duration_seconds": 5400,
+        "seed": 42,
+        "router_impl": "vllm-router",
+        "pbs": {
+          "queue": "prod",
+          "walltime": "03:00:00",
+          "drain_budget_seconds": 1800
+        }
+      },
+      "provisional": true,
+      "duration_seconds": 2700,
+      "start_unix": 1790011115.527821,
+      "end_unix": 1790013815.527821,
+      "output_tokens_s": 799.801816825104,
+      "prefix_reuse": 0.5863824360869903,
+      "uncached_prompt_per_output": 62.540831350651864,
+      "backend_ttft_mean_s": 15.346659568925853,
+      "prompt_tokens_per_first_token_request": 28921.648653437278,
+      "replica_output_cv": 0.03160159966879047,
+      "preemptions": 4.0,
+      "gpu_busy_sparse_sample_mean": 91.6375,
+      "waiting_sparse_sample_mean": 14.825,
+      "running_sparse_sample_mean": 15.775,
+      "kv_usage_sparse_sample_mean": 0.26416572557876905,
+      "counter_delta": {
+        "output": 2159113.0,
+        "prompt": 326467570.0,
+        "cached": 191434849.0,
+        "local_compute": 135032722.0,
+        "ttft_sum": 173233.09321403503,
+        "ttft_count": 11288.0,
+        "preemptions": 4.0
+      },
+      "frontend": [
+        {
+          "host": "x3106c0s19b0n0",
+          "samples": 2695,
+          "cpu_mean": 12.411114091069072,
+          "cpu_p95": 28.5,
+          "cpu_iowait_mean": 0.003692143537120405,
+          "cpu_count": 64,
+          "cpu_90pct_sample_fraction": 0.001484230055658627,
+          "memory_available_min_gib": 475.3400077819824,
+          "scratch_free_min_gib": 2341.8166160583496,
+          "max_sampling_gap_seconds": 1.0434715747833252
+        }
+      ],
+      "replicas": [
+        {
+          "replica": "r00",
+          "counter_delta": {
+            "output": 523823.0,
+            "prompt": 80739084.0,
+            "cached": 61527312.0,
+            "local_compute": 19211772.0,
+            "ttft_sum": 1177.8181536197662,
+            "ttft_count": 2824.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.6652131080627,
+          "start_offset_seconds": 0.6378402709960938,
+          "end_offset_seconds": 0.3030533790588379,
+          "output_tokens_s": 194.03257761614617,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.1656613,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 4.0,
+              "kv_usage": 0.03020892151326937
+            },
+            {
+              "timestamp_unix": 1790011415.9997525,
+              "gpu_busy": 95.5,
+              "waiting": 0.0,
+              "running": 4.0,
+              "kv_usage": 0.05731225296442688
+            },
+            {
+              "timestamp_unix": 1790011715.8348897,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.043760587238848125
+            },
+            {
+              "timestamp_unix": 1790012015.6422763,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 6.0,
+              "kv_usage": 0.13015245623941274
+            },
+            {
+              "timestamp_unix": 1790012316.4344869,
+              "gpu_busy": 93.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.051948051948051965
+            },
+            {
+              "timestamp_unix": 1790012616.3401823,
+              "gpu_busy": 92.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790012916.1873672,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 4.0,
+              "kv_usage": 0.07368718238283456
+            },
+            {
+              "timestamp_unix": 1790013216.183111,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 6.0,
+              "kv_usage": 0.1290231507622812
+            },
+            {
+              "timestamp_unix": 1790013516.0477967,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 5.0,
+              "kv_usage": 0.09203839638622247
+            },
+            {
+              "timestamp_unix": 1790013815.8308744,
+              "gpu_busy": 87.75,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.016092603049124743
+            }
+          ]
+        },
+        {
+          "replica": "r01",
+          "counter_delta": {
+            "output": 552495.0,
+            "prompt": 82218769.0,
+            "cached": 5565648.0,
+            "local_compute": 76653121.0,
+            "ttft_sum": 169669.9806087017,
+            "ttft_count": 2815.0,
+            "preemptions": 4.0
+          },
+          "sample_interval_seconds": 2699.3317980766296,
+          "start_offset_seconds": 0.72530198097229,
+          "end_offset_seconds": 0.05710005760192871,
+          "output_tokens_s": 204.67843204517223,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.253123,
+              "gpu_busy": 100.0,
+              "waiting": 57.0,
+              "running": 54.0,
+              "kv_usage": 0.8980801806888763
+            },
+            {
+              "timestamp_unix": 1790011416.041618,
+              "gpu_busy": 100.0,
+              "waiting": 55.0,
+              "running": 59.0,
+              "kv_usage": 0.9678147939017504
+            },
+            {
+              "timestamp_unix": 1790011715.8367765,
+              "gpu_busy": 100.0,
+              "waiting": 64.0,
+              "running": 48.0,
+              "kv_usage": 0.8421795595708639
+            },
+            {
+              "timestamp_unix": 1790012015.6246448,
+              "gpu_busy": 100.0,
+              "waiting": 51.0,
+              "running": 60.0,
+              "kv_usage": 0.8658949745906268
+            },
+            {
+              "timestamp_unix": 1790012316.4308782,
+              "gpu_busy": 100.0,
+              "waiting": 62.0,
+              "running": 57.0,
+              "kv_usage": 0.9751552795031055
+            },
+            {
+              "timestamp_unix": 1790012616.2364976,
+              "gpu_busy": 100.0,
+              "waiting": 58.0,
+              "running": 62.0,
+              "kv_usage": 0.9751552795031055
+            },
+            {
+              "timestamp_unix": 1790012916.030434,
+              "gpu_busy": 100.0,
+              "waiting": 63.0,
+              "running": 55.0,
+              "kv_usage": 0.922077922077922
+            },
+            {
+              "timestamp_unix": 1790013215.9386818,
+              "gpu_busy": 100.0,
+              "waiting": 58.0,
+              "running": 55.0,
+              "kv_usage": 0.9570863918690006
+            },
+            {
+              "timestamp_unix": 1790013515.7324634,
+              "gpu_busy": 100.0,
+              "waiting": 60.0,
+              "running": 55.0,
+              "kv_usage": 0.9700734048560136
+            },
+            {
+              "timestamp_unix": 1790013815.5849211,
+              "gpu_busy": 99.75,
+              "waiting": 65.0,
+              "running": 51.0,
+              "kv_usage": 0.8483907396950875
+            }
+          ]
+        },
+        {
+          "replica": "r02",
+          "counter_delta": {
+            "output": 522141.0,
+            "prompt": 81180187.0,
+            "cached": 62223217.0,
+            "local_compute": 18956971.0,
+            "ttft_sum": 1166.9787650108337,
+            "ttft_count": 2824.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.5587887763977,
+          "start_offset_seconds": 0.650181770324707,
+          "end_offset_seconds": 0.2089705467224121,
+          "output_tokens_s": 193.41716215658548,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.1780028,
+              "gpu_busy": 97.25,
+              "waiting": 0.0,
+              "running": 5.0,
+              "kv_usage": 0.059288537549407105
+            },
+            {
+              "timestamp_unix": 1790011415.9844916,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 4.0,
+              "kv_usage": 0.0426312817617166
+            },
+            {
+              "timestamp_unix": 1790011715.813371,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.036420101637492985
+            },
+            {
+              "timestamp_unix": 1790012015.6336913,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.06324110671936756
+            },
+            {
+              "timestamp_unix": 1790012316.495414,
+              "gpu_busy": 45.5,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790012616.330836,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.05646527385657818
+            },
+            {
+              "timestamp_unix": 1790012916.136589,
+              "gpu_busy": 0.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790013216.0404186,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.021456804065499768
+            },
+            {
+              "timestamp_unix": 1790013515.8792534,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.037267080745341574
+            },
+            {
+              "timestamp_unix": 1790013815.7367916,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.04234895539243366
+            }
+          ]
+        },
+        {
+          "replica": "r03",
+          "counter_delta": {
+            "output": 560654.0,
+            "prompt": 82329530.0,
+            "cached": 62118672.0,
+            "local_compute": 20210858.0,
+            "ttft_sum": 1218.3156867027283,
+            "ttft_count": 2825.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.6877720355988,
+          "start_offset_seconds": 0.6184384822845459,
+          "end_offset_seconds": 0.3062105178833008,
+          "output_tokens_s": 207.67364500720015,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011116.1462595,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.06973461321287411
+            },
+            {
+              "timestamp_unix": 1790011415.9536033,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790011715.7868078,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.053642010163749254
+            },
+            {
+              "timestamp_unix": 1790012015.5933444,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.02879728966685491
+            },
+            {
+              "timestamp_unix": 1790012316.4250875,
+              "gpu_busy": 0.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790012616.4115493,
+              "gpu_busy": 71.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790012916.2232997,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.07368718238283456
+            },
+            {
+              "timestamp_unix": 1790013216.1294813,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.028232636928289145
+            },
+            {
+              "timestamp_unix": 1790013515.9711096,
+              "gpu_busy": 93.75,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.05477131564088089
+            },
+            {
+              "timestamp_unix": 1790013815.8340316,
+              "gpu_busy": 96.75,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.05251270468661773
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "root": "runs/scaling/multinode/openclaw-fixed_frontend-n8-7642787.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": {
+        "id": "openclaw-fixed_frontend-n8",
+        "workload": "openclaw",
+        "inference_replicas": 8,
+        "layout": "fixed_frontend",
+        "frontend_nodes": 1,
+        "physical_nodes": 9,
+        "routing": "sticky",
+        "prefix_reuse": "normal",
+        "proxy": false,
+        "smoke": false,
+        "task_cc_per_replica": 16,
+        "warmup_seconds": 600,
+        "duration_seconds": 3600,
+        "seed": 42,
+        "pbs": {
+          "queue": "prod",
+          "walltime": "03:00:00",
+          "drain_budget_seconds": 1800
+        }
+      },
+      "provisional": true,
+      "duration_seconds": 2700,
+      "start_unix": 1790011124.3283682,
+      "end_unix": 1790013824.3283682,
+      "output_tokens_s": 3444.4061902844687,
+      "prefix_reuse": 0.9397861185228855,
+      "uncached_prompt_per_output": 10.181661978632025,
+      "backend_ttft_mean_s": 0.48355512062232653,
+      "prompt_tokens_per_first_token_request": 48035.483471831845,
+      "replica_output_cv": 0.014765134821831304,
+      "preemptions": 0.0,
+      "gpu_busy_sparse_sample_mean": 99.065625,
+      "waiting_sparse_sample_mean": 0.0375,
+      "running_sparse_sample_mean": 12.425,
+      "kv_usage_sparse_sample_mean": 0.3124294184076793,
+      "counter_delta": {
+        "output": 9298495.0,
+        "prompt": 1572297445.0,
+        "cached": 1477623313.0,
+        "local_compute": 94674133.0,
+        "ttft_sum": 15827.726208209991,
+        "ttft_count": 32732.0,
+        "preemptions": 0.0
+      },
+      "frontend": [
+        {
+          "host": "x3103c0s19b0n0",
+          "samples": 2695,
+          "cpu_mean": 34.87846644826215,
+          "cpu_p95": 49.89004084197298,
+          "cpu_iowait_mean": 0.0003668662219141855,
+          "cpu_count": 64,
+          "cpu_90pct_sample_fraction": 0.0,
+          "memory_available_min_gib": 412.2986259460449,
+          "scratch_free_min_gib": 2783.649055480957,
+          "max_sampling_gap_seconds": 1.005502700805664
+        }
+      ],
+      "replicas": [
+        {
+          "replica": "r00",
+          "counter_delta": {
+            "output": 1160123.0,
+            "prompt": 194762073.0,
+            "cached": 182989488.0,
+            "local_compute": 11772585.0,
+            "ttft_sum": 1948.617597103119,
+            "ttft_count": 3931.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.045243024826,
+          "start_offset_seconds": 0.48076939582824707,
+          "end_offset_seconds": 0.5260124206542969,
+          "output_tokens_s": 429.6679853780261,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011124.8091376,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.20581592320722752
+            },
+            {
+              "timestamp_unix": 1790011424.5761068,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.25409373235460186
+            },
+            {
+              "timestamp_unix": 1790011724.3873804,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.3032185206098249
+            },
+            {
+              "timestamp_unix": 1790012025.1777792,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.3266516092603049
+            },
+            {
+              "timestamp_unix": 1790012325.3245049,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.4520045172219085
+            },
+            {
+              "timestamp_unix": 1790012625.2562857,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.3274985883681536
+            },
+            {
+              "timestamp_unix": 1790012925.0430589,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 16.0,
+              "kv_usage": 0.42970073404856013
+            },
+            {
+              "timestamp_unix": 1790013224.8688948,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.2924901185770751
+            },
+            {
+              "timestamp_unix": 1790013524.8738534,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.24082439299830605
+            },
+            {
+              "timestamp_unix": 1790013824.8543806,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.28176171654432525
+            }
+          ]
+        },
+        {
+          "replica": "r01",
+          "counter_delta": {
+            "output": 1134002.0,
+            "prompt": 194847625.0,
+            "cached": 182917680.0,
+            "local_compute": 11929945.0,
+            "ttft_sum": 2009.7708926200867,
+            "ttft_count": 4144.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.3650221824646,
+          "start_offset_seconds": 0.7213749885559082,
+          "end_offset_seconds": 0.08639717102050781,
+          "output_tokens_s": 420.09953847707027,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.0497432,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.2684923771880293
+            },
+            {
+              "timestamp_unix": 1790011424.8658643,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.44127611518915866
+            },
+            {
+              "timestamp_unix": 1790011724.7042537,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.318746470920384
+            },
+            {
+              "timestamp_unix": 1790012024.5305583,
+              "gpu_busy": 97.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.26595143986448333
+            },
+            {
+              "timestamp_unix": 1790012325.3244405,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.2919254658385093
+            },
+            {
+              "timestamp_unix": 1790012625.2437592,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.20609824957651046
+            },
+            {
+              "timestamp_unix": 1790012925.0661771,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.24195369847543757
+            },
+            {
+              "timestamp_unix": 1790013224.8645537,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.17560700169395826
+            },
+            {
+              "timestamp_unix": 1790013524.6353762,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.334274421230943
+            },
+            {
+              "timestamp_unix": 1790013824.4147654,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.4153020892151327
+            }
+          ]
+        },
+        {
+          "replica": "r02",
+          "counter_delta": {
+            "output": 1183272.0,
+            "prompt": 202359332.0,
+            "cached": 190198272.0,
+            "local_compute": 12161060.0,
+            "ttft_sum": 1995.7051241397858,
+            "ttft_count": 4233.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.6829142570496,
+          "start_offset_seconds": 0.8012559413909912,
+          "end_offset_seconds": 0.48417019844055176,
+          "output_tokens_s": 438.3003625170682,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.1296241,
+              "gpu_busy": 97.75,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.20666290231507622
+            },
+            {
+              "timestamp_unix": 1790011424.9834588,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.4336533032185206
+            },
+            {
+              "timestamp_unix": 1790011724.8452163,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.3195934500282326
+            },
+            {
+              "timestamp_unix": 1790012024.6818123,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.36363636363636365
+            },
+            {
+              "timestamp_unix": 1790012324.5626776,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.2238848108413326
+            },
+            {
+              "timestamp_unix": 1790012624.5256143,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.2831733483907397
+            },
+            {
+              "timestamp_unix": 1790012925.3307304,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.42038396386222476
+            },
+            {
+              "timestamp_unix": 1790013225.1320374,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.1863354037267081
+            },
+            {
+              "timestamp_unix": 1790013524.9598162,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.4232072275550537
+            },
+            {
+              "timestamp_unix": 1790013824.8125384,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.2806324110671937
+            }
+          ]
+        },
+        {
+          "replica": "r03",
+          "counter_delta": {
+            "output": 1189261.0,
+            "prompt": 200028694.0,
+            "cached": 188277408.0,
+            "local_compute": 11751286.0,
+            "ttft_sum": 1962.087942123413,
+            "ttft_count": 4131.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.4700536727905,
+          "start_offset_seconds": 0.760202169418335,
+          "end_offset_seconds": 0.2302558422088623,
+          "output_tokens_s": 440.55350730116055,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.0885704,
+              "gpu_busy": 91.5,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.16233766233766234
+            },
+            {
+              "timestamp_unix": 1790011424.9132895,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.295313382269904
+            },
+            {
+              "timestamp_unix": 1790011724.7288358,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.25465838509316774
+            },
+            {
+              "timestamp_unix": 1790012024.539655,
+              "gpu_busy": 100.0,
+              "waiting": 2.0,
+              "running": 13.0,
+              "kv_usage": 0.27131564088085824
+            },
+            {
+              "timestamp_unix": 1790012324.3811624,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.22444946357989837
+            },
+            {
+              "timestamp_unix": 1790012624.3635128,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.3927159796725014
+            },
+            {
+              "timestamp_unix": 1790012925.1593368,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.2752682100508187
+            },
+            {
+              "timestamp_unix": 1790013224.9523156,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.36645962732919257
+            },
+            {
+              "timestamp_unix": 1790013524.754372,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.25494071146245056
+            },
+            {
+              "timestamp_unix": 1790013824.558624,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.40626764539808013
+            }
+          ]
+        },
+        {
+          "replica": "r04",
+          "counter_delta": {
+            "output": 1156529.0,
+            "prompt": 198157839.0,
+            "cached": 186577249.0,
+            "local_compute": 11580591.0,
+            "ttft_sum": 1987.7565822601318,
+            "ttft_count": 4056.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.7016456127167,
+          "start_offset_seconds": 0.8144104480743408,
+          "end_offset_seconds": 0.5160560607910156,
+          "output_tokens_s": 428.3914120212041,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.1427786,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 7.0,
+              "kv_usage": 0.21710897797854323
+            },
+            {
+              "timestamp_unix": 1790011424.965969,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.2874082439299831
+            },
+            {
+              "timestamp_unix": 1790011724.850729,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.13749294184076788
+            },
+            {
+              "timestamp_unix": 1790012024.6935277,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.35827216261998873
+            },
+            {
+              "timestamp_unix": 1790012324.5362725,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.3294748729531338
+            },
+            {
+              "timestamp_unix": 1790012624.5115666,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.20242800677583284
+            },
+            {
+              "timestamp_unix": 1790012924.3582816,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.3856578204404292
+            },
+            {
+              "timestamp_unix": 1790013225.1809072,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.39328063241106714
+            },
+            {
+              "timestamp_unix": 1790013525.0463998,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.4023150762281197
+            },
+            {
+              "timestamp_unix": 1790013824.8444242,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.38537549407114624
+            }
+          ]
+        },
+        {
+          "replica": "r05",
+          "counter_delta": {
+            "output": 1153983.0,
+            "prompt": 199002687.0,
+            "cached": 187312752.0,
+            "local_compute": 11689935.0,
+            "ttft_sum": 1993.2799315452576,
+            "ttft_count": 4085.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.664381504059,
+          "start_offset_seconds": 0.8080604076385498,
+          "end_offset_seconds": 0.4724419116973877,
+          "output_tokens_s": 427.45424501881365,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.1364286,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.27639751552795033
+            },
+            {
+              "timestamp_unix": 1790011424.9678144,
+              "gpu_busy": 98.75,
+              "waiting": 1.0,
+              "running": 12.0,
+              "kv_usage": 0.3334274421230943
+            },
+            {
+              "timestamp_unix": 1790011724.7871418,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 8.0,
+              "kv_usage": 0.12507058159232076
+            },
+            {
+              "timestamp_unix": 1790012024.5862453,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.40485601355166567
+            },
+            {
+              "timestamp_unix": 1790012324.7073743,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.1524562394127611
+            },
+            {
+              "timestamp_unix": 1790012624.6740136,
+              "gpu_busy": 97.25,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.4155844155844156
+            },
+            {
+              "timestamp_unix": 1790012924.4671912,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.31846414455110106
+            },
+            {
+              "timestamp_unix": 1790013225.2437289,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.47092038396386227
+            },
+            {
+              "timestamp_unix": 1790013525.0021148,
+              "gpu_busy": 97.25,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.3754940711462451
+            },
+            {
+              "timestamp_unix": 1790013824.80081,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.31733483907396953
+            }
+          ]
+        },
+        {
+          "replica": "r06",
+          "counter_delta": {
+            "output": 1172511.0,
+            "prompt": 188911479.0,
+            "cached": 177321408.0,
+            "local_compute": 11590071.0,
+            "ttft_sum": 1941.6992647647858,
+            "ttft_count": 4064.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.5023880004883,
+          "start_offset_seconds": 0.7952570915222168,
+          "end_offset_seconds": 0.29764509201049805,
+          "output_tokens_s": 434.3433831405034,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.1236253,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.3500846979107849
+            },
+            {
+              "timestamp_unix": 1790011424.943024,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.3746470920383964
+            },
+            {
+              "timestamp_unix": 1790011724.7631414,
+              "gpu_busy": 97.75,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.40909090909090906
+            },
+            {
+              "timestamp_unix": 1790012024.5903397,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.44551101072840205
+            },
+            {
+              "timestamp_unix": 1790012324.3999617,
+              "gpu_busy": 97.25,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.36533032185206094
+            },
+            {
+              "timestamp_unix": 1790012624.3493073,
+              "gpu_busy": 94.75,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.2727272727272727
+            },
+            {
+              "timestamp_unix": 1790012925.1598227,
+              "gpu_busy": 98.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.359966120835686
+            },
+            {
+              "timestamp_unix": 1790013224.9362803,
+              "gpu_busy": 97.75,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.2837380011293055
+            },
+            {
+              "timestamp_unix": 1790013524.8056548,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.3387916431394692
+            },
+            {
+              "timestamp_unix": 1790013824.6260133,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.26623376623376627
+            }
+          ]
+        },
+        {
+          "replica": "r07",
+          "counter_delta": {
+            "output": 1148814.0,
+            "prompt": 194227716.0,
+            "cached": 182029056.0,
+            "local_compute": 12198660.0,
+            "ttft_sum": 1988.8088736534119,
+            "ttft_count": 4088.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.30792927742,
+          "start_offset_seconds": 0.7150719165802002,
+          "end_offset_seconds": 0.02300119400024414,
+          "output_tokens_s": 425.5957564306222,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011125.04344,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.20412196499153024
+            },
+            {
+              "timestamp_unix": 1790011424.8551562,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.35770750988142297
+            },
+            {
+              "timestamp_unix": 1790011724.669708,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.2501411631846414
+            },
+            {
+              "timestamp_unix": 1790012024.4756873,
+              "gpu_busy": 97.5,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.2837380011293055
+            },
+            {
+              "timestamp_unix": 1790012325.279337,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.3867871259175607
+            },
+            {
+              "timestamp_unix": 1790012625.0835667,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.26002258610954265
+            },
+            {
+              "timestamp_unix": 1790012924.897799,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.3215697346132129
+            },
+            {
+              "timestamp_unix": 1790013224.7013626,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.414455110107284
+            },
+            {
+              "timestamp_unix": 1790013524.5230734,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.3232636928289102
+            },
+            {
+              "timestamp_unix": 1790013824.3513694,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.3190287972896668
+            }
+          ]
+        }
+      ],
+      "frontend_cpu_60s_means": [
+        44.58612909317675,
+        38.579123705261765,
+        44.86247675778373,
+        36.425497918701296,
+        29.125589696705482,
+        36.55350016169832,
+        42.14978628160053,
+        38.62311979767878,
+        32.054992825076674,
+        38.55733326099898,
+        33.083466250951886,
+        31.41183137776474,
+        31.870204519232864,
+        31.00556108963399,
+        27.400523520605578,
+        31.00481022991329,
+        25.909976086944173,
+        27.66846351669707,
+        36.496680354171914,
+        35.902482971714655,
+        36.36263251403951,
+        33.11583810428229,
+        32.85539445458892,
+        35.16303938794895,
+        42.27665446516278,
+        35.027971320023234,
+        24.808361117768058,
+        37.49419408287973,
+        29.601000328552466,
+        31.29690140687358,
+        28.929415416333626,
+        36.088752285250756,
+        31.24103056882421,
+        30.90715098562817,
+        36.197353778111896,
+        36.80917069719623,
+        35.977785258536045,
+        30.274173795487737,
+        40.78560637594166,
+        38.64849878028799,
+        38.53011676938348,
+        37.1085650150527,
+        45.69171338080805,
+        37.5917161416015,
+        33.20854691055311
+      ]
+    },
+    {
+      "root": "runs/scaling/multinode/openclaw-routing-n4-cache_aware-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": {
+        "id": "openclaw-routing-n4-cache_aware",
+        "workload": "openclaw",
+        "inference_replicas": 4,
+        "layout": "fixed_frontend",
+        "frontend_nodes": 1,
+        "physical_nodes": 5,
+        "routing": "cache_aware",
+        "prefix_reuse": "normal",
+        "proxy": true,
+        "smoke": false,
+        "task_cc_per_replica": 16,
+        "warmup_seconds": 600,
+        "duration_seconds": 3600,
+        "seed": 42,
+        "router_impl": "vllm-router",
+        "pbs": {
+          "queue": "prod",
+          "walltime": "03:00:00",
+          "drain_budget_seconds": 1800
+        }
+      },
+      "provisional": true,
+      "duration_seconds": 2700,
+      "start_unix": 1790011134.3432715,
+      "end_unix": 1790013834.3432715,
+      "output_tokens_s": 1619.3130729478848,
+      "prefix_reuse": 0.9063137849245672,
+      "uncached_prompt_per_output": 15.811742353122249,
+      "backend_ttft_mean_s": 0.642047428724836,
+      "prompt_tokens_per_first_token_request": 48231.476374093196,
+      "replica_output_cv": 0.10801739737542054,
+      "preemptions": 0.0,
+      "gpu_busy_sparse_sample_mean": 98.93125,
+      "waiting_sparse_sample_mean": 0.025,
+      "running_sparse_sample_mean": 13.4,
+      "kv_usage_sparse_sample_mean": 0.25702286843591193,
+      "counter_delta": {
+        "output": 4372667.0,
+        "prompt": 737989820.0,
+        "cached": 668850347.0,
+        "local_compute": 69139484.0,
+        "ttft_sum": 9823.967706918716,
+        "ttft_count": 15301.0,
+        "preemptions": 0.0
+      },
+      "frontend": [
+        {
+          "host": "x3105c0s31b1n0",
+          "samples": 2694,
+          "cpu_mean": 13.479946729120531,
+          "cpu_p95": 22.55392310096905,
+          "cpu_iowait_mean": 0.0002680763354831326,
+          "cpu_count": 64,
+          "cpu_90pct_sample_fraction": 0.0,
+          "memory_available_min_gib": 453.5072021484375,
+          "scratch_free_min_gib": 2783.6548500061035,
+          "max_sampling_gap_seconds": 1.105853796005249
+        }
+      ],
+      "replicas": [
+        {
+          "replica": "r00",
+          "counter_delta": {
+            "output": 1145208.0,
+            "prompt": 211444990.0,
+            "cached": 194301366.0,
+            "local_compute": 17143630.0,
+            "ttft_sum": 2423.799079179764,
+            "ttft_count": 3815.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.119351863861,
+          "start_offset_seconds": 0.07878684997558594,
+          "end_offset_seconds": 0.19813871383666992,
+          "output_tokens_s": 424.1323625970371,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011134.4220583,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 13.0,
+              "kv_usage": 0.15669113495200448
+            },
+            {
+              "timestamp_unix": 1790011435.2224987,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.1950875211744777
+            },
+            {
+              "timestamp_unix": 1790011734.9703956,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.27300959909655564
+            },
+            {
+              "timestamp_unix": 1790012034.757158,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.2795031055900621
+            },
+            {
+              "timestamp_unix": 1790012334.54662,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.25748164878599666
+            },
+            {
+              "timestamp_unix": 1790012635.3368835,
+              "gpu_busy": 88.75,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.13015245623941274
+            },
+            {
+              "timestamp_unix": 1790012935.1441026,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.35601355166572557
+            },
+            {
+              "timestamp_unix": 1790013234.943298,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.3695652173913043
+            },
+            {
+              "timestamp_unix": 1790013534.7484226,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.2995482778091474
+            },
+            {
+              "timestamp_unix": 1790013834.5414102,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.3020892151326934
+            }
+          ]
+        },
+        {
+          "replica": "r01",
+          "counter_delta": {
+            "output": 898864.0,
+            "prompt": 236014226.0,
+            "cached": 219200260.0,
+            "local_compute": 16813970.0,
+            "ttft_sum": 2218.339706659317,
+            "ttft_count": 3889.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.33358502388,
+          "start_offset_seconds": 0.09862399101257324,
+          "end_offset_seconds": 0.4322090148925781,
+          "output_tokens_s": 332.8714663199847,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011134.4418955,
+              "gpu_busy": 97.25,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.2814793901750423
+            },
+            {
+              "timestamp_unix": 1790011435.2478561,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.3020892151326934
+            },
+            {
+              "timestamp_unix": 1790011735.109583,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 8.0,
+              "kv_usage": 0.2422360248447205
+            },
+            {
+              "timestamp_unix": 1790012034.9200187,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 12.0,
+              "kv_usage": 0.2134387351778656
+            },
+            {
+              "timestamp_unix": 1790012334.701323,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 5.0,
+              "kv_usage": 0.1428571428571429
+            },
+            {
+              "timestamp_unix": 1790012634.485765,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 6.0,
+              "kv_usage": 0.22529644268774707
+            },
+            {
+              "timestamp_unix": 1790012934.3656516,
+              "gpu_busy": 96.0,
+              "waiting": 0.0,
+              "running": 4.0,
+              "kv_usage": 0.06211180124223603
+            },
+            {
+              "timestamp_unix": 1790013235.1765435,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.19988706945228685
+            },
+            {
+              "timestamp_unix": 1790013534.980632,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 7.0,
+              "kv_usage": 0.14793901750423488
+            },
+            {
+              "timestamp_unix": 1790013834.7754805,
+              "gpu_busy": 96.75,
+              "waiting": 0.0,
+              "running": 17.0,
+              "kv_usage": 0.2552230378317335
+            }
+          ]
+        },
+        {
+          "replica": "r02",
+          "counter_delta": {
+            "output": 1113300.0,
+            "prompt": 167185520.0,
+            "cached": 149474161.0,
+            "local_compute": 17711360.0,
+            "ttft_sum": 2160.167694091797,
+            "ttft_count": 3297.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.3179988861084,
+          "start_offset_seconds": 0.23022937774658203,
+          "end_offset_seconds": 0.5482282638549805,
+          "output_tokens_s": 412.2847755187502,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011134.5735009,
+              "gpu_busy": 97.5,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.2092038396386222
+            },
+            {
+              "timestamp_unix": 1790011434.48986,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.23066064370412198
+            },
+            {
+              "timestamp_unix": 1790011735.305758,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.34472049689441
+            },
+            {
+              "timestamp_unix": 1790012035.1075296,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 11.0,
+              "kv_usage": 0.22981366459627328
+            },
+            {
+              "timestamp_unix": 1790012334.8628151,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.3066064370412197
+            },
+            {
+              "timestamp_unix": 1790012634.6660318,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 16.0,
+              "kv_usage": 0.2961603613777527
+            },
+            {
+              "timestamp_unix": 1790012934.5025876,
+              "gpu_busy": 100.0,
+              "waiting": 1.0,
+              "running": 12.0,
+              "kv_usage": 0.3743647656691135
+            },
+            {
+              "timestamp_unix": 1790013235.3112578,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 9.0,
+              "kv_usage": 0.23969508752117452
+            },
+            {
+              "timestamp_unix": 1790013535.1026917,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 14.0,
+              "kv_usage": 0.3492377188029362
+            },
+            {
+              "timestamp_unix": 1790013834.8914998,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 10.0,
+              "kv_usage": 0.22840203274985882
+            }
+          ]
+        },
+        {
+          "replica": "r03",
+          "counter_delta": {
+            "output": 1215295.0,
+            "prompt": 123345084.0,
+            "cached": 105874560.0,
+            "local_compute": 17470524.0,
+            "ttft_sum": 3021.6612269878387,
+            "ttft_count": 4300.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2700.5087168216705,
+          "start_offset_seconds": 0.2799215316772461,
+          "end_offset_seconds": 0.7886383533477783,
+          "output_tokens_s": 450.0244685121128,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011134.623193,
+              "gpu_busy": 93.75,
+              "waiting": 0.0,
+              "running": 15.0,
+              "kv_usage": 0.18859401468097126
+            },
+            {
+              "timestamp_unix": 1790011434.4299886,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.28091473743647655
+            },
+            {
+              "timestamp_unix": 1790011735.2905877,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 24.0,
+              "kv_usage": 0.34020327498588365
+            },
+            {
+              "timestamp_unix": 1790012035.1036098,
+              "gpu_busy": 98.25,
+              "waiting": 0.0,
+              "running": 21.0,
+              "kv_usage": 0.25748164878599666
+            },
+            {
+              "timestamp_unix": 1790012334.9149828,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.2916431394692264
+            },
+            {
+              "timestamp_unix": 1790012634.873846,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.3012422360248447
+            },
+            {
+              "timestamp_unix": 1790012934.7013302,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.2571993224167137
+            },
+            {
+              "timestamp_unix": 1790013234.5120082,
+              "gpu_busy": 98.75,
+              "waiting": 0.0,
+              "running": 22.0,
+              "kv_usage": 0.4565217391304348
+            },
+            {
+              "timestamp_unix": 1790013535.3268037,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 20.0,
+              "kv_usage": 0.13212874082439297
+            },
+            {
+              "timestamp_unix": 1790013835.1319098,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 18.0,
+              "kv_usage": 0.2744212309429701
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "root": "runs/scaling/multinode/openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "point": {
+        "id": "openclaw-routing-n4-round_robin",
+        "workload": "openclaw",
+        "inference_replicas": 4,
+        "layout": "fixed_frontend",
+        "frontend_nodes": 1,
+        "physical_nodes": 5,
+        "routing": "round_robin",
+        "prefix_reuse": "normal",
+        "proxy": true,
+        "smoke": false,
+        "task_cc_per_replica": 16,
+        "warmup_seconds": 600,
+        "duration_seconds": 3600,
+        "seed": 42,
+        "router_impl": "vllm-router",
+        "pbs": {
+          "queue": "prod",
+          "walltime": "03:00:00",
+          "drain_budget_seconds": 1800
+        }
+      },
+      "provisional": true,
+      "duration_seconds": 2700,
+      "start_unix": 1790011134.784058,
+      "end_unix": 1790013834.784058,
+      "output_tokens_s": 637.9719195083513,
+      "prefix_reuse": 0.6313164801538724,
+      "uncached_prompt_per_output": 59.145348624550984,
+      "backend_ttft_mean_s": 6.365477356294923,
+      "prompt_tokens_per_first_token_request": 45746.688576158944,
+      "replica_output_cv": 0.06825692871571809,
+      "preemptions": 7.0,
+      "gpu_busy_sparse_sample_mean": 93.98125,
+      "waiting_sparse_sample_mean": 3.0,
+      "running_sparse_sample_mean": 11.875,
+      "kv_usage_sparse_sample_mean": 0.2699604743083004,
+      "counter_delta": {
+        "output": 1722383.0,
+        "prompt": 276309999.0,
+        "cached": 174439056.0,
+        "local_compute": 101870943.0,
+        "ttft_sum": 38447.48323202133,
+        "ttft_count": 6040.0,
+        "preemptions": 7.0
+      },
+      "frontend": [
+        {
+          "host": "x3105c0s1b0n0",
+          "samples": 2694,
+          "cpu_mean": 5.291308640634447,
+          "cpu_p95": 10.646921278254093,
+          "cpu_iowait_mean": 7.535838810157856e-05,
+          "cpu_count": 64,
+          "cpu_90pct_sample_fraction": 0.0,
+          "memory_available_min_gib": 463.37599182128906,
+          "scratch_free_min_gib": 2783.657569885254,
+          "max_sampling_gap_seconds": 1.0049924850463867
+        }
+      ],
+      "replicas": [
+        {
+          "replica": "r00",
+          "counter_delta": {
+            "output": 388722.0,
+            "prompt": 72400821.0,
+            "cached": 58078944.0,
+            "local_compute": 14321877.0,
+            "ttft_sum": 934.821445941925,
+            "ttft_count": 1510.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.4253602027893,
+          "start_offset_seconds": 0.714331865310669,
+          "end_offset_seconds": 0.13969206809997559,
+          "output_tokens_s": 144.00175894131704,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011135.49839,
+              "gpu_busy": 96.5,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.01891586674195367
+            },
+            {
+              "timestamp_unix": 1790011435.3439531,
+              "gpu_busy": 87.5,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.00734048560135514
+            },
+            {
+              "timestamp_unix": 1790011735.1669776,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.050254093732354566
+            },
+            {
+              "timestamp_unix": 1790012034.9402392,
+              "gpu_busy": 96.75,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.05081874647092033
+            },
+            {
+              "timestamp_unix": 1790012335.7684937,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.04037267080745344
+            },
+            {
+              "timestamp_unix": 1790012635.6500452,
+              "gpu_busy": 0.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790012935.4488797,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.12027103331451161
+            },
+            {
+              "timestamp_unix": 1790013235.2984483,
+              "gpu_busy": 91.5,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.005081874647092088
+            },
+            {
+              "timestamp_unix": 1790013535.1053748,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.06041784302653863
+            },
+            {
+              "timestamp_unix": 1790013834.9237502,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.1541501976284585
+            }
+          ]
+        },
+        {
+          "replica": "r01",
+          "counter_delta": {
+            "output": 451682.0,
+            "prompt": 67340013.0,
+            "cached": 52360176.0,
+            "local_compute": 14979837.0,
+            "ttft_sum": 1004.0487308502197,
+            "ttft_count": 1513.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.644603729248,
+          "start_offset_seconds": 0.5831489562988281,
+          "end_offset_seconds": 0.227752685546875,
+          "output_tokens_s": 167.31165256939872,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011135.367207,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 6.0,
+              "kv_usage": 0.2535290796160361
+            },
+            {
+              "timestamp_unix": 1790011435.2031972,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.02032749858836813
+            },
+            {
+              "timestamp_unix": 1790011735.0124328,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 8.0,
+              "kv_usage": 0.22586109542631283
+            },
+            {
+              "timestamp_unix": 1790012034.8291583,
+              "gpu_busy": 0.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790012335.7102973,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.00903444381705254
+            },
+            {
+              "timestamp_unix": 1790012635.6315448,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.005364201016374914
+            },
+            {
+              "timestamp_unix": 1790012935.4750338,
+              "gpu_busy": 98.5,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.07594579333709772
+            },
+            {
+              "timestamp_unix": 1790013235.3535385,
+              "gpu_busy": 99.25,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.028232636928289145
+            },
+            {
+              "timestamp_unix": 1790013535.1913323,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.03839638622247321
+            },
+            {
+              "timestamp_unix": 1790013835.0118108,
+              "gpu_busy": 95.25,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.023433088650479994
+            }
+          ]
+        },
+        {
+          "replica": "r02",
+          "counter_delta": {
+            "output": 418048.0,
+            "prompt": 70225985.0,
+            "cached": 55503360.0,
+            "local_compute": 14722625.0,
+            "ttft_sum": 983.425498008728,
+            "ttft_count": 1511.0,
+            "preemptions": 0.0
+          },
+          "sample_interval_seconds": 2699.5548305511475,
+          "start_offset_seconds": 0.5816845893859863,
+          "end_offset_seconds": 0.13651514053344727,
+          "output_tokens_s": 154.85812522453946,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011135.3657427,
+              "gpu_busy": 99.0,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.0505364201016375
+            },
+            {
+              "timestamp_unix": 1790011435.178748,
+              "gpu_busy": 100.0,
+              "waiting": 3.0,
+              "running": 3.0,
+              "kv_usage": 0.17306606437041216
+            },
+            {
+              "timestamp_unix": 1790011735.0053682,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.01552795031055898
+            },
+            {
+              "timestamp_unix": 1790012034.8123653,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 4.0,
+              "kv_usage": 0.12140033879164314
+            },
+            {
+              "timestamp_unix": 1790012335.6698546,
+              "gpu_busy": 99.5,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.044607566346696825
+            },
+            {
+              "timestamp_unix": 1790012635.499956,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 3.0,
+              "kv_usage": 0.19536984754376063
+            },
+            {
+              "timestamp_unix": 1790012935.3338916,
+              "gpu_busy": 99.75,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790013235.2144482,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 1.0,
+              "kv_usage": 0.04150197628458496
+            },
+            {
+              "timestamp_unix": 1790013535.1177328,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 0.0,
+              "kv_usage": 0.0
+            },
+            {
+              "timestamp_unix": 1790013834.9205732,
+              "gpu_busy": 100.0,
+              "waiting": 0.0,
+              "running": 2.0,
+              "kv_usage": 0.03359683794466406
+            }
+          ]
+        },
+        {
+          "replica": "r03",
+          "counter_delta": {
+            "output": 463931.0,
+            "prompt": 66343180.0,
+            "cached": 8496576.0,
+            "local_compute": 57846604.0,
+            "ttft_sum": 35525.18755722046,
+            "ttft_count": 1506.0,
+            "preemptions": 7.0
+          },
+          "sample_interval_seconds": 2700.4072546958923,
+          "start_offset_seconds": 0.4581778049468994,
+          "end_offset_seconds": 0.8654325008392334,
+          "output_tokens_s": 171.80038277309612,
+          "gauges_every_300s": [
+            {
+              "timestamp_unix": 1790011135.242236,
+              "gpu_busy": 100.0,
+              "waiting": 6.0,
+              "running": 45.0,
+              "kv_usage": 0.9407114624505929
+            },
+            {
+              "timestamp_unix": 1790011435.052001,
+              "gpu_busy": 100.0,
+              "waiting": 11.0,
+              "running": 43.0,
+              "kv_usage": 0.9175607001693958
+            },
+            {
+              "timestamp_unix": 1790011734.8463538,
+              "gpu_busy": 100.0,
+              "waiting": 6.0,
+              "running": 36.0,
+              "kv_usage": 0.6225296442687747
+            },
+            {
+              "timestamp_unix": 1790012035.6378121,
+              "gpu_busy": 100.0,
+              "waiting": 11.0,
+              "running": 45.0,
+              "kv_usage": 0.898927159796725
+            },
+            {
+              "timestamp_unix": 1790012335.4524338,
+              "gpu_busy": 100.0,
+              "waiting": 22.0,
+              "running": 35.0,
+              "kv_usage": 0.8622247317899492
+            },
+            {
+              "timestamp_unix": 1790012635.3675632,
+              "gpu_busy": 100.0,
+              "waiting": 6.0,
+              "running": 46.0,
+              "kv_usage": 0.9692264257481649
+            },
+            {
+              "timestamp_unix": 1790012935.204588,
+              "gpu_busy": 100.0,
+              "waiting": 10.0,
+              "running": 43.0,
+              "kv_usage": 0.8658949745906268
+            },
+            {
+              "timestamp_unix": 1790013235.0323446,
+              "gpu_busy": 98.75,
+              "waiting": 18.0,
+              "running": 38.0,
+              "kv_usage": 0.9709203839638623
+            },
+            {
+              "timestamp_unix": 1790013534.8254523,
+              "gpu_busy": 100.0,
+              "waiting": 15.0,
+              "running": 40.0,
+              "kv_usage": 0.9136081309994354
+            },
+            {
+              "timestamp_unix": 1790013835.6494906,
+              "gpu_busy": 100.0,
+              "waiting": 12.0,
+              "running": 44.0,
+              "kv_usage": 0.9734613212874083
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

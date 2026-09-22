@@ -12,7 +12,9 @@ Replay is deliberately fixed-path:
 - The recorded output-token count becomes the new generation-length target.
 - Replay consumes the stream, checks the actual token count, and discards text.
 - Tool nodes execute the recorded name and arguments through the framework's
-  native runtime; their new outputs never alter the recorded DAG.
+  native runtime; their new outputs never alter the recorded DAG. OpenClaw
+  also supports recorded-delay replay for `web_search` only, enabled in the
+  Qwen3.6 profile; see [search replay](examples/openclaw_gaia/README.md#web_search-recorded-delay).
 - Sibling tool calls run concurrently and dependent nodes join on all parents.
 
 The current implementation includes OpenAI-compatible LLM capture/replay,
@@ -21,10 +23,16 @@ coding-agent shell calls. Bounded multi-trace replay and hardware/latency sampli
 are documented in [Concurrent replay](docs/concurrent-replay.md).
 Continuous-load windows and the two-node Polaris experiment are documented in
 [Single-backend scaling](docs/single-backend-scaling.md).
+The [multi-node experiment guide](docs/multinode-scaling.md) covers the TP4 replica
+matrix, manual PBS submission, common measurement windows, routing/cache controls,
+and aggregation. Start with `python -m agenttrace.experiments.multinode check`.
+For the Qwen3.6-35B-A3B backend, see [Qwen3.6 TP4 setup](docs/qwen36-tp4.md).
 Measured scaling results and trace characterization are indexed in
 [Analysis reports](reports/README.md).
-Arrival-rate load generation, ChemGraph, retries, and
-distributed execution are intentionally outside the current scope.
+Concise conclusions for the paper are collected in
+[Paper insights](docs/paper-insights.md).
+Arrival-rate load generation, ChemGraph, automatic LLM retries, and distributing
+a single replay DAG across nodes remain outside the current scope.
 
 ## Install and test
 

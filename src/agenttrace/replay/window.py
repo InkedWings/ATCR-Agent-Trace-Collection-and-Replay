@@ -48,6 +48,7 @@ def summarize_window(root: Path, tasks: list[dict[str, Any]], start: float, end:
     llm = [node for node in nodes if node["type"] == "llm"]
     tool = [node for node in nodes if node["type"] == "tool"]
     finished = [row for row in completed if start <= row["ended_unix"] < end]
+    failed = [row for row in tasks if row["status"] == "failed" and start <= row.get("ended_unix", 0) < end]
     concurrency = {"tasks": timeline([(r["started_unix"], r["ended_unix"])
         for r in tasks if "ended_unix" in r], start, end),
         "llm_calls": timeline([(n["started_unix"], n["timestamp_unix"])
@@ -56,6 +57,8 @@ def summarize_window(root: Path, tasks: list[dict[str, Any]], start: float, end:
     return {"started_unix": start, "ended_unix": end, "duration_seconds": end - start,
         "cohort_policy": "task admissions / node starts in [start,end); full latency after natural drain",
         "completed_in_window": len(finished), "admitted_in_window": len(admitted),
+        "failed_in_window": len(failed),
+        "task_failure_fraction": len(failed) / (len(failed)+len(finished)) if failed or finished else None,
         "incomplete_admission_cohort": len(admitted) - len(cohort),
         "task_throughput_per_second": len(finished) / (end - start),
         "admitted_trace_coverage": sorted({r["trace_path"] for r in admitted}),

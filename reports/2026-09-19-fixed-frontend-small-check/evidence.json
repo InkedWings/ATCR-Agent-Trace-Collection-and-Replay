@@ -1,0 +1,55 @@
+[
+  {
+    "job_id": "7637016",
+    "workload": "openclaw",
+    "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/openclaw-fixed_frontend-n16-7637016.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "status": "failed",
+    "global_task_cc": 256,
+    "failure_node": "tool-003",
+    "failure_layer": "OpenClaw gateway tool HTTP",
+    "exception": "ReadError",
+    "failed_request_seconds": 4.108985751168802,
+    "failure_timestamp_unix": 1789835595.001218,
+    "measurement_seconds_before_failure": 0,
+    "planned_measurement_seconds": 3600.0,
+    "worker_task_counts": {
+      "cancelled": 255,
+      "completed": 5,
+      "failed": 1
+    },
+    "completed_in_measurement_before_failure": 0,
+    "measurement_cpu_sample_mean_percent": null,
+    "measurement_cpu_samples": 0,
+    "measurement_cpu_samples_ge90_fraction": null,
+    "formal_scaling_result_usable": false,
+    "root_cause_status": "Transport failure confirmed; underlying cause of the connection failure not established.",
+    "replay_elapsed_seconds_before_failure": 147.2136824131012
+  },
+  {
+    "job_id": "7637017",
+    "workload": "minisweagent",
+    "root": "/lus/eagle/projects/lc-mpi/ZhijingYe/SIGMETRICS_2027/trace_framework/runs/scaling/multinode/minisweagent-fixed_frontend-n16-7637017.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+    "status": "failed",
+    "global_task_cc": 512,
+    "failure_node": "llm-040",
+    "failure_layer": "vLLM LLM HTTP",
+    "exception": "ReadError",
+    "failed_request_seconds": 0.0030021171551197767,
+    "failure_timestamp_unix": 1789840708.7945821,
+    "measurement_seconds_before_failure": 4686.465709686279,
+    "planned_measurement_seconds": 5400.0,
+    "worker_task_counts": {
+      "completed": 1977,
+      "cancelled": 387,
+      "running": 124,
+      "failed": 1
+    },
+    "completed_in_measurement_before_failure": 1491,
+    "measurement_cpu_sample_mean_percent": 97.44337632089845,
+    "measurement_cpu_samples": 4662,
+    "measurement_cpu_samples_ge90_fraction": 0.9817674817674817,
+    "formal_scaling_result_usable": false,
+    "root_cause_status": "Transport failure confirmed; underlying cause of the connection failure not established.",
+    "replay_elapsed_seconds_before_failure": 6486.465709686279
+  }
+]

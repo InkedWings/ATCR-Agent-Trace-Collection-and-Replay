@@ -1,0 +1,1037 @@
+{
+  "scope": "Completed backend requests queued in measurement, full subsequent completion; warmup timeline by queue arrival. Middleware arrivals reported separately.",
+  "results": [
+    {
+      "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "openclaw",
+      "replica": "r00",
+      "middleware_window_arrivals": 1956,
+      "middleware_status_counts": {
+        "completed": 1956
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 1956
+      },
+      "middleware_residence_seconds": {
+        "count": 1956,
+        "mean": 3.173350911442731,
+        "p50": 1.556707501411438,
+        "p95": 10.727583050727844,
+        "max": 52.401806116104126
+      },
+      "backend_arrival_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.807152467622551,
+        "prompt_tokens_sum": 96130180,
+        "cached_prompt_tokens_sum": 77591712,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 49146.30879345603,
+          "p50": 38584.5,
+          "p95": 143434.0,
+          "max": 204398
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 9477.744376278119,
+          "p50": 3519.5,
+          "p95": 37411.75,
+          "max": 200702
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 258.4003067484663,
+          "p50": 126.0,
+          "p95": 918.25,
+          "max": 4712
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 0.06572197576373404,
+          "p50": 3.7320423871278763e-06,
+          "p95": 2.0618026610463858e-05,
+          "max": 9.110900085885078
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 0.47110835300350906,
+          "p50": 0.24829642043914646,
+          "p95": 1.5201135865063407,
+          "max": 10.828467175131664
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 2.5441613589653436,
+          "p50": 1.0747299880022183,
+          "p95": 9.372384885617066,
+          "max": 52.20423136185855
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 3.0809916851466905,
+          "p50": 1.477109670639038,
+          "p95": 10.699654936790466,
+          "max": 52.29926037788391
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.807152467622551,
+        "prompt_tokens_sum": 96130180,
+        "cached_prompt_tokens_sum": 77591712,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 49146.30879345603,
+          "p50": 38584.5,
+          "p95": 143434.0,
+          "max": 204398
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 9477.744376278119,
+          "p50": 3519.5,
+          "p95": 37411.75,
+          "max": 200702
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 258.4003067484663,
+          "p50": 126.0,
+          "p95": 918.25,
+          "max": 4712
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 0.06572197576373404,
+          "p50": 3.7320423871278763e-06,
+          "p95": 2.0618026610463858e-05,
+          "max": 9.110900085885078
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 0.47110835300350906,
+          "p50": 0.24829642043914646,
+          "p95": 1.5201135865063407,
+          "max": 10.828467175131664
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 2.5441613589653436,
+          "p50": 1.0747299880022183,
+          "p95": 9.372384885617066,
+          "max": 52.20423136185855
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 3.0809916851466905,
+          "p50": 1.477109670639038,
+          "p95": 10.699654936790466,
+          "max": 52.29926037788391
+        }
+      }
+    },
+    {
+      "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "openclaw",
+      "replica": "r01",
+      "middleware_window_arrivals": 1956,
+      "middleware_status_counts": {
+        "completed": 1956
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 1956
+      },
+      "middleware_residence_seconds": {
+        "count": 1956,
+        "mean": 4.322535174755962,
+        "p50": 1.7974895238876343,
+        "p95": 15.593791544437408,
+        "max": 177.50481748580933
+      },
+      "backend_arrival_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.7815331619662063,
+        "prompt_tokens_sum": 88994120,
+        "cached_prompt_tokens_sum": 69551856,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 45498.0163599182,
+          "p50": 33203.0,
+          "p95": 117730.25,
+          "max": 204872
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 9939.807770961144,
+          "p50": 3696.0,
+          "p95": 42736.25,
+          "max": 175977
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 296.14468302658486,
+          "p50": 125.0,
+          "p95": 921.0,
+          "max": 8418
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 0.05001595772799021,
+          "p50": 3.4261029213666916e-06,
+          "p95": 2.122996374964714e-05,
+          "max": 6.320098793832585
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 0.5238717481512282,
+          "p50": 0.28764144890010357,
+          "p95": 1.729760822665412,
+          "max": 9.669817669084296
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 3.656447231183319,
+          "p50": 1.2336188789922744,
+          "p95": 14.583176334213931,
+          "max": 175.11435695597902
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 4.230334936719243,
+          "p50": 1.7000912427902222,
+          "p95": 15.39687192440033,
+          "max": 177.23175954818726
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.7815331619662063,
+        "prompt_tokens_sum": 88994120,
+        "cached_prompt_tokens_sum": 69551856,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 45498.0163599182,
+          "p50": 33203.0,
+          "p95": 117730.25,
+          "max": 204872
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 9939.807770961144,
+          "p50": 3696.0,
+          "p95": 42736.25,
+          "max": 175977
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 296.14468302658486,
+          "p50": 125.0,
+          "p95": 921.0,
+          "max": 8418
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 0.05001595772799021,
+          "p50": 3.4261029213666916e-06,
+          "p95": 2.122996374964714e-05,
+          "max": 6.320098793832585
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 0.5238717481512282,
+          "p50": 0.28764144890010357,
+          "p95": 1.729760822665412,
+          "max": 9.669817669084296
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 3.656447231183319,
+          "p50": 1.2336188789922744,
+          "p95": 14.583176334213931,
+          "max": 175.11435695597902
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 4.230334936719243,
+          "p50": 1.7000912427902222,
+          "p95": 15.39687192440033,
+          "max": 177.23175954818726
+        }
+      }
+    },
+    {
+      "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "openclaw",
+      "replica": "r02",
+      "middleware_window_arrivals": 1956,
+      "middleware_status_counts": {
+        "completed": 1956
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 1956
+      },
+      "middleware_residence_seconds": {
+        "count": 1956,
+        "mean": 3.4890462363668258,
+        "p50": 1.5652581453323364,
+        "p95": 12.19932997226715,
+        "max": 113.96987247467041
+      },
+      "backend_arrival_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.7978355444110364,
+        "prompt_tokens_sum": 92722808,
+        "cached_prompt_tokens_sum": 73977552,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 47404.298568507154,
+          "p50": 35658.0,
+          "p95": 132631.0,
+          "max": 204872
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 9583.464212678937,
+          "p50": 3500.5,
+          "p95": 40915.25,
+          "max": 173373
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 274.4028629856851,
+          "p50": 125.0,
+          "p95": 964.75,
+          "max": 9389
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 0.05191780665947947,
+          "p50": 3.872555680572987e-06,
+          "p95": 2.2574735339730978e-05,
+          "max": 6.114680679049343
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 0.4852423682123954,
+          "p50": 0.25322470162063837,
+          "p95": 1.7061634769197553,
+          "max": 8.665208767168224
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 2.8586539456940776,
+          "p50": 1.0617360329488292,
+          "p95": 10.816696552559733,
+          "max": 113.41283380403183
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 3.3958141197943736,
+          "p50": 1.4772083759307861,
+          "p95": 12.102130889892578,
+          "max": 113.67669129371643
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.7978355444110364,
+        "prompt_tokens_sum": 92722808,
+        "cached_prompt_tokens_sum": 73977552,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 47404.298568507154,
+          "p50": 35658.0,
+          "p95": 132631.0,
+          "max": 204872
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 9583.464212678937,
+          "p50": 3500.5,
+          "p95": 40915.25,
+          "max": 173373
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 274.4028629856851,
+          "p50": 125.0,
+          "p95": 964.75,
+          "max": 9389
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 0.05191780665947947,
+          "p50": 3.872555680572987e-06,
+          "p95": 2.2574735339730978e-05,
+          "max": 6.114680679049343
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 0.4852423682123954,
+          "p50": 0.25322470162063837,
+          "p95": 1.7061634769197553,
+          "max": 8.665208767168224
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 2.8586539456940776,
+          "p50": 1.0617360329488292,
+          "p95": 10.816696552559733,
+          "max": 113.41283380403183
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 3.3958141197943736,
+          "p50": 1.4772083759307861,
+          "p95": 12.102130889892578,
+          "max": 113.67669129371643
+        }
+      }
+    },
+    {
+      "run": "openclaw-routing-n4-round_robin-7642785.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "openclaw",
+      "replica": "r03",
+      "middleware_window_arrivals": 1956,
+      "middleware_status_counts": {
+        "completed": 1956
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 1956
+      },
+      "middleware_residence_seconds": {
+        "count": 1956,
+        "mean": 99.32938148187957,
+        "p50": 64.22262251377106,
+        "p95": 280.38505440950394,
+        "max": 2183.4464564323425
+      },
+      "backend_arrival_cohort": {
+        "requests": 1956,
+        "prefix_reuse": 0.12231229299940273,
+        "prompt_tokens_sum": 88123538,
+        "cached_prompt_tokens_sum": 10778592,
+        "prompt_tokens": {
+          "count": 1956,
+          "mean": 45052.93353783231,
+          "p50": 32398.0,
+          "p95": 115634.75,
+          "max": 204398
+        },
+        "uncached_tokens": {
+          "count": 1956,
+          "mean": 39542.40593047035,
+          "p50": 26955.5,
+          "p95": 109176.5,
+          "max": 199646
+        },
+        "output_tokens": {
+          "count": 1956,
+          "mean": 294.68404907975463,
+          "p50": 122.0,
+          "p95": 1045.5,
+          "max": 9389
+        },
+        "queue_seconds": {
+          "count": 1956,
+          "mean": 25.30125645612919,
+          "p50": 26.12412848160602,
+          "p95": 49.74994252278702,
+          "max": 67.11797075415961
+        },
+        "prefill_seconds": {
+          "count": 1956,
+          "mean": 2.5439902059993362,
+          "p50": 1.8748470855643973,
+          "p95": 5.984880316362251,
+          "max": 12.542641747975722
+        },
+        "decode_seconds": {
+          "count": 1956,
+          "mean": 71.23437431782966,
+          "p50": 31.174900376587175,
+          "p95": 248.49771355750272,
+          "max": 2140.5094658390153
+        },
+        "residence_seconds": {
+          "count": 1956,
+          "mean": 99.07962097797413,
+          "p50": 64.03765761852264,
+          "p95": 280.14801758527756,
+          "max": 2183.316444158554
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 1939,
+        "prefix_reuse": 0.12264785198928162,
+        "prompt_tokens_sum": 87365835,
+        "cached_prompt_tokens_sum": 10715232,
+        "prompt_tokens": {
+          "count": 1939,
+          "mean": 45057.160907684374,
+          "p50": 32397.0,
+          "p95": 115741.49999999997,
+          "max": 204398
+        },
+        "uncached_tokens": {
+          "count": 1939,
+          "mean": 39530.996905621454,
+          "p50": 26628.0,
+          "p95": 109196.59999999996,
+          "max": 199646
+        },
+        "output_tokens": {
+          "count": 1939,
+          "mean": 294.6616812790098,
+          "p50": 122.0,
+          "p95": 1043.3999999999987,
+          "max": 9389
+        },
+        "queue_seconds": {
+          "count": 1939,
+          "mean": 24.991386680644776,
+          "p50": 25.780872380826622,
+          "p95": 49.592263346980324,
+          "max": 67.11797075415961
+        },
+        "prefill_seconds": {
+          "count": 1939,
+          "mean": 2.5426390198868223,
+          "p50": 1.8742418161127716,
+          "p95": 5.983266159449703,
+          "max": 12.542641747975722
+        },
+        "decode_seconds": {
+          "count": 1939,
+          "mean": 71.1312600977431,
+          "p50": 31.194599681999534,
+          "p95": 248.3844108837889,
+          "max": 2140.5094658390153
+        },
+        "residence_seconds": {
+          "count": 1939,
+          "mean": 98.66528579658795,
+          "p50": 63.321813106536865,
+          "p95": 274.99258587360333,
+          "max": 2183.316444158554
+        }
+      }
+    },
+    {
+      "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "minisweagent",
+      "replica": "r00",
+      "middleware_window_arrivals": 5579,
+      "middleware_status_counts": {
+        "completed": 5579
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 5579
+      },
+      "middleware_residence_seconds": {
+        "count": 5579,
+        "mean": 2.450679320848037,
+        "p50": 1.2685253620147705,
+        "p95": 8.124673938751217,
+        "max": 51.08845543861389
+      },
+      "backend_arrival_cohort": {
+        "requests": 5579,
+        "prefix_reuse": 0.7692476457157509,
+        "prompt_tokens_sum": 163395308,
+        "cached_prompt_tokens_sum": 125691456,
+        "prompt_tokens": {
+          "count": 5579,
+          "mean": 29287.56192866105,
+          "p50": 25269.0,
+          "p95": 67687.0,
+          "max": 106665
+        },
+        "uncached_tokens": {
+          "count": 5579,
+          "mean": 6758.17386628428,
+          "p50": 1497.0,
+          "p95": 34293.299999999996,
+          "max": 94788
+        },
+        "output_tokens": {
+          "count": 5579,
+          "mean": 182.69779530381788,
+          "p50": 78.0,
+          "p95": 598.0,
+          "max": 3953
+        },
+        "queue_seconds": {
+          "count": 5579,
+          "mean": 0.015600834662200882,
+          "p50": 3.1960662454366684e-06,
+          "p95": 1.3606925494968885e-05,
+          "max": 2.477517821127549
+        },
+        "prefill_seconds": {
+          "count": 5579,
+          "mean": 0.33340256918158445,
+          "p50": 0.1768102371133864,
+          "p95": 1.1460729627171518,
+          "max": 3.5558680170215666
+        },
+        "decode_seconds": {
+          "count": 5579,
+          "mean": 2.027974932192232,
+          "p50": 0.8082663589157164,
+          "p95": 7.449655667995103,
+          "max": 50.742623086087406
+        },
+        "residence_seconds": {
+          "count": 5579,
+          "mean": 2.376978334463461,
+          "p50": 1.1922645568847656,
+          "p95": 8.034372019767751,
+          "max": 50.961981534957886
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 5578,
+        "prefix_reuse": 0.7695552567698257,
+        "prompt_tokens_sum": 163356753,
+        "cached_prompt_tokens_sum": 125712048,
+        "prompt_tokens": {
+          "count": 5578,
+          "mean": 29285.90050197203,
+          "p50": 25261.5,
+          "p95": 67687.0,
+          "max": 106665
+        },
+        "uncached_tokens": {
+          "count": 5578,
+          "mean": 6748.781821441376,
+          "p50": 1495.5,
+          "p95": 34285.2,
+          "max": 94788
+        },
+        "output_tokens": {
+          "count": 5578,
+          "mean": 182.7045536034421,
+          "p50": 78.0,
+          "p95": 598.0,
+          "max": 3953
+        },
+        "queue_seconds": {
+          "count": 5578,
+          "mean": 0.015350006093112795,
+          "p50": 3.1960662454366684e-06,
+          "p95": 1.3595016207545996e-05,
+          "max": 2.477517821127549
+        },
+        "prefill_seconds": {
+          "count": 5578,
+          "mean": 0.3329456650722784,
+          "p50": 0.1768047739751637,
+          "p95": 1.142038267839233,
+          "max": 3.5558680170215666
+        },
+        "decode_seconds": {
+          "count": 5578,
+          "mean": 2.027749923727795,
+          "p50": 0.8076065473724157,
+          "p95": 7.449672899500001,
+          "max": 50.742623086087406
+        },
+        "residence_seconds": {
+          "count": 5578,
+          "mean": 2.3760455933554105,
+          "p50": 1.1914403438568115,
+          "p95": 8.035215151309961,
+          "max": 50.961981534957886
+        }
+      }
+    },
+    {
+      "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "minisweagent",
+      "replica": "r01",
+      "middleware_window_arrivals": 5580,
+      "middleware_status_counts": {
+        "completed": 5580
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 5581
+      },
+      "middleware_residence_seconds": {
+        "count": 5580,
+        "mean": 112.36681788283865,
+        "p50": 86.0820484161377,
+        "p95": 238.33861428499227,
+        "max": 1172.6609950065613
+      },
+      "backend_arrival_cohort": {
+        "requests": 5581,
+        "prefix_reuse": 0.08246205630029035,
+        "prompt_tokens_sum": 164677339,
+        "cached_prompt_tokens_sum": 13579632,
+        "prompt_tokens": {
+          "count": 5581,
+          "mean": 29506.779967747716,
+          "p50": 25612.0,
+          "p95": 67490.0,
+          "max": 106179
+        },
+        "uncached_tokens": {
+          "count": 5581,
+          "mean": 27073.590216807024,
+          "p50": 22919.0,
+          "p95": 64888.0,
+          "max": 106179
+        },
+        "output_tokens": {
+          "count": 5581,
+          "mean": 191.87242429672102,
+          "p50": 79.0,
+          "p95": 687.0,
+          "max": 4096
+        },
+        "queue_seconds": {
+          "count": 5581,
+          "mean": 60.66452826436645,
+          "p50": 60.73453813791275,
+          "p95": 72.27398487995379,
+          "max": 83.50127641600557
+        },
+        "prefill_seconds": {
+          "count": 5581,
+          "mean": 1.711979190150928,
+          "p50": 1.5578029199969023,
+          "p95": 3.207009355071932,
+          "max": 5.418193528894335
+        },
+        "decode_seconds": {
+          "count": 5581,
+          "mean": 49.774265472843396,
+          "p50": 20.511907192878425,
+          "p95": 176.01605640305206,
+          "max": 1114.33434506692
+        },
+        "residence_seconds": {
+          "count": 5581,
+          "mean": 112.15077292664976,
+          "p50": 85.8828284740448,
+          "p95": 238.16512894630432,
+          "max": 1172.5257291793823
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 5573,
+        "prefix_reuse": 0.08197456196400629,
+        "prompt_tokens_sum": 164143018,
+        "cached_prompt_tokens_sum": 13455552,
+        "prompt_tokens": {
+          "count": 5573,
+          "mean": 29453.26000358873,
+          "p50": 25504.0,
+          "p95": 67460.0,
+          "max": 106179
+        },
+        "uncached_tokens": {
+          "count": 5573,
+          "mean": 27038.84191638256,
+          "p50": 22838.0,
+          "p95": 64797.99999999997,
+          "max": 106179
+        },
+        "output_tokens": {
+          "count": 5573,
+          "mean": 192.12452897900593,
+          "p50": 79.0,
+          "p95": 691.3999999999996,
+          "max": 4096
+        },
+        "queue_seconds": {
+          "count": 5573,
+          "mean": 60.49704723286114,
+          "p50": 60.5850309911184,
+          "p95": 72.28130133119411,
+          "max": 83.50127641600557
+        },
+        "prefill_seconds": {
+          "count": 5573,
+          "mean": 1.7102833068265755,
+          "p50": 1.5555620579980314,
+          "p95": 3.205320103187114,
+          "max": 5.418193528894335
+        },
+        "decode_seconds": {
+          "count": 5573,
+          "mean": 49.79952808564768,
+          "p50": 20.50138119980693,
+          "p95": 176.41557014426203,
+          "max": 1114.33434506692
+        },
+        "residence_seconds": {
+          "count": 5573,
+          "mean": 112.0068586244845,
+          "p50": 85.82130789756775,
+          "p95": 238.33058753013597,
+          "max": 1172.5257291793823
+        }
+      }
+    },
+    {
+      "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "minisweagent",
+      "replica": "r02",
+      "middleware_window_arrivals": 5580,
+      "middleware_status_counts": {
+        "completed": 5580
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 5580
+      },
+      "middleware_residence_seconds": {
+        "count": 5580,
+        "mean": 2.4389349513583714,
+        "p50": 1.2379215955734253,
+        "p95": 8.111104154586794,
+        "max": 46.25321841239929
+      },
+      "backend_arrival_cohort": {
+        "requests": 5580,
+        "prefix_reuse": 0.7665083952442079,
+        "prompt_tokens_sum": 163254572,
+        "cached_prompt_tokens_sum": 125136000,
+        "prompt_tokens": {
+          "count": 5580,
+          "mean": 29257.091756272403,
+          "p50": 25193.0,
+          "p95": 68211.85,
+          "max": 107077
+        },
+        "uncached_tokens": {
+          "count": 5580,
+          "mean": 6831.285304659498,
+          "p50": 1511.5,
+          "p95": 34743.30000000002,
+          "max": 93776
+        },
+        "output_tokens": {
+          "count": 5580,
+          "mean": 182.86379928315412,
+          "p50": 78.0,
+          "p95": 615.0,
+          "max": 3168
+        },
+        "queue_seconds": {
+          "count": 5580,
+          "mean": 0.013327197248231299,
+          "p50": 3.205845132470131e-06,
+          "p95": 1.4157604891806847e-05,
+          "max": 2.0050402749329805
+        },
+        "prefill_seconds": {
+          "count": 5580,
+          "mean": 0.33217861621509603,
+          "p50": 0.17646674497518688,
+          "p95": 1.1689718002802694,
+          "max": 3.5315526430495083
+        },
+        "decode_seconds": {
+          "count": 5580,
+          "mean": 2.0191215940940155,
+          "p50": 0.801324266474694,
+          "p95": 7.483167210558897,
+          "max": 42.893013288034126
+        },
+        "residence_seconds": {
+          "count": 5580,
+          "mean": 2.364627407443139,
+          "p50": 1.1548370122909546,
+          "p95": 7.9984453439712535,
+          "max": 46.08962678909302
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 5580,
+        "prefix_reuse": 0.7665083952442079,
+        "prompt_tokens_sum": 163254572,
+        "cached_prompt_tokens_sum": 125136000,
+        "prompt_tokens": {
+          "count": 5580,
+          "mean": 29257.091756272403,
+          "p50": 25193.0,
+          "p95": 68211.85,
+          "max": 107077
+        },
+        "uncached_tokens": {
+          "count": 5580,
+          "mean": 6831.285304659498,
+          "p50": 1511.5,
+          "p95": 34743.30000000002,
+          "max": 93776
+        },
+        "output_tokens": {
+          "count": 5580,
+          "mean": 182.86379928315412,
+          "p50": 78.0,
+          "p95": 615.0,
+          "max": 3168
+        },
+        "queue_seconds": {
+          "count": 5580,
+          "mean": 0.013327197248231299,
+          "p50": 3.205845132470131e-06,
+          "p95": 1.4157604891806847e-05,
+          "max": 2.0050402749329805
+        },
+        "prefill_seconds": {
+          "count": 5580,
+          "mean": 0.33217861621509603,
+          "p50": 0.17646674497518688,
+          "p95": 1.1689718002802694,
+          "max": 3.5315526430495083
+        },
+        "decode_seconds": {
+          "count": 5580,
+          "mean": 2.0191215940940155,
+          "p50": 0.801324266474694,
+          "p95": 7.483167210558897,
+          "max": 42.893013288034126
+        },
+        "residence_seconds": {
+          "count": 5580,
+          "mean": 2.364627407443139,
+          "p50": 1.1548370122909546,
+          "p95": 7.9984453439712535,
+          "max": 46.08962678909302
+        }
+      }
+    },
+    {
+      "run": "minisweagent-routing-n4-round_robin-7642786.polaris-pbs-01.hsn.cm.polaris.alcf.anl.gov",
+      "workload": "minisweagent",
+      "replica": "r03",
+      "middleware_window_arrivals": 5580,
+      "middleware_status_counts": {
+        "completed": 5580
+      },
+      "backend_window_arrival_finish_reasons": {
+        "length": 5580
+      },
+      "middleware_residence_seconds": {
+        "count": 5580,
+        "mean": 2.661086731444123,
+        "p50": 1.3487969636917114,
+        "p95": 9.179044878482827,
+        "max": 63.70125651359558
+      },
+      "backend_arrival_cohort": {
+        "requests": 5580,
+        "prefix_reuse": 0.7636997229466838,
+        "prompt_tokens_sum": 163794827,
+        "cached_prompt_tokens_sum": 125090064,
+        "prompt_tokens": {
+          "count": 5580,
+          "mean": 29353.91164874552,
+          "p50": 25120.0,
+          "p95": 68480.3,
+          "max": 105933
+        },
+        "uncached_tokens": {
+          "count": 5580,
+          "mean": 6936.337455197133,
+          "p50": 1526.5,
+          "p95": 35750.10000000001,
+          "max": 100577
+        },
+        "output_tokens": {
+          "count": 5580,
+          "mean": 193.1440860215054,
+          "p50": 81.0,
+          "p95": 697.1000000000004,
+          "max": 4096
+        },
+        "queue_seconds": {
+          "count": 5580,
+          "mean": 0.01517122874744103,
+          "p50": 3.5460107028484344e-06,
+          "p95": 1.7773907165974383e-05,
+          "max": 2.6226008608937263
+        },
+        "prefill_seconds": {
+          "count": 5580,
+          "mean": 0.3403625875081797,
+          "p50": 0.17643394810147583,
+          "p95": 1.2229616043507126,
+          "max": 4.060538288904354
+        },
+        "decode_seconds": {
+          "count": 5580,
+          "mean": 2.231385975273361,
+          "p50": 0.8594651559833437,
+          "p95": 8.696085943607613,
+          "max": 63.39689795207232
+        },
+        "residence_seconds": {
+          "count": 5580,
+          "mean": 2.5869197929204577,
+          "p50": 1.267388105392456,
+          "p95": 9.142283046245575,
+          "max": 63.67567300796509
+        }
+      },
+      "backend_first_token_cohort": {
+        "requests": 5580,
+        "prefix_reuse": 0.7636997229466838,
+        "prompt_tokens_sum": 163794827,
+        "cached_prompt_tokens_sum": 125090064,
+        "prompt_tokens": {
+          "count": 5580,
+          "mean": 29353.91164874552,
+          "p50": 25120.0,
+          "p95": 68480.3,
+          "max": 105933
+        },
+        "uncached_tokens": {
+          "count": 5580,
+          "mean": 6936.337455197133,
+          "p50": 1526.5,
+          "p95": 35750.10000000001,
+          "max": 100577
+        },
+        "output_tokens": {
+          "count": 5580,
+          "mean": 193.1440860215054,
+          "p50": 81.0,
+          "p95": 697.1000000000004,
+          "max": 4096
+        },
+        "queue_seconds": {
+          "count": 5580,
+          "mean": 0.01517122874744103,
+          "p50": 3.5460107028484344e-06,
+          "p95": 1.7773907165974383e-05,
+          "max": 2.6226008608937263
+        },
+        "prefill_seconds": {
+          "count": 5580,
+          "mean": 0.3403625875081797,
+          "p50": 0.17643394810147583,
+          "p95": 1.2229616043507126,
+          "max": 4.060538288904354
+        },
+        "decode_seconds": {
+          "count": 5580,
+          "mean": 2.231385975273361,
+          "p50": 0.8594651559833437,
+          "p95": 8.696085943607613,
+          "max": 63.39689795207232
+        },
+        "residence_seconds": {
+          "count": 5580,
+          "mean": 2.5869197929204577,
+          "p50": 1.267388105392456,
+          "p95": 9.142283046245575,
+          "max": 63.67567300796509
+        }
+      }
+    }
+  ]
+}

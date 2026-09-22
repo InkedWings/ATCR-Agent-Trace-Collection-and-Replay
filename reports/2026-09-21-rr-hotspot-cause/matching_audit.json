@@ -1,0 +1,8 @@
+{
+  "unique": 15025,
+  "ambiguous": 13,
+  "unmatched": 67,
+  "reverse_collisions_excluded": 2,
+  "completed_requests": 15107,
+  "rule": "Same workload, destination and output count; middleware starts 0\u20132 s before backend queued and ends 0\u20132 s after backend finished; unique candidates only."
+}

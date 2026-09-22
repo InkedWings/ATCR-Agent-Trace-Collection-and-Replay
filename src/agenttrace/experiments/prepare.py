@@ -78,13 +78,16 @@ def main():
     parser.add_argument("--repo", type=Path, default=Path.cwd())
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--base-url", required=True)
+    parser.add_argument("--model", default="qwen/qwen3-32b")
+    parser.add_argument("--max-model-len", type=int, default=32768)
     args = parser.parse_args()
     repo = args.repo.resolve()
     for workload, paths in (
         ("openclaw", list((repo.parent / "datasets/GAIA_Trace/run2/traces").glob("*.json"))),
         ("minisweagent", list((repo / "runs/minisweagent-swebench/dev-20260906T004724Z/tasks").glob("*/trace.json"))),
     ):
-        asyncio.run(prepare(paths, args.output / workload, args.base_url))
+        asyncio.run(prepare(paths, args.output / workload, args.base_url,
+                            model=args.model, max_model_len=args.max_model_len))
 
 
 if __name__ == "__main__":
